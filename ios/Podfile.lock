@@ -1,0 +1,262 @@
+PODS:
+  - audio_session (0.0.1):
+    - Flutter
+  - camera_avfoundation (0.0.1):
+    - Flutter
+  - connectivity_plus (0.0.1):
+    - Flutter
+    - ReachabilitySwift
+  - device_info_plus (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - flutter_archive (0.0.1):
+    - Flutter
+    - ZIPFoundation (= 0.9.13)
+  - flutter_compass (0.0.1):
+    - Flutter
+  - flutter_image_compress_common (1.0.0):
+    - Flutter
+    - Mantle
+    - SDWebImage
+    - SDWebImageWebPCoder
+  - flutter_local_notifications (0.0.1):
+    - Flutter
+  - flutter_qiblah (0.0.1):
+    - Flutter
+  - flutter_timezone (0.0.1):
+    - Flutter
+  - flutter_webrtc (0.11.3):
+    - Flutter
+    - WebRTC-SDK (= 125.6422.04)
+  - geocoding_ios (1.0.5):
+    - Flutter
+  - geolocator_apple (1.2.0):
+    - Flutter
+  - Google-Maps-iOS-Utils (6.0.0):
+    - GoogleMaps (~> 9.0)
+  - google_maps_flutter_ios (0.0.1):
+    - Flutter
+    - Google-Maps-iOS-Utils (< 7.0, >= 5.0)
+    - GoogleMaps (< 10.0, >= 8.4)
+  - GoogleMaps (9.0.0):
+    - GoogleMaps/Maps (= 9.0.0)
+  - GoogleMaps/Base (9.0.0)
+  - GoogleMaps/Maps (9.0.0):
+    - GoogleMaps/Base
+  - just_audio (0.0.1):
+    - Flutter
+  - libwebp (1.3.2):
+    - libwebp/demux (= 1.3.2)
+    - libwebp/mux (= 1.3.2)
+    - libwebp/sharpyuv (= 1.3.2)
+    - libwebp/webp (= 1.3.2)
+  - libwebp/demux (1.3.2):
+    - libwebp/webp
+  - libwebp/mux (1.3.2):
+    - libwebp/demux
+  - libwebp/sharpyuv (1.3.2)
+  - libwebp/webp (1.3.2):
+    - libwebp/sharpyuv
+  - Mantle (2.2.0):
+    - Mantle/extobjc (= 2.2.0)
+  - Mantle/extobjc (2.2.0)
+  - network_info_plus (0.0.1):
+    - Flutter
+  - NWWebSocket (0.5.4)
+  - package_info_plus (0.4.5):
+    - Flutter
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - permission_handler_apple (9.1.1):
+    - Flutter
+  - photo_manager (2.0.0):
+    - Flutter
+    - FlutterMacOS
+  - pusher_channels_flutter (0.0.1):
+    - Flutter
+    - PusherSwift (~> 10.1.5)
+  - PusherSwift (10.1.5):
+    - NWWebSocket (~> 0.5.4)
+    - TweetNacl (~> 1.0.0)
+  - ReachabilitySwift (5.2.3)
+  - SDWebImage (5.19.6):
+    - SDWebImage/Core (= 5.19.6)
+  - SDWebImage/Core (5.19.6)
+  - SDWebImageWebPCoder (0.14.6):
+    - libwebp (~> 1.0)
+    - SDWebImage/Core (~> 5.17)
+  - share_plus (0.0.1):
+    - Flutter
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - sqflite (0.0.3):
+    - Flutter
+    - FlutterMacOS
+  - TweetNacl (1.0.2)
+  - url_launcher_ios (0.0.1):
+    - Flutter
+  - video_player_avfoundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - wakelock_plus (0.0.1):
+    - Flutter
+  - WebRTC-SDK (125.6422.04)
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
+  - ZIPFoundation (0.9.13)
+
+DEPENDENCIES:
+  - audio_session (from `.symlinks/plugins/audio_session/ios`)
+  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
+  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
+  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
+  - Flutter (from `Flutter`)
+  - flutter_archive (from `.symlinks/plugins/flutter_archive/ios`)
+  - flutter_compass (from `.symlinks/plugins/flutter_compass/ios`)
+  - flutter_image_compress_common (from `.symlinks/plugins/flutter_image_compress_common/ios`)
+  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
+  - flutter_qiblah (from `.symlinks/plugins/flutter_qiblah/ios`)
+  - flutter_timezone (from `.symlinks/plugins/flutter_timezone/ios`)
+  - flutter_webrtc (from `.symlinks/plugins/flutter_webrtc/ios`)
+  - geocoding_ios (from `.symlinks/plugins/geocoding_ios/ios`)
+  - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
+  - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
+  - GoogleMaps (= 9.0.0)
+  - just_audio (from `.symlinks/plugins/just_audio/ios`)
+  - network_info_plus (from `.symlinks/plugins/network_info_plus/ios`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - photo_manager (from `.symlinks/plugins/photo_manager/ios`)
+  - pusher_channels_flutter (from `.symlinks/plugins/pusher_channels_flutter/ios`)
+  - share_plus (from `.symlinks/plugins/share_plus/ios`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
+  - sqflite (from `.symlinks/plugins/sqflite/darwin`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+  - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/darwin`)
+  - wakelock_plus (from `.symlinks/plugins/wakelock_plus/ios`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Google-Maps-iOS-Utils
+    - GoogleMaps
+    - libwebp
+    - Mantle
+    - NWWebSocket
+    - PusherSwift
+    - ReachabilitySwift
+    - SDWebImage
+    - SDWebImageWebPCoder
+    - TweetNacl
+    - WebRTC-SDK
+    - ZIPFoundation
+
+EXTERNAL SOURCES:
+  audio_session:
+    :path: ".symlinks/plugins/audio_session/ios"
+  camera_avfoundation:
+    :path: ".symlinks/plugins/camera_avfoundation/ios"
+  connectivity_plus:
+    :path: ".symlinks/plugins/connectivity_plus/ios"
+  device_info_plus:
+    :path: ".symlinks/plugins/device_info_plus/ios"
+  Flutter:
+    :path: Flutter
+  flutter_archive:
+    :path: ".symlinks/plugins/flutter_archive/ios"
+  flutter_compass:
+    :path: ".symlinks/plugins/flutter_compass/ios"
+  flutter_image_compress_common:
+    :path: ".symlinks/plugins/flutter_image_compress_common/ios"
+  flutter_local_notifications:
+    :path: ".symlinks/plugins/flutter_local_notifications/ios"
+  flutter_qiblah:
+    :path: ".symlinks/plugins/flutter_qiblah/ios"
+  flutter_timezone:
+    :path: ".symlinks/plugins/flutter_timezone/ios"
+  flutter_webrtc:
+    :path: ".symlinks/plugins/flutter_webrtc/ios"
+  geocoding_ios:
+    :path: ".symlinks/plugins/geocoding_ios/ios"
+  geolocator_apple:
+    :path: ".symlinks/plugins/geolocator_apple/ios"
+  google_maps_flutter_ios:
+    :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
+  just_audio:
+    :path: ".symlinks/plugins/just_audio/ios"
+  network_info_plus:
+    :path: ".symlinks/plugins/network_info_plus/ios"
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
+  photo_manager:
+    :path: ".symlinks/plugins/photo_manager/ios"
+  pusher_channels_flutter:
+    :path: ".symlinks/plugins/pusher_channels_flutter/ios"
+  share_plus:
+    :path: ".symlinks/plugins/share_plus/ios"
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
+  sqflite:
+    :path: ".symlinks/plugins/sqflite/darwin"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
+  video_player_avfoundation:
+    :path: ".symlinks/plugins/video_player_avfoundation/darwin"
+  wakelock_plus:
+    :path: ".symlinks/plugins/wakelock_plus/ios"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
+
+SPEC CHECKSUMS:
+  audio_session: 4f3e461722055d21515cf3261b64c973c062f345
+  camera_avfoundation: 759172d1a77ae7be0de08fc104cfb79738b8a59e
+  connectivity_plus: bf0076dd84a130856aa636df1c71ccaff908fa1d
+  device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_archive: 1805fdd3a695fd284b43edb53dc35ca843fb761c
+  flutter_compass: cbbd285cea1584c7ac9c4e0c3e1f17cbea55e855
+  flutter_image_compress_common: ec1d45c362c9d30a3f6a0426c297f47c52007e3e
+  flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
+  flutter_qiblah: f69eeb708d127a2634073ab1f27771c979928f50
+  flutter_timezone: ffb07bdad3c6276af8dada0f11978d8a1f8a20bb
+  flutter_webrtc: 75b868e4f9e817c7a9a42ca4b6169063de4eec9f
+  geocoding_ios: a389ea40f6f548de6e63006a2e31bf66ff80769a
+  geolocator_apple: cc556e6844d508c95df1e87e3ea6fa4e58c50401
+  Google-Maps-iOS-Utils: cfe6a0239c7ca634b7e001ad059a6707143dc8dc
+  google_maps_flutter_ios: e31555a04d1986ab130f2b9f24b6cdc861acc6d3
+  GoogleMaps: 4907d0d42bf8cd58f56743e31f91d23c10682745
+  just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
+  libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
+  Mantle: c5aa8794a29a022dfbbfc9799af95f477a69b62d
+  network_info_plus: 6d0c3eb8367b8164fa3fb0c19875e3f59d49697f
+  NWWebSocket: 040d22f23438cc09aaeabf537beff67699c3c76d
+  package_info_plus: 115f4ad11e0698c8c1c5d8a689390df880f47e85
+  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
+  permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
+  photo_manager: ff695c7a1dd5bc379974953a2b5c0a293f7c4c8a
+  pusher_channels_flutter: 01297e6e420e0ad61a6e5901e27bb272a6f58ec2
+  PusherSwift: cad631bad86cfff4b8458dce1310a7774e469b1f
+  ReachabilitySwift: 7f151ff156cea1481a8411701195ac6a984f4979
+  SDWebImage: a79252b60f4678812d94316c91da69ec83089c9f
+  SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
+  share_plus: c3fef564749587fc939ef86ffb283ceac0baf9f5
+  shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
+  sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
+  TweetNacl: 3abf4d1d2082b0114e7a67410e300892448951e6
+  url_launcher_ios: bf5ce03e0e2088bad9cc378ea97fa0ed5b49673b
+  video_player_avfoundation: 7c6c11d8470e1675df7397027218274b6d2360b3
+  wakelock_plus: 8b09852c8876491e4b6d179e17dfe2a0b5f60d47
+  WebRTC-SDK: c3d69a87e7185fad3568f6f3cff7c9ac5890acf3
+  webview_flutter_wkwebview: be0f0d33777f1bfd0c9fdcb594786704dbf65f36
+  ZIPFoundation: ae5b4b813d216d3bf0a148773267fff14bd51d37
+
+PODFILE CHECKSUM: 0089e8630b6714d5d052fedc77b7567e74d83de9
+
+COCOAPODS: 1.15.2

@@ -1,0 +1,16 @@
+{
+  "@@locale": "en",
+  "info": "Information",
+  "error": "Opss...",
+  "confirm": "Confirmation",
+  "retry": "Retry",
+
+  "@_SIGNIN_VIEW": {},
+  "inputUsernamePassword": "Input Username and Password",
+  "inputUsername": "Input Username",
+  "inputPassword": "Input Password",
+  "inputFullname": "Input Full Name",
+  "inputPhone": "Input WhatsApp Number",
+  "anotherDeviceDetected": "You just logged in on another [%s] device.",
+  "doYouWantRelogin": "Do you want to re-login ?"
+}

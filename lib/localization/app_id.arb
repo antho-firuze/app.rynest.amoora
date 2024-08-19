@@ -1,0 +1,14 @@
+{
+  "@@locale": "id",
+  "info": "Informasi",
+  "error": "Opss...",
+  "confirm": "Konfirmasi",
+  "retry": "Coba lagi",
+  "inputUsernamePassword": "Masukkan Username dan Password",
+  "inputUsername": "Masukkan Username",
+  "inputPassword": "Masukkan Password",
+  "inputFullname": "Masukkan Nama Lengkap",
+  "inputPhone": "Masukkan No WhatsApp",
+  "anotherDeviceDetected": "Kamu baru saja login di perangkat [%s] yang lain.",
+  "doYouWantRelogin": "Apakah kamu ingin login ulang ?"
+}
