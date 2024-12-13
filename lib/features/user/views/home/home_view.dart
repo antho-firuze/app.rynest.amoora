@@ -1,10 +1,9 @@
 import 'dart:developer';
 
-import 'package:amoora/common/controllers/location_controller.dart';
-import 'package:amoora/common/widgets/connectivity_wrapper.dart';
+import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/widgets/clipper/smile_clipper.dart';
-import 'package:amoora/features/auth/controller/auth_controller.dart';
-import 'package:amoora/features/product/controller/product_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
+import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/features/product/views/product_view.dart';
 import 'package:amoora/features/user/views/home/widgets/home_app_bar.dart';
 import 'package:amoora/features/user/views/home/widgets/menu_list.dart';
@@ -59,148 +58,144 @@ class _HomeViewState extends ConsumerState<HomeView> with WidgetsBindingObserver
 
   @override
   Widget build(BuildContext context) {
-    final user = ref.watch(authUserProvider);
-    final roleName = switch (user?.roleId) {
-      1 => "Jama'ah",
-      2 => "Muthowwif",
-      int() => 'Admin',
-      null => 'Umum',
-    };
     return MyUI(
-      child: ConnectivityWrapper(
-        child: Scaffold(
-          // backgroundColor: Colors.transparent,
-          body: Column(
-            children: [
-              // Toolbar
-              const HomeAppBar(),
-              Expanded(
-                child: RefreshIndicator(
-                  onRefresh: () async => ref.refresh(fetchProductsProvider),
-                  child: SingleChildScrollView(
-                    child: Stack(
-                      children: [
-                        // BACKGROUND
-                        Opacity(
-                          opacity: 0.5,
-                          child: ClipPath(
-                            clipper: SmileClipper(),
-                            child: Container(
-                              height: context.screenHeight * 0.5,
-                              color: primaryLight,
-                            ),
-                          ),
-                        ),
-                        ClipPath(
+      child: Scaffold(
+        // backgroundColor: Colors.transparent,
+        body: Column(
+          children: [
+            // Toolbar
+            const HomeAppBar(),
+            Expanded(
+              child: RefreshIndicator(
+                onRefresh: () async => ref.refresh(fetchProductsProvider),
+                child: SingleChildScrollView(
+                  child: Stack(
+                    children: [
+                      // BACKGROUND
+                      Opacity(
+                        opacity: 0.5,
+                        child: ClipPath(
                           clipper: SmileClipper(),
                           child: Container(
-                            height: context.screenHeight * 0.5 - 10,
+                            height: context.screenHeight * 0.5,
                             color: primaryLight,
-                            alignment: Alignment.bottomCenter,
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Current Location
-                            const Padding(
-                              padding: EdgeInsets.fromLTRB(16, 10, 16, 12),
+                      ),
+                      ClipPath(
+                        clipper: SmileClipper(),
+                        child: Container(
+                          height: context.screenHeight * 0.5 - 10,
+                          color: primaryLight,
+                          alignment: Alignment.bottomCenter,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Current Location
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(16, 10, 16, 12),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                InfoLocation(),
+                                Spacer(),
+                                InfoClock(),
+                              ],
+                            ),
+                          ),
+                          // Carousel image
+                          15.height,
+                          const CarouselPage(),
+                          // Qibla & Prayer schedule
+                          15.height,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: SizedBox(
+                              height: 72,
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  InfoLocation(),
-                                  Spacer(),
-                                  InfoClock(),
+                                  const SizedBox(
+                                    width: 75,
+                                    child: InfoQiblaDirection(),
+                                  ),
+                                  10.width,
+                                  const Expanded(child: InfoPrayerTimes()),
                                 ],
                               ),
                             ),
-                            // Carousel image
-                            15.height,
-                            const CarouselPage(),
-                            // Qibla & Prayer schedule
-                            15.height,
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8, right: 8),
-                              child: SizedBox(
-                                height: 72,
-                                child: Row(
-                                  children: [
-                                    const SizedBox(
-                                      width: 75,
-                                      child: InfoQiblaDirection(),
+                          ),
+                          // App Menu
+                          20.height,
+                          Consumer(
+                            builder: (context, ref, child) {
+                              ref.watch(authUserProvider);
+                              final roleName = ref.read(authCtrlProvider).roleName;
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text('Menu Aplikasi'.hardcoded).bold(),
+                                            10.width,
+                                            Text("($roleName)"),
+                                          ],
+                                        ),
+                                        Text('Lihat Semua'.hardcoded)
+                                            .link(color: oGold50, onTap: () => context.goto(page: const MenuView())),
+                                      ],
                                     ),
-                                    10.width,
-                                    const Expanded(child: InfoPrayerTimes()),
+                                  ),
+                                  10.height,
+                                  SizedBox(
+                                    height: 105.whenLandscape(105),
+                                    child: const MenuList(),
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                          // Product
+                          20.height,
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 16, right: 16),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(child: Text('Paket Amoora Travel'.hardcoded).bold()),
+                                    Text('Lihat Semua'.hardcoded)
+                                        .link(color: oGold50, onTap: () => context.goto(page: const ProductView())),
                                   ],
                                 ),
                               ),
-                            ),
-                            // App Menu
-                            20.height,
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text('Menu Aplikasi'.hardcoded).bold(),
-                                          10.width,
-                                          Text("($roleName)"),
-                                        ],
-                                      ),
-                                      Text('Lihat Semua'.hardcoded)
-                                          .link(color: oGold50, onTap: () => context.goto(page: const MenuView())),
-                                    ],
-                                  ),
-                                ),
-                                10.height,
-                                SizedBox(
-                                  height: 105.whenLandscape(105),
-                                  child: const MenuList(),
-                                ),
-                              ],
-                            ),
-                            // Product
-                            20.height,
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 16, right: 16),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(child: Text('Paket Amoora Travel'.hardcoded).bold()),
-                                      Text('Lihat Semua'.hardcoded)
-                                          .link(color: oGold50, onTap: () => context.goto(page: const ProductView())),
-                                    ],
-                                  ),
-                                ),
-                                10.height,
-                                const ProductList(),
-                              ],
-                            ),
-                            // Blog
-                            // 20.height,
-                            // const Padding(
-                            //   padding: EdgeInsets.symmetric(horizontal: 16),
-                            //   child: BlogList(),
-                            // ),
-                            // Bottom
-                            10.height,
-                            // bumperBottom(context),
-                          ],
-                        ),
-                      ],
-                    ),
+                              10.height,
+                              const ProductList(),
+                            ],
+                          ),
+                          // Blog
+                          // 20.height,
+                          // const Padding(
+                          //   padding: EdgeInsets.symmetric(horizontal: 16),
+                          //   child: BlogList(),
+                          // ),
+                          // Bottom
+                          60.height,
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

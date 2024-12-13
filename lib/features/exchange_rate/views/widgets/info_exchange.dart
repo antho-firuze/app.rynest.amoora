@@ -2,7 +2,7 @@
 
 import 'package:amoora/common/widgets/custom_ink_well.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/exchange_rate/controller/exchange_rate_controller.dart';
+import 'package:amoora/features/exchange_rate/controller/exchange_rate_ctrl.dart';
 import 'package:amoora/features/exchange_rate/service/exchange_rate_service.dart';
 import 'package:amoora/utils/currency_utils.dart';
 import 'package:amoora/utils/datetime_utils.dart';

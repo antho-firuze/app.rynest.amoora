@@ -1,5 +1,5 @@
 import 'package:amoora/common/widgets/button/custom_button.dart';
-import 'package:amoora/features/auth/controller/auth_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -93,19 +93,21 @@ class SignUpView extends ConsumerWidget {
                       validator: (p0) => p0!.isEmpty ? 'Kolom nomor telpon harus di isi'.hardcoded : null,
                     ),
                     40.height,
-                    CustomButton(
-                      // busy: state.isLoading,
-                      width: double.infinity,
-                      child: Text('Daftar'.hardcoded),
-                      onPressed: () async {
-                        if (formStateKey.currentState!.validate() == false) {
-                          return;
-                        }
-                        // Submit
-                        ref.read(authCtrlProvider).signUp();
-                      },
+                    Center(
+                      child: CustomButton(
+                        // busy: state.isLoading,
+                        width: double.infinity,
+                        child: Text('Daftar'.hardcoded),
+                        onPressed: () async {
+                          if (formStateKey.currentState!.validate() == false) {
+                            return;
+                          }
+                          // Submit
+                          ref.read(authCtrlProvider).signUp();
+                        },
+                      ),
                     ),
-                    20.height,
+                    60.height,
                     // CustomRichText(
                     //   text: TextSpan(
                     //     text: 'Sudah punya akun? '.hardcoded,
@@ -119,7 +121,7 @@ class SignUpView extends ConsumerWidget {
                     //     ],
                     //   ),
                     // ),
-                    // 20.height,
+                    // 60.height,
                   ],
                 ),
               ),

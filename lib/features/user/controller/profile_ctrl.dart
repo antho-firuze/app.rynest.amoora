@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:amoora/features/auth/controller/auth_controller.dart';
+import 'package:amoora/common/models/reqs.dart';
+import 'package:amoora/common/services/api_service.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/user/model/profile.dart';
-import 'package:amoora/features/user/service/user_service.dart';
 import 'package:amoora/utils/router.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final profileProvider = StateProvider<Profile?>((ref) => null);
@@ -17,32 +17,29 @@ class ProfileCtrl {
   final Ref ref;
   ProfileCtrl(this.ref);
 
-  final String profileKey = 'CURRENT_PROFILE';
+  final String _profileKey = 'CURRENT_PROFILE';
 
   Future<void> initialize() async {
     log('Initialize Profile !');
-    if (ref.read(authUserProvider) != null) {
-      Profile? profile = loadProfile();
-      if (profile == null) {
-        await getProfile();
-        return;
-      }
-      ref.read(profileProvider.notifier).state = profile;
-    }
+
+    loadProfile();
 
     ref.listen(authUserProvider, (previous, next) async {
       if (next != null) {
-        if (ref.read(profileProvider) == null) {
-          await getProfile();
-        }
+        await fetchProfile();
       } else {
         saveProfile(null);
       }
     });
   }
 
-  Future<void> getProfile() async {
-    final state = await AsyncValue.guard(() async => await ref.read(userServiceProvider).getProfile());
+  Future<void> fetchProfile() async {
+    if (ref.read(authUserProvider) == null) {
+      return;
+    }
+
+    final reqs = Reqs(path: '/api/v1/user/profile');
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     final profile = Profile.fromJson(state.value);
 
@@ -50,10 +47,12 @@ class ProfileCtrl {
   }
 
   Future uploadPhoto(File file) async {
-    final data = {
-      "avatar": await MultipartFile.fromFile(file.path),
-    };
-    final state = await AsyncValue.guard(() async => await ref.read(userServiceProvider).uploadPhoto(data: data));
+    final reqs = Reqs(
+      path: '/api/v1/user/upload_photo',
+      filePath: file.path,
+      fileKey: 'avatar',
+    );
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     final path = state.value['path'];
 
@@ -61,7 +60,11 @@ class ProfileCtrl {
   }
 
   Future updateProfile(Map<String, dynamic> data) async {
-    final state = await AsyncValue.guard(() async => await ref.read(userServiceProvider).updateProfile(data: data));
+    final reqs = Reqs(
+      path: '/api/v1/user/update_profile',
+      data: data,
+    );
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     if (state.hasError) return;
 
@@ -70,30 +73,33 @@ class ProfileCtrl {
   }
 
   void updateCurrProfileLocal(Map<String, dynamic> data) {
-    log('updateCurrProfileLocal => ${data.toString()}');
+    log('updateCurrProfileLocal => ${data.toString()}', name: 'PROFILE-CTRL');
     final field = data.keys.first;
     final json = ref.read(profileProvider)?.toJson();
     json![field] = data[field];
 
-    log('$field => ${data[field]}');
+    log('$field => ${data[field]}', name: 'PROFILE-CTRL');
 
     final profile = Profile.fromJson(json);
 
     ref.read(profileProvider.notifier).state = profile;
   }
 
-  Profile? loadProfile() {
-    final data = ref.read(sharedPrefProvider).getString(profileKey);
-    return data != null ? Profile.fromJson(jsonDecode(data)) : null;
+  void loadProfile() {
+    final data = ref.read(sharedPrefProvider).getString(_profileKey);
+    if (data != null) {
+      final profile = Profile.fromJson(jsonDecode(data));
+      ref.read(profileProvider.notifier).state = profile;
+    }
   }
 
   void saveProfile(Profile? profile) {
     if (profile == null) {
       ref.read(profileProvider.notifier).state = null;
-      ref.read(sharedPrefProvider).remove(profileKey);
+      ref.read(sharedPrefProvider).remove(_profileKey);
     } else {
       ref.read(profileProvider.notifier).state = profile;
-      ref.read(sharedPrefProvider).setString(profileKey, jsonEncode(profile.toJson()));
+      ref.read(sharedPrefProvider).setString(_profileKey, jsonEncode(profile.toJson()));
     }
   }
 
@@ -102,12 +108,12 @@ class ProfileCtrl {
   //     // ref.read(camerasProvider.notifier).state = await availableCameras();
   //     // await ref.read(goRouterProvider).push('/camera');
   //     File? file = await ref.read(goRouterProvider).push('/pick_image');
-  //     log('Result File => ${file?.path}');
+  //     log('Result File => ${file?.path}', name: 'PROFILE-CTRL');
   //     if (file == null) return;
 
   //     await uploadPhoto(file);
   //   } catch (e) {
-  //     log(e.toString());
+  //     log(e.toString(), name: 'PROFILE-CTRL');
   //   }
   // }
 }

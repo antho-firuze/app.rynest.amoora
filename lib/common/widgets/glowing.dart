@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -24,9 +22,9 @@ class Glowing extends HookWidget {
           ..repeat();
 
     // double val = Tween(begin: 0.0, end: 1.0).animate(controller).value;
-    controller.addListener(() {
-      log(controller.value.toString());
-    });
+    // controller.addListener(() {
+    //   log(controller.value.toString(), name: 'GLOWING-WIDGETS');
+    // });
     return Container(
       height: height,
       width: width,

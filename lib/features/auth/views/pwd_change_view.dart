@@ -1,5 +1,5 @@
 import 'package:amoora/common/widgets/button/custom_button.dart';
-import 'package:amoora/features/auth/controller/auth_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,9 +16,7 @@ class PwdChangeView extends ConsumerWidget {
     return MyUI(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: AppBar(
-          title: Text('Rubah kode sandi'.hardcoded),
-        ),
+        appBar: AppBar(title: Text('Rubah kode sandi'.hardcoded)),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -36,10 +34,7 @@ class PwdChangeView extends ConsumerWidget {
                     //   style: tsHeadlineL(),
                     // ),
                     // 10.height,
-                    Text(
-                      'Mohon masukkan kode sandi lama anda !'.hardcoded,
-                      style: tsBodyM(),
-                    ),
+                    Text('Mohon masukkan kode sandi lama anda !'.hardcoded).tsBodyM(),
                     10.height,
                     CustomInput(
                       onChanged: (val) => ref.read(textPasswordOldProvider.notifier).state = val,
@@ -49,10 +44,7 @@ class PwdChangeView extends ConsumerWidget {
                       prefixIcon: const Icon(Icons.lock_outline),
                     ),
                     20.height,
-                    Text(
-                      'Silahkan masukkan kode sandi anda yang baru'.hardcoded,
-                      style: tsBodyM(),
-                    ),
+                    Text('Silahkan masukkan kode sandi anda yang baru'.hardcoded).tsBodyM(),
                     10.height,
                     CustomInput(
                       onChanged: (val) => ref.read(textPasswordProvider.notifier).state = val,
@@ -76,19 +68,21 @@ class PwdChangeView extends ConsumerWidget {
                       prefixIcon: const Icon(Icons.lock_outline),
                     ),
                     40.height,
-                    CustomButton(
-                      // busy: state.isLoading,
-                      width: double.infinity,
-                      child: Text('Simpan'.hardcoded),
-                      onPressed: () async {
-                        if (formStateKey.currentState!.validate() == false) {
-                          return;
-                        }
-                        // Submit
-                        await ref.read(authCtrlProvider).changePwd();
-                      },
+                    Center(
+                      child: CustomButton(
+                        // busy: state.isLoading,
+                        width: double.infinity,
+                        child: Text('Simpan'.hardcoded),
+                        onPressed: () async {
+                          if (formStateKey.currentState!.validate() == false) {
+                            return;
+                          }
+                          // Submit
+                          await ref.read(authCtrlProvider).changePwd();
+                        },
+                      ),
                     ),
-                    20.height,
+                    60.height,
                   ],
                 ),
               ),

@@ -1,7 +1,8 @@
 import 'dart:developer';
 
+import 'package:amoora/common/models/reqs.dart';
+import 'package:amoora/common/services/api_service.dart';
 import 'package:amoora/features/product/model/product.dart';
-import 'package:amoora/features/product/service/product_service.dart';
 import 'package:amoora/utils/datetime_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -19,44 +20,45 @@ final roomTripleQty = StateProvider<int>((ref) => 0);
 final roomQuadQty = StateProvider<int>((ref) => 0);
 final totalPriceUmroh = StateProvider<double>((ref) => 0);
 
-class ProductController {
+class ProductCtrl {
   Ref ref;
-  ProductController(this.ref);
+  ProductCtrl(this.ref);
 
   Future<List<int>> list() async {
-    final state = await AsyncValue.guard(() async => await ref.read(productServiceProvider).list());
+    final reqs = Reqs(path: '/api/v1/product/list');
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     if (state.hasError) return [];
 
     List<dynamic> listProduct = state.value;
-    log(':: state.value => ${state.value}');
+    log(':: state.value => ${state.value}', name: 'PRODUCT-CTRL');
     if (listProduct.isEmpty) {
       return [];
     }
 
     final result = listProduct.map((e) => e['id'] as int).toList();
-    log(':: result => $result');
+    log(':: result => $result', name: 'PRODUCT-CTRL');
 
     return result;
   }
 
   Future<Product?> byId(int id) async {
-    final data = {"id": id};
-    final state = await AsyncValue.guard(() async => await ref.read(productServiceProvider).byId(data: data));
+    final reqs = Reqs(path: '/api/v1/product/byId', data: {"id": id});
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     if (state.hasError) return null;
 
     try {
-      // log("${jsonDecode(state.value)}");
+      // log("${jsonDecode(state.value)}", name: 'PRODUCT-CTRL');
       Map<String, dynamic> dataJson = state.value;
-      // log("$dataJson");
+      // log("$dataJson", name: 'PRODUCT-CTRL');
 
       final result = Product.fromJson(dataJson);
-      // log(':: result => $result');
+      // log(':: result => $result', name: 'PRODUCT-CTRL');
 
       return result;
     } catch (e) {
-      log(e.toString());
+      log(e.toString(), name: 'PRODUCT-CTRL');
       return null;
     }
   }
@@ -134,4 +136,4 @@ class ProductController {
   }
 }
 
-final productCtrlProvider = Provider(ProductController.new);
+final productCtrlProvider = Provider(ProductCtrl.new);

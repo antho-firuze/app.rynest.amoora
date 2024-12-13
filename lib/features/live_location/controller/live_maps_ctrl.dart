@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:amoora/common/models/latlong.dart';
 import 'package:amoora/common/services/maps_service.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
-import 'package:amoora/features/auth/controller/auth_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/live_location/model/member.dart';
 import 'package:amoora/features/live_location/views/widgets/body_page.dart';
 import 'package:amoora/utils/distance_utils.dart';
@@ -20,6 +20,7 @@ PanelController panelController = PanelController();
 
 final onlineMemberProvider = StateProvider<List<Member>>((ref) => []);
 final refreshMapsProvider = StateProvider<String>((ref) => '');
+final myPositionProvider = StateProvider<LatLong?>((ref) => null);
 
 class LiveMapsCtrl {
   Ref ref;
@@ -59,18 +60,18 @@ class LiveMapsCtrl {
   }
 
   void myLocation() async {
-    log(':: myLocation', name: 'live-maps');
+    log(':: myLocation', name: 'LIVEMAPS-CTRL');
     final latLng = LatLng(_myPos!.lat, _myPos!.lng);
     await mapController.animateCamera(CameraUpdate.newLatLngZoom(latLng, getZoomLevel));
   }
 
   void setDarkMode(bool state) {
-    log(':: setDarkMode', name: 'live-maps');
+    log(':: setDarkMode', name: 'LIVEMAPS-CTRL');
     mapController.setMapStyle(state ? jsonEncode(darkMapStyle) : null);
   }
 
   void changeFocusPosition(List<double> latLng, String markerId) async {
-    log(':: changeFocusPosition', name: 'live-maps');
+    log(':: changeFocusPosition', name: 'LIVEMAPS-CTRL');
     await mapController.animateCamera(CameraUpdate.newLatLngZoom(LatLng(latLng[0], latLng[1]), getZoomLevel));
     await mapController.showMarkerInfoWindow(MarkerId(markerId));
   }
@@ -96,12 +97,12 @@ class LiveMapsCtrl {
   }
 
   CameraPosition setCameraPosition() {
-    log('Set Camera Position !', name: 'live-maps');
+    log('Set Camera Position !', name: 'LIVEMAPS-CTRL');
     return CameraPosition(target: LatLng(_myPos!.lat, _myPos!.lng), zoom: getZoomLevel);
   }
 
   Map<CircleId, Circle> setCircle() {
-    log('Set circle position !', name: 'live-maps');
+    log('Set circle position !', name: 'LIVEMAPS-CTRL');
     var circles = <CircleId, Circle>{};
 
     // SELF CIRCLE
@@ -137,7 +138,7 @@ class LiveMapsCtrl {
   }
 
   Map<MarkerId, Marker> setMarker() {
-    log('Set Marker for users !', name: 'live-maps');
+    log('Set Marker for users !', name: 'LIVEMAPS-CTRL');
     var markers = <MarkerId, Marker>{};
 
     final members = _onlineMember;

@@ -8,7 +8,7 @@ import 'package:amoora/common/widgets/forms/left_right.dart';
 import 'package:amoora/features/product/model/product.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/utils/currency_utils.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/datetime_utils.dart';
 import 'package:amoora/utils/download_utils.dart';
 import 'package:amoora/utils/orientation_utils.dart';

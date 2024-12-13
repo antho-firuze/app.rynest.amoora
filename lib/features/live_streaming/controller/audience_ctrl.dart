@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:amoora/common/services/snackbar_service.dart';
-import 'package:amoora/features/live_streaming/controller/broadcast_controller.dart';
+import 'package:amoora/features/live_streaming/controller/broadcast_ctrl.dart';
 import 'package:amoora/features/live_streaming/model/presenter.dart';
-import 'package:amoora/features/live_streaming/controller/signaling_controller.dart';
+import 'package:amoora/features/live_streaming/controller/signaling_ctrl.dart';
 import 'package:amoora/utils/duration_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,7 +26,7 @@ class AudienceCtrl {
 
   Future joinMeeting(Presenter presenter) async {
     try {
-      log('joinMeeting', name: 'signaling');
+      log('joinMeeting', name: 'AUDIENCE-CTRL');
 
       if (ref.read(isConnectedProvider)) return;
 
@@ -47,19 +47,19 @@ class AudienceCtrl {
 
       await ref.read(signalingCtrlProvider).joinMeeting(presenter);
     } catch (e) {
-      log('joinMeeting | error', error: e, name: 'signaling');
+      log('joinMeeting | error', error: e, name: 'AUDIENCE-CTRL');
     }
   }
 
   Future leaveMeeting() async {
     try {
-      log('leaveMeeting', name: 'signaling');
+      log('leaveMeeting', name: 'AUDIENCE-CTRL');
 
       if (!ref.read(isConnectedProvider)) return;
 
       await ref.read(signalingCtrlProvider).leaveMeeting(ref.read(audienceProvider)?.id);
     } catch (e) {
-      log('leaveMeeting | error', error: e, name: 'signaling');
+      log('leaveMeeting | error', error: e, name: 'AUDIENCE-CTRL');
     }
   }
 }

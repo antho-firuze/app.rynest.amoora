@@ -12,7 +12,7 @@ part of 'product.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Product _$ProductFromJson(Map<String, dynamic> json) {
   return _Product.fromJson(json);
@@ -53,8 +53,12 @@ mixin _$Product {
   List<Airline>? get airlines => throw _privateConstructorUsedError;
   List<Itinerary>? get itineraries => throw _privateConstructorUsedError;
 
+  /// Serializes this Product to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -94,6 +98,8 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -229,6 +235,8 @@ class __$$ProductImplCopyWithImpl<$Res>
       _$ProductImpl _value, $Res Function(_$ProductImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -473,7 +481,7 @@ class _$ProductImpl implements _Product {
                 .equals(other._itineraries, _itineraries));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -496,7 +504,9 @@ class _$ProductImpl implements _Product {
       const DeepCollectionEquality().hash(_airlines),
       const DeepCollectionEquality().hash(_itineraries));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
@@ -583,8 +593,11 @@ abstract class _Product implements Product {
   List<Airline>? get airlines;
   @override
   List<Itinerary>? get itineraries;
+
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

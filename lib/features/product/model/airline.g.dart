@@ -8,8 +8,8 @@ part of 'airline.dart';
 
 _$AirlineImpl _$$AirlineImplFromJson(Map<String, dynamic> json) =>
     _$AirlineImpl(
-      id: json['id'] as int?,
-      airlineId: json['airline_id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
+      airlineId: (json['airline_id'] as num?)?.toInt(),
       name: json['name'] as String? ?? '',
       code: json['code'] as String? ?? '',
       image: json['image'] as String? ?? '',

@@ -12,7 +12,7 @@ part of 'presenter.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Presenter _$PresenterFromJson(Map<String, dynamic> json) {
   return _Presenter.fromJson(json);
@@ -30,8 +30,12 @@ mixin _$Presenter {
   DateTime? get heartbeat => throw _privateConstructorUsedError;
   String get state => throw _privateConstructorUsedError;
 
+  /// Serializes this Presenter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Presenter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PresenterCopyWith<Presenter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,6 +67,8 @@ class _$PresenterCopyWithImpl<$Res, $Val extends Presenter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Presenter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class _$PresenterCopyWithImpl<$Res, $Val extends Presenter>
     ) as $Val);
   }
 
+  /// Create a copy of Presenter
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProfileCopyWith<$Res>? get profile {
@@ -148,6 +156,8 @@ class __$$PresenterImplCopyWithImpl<$Res>
       _$PresenterImpl _value, $Res Function(_$PresenterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Presenter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -248,12 +258,14 @@ class _$PresenterImpl implements _Presenter {
             (identical(other.state, state) || other.state == state));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, createdAt, label, userId, profile, heartbeat, state);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Presenter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PresenterImplCopyWith<_$PresenterImpl> get copyWith =>
@@ -296,8 +308,11 @@ abstract class _Presenter implements Presenter {
   DateTime? get heartbeat;
   @override
   String get state;
+
+  /// Create a copy of Presenter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PresenterImplCopyWith<_$PresenterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

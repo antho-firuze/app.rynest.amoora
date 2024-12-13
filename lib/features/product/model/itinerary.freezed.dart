@@ -12,7 +12,7 @@ part of 'itinerary.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Itinerary _$ItineraryFromJson(Map<String, dynamic> json) {
   return _Itinerary.fromJson(json);
@@ -30,8 +30,12 @@ mixin _$Itinerary {
   @JsonKey(name: 'activity_date')
   DateTime? get activityDate => throw _privateConstructorUsedError;
 
+  /// Serializes this Itinerary to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Itinerary
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ItineraryCopyWith<Itinerary> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$ItineraryCopyWithImpl<$Res, $Val extends Itinerary>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Itinerary
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -117,6 +123,8 @@ class __$$ItineraryImplCopyWithImpl<$Res>
       _$ItineraryImpl _value, $Res Function(_$ItineraryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Itinerary
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -198,12 +206,14 @@ class _$ItineraryImpl implements _Itinerary {
                 other.activityDate == activityDate));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, title, subTitle, desc, activityDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Itinerary
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ItineraryImplCopyWith<_$ItineraryImpl> get copyWith =>
@@ -243,8 +253,11 @@ abstract class _Itinerary implements Itinerary {
   @override
   @JsonKey(name: 'activity_date')
   DateTime? get activityDate;
+
+  /// Create a copy of Itinerary
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ItineraryImplCopyWith<_$ItineraryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

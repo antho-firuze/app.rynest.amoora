@@ -12,7 +12,7 @@ part of 'chat_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ChatMessage _$ChatMessageFromJson(Map<String, dynamic> json) {
   return _ChatMessage.fromJson(json);
@@ -25,8 +25,12 @@ mixin _$ChatMessage {
   DateTime? get time => throw _privateConstructorUsedError;
   bool get isSentByMe => throw _privateConstructorUsedError;
 
+  /// Serializes this ChatMessage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChatMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChatMessageCopyWith<ChatMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChatMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class __$$ChatMessageImplCopyWithImpl<$Res>
       _$ChatMessageImpl _value, $Res Function(_$ChatMessageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChatMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,11 +170,13 @@ class _$ChatMessageImpl implements _ChatMessage {
                 other.isSentByMe == isSentByMe));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, message, time, isSentByMe);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChatMessageImplCopyWith<_$ChatMessageImpl> get copyWith =>
@@ -198,8 +208,11 @@ abstract class _ChatMessage implements ChatMessage {
   DateTime? get time;
   @override
   bool get isSentByMe;
+
+  /// Create a copy of ChatMessage
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChatMessageImplCopyWith<_$ChatMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:amoora/common/widgets/fade_animation.dart';
-import 'package:amoora/features/auth/controller/auth_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/auth/model/user.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/common/services/alert_service.dart';

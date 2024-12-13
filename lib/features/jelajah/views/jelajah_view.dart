@@ -1,14 +1,14 @@
 import 'dart:developer';
 
-import 'package:amoora/common/controllers/location_controller.dart';
-import 'package:amoora/common/controllers/permission_controller.dart';
+import 'package:amoora/common/controllers/location_ctrl.dart';
+import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/exceptions/warning_exeption.dart';
 import 'package:amoora/common/services/permission_service.dart';
 import 'package:amoora/common/widgets/button/more_button.dart';
 import 'package:amoora/common/widgets/custom_appbar.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/core/app_string.dart';
-import 'package:amoora/features/jelajah/controller/jelajah_controller.dart';
+import 'package:amoora/features/jelajah/controller/jelajah_ctrl.dart';
 import 'package:amoora/features/jelajah/views/widgets/body_page.dart';
 import 'package:amoora/features/jelajah/views/widgets/panel_page.dart';
 import 'package:amoora/common/widgets/bottom_sheet/pill_stripe.dart';
@@ -21,11 +21,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:super_icons/super_icons.dart';
-
-const borderRadius = BorderRadius.only(
-  topLeft: Radius.circular(25),
-  topRight: Radius.circular(25),
-);
 
 class JelajahView extends ConsumerStatefulWidget {
   const JelajahView({super.key});

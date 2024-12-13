@@ -5,7 +5,7 @@ import 'package:amoora/common/widgets/button/custom_circle_button.dart';
 import 'package:amoora/common/widgets/forms/field_list.dart';
 import 'package:amoora/core/app_base.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/live_location/controller/live_maps_controller.dart';
+import 'package:amoora/features/live_location/controller/live_maps_ctrl.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +24,8 @@ class PanelPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(refreshMapsProvider);
-    final members = ref.read(liveMapsCtrlProvider).getOnlineMember();
-    // final members = ref.watch(onlineMemberProvider);
+    // final members = ref.read(liveMapsCtrlProvider).getOnlineMember();
+    final members = ref.watch(onlineMemberProvider);
     final memberOutOfRange = members.where((member) => member.isOutOfRange == true).toList();
     final radius = ref.read(liveMapsCtrlProvider).getRadiusCircle.round();
 
@@ -51,13 +51,13 @@ class PanelPage extends ConsumerWidget {
               if (memberOutOfRange.isNotEmpty) ...[
                 10.height,
                 Padding(
-                  padding: const EdgeInsets.only(left: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text("Jama'ah diluar jangkauan (${radius}m) = ${members.length} orang"),
                 ),
               ],
               10.height,
               Padding(
-                padding: const EdgeInsets.only(left: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text("Total Jama'ah yang terpantau = ${members.length} orang"),
               ),
               10.height,
@@ -71,6 +71,7 @@ class PanelPage extends ConsumerWidget {
                   final member = members[index];
                   final isOutOfRange = member.isOutOfRange;
                   return Card(
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
                     color: isOutOfRange ? oRed70 : null,
                     child: ListTile(
                       leading: GestureDetector(

@@ -1,8 +1,8 @@
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 
-class MyScreen extends StatelessWidget {
-  const MyScreen({super.key, required this.child, this.largeScreen});
+class ResponsiveScreen extends StatelessWidget {
+  const ResponsiveScreen({super.key, required this.child, this.largeScreen});
 
   final Widget child;
   final Widget? largeScreen;

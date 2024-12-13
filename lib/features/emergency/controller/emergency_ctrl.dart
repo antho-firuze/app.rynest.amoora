@@ -17,7 +17,7 @@ class EmergencyCtrl {
     List<Emergency> emergencies = jsonList.map(Emergency.fromJson).toList();
 
     emergencies.removeWhere((value) => value.enabled == false);
-    log(":: emergencies => ${emergencies.length}");
+    log(":: emergencies => ${emergencies.length}", name: 'EMERGENCY-CTRL');
     return emergencies;
   }
 }

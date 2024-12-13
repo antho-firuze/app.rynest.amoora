@@ -12,7 +12,7 @@ part of 'prayer.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Prayer _$PrayerFromJson(Map<String, dynamic> json) {
   return _Prayer.fromJson(json);
@@ -33,8 +33,12 @@ mixin _$Prayer {
   @JsonKey(name: "next")
   List<Prayer>? get next => throw _privateConstructorUsedError;
 
+  /// Serializes this Prayer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Prayer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PrayerCopyWith<Prayer> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -62,6 +66,8 @@ class _$PrayerCopyWithImpl<$Res, $Val extends Prayer>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Prayer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,6 +131,8 @@ class __$$PrayerImplCopyWithImpl<$Res>
       _$PrayerImpl _value, $Res Function(_$PrayerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Prayer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -225,12 +233,14 @@ class _$PrayerImpl implements _Prayer {
             const DeepCollectionEquality().equals(other._next, _next));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title, subTitle, arabic, latin,
       translate, const DeepCollectionEquality().hash(_next));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Prayer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PrayerImplCopyWith<_$PrayerImpl> get copyWith =>
@@ -273,8 +283,11 @@ abstract class _Prayer implements Prayer {
   @override
   @JsonKey(name: "next")
   List<Prayer>? get next;
+
+  /// Create a copy of Prayer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PrayerImplCopyWith<_$PrayerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -288,8 +301,12 @@ mixin _$Prayers {
   @JsonKey(name: 'data')
   List<Prayer> get prayers => throw _privateConstructorUsedError;
 
+  /// Serializes this Prayers to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Prayers
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PrayersCopyWith<Prayers> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -311,6 +328,8 @@ class _$PrayersCopyWithImpl<$Res, $Val extends Prayers>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Prayers
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -343,6 +362,8 @@ class __$$PrayersImplCopyWithImpl<$Res>
       _$PrayersImpl _value, $Res Function(_$PrayersImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Prayers
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -388,12 +409,14 @@ class _$PrayersImpl implements _Prayers {
             const DeepCollectionEquality().equals(other._prayers, _prayers));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_prayers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Prayers
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PrayersImplCopyWith<_$PrayersImpl> get copyWith =>
@@ -417,8 +440,11 @@ abstract class _Prayers implements Prayers {
   @override
   @JsonKey(name: 'data')
   List<Prayer> get prayers;
+
+  /// Create a copy of Prayers
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PrayersImplCopyWith<_$PrayersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

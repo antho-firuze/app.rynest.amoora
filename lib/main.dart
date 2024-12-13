@@ -1,7 +1,7 @@
 import 'package:amoora/core/app_theme.dart';
 import 'package:amoora/features/notification/service/notification_plugin.dart';
-import 'package:amoora/features/user/controller/user_setting_controller.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/maps_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

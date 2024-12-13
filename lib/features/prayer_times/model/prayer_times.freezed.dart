@@ -12,7 +12,7 @@ part of 'prayer_times.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PrayerTimes _$PrayerTimesFromJson(Map<String, dynamic> json) {
   return _PrayerTimes.fromJson(json);
@@ -47,8 +47,12 @@ mixin _$PrayerTimes {
   String? get currPrayer => throw _privateConstructorUsedError;
   String? get currPrayerTime => throw _privateConstructorUsedError;
 
+  /// Serializes this PrayerTimes to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PrayerTimes
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PrayerTimesCopyWith<PrayerTimes> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -87,6 +91,8 @@ class _$PrayerTimesCopyWithImpl<$Res, $Val extends PrayerTimes>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PrayerTimes
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -205,6 +211,8 @@ class __$$PrayerTimesImplCopyWithImpl<$Res>
       _$PrayerTimesImpl _value, $Res Function(_$PrayerTimesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PrayerTimes
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -388,7 +396,7 @@ class _$PrayerTimesImpl implements _PrayerTimes {
                 other.currPrayerTime == currPrayerTime));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -408,7 +416,9 @@ class _$PrayerTimesImpl implements _PrayerTimes {
       currPrayer,
       currPrayerTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PrayerTimes
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PrayerTimesImplCopyWith<_$PrayerTimesImpl> get copyWith =>
@@ -484,8 +494,11 @@ abstract class _PrayerTimes implements PrayerTimes {
   String? get currPrayer;
   @override
   String? get currPrayerTime;
+
+  /// Create a copy of PrayerTimes
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PrayerTimesImplCopyWith<_$PrayerTimesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -499,8 +512,12 @@ mixin _$PrayerMethod {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
+  /// Serializes this PrayerMethod to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PrayerMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PrayerMethodCopyWith<PrayerMethod> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -524,6 +541,8 @@ class _$PrayerMethodCopyWithImpl<$Res, $Val extends PrayerMethod>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PrayerMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -562,6 +581,8 @@ class __$$PrayerMethodImplCopyWithImpl<$Res>
       _$PrayerMethodImpl _value, $Res Function(_$PrayerMethodImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PrayerMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -608,11 +629,13 @@ class _$PrayerMethodImpl implements _PrayerMethod {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PrayerMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PrayerMethodImplCopyWith<_$PrayerMethodImpl> get copyWith =>
@@ -637,8 +660,11 @@ abstract class _PrayerMethod implements PrayerMethod {
   int? get id;
   @override
   String? get name;
+
+  /// Create a copy of PrayerMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PrayerMethodImplCopyWith<_$PrayerMethodImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

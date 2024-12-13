@@ -16,6 +16,7 @@ class EntryPage extends ConsumerWidget {
     this.initialValue,
     this.description,
     this.onSubmit,
+    this.allowEmpty = false,
   });
 
   final Type type;
@@ -23,6 +24,7 @@ class EntryPage extends ConsumerWidget {
   final String? hint;
   final String? description;
   final String? initialValue;
+  final bool allowEmpty;
   final Function(dynamic val)? onSubmit;
 
   @override
@@ -33,9 +35,7 @@ class EntryPage extends ConsumerWidget {
       },
       child: MyUI(
         child: Scaffold(
-          appBar: AppBar(
-            title: Text(title),
-          ),
+          appBar: AppBar(title: Text(title)),
           body: switch (type) {
             Type.text => TypeTextBox(
                 hint: hint,
@@ -43,6 +43,7 @@ class EntryPage extends ConsumerWidget {
                 initialValue: initialValue,
                 inputType: TextInputType.text,
                 onSubmit: onSubmit,
+                allowEmpty: allowEmpty,
               ),
             Type.number => TypeTextBox(
                 hint: hint,
@@ -92,6 +93,7 @@ class EntryPage extends ConsumerWidget {
                 initialValue: initialValue,
                 onSubmit: onSubmit,
                 inputType: TextInputType.streetAddress,
+                allowEmpty: allowEmpty,
               ),
           },
         ),

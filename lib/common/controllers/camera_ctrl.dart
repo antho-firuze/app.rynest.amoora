@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:amoora/common/controllers/permission_controller.dart';
+import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/services/permission_service.dart';
 import 'package:amoora/utils/router.dart';
 import 'package:amoora/utils/uuid_service.dart';
@@ -109,8 +109,12 @@ class CameraCtrl {
     XFile xfile = await controller!.takePicture();
 
     File file = File(xfile.path);
+    log('original size => ${file.lengthSync()}', name: 'CAMERA-CTRL');
+
     file = await flipImage(file);
     file = await compressImage(file);
+
+    log('final size => ${file.lengthSync()}', name: 'CAMERA-CTRL');
 
     ref.read(cameraFileProvider.notifier).state = file;
   }
@@ -127,8 +131,7 @@ class CameraCtrl {
     );
     File fille = File(compressedFile!.path);
 
-    log('original size => ${file.lengthSync()}');
-    log('compressed size => ${fille.lengthSync()}');
+    log('compressed size => ${fille.lengthSync()}', name: 'CAMERA-CTRL');
 
     return fille;
   }
@@ -139,12 +142,11 @@ class CameraCtrl {
       Uint8List imageBytes = await file.readAsBytes();
       img.Image? originalImage = img.decodeImage(imageBytes);
       img.Image fixedImage = img.flipHorizontal(originalImage!);
-      log('size => ${fixedImage.lengthInBytes}');
+      log('fliped size => ${fixedImage.lengthInBytes}', name: 'CAMERA-CTRL');
 
       return await file.writeAsBytes(img.encodeJpg(fixedImage), flush: true);
     }
 
-    log('original size => ${file.lengthSync()}');
     return file;
   }
 

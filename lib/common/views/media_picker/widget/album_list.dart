@@ -1,4 +1,4 @@
-import 'package:amoora/common/controllers/media_picker_controller.dart';
+import 'package:amoora/common/controllers/media_picker_ctrl.dart';
 import 'package:amoora/utils/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

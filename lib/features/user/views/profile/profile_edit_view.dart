@@ -6,8 +6,8 @@ import 'package:amoora/common/widgets/entry_page/entry_page.dart';
 import 'package:amoora/common/widgets/forms/group_list.dart';
 import 'package:amoora/common/widgets/forms/three_line.dart';
 import 'package:amoora/core/app_base.dart';
-import 'package:amoora/features/auth/controller/auth_controller.dart';
-import 'package:amoora/features/user/controller/profile_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
+import 'package:amoora/features/user/controller/profile_ctrl.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:amoora/utils/page_utils.dart';
 import 'package:amoora/common/services/snackbar_service.dart';
@@ -62,7 +62,6 @@ class ProfileEditView extends ConsumerWidget {
             GroupList(
               title: 'Info Profil',
               trailing: SuperIcons.is_info_circle_outline,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
               onTap: () => SnackBarService.show(message: 'Info Profil'),
               children: [
                 ThreeLine(
@@ -94,7 +93,6 @@ class ProfileEditView extends ConsumerWidget {
             GroupList(
               title: 'Info Pribadi',
               trailing: SuperIcons.is_info_circle_outline,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
               onTap: () => SnackBarService.show(message: 'Info Pribadi'),
               children: [
                 ThreeLine(
@@ -176,6 +174,7 @@ class ProfileEditView extends ConsumerWidget {
                         description: 'Masukkan alamat sesuai dengan KTP',
                         initialValue: member.address,
                         type: Type.address,
+                        allowEmpty: true,
                         onSubmit: (val) async => await ref.read(profileCtrlProvider).updateProfile({"address": val}),
                       ),
                     );

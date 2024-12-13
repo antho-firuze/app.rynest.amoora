@@ -1,4 +1,4 @@
-import 'package:amoora/features/prayers/controller/prayer_controller.dart';
+import 'package:amoora/features/prayers/controller/prayer_ctrl.dart';
 import 'package:amoora/features/prayers/views/prayers_detail_view.dart';
 import 'package:amoora/utils/page_utils.dart';
 import 'package:amoora/utils/string_utils.dart';

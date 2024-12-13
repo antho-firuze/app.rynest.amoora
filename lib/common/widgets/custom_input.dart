@@ -86,14 +86,8 @@ class _CustomInputState extends State<CustomInput> with SingleTickerProviderStat
           {required int currentLength, required bool isFocused, required int? maxLength}) =>
       widget.enabled && !widget.readOnly
           ? currentLength >= maxLength!
-              ? Text(
-                  'Max $maxLength chars',
-                  style: tsCaption().copyWith(color: Colors.red),
-                )
-              : Text(
-                  '$currentLength',
-                  style: tsCaption(),
-                )
+              ? Text('Max $maxLength chars').tsCaption().clr(Colors.red)
+              : Text('$currentLength').tsCaption()
           : null;
 
   @override

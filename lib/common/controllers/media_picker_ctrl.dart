@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:amoora/common/controllers/permission_controller.dart';
+import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/services/permission_service.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -49,7 +49,9 @@ class MediaPickerCtrl {
 
   Future<File?> selectedAsset(AssetEntity selectedAsset) async {
     File? file = await selectedAsset.originFile;
-    file = await compressImage(file!);
+    log('original size => ${file!.lengthSync()}', name: 'MEDIAPICKER-CTRL');
+
+    file = await compressImage(file);
     return file;
   }
 
@@ -65,8 +67,7 @@ class MediaPickerCtrl {
     );
     File fille = File(compressedFile!.path);
 
-    log('original size => ${file.lengthSync()}');
-    log('compressed size => ${fille.lengthSync()}');
+    log('compressed size => ${fille.lengthSync()}', name: 'MEDIAPICKER-CTRL');
 
     return fille;
   }

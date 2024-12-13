@@ -1,6 +1,7 @@
-import 'package:amoora/features/live_location/controller/live_maps_controller.dart';
-import 'package:amoora/features/live_streaming/controller/signaling_controller.dart';
-import 'package:amoora/features/user/controller/menu_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
+import 'package:amoora/features/live_location/controller/live_maps_ctrl.dart';
+import 'package:amoora/features/live_streaming/controller/signaling_ctrl.dart';
+import 'package:amoora/features/user/controller/menu_ctrl.dart';
 import 'package:amoora/features/user/views/home/widgets/menu_button.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class MenuList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(authUserProvider);
     final onlineHost = ref.watch(onlineHostProvider);
     final presenter = ref.watch(presenterProvider);
     final onlineMember = ref.watch(onlineMemberProvider);

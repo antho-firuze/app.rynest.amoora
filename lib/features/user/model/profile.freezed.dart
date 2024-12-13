@@ -12,7 +12,7 @@ part of 'profile.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Profile _$ProfileFromJson(Map<String, dynamic> json) {
   return _Profile.fromJson(json);
@@ -41,8 +41,12 @@ mixin _$Profile {
   @JsonKey(name: 'passport_no')
   String? get passportNo => throw _privateConstructorUsedError;
 
+  /// Serializes this Profile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Profile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProfileCopyWith<Profile> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -80,6 +84,8 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Profile
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -183,6 +189,8 @@ class __$$ProfileImplCopyWithImpl<$Res>
       _$ProfileImpl _value, $Res Function(_$ProfileImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Profile
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -345,7 +353,7 @@ class _$ProfileImpl implements _Profile {
                 other.passportNo == passportNo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -362,7 +370,9 @@ class _$ProfileImpl implements _Profile {
       photo,
       passportNo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Profile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProfileImplCopyWith<_$ProfileImpl> get copyWith =>
@@ -429,8 +439,11 @@ abstract class _Profile implements Profile {
   @override
   @JsonKey(name: 'passport_no')
   String? get passportNo;
+
+  /// Create a copy of Profile
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProfileImplCopyWith<_$ProfileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

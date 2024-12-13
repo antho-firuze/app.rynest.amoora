@@ -6,7 +6,7 @@ import 'package:amoora/common/widgets/custom_interactive_viewer.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/user/controller/carousel_controller.dart';
 import 'package:amoora/utils/download_utils.dart';
-import 'package:amoora/utils/my_screen.dart';
+import 'package:amoora/utils/responsive_screen.dart';
 import 'package:amoora/utils/orientation_utils.dart';
 import 'package:amoora/utils/page_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
@@ -29,7 +29,7 @@ class CarouselPage extends ConsumerWidget {
           data: (data) {
             if (data.isEmpty) return ImageFailed(onTap: () => ref.refresh(fetchCarouselProvider));
 
-            return MyScreen(
+            return ResponsiveScreen(
               largeScreen: SizedBox(
                 height: context.screenHeight * 0.35,
                 child: Stack(

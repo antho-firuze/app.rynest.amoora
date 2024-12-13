@@ -46,7 +46,7 @@ Map<String, dynamic> _$$PrayerTimesImplToJson(_$PrayerTimesImpl instance) =>
 
 _$PrayerMethodImpl _$$PrayerMethodImplFromJson(Map<String, dynamic> json) =>
     _$PrayerMethodImpl(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
     );
 

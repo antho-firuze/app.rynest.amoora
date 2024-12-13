@@ -8,9 +8,9 @@ part of 'audience.dart';
 
 _$AudienceImpl _$$AudienceImplFromJson(Map<String, dynamic> json) =>
     _$AudienceImpl(
-      id: json['id'] as int? ?? 0,
-      presenterId: json['presenter_id'] as int? ?? 0,
-      userId: json['user_id'] as int? ?? 0,
+      id: (json['id'] as num?)?.toInt() ?? 0,
+      presenterId: (json['presenter_id'] as num?)?.toInt() ?? 0,
+      userId: (json['user_id'] as num?)?.toInt() ?? 0,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),

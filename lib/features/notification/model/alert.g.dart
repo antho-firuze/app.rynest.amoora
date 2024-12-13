@@ -7,8 +7,8 @@ part of 'alert.dart';
 // **************************************************************************
 
 _$AlertImpl _$$AlertImplFromJson(Map<String, dynamic> json) => _$AlertImpl(
-      id: json['id'] as int? ?? 0,
-      userId: json['user_id'] as int? ?? 0,
+      id: (json['id'] as num?)?.toInt() ?? 0,
+      userId: (json['user_id'] as num?)?.toInt() ?? 0,
       title: json['title'] as String?,
       body: json['body'] as String?,
       image: json['image'] as String?,
@@ -18,11 +18,13 @@ _$AlertImpl _$$AlertImplFromJson(Map<String, dynamic> json) => _$AlertImpl(
           : DateTime.parse(json['created_at'] as String),
       isRead: json['is_read'] == null
           ? false
-          : const IntToBoolConverter().fromJson(json['is_read'] as int),
+          : const IntToBoolConverter()
+              .fromJson((json['is_read'] as num).toInt()),
       pinned: json['pinned'] == null
           ? false
-          : const IntToBoolConverter().fromJson(json['pinned'] as int),
-      pinnedDuration: json['pinned_duration'] as int? ?? 86400,
+          : const IntToBoolConverter()
+              .fromJson((json['pinned'] as num).toInt()),
+      pinnedDuration: (json['pinned_duration'] as num?)?.toInt() ?? 86400,
     );
 
 Map<String, dynamic> _$$AlertImplToJson(_$AlertImpl instance) =>

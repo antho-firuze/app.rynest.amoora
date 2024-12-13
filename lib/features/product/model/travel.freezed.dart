@@ -12,7 +12,7 @@ part of 'travel.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Travel _$TravelFromJson(Map<String, dynamic> json) {
   return _Umroh.fromJson(json);
@@ -67,8 +67,12 @@ mixin _$Travel {
   @JsonKey(name: 'is_favorite')
   bool get isFavorite => throw _privateConstructorUsedError;
 
+  /// Serializes this Travel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Travel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TravelCopyWith<Travel> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -119,6 +123,8 @@ class _$TravelCopyWithImpl<$Res, $Val extends Travel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Travel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -320,6 +326,8 @@ class __$$UmrohImplCopyWithImpl<$Res>
       _$UmrohImpl _value, $Res Function(_$UmrohImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Travel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -733,7 +741,7 @@ class _$UmrohImpl implements _Umroh {
                 other.isFavorite == isFavorite));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -768,7 +776,9 @@ class _$UmrohImpl implements _Umroh {
         isFavorite
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Travel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UmrohImplCopyWith<_$UmrohImpl> get copyWith =>
@@ -890,8 +900,11 @@ abstract class _Umroh implements Travel {
   @override
   @JsonKey(name: 'is_favorite')
   bool get isFavorite;
+
+  /// Create a copy of Travel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UmrohImplCopyWith<_$UmrohImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -905,8 +918,12 @@ mixin _$Travels {
   @JsonKey(name: "data")
   List<Travel>? get travels => throw _privateConstructorUsedError;
 
+  /// Serializes this Travels to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Travels
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TravelsCopyWith<Travels> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -928,6 +945,8 @@ class _$TravelsCopyWithImpl<$Res, $Val extends Travels>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Travels
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -960,6 +979,8 @@ class __$$TravelsImplCopyWithImpl<$Res>
       _$TravelsImpl _value, $Res Function(_$TravelsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Travels
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1007,12 +1028,14 @@ class _$TravelsImpl implements _Travels {
             const DeepCollectionEquality().equals(other._travels, _travels));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_travels));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Travels
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TravelsImplCopyWith<_$TravelsImpl> get copyWith =>
@@ -1035,8 +1058,11 @@ abstract class _Travels implements Travels {
   @override
   @JsonKey(name: "data")
   List<Travel>? get travels;
+
+  /// Create a copy of Travels
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TravelsImplCopyWith<_$TravelsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1059,8 +1085,12 @@ mixin _$Hotel {
   @JsonKey(name: 'check_out')
   DateTime? get checkOut => throw _privateConstructorUsedError;
 
+  /// Serializes this Hotel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Hotel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HotelCopyWith<Hotel> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1091,6 +1121,8 @@ class _$HotelCopyWithImpl<$Res, $Val extends Hotel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Hotel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1172,6 +1204,8 @@ class __$$HotelImplCopyWithImpl<$Res>
       _$HotelImpl _value, $Res Function(_$HotelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Hotel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1287,12 +1321,14 @@ class _$HotelImpl implements _Hotel {
                 other.checkOut == checkOut));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, image, name, desc, star, city, lat, lng, checkIn, checkOut);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Hotel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HotelImplCopyWith<_$HotelImpl> get copyWith =>
@@ -1340,8 +1376,11 @@ abstract class _Hotel implements Hotel {
   @override
   @JsonKey(name: 'check_out')
   DateTime? get checkOut;
+
+  /// Create a copy of Hotel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HotelImplCopyWith<_$HotelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1365,8 +1404,12 @@ mixin _$Flights {
   @JsonKey(name: 'arrival_place')
   String? get arrivalPlace => throw _privateConstructorUsedError;
 
+  /// Serializes this Flights to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Flights
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FlightsCopyWith<Flights> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1395,6 +1438,8 @@ class _$FlightsCopyWithImpl<$Res, $Val extends Flights>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Flights
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1464,6 +1509,8 @@ class __$$FlightsImplCopyWithImpl<$Res>
       _$FlightsImpl _value, $Res Function(_$FlightsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Flights
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1567,12 +1614,14 @@ class _$FlightsImpl implements _Flights {
                 other.arrivalPlace == arrivalPlace));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, code, flightCode,
       departureDate, departurePlace, arrivalDate, arrivalPlace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Flights
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FlightsImplCopyWith<_$FlightsImpl> get copyWith =>
@@ -1618,8 +1667,11 @@ abstract class _Flights implements Flights {
   @override
   @JsonKey(name: 'arrival_place')
   String? get arrivalPlace;
+
+  /// Create a copy of Flights
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FlightsImplCopyWith<_$FlightsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1636,8 +1688,12 @@ mixin _$Transportation {
   double? get lat => throw _privateConstructorUsedError;
   double? get lng => throw _privateConstructorUsedError;
 
+  /// Serializes this Transportation to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Transportation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TransportationCopyWith<Transportation> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1662,6 +1718,8 @@ class _$TransportationCopyWithImpl<$Res, $Val extends Transportation>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Transportation
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1716,6 +1774,8 @@ class __$$TransportationImplCopyWithImpl<$Res>
       _$TransportationImpl _value, $Res Function(_$TransportationImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Transportation
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1786,11 +1846,13 @@ class _$TransportationImpl implements _Transportation {
             (identical(other.lng, lng) || other.lng == lng));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, image, name, desc, lat, lng);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Transportation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TransportationImplCopyWith<_$TransportationImpl> get copyWith =>
@@ -1826,8 +1888,11 @@ abstract class _Transportation implements Transportation {
   double? get lat;
   @override
   double? get lng;
+
+  /// Create a copy of Transportation
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TransportationImplCopyWith<_$TransportationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1842,8 +1907,12 @@ mixin _$Itinerary {
   String? get place => throw _privateConstructorUsedError;
   String? get desc => throw _privateConstructorUsedError;
 
+  /// Serializes this Itinerary to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Itinerary
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ItineraryCopyWith<Itinerary> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1866,6 +1935,8 @@ class _$ItineraryCopyWithImpl<$Res, $Val extends Itinerary>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Itinerary
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1909,6 +1980,8 @@ class __$$ItineraryImplCopyWithImpl<$Res>
       _$ItineraryImpl _value, $Res Function(_$ItineraryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Itinerary
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1963,11 +2036,13 @@ class _$ItineraryImpl implements _Itinerary {
             (identical(other.desc, desc) || other.desc == desc));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, date, place, desc);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Itinerary
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ItineraryImplCopyWith<_$ItineraryImpl> get copyWith =>
@@ -1996,8 +2071,11 @@ abstract class _Itinerary implements Itinerary {
   String? get place;
   @override
   String? get desc;
+
+  /// Create a copy of Itinerary
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ItineraryImplCopyWith<_$ItineraryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amoora/common/controllers/permission_controller.dart';
+import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/services/permission_service.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
-import 'package:amoora/features/auth/controller/auth_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/notification/model/alert.dart';
 import 'package:amoora/features/notification/service/notification_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -48,17 +48,17 @@ class NotificationCtrl {
     ref.listen(alertNewMessageProvider, (previous, next) => saveVal(allowNewMessageAlertKey, next));
 
     if (ref.read(authUserProvider) != null) {
-      log('listenForNotification | listen', name: 'notification');
+      log('listenForNotification | listen', name: 'NOTIFICATION-CTRL');
       await _notificationListener();
     }
 
     ref.listen(authUserProvider, (previous, next) async {
       if (next == null) {
-        log('listenForNotification | close', name: 'notification');
+        log('listenForNotification | close', name: 'NOTIFICATION-CTRL');
         _notificationSubs?.close();
         _notificationSubs = null;
       } else {
-        log('listenForNotification | listen', name: 'notification');
+        log('listenForNotification | listen', name: 'NOTIFICATION-CTRL');
         await _notificationListener();
       }
     });

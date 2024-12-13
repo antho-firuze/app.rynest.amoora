@@ -1,8 +1,8 @@
-import 'package:amoora/common/controllers/permission_controller.dart';
+import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/widgets/icon_text.dart';
 import 'package:amoora/common/widgets/skelton.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/common/controllers/location_controller.dart';
+import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amoora/common/controllers/permission_controller.dart';
+import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/models/latlong.dart';
 import 'package:amoora/common/services/location_service.dart';
 import 'package:amoora/common/services/alert_service.dart';
@@ -10,7 +10,6 @@ import 'package:amoora/common/services/sharedpref_service.dart';
 import 'package:amoora/common/services/snackbar_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
 
 final isBusyLocationProvider = StateProvider<bool>((ref) => false);
 final latLongProvider = StateProvider<LatLong?>((ref) => null);
@@ -77,9 +76,8 @@ class LocationCtrl {
   }
 
   Future<void> getPosition() async {
-    Position pos = await ref.read(locationServiceProvider).getCurrentPosition();
-    final latLng = LatLong(pos.latitude, pos.longitude);
-    log('getPosition | $latLng', name: 'location_controller');
+    final latLng = await ref.read(locationServiceProvider).fetchCurrentCoordinate();
+    log('getPosition | $latLng', name: 'LOCATION-CTRL');
     saveCurrPosition(latLng);
   }
 
@@ -95,7 +93,7 @@ class LocationCtrl {
 
   void loadCurrPosition() {
     final data = ref.read(sharedPrefProvider).getString(locationKey);
-    log('loadCurrPosition | $data', name: 'gps_location');
+    log('loadCurrPosition | $data', name: 'LOCATION-CTRL');
     LatLong? latLong = data == null ? null : LatLong.fromJson(jsonDecode(data));
     ref.read(latLongProvider.notifier).state = latLong;
   }
@@ -107,7 +105,7 @@ class LocationCtrl {
     } else {
       ref.read(isBusyLocationProvider.notifier).state = true;
 
-      Placemark? placemark = await ref.read(locationServiceProvider).getPlacemark(latLong);
+      Placemark? placemark = await ref.read(locationServiceProvider).fetchPlacemark(latLong);
       saveCurrPlacemark(placemark);
 
       ref.read(isBusyLocationProvider.notifier).state = false;
@@ -131,7 +129,7 @@ class LocationCtrl {
 
   void loadCurrPlacemark() {
     final data = ref.read(sharedPrefProvider).getString(placemarkKey);
-    log('loadCurrPlacemark | $data', name: 'gps_location');
+    log('loadCurrPlacemark | $data', name: 'LOCATION-CTRL');
     Placemark? placemark = data == null ? null : Placemark.fromMap(jsonDecode(data));
     if (placemark == null) {
       ref.read(locationProvider.notifier).state = '';
@@ -150,7 +148,7 @@ class LocationCtrl {
     bool isGpsAllowed = await ref.read(permissionServiceProvider).checkGpsPermission();
 
     if (!isGpsEnable) {
-      log('refresh => checkGpsEnabled');
+      log('refresh => checkGpsEnabled', name: 'LOCATION-CTRL');
       await AlertService.confirm(
         title: 'Informasi',
         body: 'GPS pada perangkat anda tidak aktif !',

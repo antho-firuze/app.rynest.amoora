@@ -18,13 +18,13 @@ class PermissionService {
 
   Future<bool> checkGpsPermission() async {
     bool result = await Permission.location.isGranted;
-    log('checkGpsPermission | $result', name: 'permission_service');
+    log('checkGpsPermission | $result', name: 'PERMISSION-SVC');
     return result;
   }
 
   Future<bool> checkGpsEnabled() async {
     bool result = await Geolocator.isLocationServiceEnabled();
-    log('checkGpsEnabled | $result', name: 'permission_service');
+    log('checkGpsEnabled | $result', name: 'PERMISSION-SVC');
     return result;
   }
 
@@ -35,7 +35,7 @@ class PermissionService {
     }
 
     final result = await Permission.location.request();
-    log('requestGpsPermission | ${result == PermissionStatus.granted}', name: 'permission_service');
+    log('requestGpsPermission | ${result == PermissionStatus.granted}', name: 'PERMISSION-SVC');
     return result == PermissionStatus.granted;
   }
 
@@ -70,7 +70,7 @@ class PermissionService {
 
   Future<bool> checkMicrophonePermission() async {
     var result = await Permission.microphone.isGranted;
-    log('checkMicrophonePermission | $result', name: 'permission_service');
+    log('checkMicrophonePermission | $result', name: 'PERMISSION-SVC');
     return result;
   }
 
@@ -81,19 +81,19 @@ class PermissionService {
     }
 
     final result = await Permission.microphone.request();
-    log('requestMicrophonePermission | ${result == PermissionStatus.granted}', name: 'permission_service');
+    log('requestMicrophonePermission | ${result == PermissionStatus.granted}', name: 'PERMISSION-SVC');
     return result == PermissionStatus.granted;
   }
 
   Future<bool> checkNotificationPermission() async {
     var result = await Permission.notification.isGranted;
-    log('checkNotificationPermission | $result', name: 'permission_service');
+    log('checkNotificationPermission | $result', name: 'PERMISSION-SVC');
     return result;
   }
 
   Future<bool> requestNotificationPermission() async {
     final result = await Permission.notification.request();
-    log('requestNotificationPermission | ${result == PermissionStatus.granted}', name: 'permission_service');
+    log('requestNotificationPermission | ${result == PermissionStatus.granted}', name: 'PERMISSION-SVC');
     return result == PermissionStatus.granted;
   }
 
@@ -105,7 +105,7 @@ class PermissionService {
       ].request();
 
       log('requestCameraAndMediaPermission | ${statuses[Permission.camera]!.isGranted} | ${statuses[Permission.manageExternalStorage]!.isGranted}',
-          name: 'permission_service');
+          name: 'PERMISSION-SVC');
 
       return statuses[Permission.camera]!.isGranted && statuses[Permission.manageExternalStorage]!.isGranted;
     } else {
@@ -116,7 +116,7 @@ class PermissionService {
       ].request();
 
       log('requestCameraAndMediaPermission | ${statuses[Permission.camera]!.isGranted} | ${statuses[Permission.photos]!.isGranted} | ${statuses[Permission.storage]!.isGranted}',
-          name: 'permission_service');
+          name: 'PERMISSION-SVC');
 
       return statuses[Permission.camera]!.isGranted &&
           statuses[Permission.photos]!.isGranted &&

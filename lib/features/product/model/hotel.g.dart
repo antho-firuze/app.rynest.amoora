@@ -7,8 +7,8 @@ part of 'hotel.dart';
 // **************************************************************************
 
 _$HotelImpl _$$HotelImplFromJson(Map<String, dynamic> json) => _$HotelImpl(
-      id: json['id'] as int?,
-      hotelId: json['hotel_id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
+      hotelId: (json['hotel_id'] as num?)?.toInt(),
       name: json['name'] as String? ?? '',
       rating: json['rating'] == null
           ? 3

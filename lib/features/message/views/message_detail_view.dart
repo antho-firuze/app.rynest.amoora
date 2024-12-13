@@ -1,5 +1,5 @@
 import 'package:amoora/features/message/repository/chat_data.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:amoora/features/message/views/message.dart';

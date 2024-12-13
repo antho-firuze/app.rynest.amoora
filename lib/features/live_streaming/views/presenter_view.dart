@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:amoora/common/controllers/permission_controller.dart';
+import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/exceptions/data_failed.dart';
 import 'package:amoora/common/exceptions/warning_exeption.dart';
 import 'package:amoora/common/widgets/button/custom_button.dart';
@@ -9,9 +9,9 @@ import 'package:amoora/common/widgets/custom_input.dart';
 import 'package:amoora/common/widgets/forms/field_list.dart';
 import 'package:amoora/core/app_base.dart';
 import 'package:amoora/core/app_string.dart';
-import 'package:amoora/features/live_streaming/controller/broadcast_controller.dart';
-import 'package:amoora/features/live_streaming/controller/presenter_controller.dart';
-import 'package:amoora/features/live_streaming/controller/signaling_controller.dart';
+import 'package:amoora/features/live_streaming/controller/broadcast_ctrl.dart';
+import 'package:amoora/features/live_streaming/controller/presenter_ctrl.dart';
+import 'package:amoora/features/live_streaming/controller/signaling_ctrl.dart';
 import 'package:amoora/features/live_streaming/model/audience.dart';
 import 'package:amoora/features/live_streaming/service/signaling_service.dart';
 import 'package:amoora/localization/string_hardcoded.dart';

@@ -1,5 +1,5 @@
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/orientation_utils.dart';
 import 'package:amoora/utils/router.dart';
 import 'package:flutter/material.dart';

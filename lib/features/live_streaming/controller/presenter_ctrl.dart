@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:amoora/features/live_streaming/controller/broadcast_controller.dart';
-import 'package:amoora/features/live_streaming/controller/signaling_controller.dart';
+import 'package:amoora/features/live_streaming/controller/broadcast_ctrl.dart';
+import 'package:amoora/features/live_streaming/controller/signaling_ctrl.dart';
 import 'package:amoora/utils/duration_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,7 +24,7 @@ class PresenterCtrl {
 
   Future startMeeting() async {
     try {
-      log('startMeeting', name: 'signaling');
+      log('startMeeting', name: 'PRESENTER-CTRL');
 
       if (ref.read(isOnlineProvider)) return;
 
@@ -33,19 +33,19 @@ class PresenterCtrl {
       };
       await ref.read(signalingCtrlProvider).startMeeting(data);
     } catch (e) {
-      log('startMeeting | error', error: e, name: 'signaling');
+      log('startMeeting | error', error: e, name: 'PRESENTER-CTRL');
     }
   }
 
   Future closeMeeting() async {
     try {
-      log('closeMeeting', name: 'signaling');
+      log('closeMeeting', name: 'PRESENTER-CTRL');
 
       if (!ref.read(isOnlineProvider)) return;
 
       await ref.read(signalingCtrlProvider).closeMeeting(ref.read(presenterProvider)?.id);
     } catch (e) {
-      log('closeMeeting | error', error: e, name: 'signaling');
+      log('closeMeeting | error', error: e, name: 'PRESENTER-CTRL');
     }
   }
 }

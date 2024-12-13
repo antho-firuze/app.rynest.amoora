@@ -1,8 +1,8 @@
 import 'package:amoora/common/widgets/overlay_container.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/prayers/controller/prayer_controller.dart';
+import 'package:amoora/features/prayers/controller/prayer_ctrl.dart';
 import 'package:amoora/features/prayers/controller/prayer_experience.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

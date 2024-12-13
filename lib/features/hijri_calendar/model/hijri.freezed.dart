@@ -12,7 +12,7 @@ part of 'hijri.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Hijri _$HijriFromJson(Map<String, dynamic> json) {
   return _Hijri.fromJson(json);
@@ -29,8 +29,12 @@ mixin _$Hijri {
   int? get year => throw _privateConstructorUsedError;
   HijriMonth? get month => throw _privateConstructorUsedError;
 
+  /// Serializes this Hijri to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Hijri
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HijriCopyWith<Hijri> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -61,6 +65,8 @@ class _$HijriCopyWithImpl<$Res, $Val extends Hijri>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Hijri
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,6 +105,8 @@ class _$HijriCopyWithImpl<$Res, $Val extends Hijri>
     ) as $Val);
   }
 
+  /// Create a copy of Hijri
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $HijriWeekdayCopyWith<$Res>? get weekday {
@@ -111,6 +119,8 @@ class _$HijriCopyWithImpl<$Res, $Val extends Hijri>
     });
   }
 
+  /// Create a copy of Hijri
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $HijriMonthCopyWith<$Res>? get month {
@@ -153,6 +163,8 @@ class __$$HijriImplCopyWithImpl<$Res>
       _$HijriImpl _value, $Res Function(_$HijriImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Hijri
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -239,12 +251,14 @@ class _$HijriImpl implements _Hijri {
             (identical(other.month, month) || other.month == month));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, date, format, weekday, day, year, month);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Hijri
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HijriImplCopyWith<_$HijriImpl> get copyWith =>
@@ -283,8 +297,11 @@ abstract class _Hijri implements Hijri {
   int? get year;
   @override
   HijriMonth? get month;
+
+  /// Create a copy of Hijri
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HijriImplCopyWith<_$HijriImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -298,8 +315,12 @@ mixin _$HijriWeekday {
   String? get en => throw _privateConstructorUsedError;
   String? get ar => throw _privateConstructorUsedError;
 
+  /// Serializes this HijriWeekday to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HijriWeekday
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HijriWeekdayCopyWith<HijriWeekday> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -323,6 +344,8 @@ class _$HijriWeekdayCopyWithImpl<$Res, $Val extends HijriWeekday>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HijriWeekday
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -361,6 +384,8 @@ class __$$HijriWeekdayImplCopyWithImpl<$Res>
       _$HijriWeekdayImpl _value, $Res Function(_$HijriWeekdayImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HijriWeekday
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -407,11 +432,13 @@ class _$HijriWeekdayImpl implements _HijriWeekday {
             (identical(other.ar, ar) || other.ar == ar));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, en, ar);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HijriWeekday
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HijriWeekdayImplCopyWith<_$HijriWeekdayImpl> get copyWith =>
@@ -436,8 +463,11 @@ abstract class _HijriWeekday implements HijriWeekday {
   String? get en;
   @override
   String? get ar;
+
+  /// Create a copy of HijriWeekday
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HijriWeekdayImplCopyWith<_$HijriWeekdayImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -452,8 +482,12 @@ mixin _$HijriMonth {
   String? get en => throw _privateConstructorUsedError;
   String? get ar => throw _privateConstructorUsedError;
 
+  /// Serializes this HijriMonth to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HijriMonth
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HijriMonthCopyWith<HijriMonth> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -477,6 +511,8 @@ class _$HijriMonthCopyWithImpl<$Res, $Val extends HijriMonth>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HijriMonth
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -520,6 +556,8 @@ class __$$HijriMonthImplCopyWithImpl<$Res>
       _$HijriMonthImpl _value, $Res Function(_$HijriMonthImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HijriMonth
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -574,11 +612,13 @@ class _$HijriMonthImpl implements _HijriMonth {
             (identical(other.ar, ar) || other.ar == ar));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, number, en, ar);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HijriMonth
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HijriMonthImplCopyWith<_$HijriMonthImpl> get copyWith =>
@@ -605,8 +645,11 @@ abstract class _HijriMonth implements HijriMonth {
   String? get en;
   @override
   String? get ar;
+
+  /// Create a copy of HijriMonth
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HijriMonthImplCopyWith<_$HijriMonthImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

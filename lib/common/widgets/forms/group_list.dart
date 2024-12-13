@@ -6,12 +6,12 @@ class GroupList extends StatelessWidget {
     super.key,
     this.title,
     this.children,
-    this.padding,
+    this.padding = const EdgeInsets.symmetric(horizontal: 20),
     this.onTap,
     this.trailing,
   });
 
-  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry padding;
   final String? title;
   final IconData? trailing;
   final List<Widget>? children;
@@ -24,12 +24,13 @@ class GroupList extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         divider(),
+        10.height,
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (title != null) ...[
               Padding(
-                padding: padding ?? EdgeInsets.zero,
+                padding: padding,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -44,11 +45,15 @@ class GroupList extends StatelessWidget {
                 ),
               ),
             ],
-            if (children != null)
+            if (children != null) ...[
+              10.height,
               ListView(
                 shrinkWrap: true,
+                padding: padding,
+                physics: const NeverScrollableScrollPhysics(),
                 children: children!.toList(),
               ),
+            ],
           ],
         ),
       ],

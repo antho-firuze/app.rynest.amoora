@@ -1,12 +1,12 @@
-import 'package:amoora/common/controllers/location_controller.dart';
+import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/widgets/clipper/smile_clipper.dart';
 import 'package:amoora/common/widgets/skelton.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/hijri_calendar/controller/hijri_calendar_controller.dart';
-import 'package:amoora/features/prayer_times/controller/prayer_times_controller.dart';
+import 'package:amoora/features/hijri_calendar/controller/hijri_calendar_ctrl.dart';
+import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/utils/datetime_utils.dart';
-import 'package:amoora/utils/my_screen.dart';
+import 'package:amoora/utils/responsive_screen.dart';
 import 'package:amoora/utils/orientation_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
@@ -116,7 +116,7 @@ class BodyPage extends ConsumerWidget {
                   );
                 },
               ),
-              MyScreen(
+              ResponsiveScreen(
                 largeScreen: Column(
                   children: [
                     30.height,

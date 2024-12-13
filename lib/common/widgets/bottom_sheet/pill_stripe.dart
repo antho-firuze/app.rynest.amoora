@@ -1,6 +1,10 @@
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/jelajah/views/jelajah_view.dart';
 import 'package:flutter/material.dart';
+
+const borderRadius = BorderRadius.only(
+  topLeft: Radius.circular(25),
+  topRight: Radius.circular(25),
+);
 
 class PillStripe extends StatelessWidget {
   const PillStripe({

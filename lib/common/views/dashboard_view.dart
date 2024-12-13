@@ -8,11 +8,12 @@ import 'package:amoora/core/app_color.dart';
 
 // Stateful navigation based on:
 // https://github.com/flutter/packages/blob/main/packages/go_router/example/lib/stateful_shell_route.dart
-class RouterDashboard extends StatelessWidget {
-  const RouterDashboard({
+class DashboardView extends StatelessWidget {
+  const DashboardView({
     Key? key,
     required this.navigationShell,
-  }) : super(key: key ?? const ValueKey('RouterDashboard'));
+  }) : super(key: key ?? const ValueKey('DashboardView'));
+
   final StatefulNavigationShell navigationShell;
 
   void _goBranch(int index) {

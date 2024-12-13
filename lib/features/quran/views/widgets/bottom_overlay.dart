@@ -9,7 +9,7 @@ import 'package:amoora/features/quran/views/juz_quran_view.dart';
 import 'package:amoora/features/quran/views/widgets/custom_container.dart';
 import 'package:amoora/features/quran/views/widgets/goto_page_popup.dart';
 import 'package:amoora/features/user/views/user_setting/user_setting_view.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/page_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';

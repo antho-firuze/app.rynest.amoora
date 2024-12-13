@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:amoora/features/live_location/controller/live_maps_controller.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/features/live_location/controller/live_maps_ctrl.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

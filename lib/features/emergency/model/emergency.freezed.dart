@@ -12,7 +12,7 @@ part of 'emergency.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Emergency _$EmergencyFromJson(Map<String, dynamic> json) {
   return _Emergency.fromJson(json);
@@ -25,8 +25,12 @@ mixin _$Emergency {
   String? get whatsapp => throw _privateConstructorUsedError;
   bool get enabled => throw _privateConstructorUsedError;
 
+  /// Serializes this Emergency to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Emergency
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EmergencyCopyWith<Emergency> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$EmergencyCopyWithImpl<$Res, $Val extends Emergency>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Emergency
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$EmergencyImplCopyWithImpl<$Res>
       _$EmergencyImpl _value, $Res Function(_$EmergencyImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Emergency
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,11 +169,13 @@ class _$EmergencyImpl implements _Emergency {
             (identical(other.enabled, enabled) || other.enabled == enabled));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title, phone, whatsapp, enabled);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Emergency
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EmergencyImplCopyWith<_$EmergencyImpl> get copyWith =>
@@ -197,8 +207,11 @@ abstract class _Emergency implements Emergency {
   String? get whatsapp;
   @override
   bool get enabled;
+
+  /// Create a copy of Emergency
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EmergencyImplCopyWith<_$EmergencyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

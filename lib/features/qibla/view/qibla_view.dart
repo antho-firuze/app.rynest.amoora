@@ -1,5 +1,5 @@
-import 'package:amoora/common/controllers/location_controller.dart';
-import 'package:amoora/common/controllers/permission_controller.dart';
+import 'package:amoora/common/controllers/location_ctrl.dart';
+import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/exceptions/warning_exeption.dart';
 import 'package:amoora/common/services/permission_service.dart';
 import 'package:amoora/core/app_string.dart';

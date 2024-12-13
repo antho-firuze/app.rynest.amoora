@@ -1,12 +1,14 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amoora/common/controllers/location_controller.dart';
+import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/models/latlong.dart';
-import 'package:amoora/features/hijri_calendar/controller/hijri_calendar_controller.dart';
+import 'package:amoora/common/models/reqs.dart';
+import 'package:amoora/common/services/api_service.dart';
+import 'package:amoora/env/env.dart';
+import 'package:amoora/features/hijri_calendar/controller/hijri_calendar_ctrl.dart';
 import 'package:amoora/features/hijri_calendar/model/hijri.dart';
 import 'package:amoora/features/prayer_times/model/prayer_times.dart';
-import 'package:amoora/features/prayer_times/service/prayer_times_service.dart';
 import 'package:amoora/utils/datetime_utils.dart';
 import 'package:amoora/utils/duration_utils.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
@@ -37,26 +39,28 @@ class PrayerTimesCtrl {
     log('Initialize Prayer Times !');
     loadPrayerTimes();
 
-    if (ref.read(prayerTimesProvider) == null) {
-      await getPrayerTimes();
-      log(':: getPrayerTimes => repo');
-    } else {
-      log(':: getPrayerTimes => local');
-    }
-
     ref.listen(latLongProvider, (previous, next) async {
       if (next != null && next != previous) {
-        await getPrayerTimes();
+        await fetchPrayerTimes();
       }
     });
   }
 
-  Future<void> getPrayerTimes() async {
+  Future<void> fetchPrayerTimes() async {
     LatLong? latLong = ref.read(latLongProvider);
     if (latLong != null) {
       ref.read(isBusyPrayerTimesProvider.notifier).state = true;
 
-      final state = await AsyncValue.guard(() => ref.read(prayerTimesServiceProvider).getPrayerTimes(latLong));
+      final reqs = Reqs(
+        url: Env.prayerTimeRepoUrl,
+        path: '/v1/timings/${DateTime.now().custom('d-MM-yyyy')}',
+        queryParameters: {
+          'latitude': latLong.lat.toString(),
+          'longitude': latLong.lng.toString(),
+          'method': '20',
+        },
+      );
+      final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).get(reqs: reqs));
 
       savePrayerTimes(state.value);
 
@@ -74,17 +78,17 @@ class PrayerTimesCtrl {
       ref.read(sharedPrefProvider).setString(prayerTimesKey, jsonEncode(response));
 
       final timings = response['data']['timings'];
-      log(':: savePrayerTimes => timing: $timings');
+      log(':: savePrayerTimes => timing: $timings', name: 'PRAYERTIMES-CTRL');
       final prayerTimes = PrayerTimes.fromJson(timings);
       ref.read(prayerTimesProvider.notifier).state = prayerTimes;
 
       final dataHijri = response['data']['date']['hijri'];
-      log(':: savePrayerTimes => dataHijri: $dataHijri');
+      log(':: savePrayerTimes => dataHijri: $dataHijri', name: 'PRAYERTIMES-CTRL');
       final hijri = Hijri.fromJson(dataHijri);
       ref.read(hijriDateProvider.notifier).state = hijri;
 
       final dataMethod = response['data']['meta']['method'];
-      log(':: savePrayerTimes => dataMethod: $dataMethod');
+      log(':: savePrayerTimes => dataMethod: $dataMethod', name: 'PRAYERTIMES-CTRL');
       final method = PrayerMethod.fromJson(dataMethod);
       ref.read(prayerMethodProvider.notifier).state = method;
     }
@@ -115,7 +119,7 @@ class PrayerTimesCtrl {
 
       PrayerTimes? prayerTimes = ref.read(prayerTimesProvider);
       if (prayerTimes == null) {
-        log(':: getRemainingNextPrayerTime => prayerTimes: null');
+        log(':: getRemainingNextPrayerTime => prayerTimes: null', name: 'PRAYERTIMES-CTRL');
         yield '00:00:00';
         continue;
       }
@@ -128,14 +132,14 @@ class PrayerTimesCtrl {
 
       DateTime? nextPrayer = DateTime.tryParse('$dateStr $timeStr');
       if (nextPrayer == null) {
-        log(':: getRemainingNextPrayerTime => nextPrayer: null');
+        log(':: getRemainingNextPrayerTime => nextPrayer: null', name: 'PRAYERTIMES-CTRL');
         yield '00:00:00';
         continue;
       }
 
       var remaining = nextPrayer.difference(DateTime.now());
       if (remaining.inSeconds < 0) {
-        log(':: getRemainingNextPrayerTime => nextPrayer: ${remaining.custom()}');
+        log(':: getRemainingNextPrayerTime => nextPrayer: ${remaining.custom()}', name: 'PRAYERTIMES-CTRL');
 
         yield '00:00:00';
         await Future.delayed(const Duration(minutes: 1)).then((value) {
@@ -180,7 +184,7 @@ class PrayerTimesCtrl {
       curr = ['Isya', prayer.isha];
     }
 
-    // log('Current prayer: ${curr.join(': ')}');
+    // log('Current prayer: ${curr.join(': ')}', name: 'PRAYERTIMES-CTRL');
     return prayer.copyWith(
       currPrayer: curr[0],
       currPrayerTime: curr[1],
@@ -213,7 +217,7 @@ class PrayerTimesCtrl {
       next = ['Subuh', prayer.fajr];
     }
 
-    // log('Next prayer: ${next.join(': ')}');
+    // log('Next prayer: ${next.join(': ')}', name: 'PRAYERTIMES-CTRL');
     return prayer.copyWith(
       nextPrayer: next[0],
       nextPrayerTime: next[1],

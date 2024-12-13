@@ -42,7 +42,7 @@ class DownloadUtils {
     var file = File('$directory/$fileName');
 
     if (await file.exists()) {
-      log(':: downloadAndSaveImage => file.exists : ${file.path}');
+      log(':: downloadAndSaveImage => file.exists : ${file.path}', name: 'DOWNLOAD-UTILS');
       return file.path;
     }
 
@@ -60,7 +60,7 @@ class DownloadUtils {
         var fo = file.openSync(mode: FileMode.write);
         fo.writeFromSync(res.data);
         await fo.close();
-        log(':: downloadAndSaveImage => completed : ${file.path}');
+        log(':: downloadAndSaveImage => completed : ${file.path}', name: 'DOWNLOAD-UTILS');
         return file.path;
       } else {
         var errString = 'Image not available !';
@@ -103,7 +103,7 @@ class DownloadUtils {
 
   void showDownloadProgress(received, total) {
     if (total != -1) {
-      log((received / total * 100).toStringAsFixed(0) + "%");
+      log((received / total * 100).toStringAsFixed(0) + "%", name: 'DOWNLOAD-UTILS');
     }
   }
 

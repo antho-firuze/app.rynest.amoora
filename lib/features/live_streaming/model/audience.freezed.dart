@@ -12,7 +12,7 @@ part of 'audience.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Audience _$AudienceFromJson(Map<String, dynamic> json) {
   return _Audience.fromJson(json);
@@ -33,8 +33,12 @@ mixin _$Audience {
   Map<String, dynamic>? get answer => throw _privateConstructorUsedError;
   String get state => throw _privateConstructorUsedError;
 
+  /// Serializes this Audience to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Audience
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AudienceCopyWith<Audience> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,6 +72,8 @@ class _$AudienceCopyWithImpl<$Res, $Val extends Audience>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Audience
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -121,6 +127,8 @@ class _$AudienceCopyWithImpl<$Res, $Val extends Audience>
     ) as $Val);
   }
 
+  /// Create a copy of Audience
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProfileCopyWith<$Res>? get profile {
@@ -165,6 +173,8 @@ class __$$AudienceImplCopyWithImpl<$Res>
       _$AudienceImpl _value, $Res Function(_$AudienceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Audience
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -302,7 +312,7 @@ class _$AudienceImpl implements _Audience {
             (identical(other.state, state) || other.state == state));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -316,7 +326,9 @@ class _$AudienceImpl implements _Audience {
       const DeepCollectionEquality().hash(_answer),
       state);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Audience
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AudienceImplCopyWith<_$AudienceImpl> get copyWith =>
@@ -366,8 +378,11 @@ abstract class _Audience implements Audience {
   Map<String, dynamic>? get answer;
   @override
   String get state;
+
+  /// Create a copy of Audience
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AudienceImplCopyWith<_$AudienceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

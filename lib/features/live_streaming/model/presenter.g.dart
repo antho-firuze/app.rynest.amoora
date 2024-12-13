@@ -8,12 +8,12 @@ part of 'presenter.dart';
 
 _$PresenterImpl _$$PresenterImplFromJson(Map<String, dynamic> json) =>
     _$PresenterImpl(
-      id: json['id'] as int? ?? 0,
+      id: (json['id'] as num?)?.toInt() ?? 0,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
       label: json['label'] as String? ?? '',
-      userId: json['user_id'] as int? ?? 0,
+      userId: (json['user_id'] as num?)?.toInt() ?? 0,
       profile: json['profile'] == null
           ? null
           : Profile.fromJson(json['profile'] as Map<String, dynamic>),

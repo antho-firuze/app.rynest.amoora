@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amoora/common/controllers/location_controller.dart';
+import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/models/latlong.dart';
 import 'package:amoora/common/services/maps_service.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
@@ -60,7 +60,7 @@ class JelajahCtrl {
   CameraPosition initCameraPosition() {
     initMyPos();
 
-    log('initCameraPosition | $_myPos', name: 'jelajah');
+    log('initCameraPosition | $_myPos', name: 'JELAJAH-CTRL');
     return CameraPosition(target: LatLng(_myPos!.lat, _myPos!.lng), zoom: getZoomLevel);
   }
 
@@ -82,7 +82,7 @@ class JelajahCtrl {
   }
 
   void changeFocusPosition(List<double> latLng, String markerId) async {
-    log('changeFocusPosition | $latLng | $markerId', name: 'jelajah');
+    log('changeFocusPosition | $latLng | $markerId', name: 'JELAJAH-CTRL');
     await mapController!.animateCamera(CameraUpdate.newLatLngZoom(LatLng(latLng[0], latLng[1]), getZoomLevel));
     await mapController!.showMarkerInfoWindow(MarkerId(markerId));
   }
@@ -94,7 +94,7 @@ class JelajahCtrl {
   List<Place> getPlaces() => _places;
 
   void initMarkers() {
-    log('initMarkers | ${_places.length}', name: 'jelajah');
+    log('initMarkers | ${_places.length}', name: 'JELAJAH-CTRL');
     setMarkers();
   }
 
@@ -114,7 +114,7 @@ class JelajahCtrl {
   }
 
   void initCircles() {
-    log('initCircle', name: 'jelajah');
+    log('initCircle', name: 'JELAJAH-CTRL');
     initMyPos();
     setCircles();
   }
@@ -151,7 +151,7 @@ class JelajahCtrl {
       );
     }
 
-    log('setCircles', name: 'jelajah');
+    log('setCircles', name: 'JELAJAH-CTRL');
     ref.read(circlesProvider.notifier).state = circles;
   }
 }

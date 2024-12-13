@@ -1,13 +1,12 @@
 import 'dart:developer';
 
 import 'package:amoora/common/services/sharedpref_service.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final allowMonitorLocationProvider = StateProvider<bool>((ref) => true);
 final allowMonitorInArabOnlyProvider = StateProvider<bool>((ref) => false);
-
-final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.light);
 
 class UserSettingCtrl {
   Ref ref;

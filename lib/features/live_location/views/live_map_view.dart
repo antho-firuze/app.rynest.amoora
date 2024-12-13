@@ -1,5 +1,5 @@
-import 'package:amoora/common/controllers/location_controller.dart';
-import 'package:amoora/common/controllers/permission_controller.dart';
+import 'package:amoora/common/controllers/location_ctrl.dart';
+import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/exceptions/warning_exeption.dart';
 import 'package:amoora/common/services/permission_service.dart';
 import 'package:amoora/common/widgets/button/more_button.dart';
@@ -7,8 +7,8 @@ import 'package:amoora/common/widgets/custom_appbar.dart';
 import 'package:amoora/common/widgets/bottom_sheet/pill_stripe.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/core/app_string.dart';
-import 'package:amoora/features/live_location/controller/live_location_controller.dart';
-import 'package:amoora/features/live_location/controller/live_maps_controller.dart';
+import 'package:amoora/features/live_location/controller/live_location_ctrl.dart';
+import 'package:amoora/features/live_location/controller/live_maps_ctrl.dart';
 import 'package:amoora/features/live_location/views/widgets/body_page.dart';
 import 'package:amoora/features/live_location/views/widgets/panel_page.dart';
 import 'package:amoora/localization/string_hardcoded.dart';

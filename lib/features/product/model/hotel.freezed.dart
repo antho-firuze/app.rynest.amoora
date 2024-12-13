@@ -12,7 +12,7 @@ part of 'hotel.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Hotel _$HotelFromJson(Map<String, dynamic> json) {
   return _Hotel.fromJson(json);
@@ -37,8 +37,12 @@ mixin _$Hotel {
   @JsonKey(name: 'check_out')
   DateTime? get checkOut => throw _privateConstructorUsedError;
 
+  /// Serializes this Hotel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Hotel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HotelCopyWith<Hotel> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -68,6 +72,8 @@ class _$HotelCopyWithImpl<$Res, $Val extends Hotel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Hotel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,6 +149,8 @@ class __$$HotelImplCopyWithImpl<$Res>
       _$HotelImpl _value, $Res Function(_$HotelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Hotel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -254,12 +262,14 @@ class _$HotelImpl implements _Hotel {
                 other.checkOut == checkOut));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, hotelId, name, rating,
       address, linkMap, checkIn, checkOut);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Hotel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HotelImplCopyWith<_$HotelImpl> get copyWith =>
@@ -310,8 +320,11 @@ abstract class _Hotel implements Hotel {
   @override
   @JsonKey(name: 'check_out')
   DateTime? get checkOut;
+
+  /// Create a copy of Hotel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HotelImplCopyWith<_$HotelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

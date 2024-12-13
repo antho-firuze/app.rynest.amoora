@@ -16,14 +16,14 @@ class NetworkService {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        log(':: checkDataAvailable => true');
+        log(':: checkDataAvailable => true', name: 'NETWORK-SVC');
         return true;
       }
 
-      log(':: checkDataAvailable => false');
+      log(':: checkDataAvailable => false', name: 'NETWORK-SVC');
       return false;
     } catch (e) {
-      log(':: checkDataAvailable => false');
+      log(':: checkDataAvailable => false', name: 'NETWORK-SVC');
       return false;
     }
   }
@@ -31,10 +31,10 @@ class NetworkService {
   Future<String> getWifiIP() async {
     try {
       var result = await _networkInfo.getWifiIP() ?? '*.*.*.*';
-      log(':: getWifiIP => $result');
+      log(':: getWifiIP => $result', name: 'NETWORK-SVC');
       return result;
     } on PlatformException catch (e) {
-      log(':: getWifiIP => Failed to get Wifi Name', error: e);
+      log(':: getWifiIP => Failed to get Wifi Name', error: e, name: 'NETWORK-SVC');
       return e.toString();
     }
   }
@@ -42,10 +42,10 @@ class NetworkService {
   Future<String> getWifiName() async {
     try {
       var result = await _networkInfo.getWifiName() ?? '';
-      log(':: getWifiName => $result');
+      log(':: getWifiName => $result', name: 'NETWORK-SVC');
       return result;
     } on PlatformException catch (e) {
-      log(':: getWifiName => Failed to get Wifi Name', error: e);
+      log(':: getWifiName => Failed to get Wifi Name', error: e, name: 'NETWORK-SVC');
       return e.toString();
     }
   }
@@ -53,10 +53,10 @@ class NetworkService {
   Future<String> getWifiBSSID() async {
     try {
       var result = await _networkInfo.getWifiBSSID() ?? '';
-      log(':: getWifiBSSID => $result');
+      log(':: getWifiBSSID => $result', name: 'NETWORK-SVC');
       return result;
     } on PlatformException catch (e) {
-      log(':: getWifiBSSID => Failed to get Wifi BSSID', error: e);
+      log(':: getWifiBSSID => Failed to get Wifi BSSID', error: e, name: 'NETWORK-SVC');
       return e.toString();
     }
   }
@@ -64,10 +64,10 @@ class NetworkService {
   Future<String> getWifiSubmask() async {
     try {
       var result = await _networkInfo.getWifiSubmask() ?? '';
-      log(':: getWifiSubmask => $result');
+      log(':: getWifiSubmask => $result', name: 'NETWORK-SVC');
       return result;
     } on PlatformException catch (e) {
-      log(':: getWifiSubmask => Failed to get Wifi Submask', error: e);
+      log(':: getWifiSubmask => Failed to get Wifi Submask', error: e, name: 'NETWORK-SVC');
       return e.toString();
     }
   }
@@ -75,10 +75,10 @@ class NetworkService {
   Future<String> getWifiBroadcast() async {
     try {
       var result = await _networkInfo.getWifiBroadcast() ?? '';
-      log(':: getWifiBroadcast => $result');
+      log(':: getWifiBroadcast => $result', name: 'NETWORK-SVC');
       return result;
     } on PlatformException catch (e) {
-      log(':: getWifiBroadcast => Failed to get Wifi Broadcast', error: e);
+      log(':: getWifiBroadcast => Failed to get Wifi Broadcast', error: e, name: 'NETWORK-SVC');
       return e.toString();
     }
   }
@@ -86,10 +86,10 @@ class NetworkService {
   Future<String> getWifiGatewayIP() async {
     try {
       var result = await _networkInfo.getWifiGatewayIP() ?? '';
-      log(':: getWifiGatewayIP => $result');
+      log(':: getWifiGatewayIP => $result', name: 'NETWORK-SVC');
       return result;
     } on PlatformException catch (e) {
-      log(':: getWifiGatewayIP => Failed to get Wifi Gateway IP', error: e);
+      log(':: getWifiGatewayIP => Failed to get Wifi Gateway IP', error: e, name: 'NETWORK-SVC');
       return e.toString();
     }
   }
@@ -114,11 +114,11 @@ class NetworkService {
   //   }).firstWhere((InternetAddress a) => a != null);
 
   //   dgSocket.send([code], InternetAddress("255.255.255.255"), dgSocket.port);
-  //   // log('IP Address = ${ret}');
+  //   // log('IP Address = ${ret}', name: 'NETWORK-SVC');
   //   ret.then((value) {
   //     log(value.address);
   //   });
-  //   log('Port = ${dgSocket.port}');
+  //   log('Port = ${dgSocket.port}', name: 'NETWORK-SVC');
   //   return ret;
   // }
 }

@@ -13,7 +13,7 @@ _$ChatUserImpl _$$ChatUserImplFromJson(Map<String, dynamic> json) =>
       imageUrl: json['imageUrl'] as String?,
       lastMessage: json['lastMessage'] as String?,
       time: json['time'] as String?,
-      unRead: json['unRead'] as int? ?? 0,
+      unRead: (json['unRead'] as num?)?.toInt() ?? 0,
       isOnline: json['isOnline'] as bool? ?? false,
     );
 

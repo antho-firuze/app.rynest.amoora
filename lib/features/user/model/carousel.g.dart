@@ -8,7 +8,7 @@ part of 'carousel.dart';
 
 _$CarouselImpl _$$CarouselImplFromJson(Map<String, dynamic> json) =>
     _$CarouselImpl(
-      id: json['id'] as int? ?? 0,
+      id: (json['id'] as num?)?.toInt() ?? 0,
       linkUrl: json['url'] as String? ?? '',
       image: json['image'] as String? ?? '',
     );

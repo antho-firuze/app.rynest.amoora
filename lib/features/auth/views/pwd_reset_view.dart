@@ -1,5 +1,5 @@
 import 'package:amoora/common/widgets/button/custom_button.dart';
-import 'package:amoora/features/auth/controller/auth_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,9 +16,7 @@ class PwdResetView extends ConsumerWidget {
     return MyUI(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: AppBar(
-          title: Text('Input kode sandi baru'.hardcoded),
-        ),
+        appBar: AppBar(title: Text('Input kode sandi baru'.hardcoded)),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -30,15 +28,9 @@ class PwdResetView extends ConsumerWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     20.height,
-                    Text(
-                      'Reset Kode Sandi'.hardcoded,
-                      style: tsHeadlineL(),
-                    ),
+                    Text('Reset Kode Sandi'.hardcoded).tsHeadlineL(),
                     10.height,
-                    Text(
-                      'Silahkan masukkan kode sandi anda yang baru'.hardcoded,
-                      style: tsBodyM(),
-                    ),
+                    Text('Silahkan masukkan kode sandi anda yang baru'.hardcoded).tsBodyM(),
                     40.height,
                     CustomInput(
                       onChanged: (val) => ref.read(textPasswordProvider.notifier).state = val,
@@ -62,19 +54,21 @@ class PwdResetView extends ConsumerWidget {
                       prefixIcon: const Icon(Icons.lock_outline),
                     ),
                     40.height,
-                    CustomButton(
-                      // busy: state.isLoading,
-                      width: double.infinity,
-                      child: Text('Simpan'.hardcoded),
-                      onPressed: () {
-                        if (formStateKey.currentState!.validate() == false) {
-                          return;
-                        }
-                        // Submit
-                        ref.read(authCtrlProvider).resetPwd();
-                      },
+                    Center(
+                      child: CustomButton(
+                        // busy: state.isLoading,
+                        width: double.infinity,
+                        child: Text('Simpan'.hardcoded),
+                        onPressed: () {
+                          if (formStateKey.currentState!.validate() == false) {
+                            return;
+                          }
+                          // Submit
+                          ref.read(authCtrlProvider).resetPwd();
+                        },
+                      ),
                     ),
-                    20.height,
+                    60.height,
                   ],
                 ),
               ),

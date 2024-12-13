@@ -132,6 +132,14 @@ class AppTheme {
         color: Colors.grey,
         linearMinHeight: 10,
       ),
+      checkboxTheme: CheckboxThemeData(
+        side: BorderSide(color: colorScheme.checkBoxBorder),
+        checkColor: WidgetStatePropertyAll(colorScheme.checkBoxCheck),
+        materialTapTargetSize: MaterialTapTargetSize.padded,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6),
+        ),
+      ),
       // textTheme: TextTheme(
       //   displayLarge: TextStyle(fontWeight: _bold, fontSize: 48, color: onBg),
       //   displayMedium: TextStyle(fontWeight: _bold, fontSize: 38, color: onBg),

@@ -13,8 +13,8 @@ _$UmrohImpl _$$UmrohImplFromJson(Map<String, dynamic> json) => _$UmrohImpl(
       hero: json['hero'] as String?,
       galery:
           (json['galery'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      totalSeat: json['total_seat'] as int? ?? 45,
-      remainingSeat: json['remaining_seat'] as int? ?? 45,
+      totalSeat: (json['total_seat'] as num?)?.toInt() ?? 45,
+      remainingSeat: (json['remaining_seat'] as num?)?.toInt() ?? 45,
       quadPrice: (json['quad_price'] as num?)?.toDouble() ?? 0,
       triplePrice: (json['triple_price'] as num?)?.toDouble() ?? 0,
       doublePrice: (json['double_price'] as num?)?.toDouble() ?? 0,
@@ -37,10 +37,10 @@ _$UmrohImpl _$$UmrohImplFromJson(Map<String, dynamic> json) => _$UmrohImpl(
               ?.map((e) => e as String)
               .toList() ??
           const ['Jakarta'],
-      travelDuration: json['travel_duration'] as int? ?? 12,
+      travelDuration: (json['travel_duration'] as num?)?.toInt() ?? 12,
       airline: json['airline'] as String?,
       hotelClass: (json['hotel_class'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList() ??
           const [3, 4],
       hotels: (json['hotels'] as List<dynamic>?)
@@ -113,7 +113,7 @@ _$HotelImpl _$$HotelImplFromJson(Map<String, dynamic> json) => _$HotelImpl(
       image: json['image'] as String?,
       name: json['name'] as String?,
       desc: json['desc'] as String?,
-      star: json['star'] as int? ?? 0,
+      star: (json['star'] as num?)?.toInt() ?? 0,
       city: json['city'] as String?,
       lat: (json['lat'] as num?)?.toDouble(),
       lng: (json['lng'] as num?)?.toDouble(),

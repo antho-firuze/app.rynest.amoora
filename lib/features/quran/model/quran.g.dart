@@ -7,15 +7,16 @@ part of 'quran.dart';
 // **************************************************************************
 
 _$QuranImpl _$$QuranImplFromJson(Map<String, dynamic> json) => _$QuranImpl(
-      page: json['page'] as int? ?? 1,
-      markPage:
-          (json['markPage'] as List<dynamic>?)?.map((e) => e as int).toList() ??
-              const [],
-      surahNumber: json['surahNumber'] as int?,
+      page: (json['page'] as num?)?.toInt() ?? 1,
+      markPage: (json['markPage'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList() ??
+          const [],
+      surahNumber: (json['surahNumber'] as num?)?.toInt(),
       surahName: json['surahName'] as String?,
-      juz: json['juz'] as int?,
-      hizb: json['hizb'] as int?,
-      hizbQuarter: json['hizbQuarter'] as int?,
+      juz: (json['juz'] as num?)?.toInt(),
+      hizb: (json['hizb'] as num?)?.toInt(),
+      hizbQuarter: (json['hizbQuarter'] as num?)?.toInt(),
       isRightPage: json['isRightPage'] as bool?,
       hizbText: json['hizbText'] as String?,
       surahData: json['surahData'] as String?,

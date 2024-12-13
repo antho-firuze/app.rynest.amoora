@@ -1,4 +1,4 @@
-import 'package:amoora/common/controllers/walkthrough_controller.dart';
+import 'package:amoora/common/controllers/walkthrough_ctrl.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:amoora/utils/system_ui_overlay.dart';
 import 'package:flutter/material.dart';

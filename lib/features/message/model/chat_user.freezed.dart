@@ -12,7 +12,7 @@ part of 'chat_user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ChatUser _$ChatUserFromJson(Map<String, dynamic> json) {
   return _ChatUser.fromJson(json);
@@ -28,8 +28,12 @@ mixin _$ChatUser {
   int get unRead => throw _privateConstructorUsedError;
   bool get isOnline => throw _privateConstructorUsedError;
 
+  /// Serializes this ChatUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChatUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChatUserCopyWith<ChatUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$ChatUserCopyWithImpl<$Res, $Val extends ChatUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChatUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,6 +135,8 @@ class __$$ChatUserImplCopyWithImpl<$Res>
       _$ChatUserImpl _value, $Res Function(_$ChatUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChatUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -227,12 +235,14 @@ class _$ChatUserImpl implements _ChatUser {
                 other.isOnline == isOnline));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, name, imageUrl, lastMessage, time, unRead, isOnline);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChatUserImplCopyWith<_$ChatUserImpl> get copyWith =>
@@ -273,8 +283,11 @@ abstract class _ChatUser implements ChatUser {
   int get unRead;
   @override
   bool get isOnline;
+
+  /// Create a copy of ChatUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChatUserImplCopyWith<_$ChatUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

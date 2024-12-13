@@ -2,18 +2,22 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:amoora/common/models/reqs.dart';
+import 'package:amoora/common/services/api_service.dart';
 import 'package:amoora/core/app_config.dart';
 import 'package:amoora/features/auth/model/jwt_token.dart';
 import 'package:amoora/features/auth/model/user.dart';
 import 'package:amoora/features/auth/service/auth_service.dart';
 import 'package:amoora/features/auth/views/code_verify_view.dart';
-import 'package:amoora/features/user/controller/profile_controller.dart';
+import 'package:amoora/features/auth/views/signin_view.dart';
+import 'package:amoora/features/user/controller/profile_ctrl.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/common/services/alert_service.dart';
 import 'package:amoora/utils/page_utils.dart';
 import 'package:amoora/utils/router.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
 import 'package:amoora/common/services/snackbar_service.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final authTokenProvider = StateProvider<JwtToken?>((ref) => null);
@@ -27,6 +31,7 @@ final textEmailProvider = StateProvider<String>((ref) => '');
 final textNameProvider = StateProvider<String>((ref) => '');
 final textFullNameProvider = StateProvider<String>((ref) => '');
 final textPhoneProvider = StateProvider<String>((ref) => '');
+final isRememberProvider = StateProvider<bool>((ref) => false);
 
 final verifyCodeProvider = StateProvider<String>((ref) => '');
 final verifyTypeProvider = StateProvider<String>((ref) => 'email');
@@ -37,22 +42,53 @@ class AuthCtrl {
   final Ref ref;
   AuthCtrl(this.ref);
 
-  final String tokenKey = 'COOKIE_TOKEN';
-  final String userKey = 'CURRENT_USER';
+  final _tokenKey = 'COOKIE_TOKEN';
+  final _userKey = 'COOKIE_USER';
+  final _rememberKey = 'COOKIE_REMEMBER';
 
   void initialize() {
     log('Initialize User & Token !');
 
-    ref.read(authUserProvider.notifier).state = getCurrUser();
-    ref.read(authTokenProvider.notifier).state = getToken();
+    loadUser();
+    loadToken();
+    loadRemember();
   }
 
-  Future setRemember() async {}
+  void loadRemember() {
+    final data = ref.read(sharedPrefProvider).getString(_rememberKey);
+    if (data != null) {
+      final remember = jsonDecode(data);
+      ref.read(textIdentifierProvider.notifier).state = remember['identifier'];
+      ref.read(textPasswordProvider.notifier).state = remember['password'];
+      ref.read(isRememberProvider.notifier).state = true;
+    } else {
+      ref.read(textIdentifierProvider.notifier).state = '';
+      ref.read(textPasswordProvider.notifier).state = '';
+      ref.read(isRememberProvider.notifier).state = false;
+    }
+  }
 
-  Future getRemember() async {}
+  void setRemember(bool value) {
+    if (ref.read(isRememberProvider)) {
+      final remember = {"identifier": ref.read(textIdentifierProvider), "password": ref.read(textPasswordProvider)};
+      ref.read(sharedPrefProvider).setString(_rememberKey, jsonEncode(remember));
+    } else {
+      ref.read(textIdentifierProvider.notifier).state = '';
+      ref.read(textPasswordProvider.notifier).state = '';
+      ref.read(sharedPrefProvider).remove(_rememberKey);
+    }
+  }
+
+  String get roleName => switch (ref.read(authUserProvider)?.roleId) {
+        1 => "Jama'ah",
+        2 => "Muthowwif",
+        int() => 'Admin',
+        null => 'Umum',
+      };
 
   Future<JwtToken?> refreshToken() async {
-    final state = await AsyncValue.guard(() async => await ref.read(authServiceProvider).refreshToken());
+    final reqs = Reqs(path: '/api/v1/auth/refresh_token', data: {});
+    final state = await AsyncValue.guard(() async => await ref.read(authServiceProvider).refreshToken(reqs: reqs));
 
     if (state.hasError) return null;
 
@@ -62,9 +98,9 @@ class AuthCtrl {
     return jwtToken;
   }
 
-  Future<void> signOut({bool force = false}) async {
-    if (force) {
-      setCurrUser(null);
+  Future<void> signOut({bool silence = false}) async {
+    if (silence) {
+      setUser(null);
       setToken(null);
       return;
     }
@@ -72,23 +108,22 @@ class AuthCtrl {
     await AlertService.confirm(
       body: "Anda yakin ingin keluar ?",
       onOk: () {
-        setCurrUser(null);
+        setUser(null);
         setToken(null);
-        ref.read(goRouterProvider).pop();
       },
     );
   }
 
   Future<void> signUp() async {
-    final data = {
-      "identifier": ref.watch(textEmailProvider),
-      "email": ref.watch(textEmailProvider),
-      "password": ref.watch(textPasswordProvider),
-      "name": ref.watch(textNameProvider),
-      "full_name": ref.watch(textFullNameProvider),
-      "phone": ref.watch(textPhoneProvider),
-    };
-    final state = await AsyncValue.guard(() async => await ref.read(authServiceProvider).signUp(data: data));
+    final reqs = Reqs(path: '/api/v1/auth/signup', data: {
+      "identifier": ref.read(textEmailProvider),
+      "email": ref.read(textEmailProvider),
+      "password": ref.read(textPasswordProvider),
+      "name": ref.read(textNameProvider),
+      "full_name": ref.read(textFullNameProvider),
+      "phone": ref.read(textPhoneProvider),
+    });
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     if (state.hasError) return;
 
@@ -96,7 +131,7 @@ class AuthCtrl {
     final user = User.fromJson(state.value['user']);
 
     setToken(jwtToken);
-    setCurrUser(user);
+    setUser(user);
 
     await AlertService.showOk(
       body: 'Perdaftaran Akun Berhasil !',
@@ -105,11 +140,11 @@ class AuthCtrl {
   }
 
   Future<bool> signIn() async {
-    final data = {
-      "identifier": ref.watch(textIdentifierProvider),
-      "password": ref.watch(textPasswordProvider),
-    };
-    final state = await AsyncValue.guard(() async => await ref.read(authServiceProvider).signIn(data: data));
+    final reqs = Reqs(path: '/api/v1/auth/signin', data: {
+      "identifier": ref.read(textIdentifierProvider),
+      "password": ref.read(textPasswordProvider),
+    });
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     if (state.hasError) return false;
 
@@ -117,52 +152,62 @@ class AuthCtrl {
     final user = User.fromJson(state.value['user']);
 
     setToken(jwtToken);
-    setCurrUser(user);
+    setUser(user);
+    setRemember(ref.read(isRememberProvider));
 
     return true;
-    // ref.read(goRouterProvider).pop(true);
   }
 
-  User? getCurrUser() {
-    final data = ref.read(sharedPrefProvider).getString(userKey);
-    return data != null ? User.fromJson(jsonDecode(data)) : null;
-  }
-
-  void setCurrUser(User? user) {
-    if (user == null) {
-      ref.read(authUserProvider.notifier).state = null;
-      ref.read(sharedPrefProvider).remove(userKey);
-    } else {
+  void loadUser() {
+    final data = ref.read(sharedPrefProvider).getString(_userKey);
+    if (data != null) {
+      final user = User.fromJson(jsonDecode(data));
       ref.read(authUserProvider.notifier).state = user;
-      ref.read(sharedPrefProvider).setString(userKey, jsonEncode(user.toJson()));
+    } else {
+      ref.read(authUserProvider.notifier).state = null;
     }
   }
 
-  JwtToken? getToken() {
-    final data = ref.read(sharedPrefProvider).getString(tokenKey);
-    return data != null ? JwtToken.fromJson(jsonDecode(data)) : null;
+  void setUser(User? user) {
+    if (user == null) {
+      ref.read(authUserProvider.notifier).state = null;
+      ref.read(sharedPrefProvider).remove(_userKey);
+    } else {
+      ref.read(authUserProvider.notifier).state = user;
+      ref.read(sharedPrefProvider).setString(_userKey, jsonEncode(user.toJson()));
+    }
+  }
+
+  void loadToken() {
+    final data = ref.read(sharedPrefProvider).getString(_tokenKey);
+    if (data != null) {
+      final token = JwtToken.fromJson(jsonDecode(data));
+      ref.read(authTokenProvider.notifier).state = token;
+    } else {
+      ref.read(authTokenProvider.notifier).state = null;
+    }
   }
 
   void setToken(JwtToken? token) {
     if (token == null) {
       ref.read(authTokenProvider.notifier).state = null;
-      ref.read(sharedPrefProvider).remove(tokenKey);
+      ref.read(sharedPrefProvider).remove(_tokenKey);
     } else {
       ref.read(authTokenProvider.notifier).state = token;
-      ref.read(sharedPrefProvider).setString(tokenKey, jsonEncode(token.toJson()));
+      ref.read(sharedPrefProvider).setString(_tokenKey, jsonEncode(token.toJson()));
     }
   }
 
   Future<void> sendCode() async {
-    final data = {
-      "email": ref.watch(textEmailProvider),
+    final reqs = Reqs(path: '/api/v1/auth/send_code', data: {
+      "email": ref.read(textEmailProvider),
       "send_via": "sms",
-    };
-    final state = await AsyncValue.guard(() async => await ref.read(authServiceProvider).sendCode(data: data));
+    });
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     if (state.hasError) return;
 
-    log(state.value['verification_code']);
+    log("sendCode => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
     ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
     ref.read(verifyTypeProvider.notifier).state = 'forgot_password';
     ref.read(isCountdownExpiredProvider.notifier).state = false;
@@ -186,38 +231,39 @@ class AuthCtrl {
 
     switch (ref.read(verifyTypeProvider)) {
       case 'email':
-        final data = {
+        final reqs = Reqs(path: '/api/v1/auth/send_verification_code', data: {
           "type": "email",
           "is_testing": AppConfig.isTesting,
-        };
-        final state =
-            await AsyncValue.guard(() async => await ref.read(authServiceProvider).sendVerificationCode(data: data));
+        });
+        final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
+
         if (state.hasError) return;
 
-        log(state.value['verification_code']);
+        log("resendCode => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
         break;
       case 'phone':
-        final data = {
+        final reqs = Reqs(path: '/api/v1/auth/send_verification_code', data: {
           "type": "phone",
           "is_testing": AppConfig.isTesting,
-        };
-        final state =
-            await AsyncValue.guard(() async => await ref.read(authServiceProvider).sendVerificationCode(data: data));
+        });
+        final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
+
         if (state.hasError) return;
 
-        log(state.value['verification_code']);
+        log("resendCode => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
         break;
       default:
-        final data = {
-          "email": ref.watch(textEmailProvider),
+        final reqs = Reqs(path: '/api/v1/auth/send_code', data: {
+          "email": ref.read(textEmailProvider),
           "send_via": "sms",
-        };
-        final state = await AsyncValue.guard(() async => await ref.read(authServiceProvider).sendCode(data: data));
+        });
+        final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
+
         if (state.hasError) return;
 
-        log(state.value['verification_code']);
+        log("resendCode => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
     }
 
@@ -230,12 +276,12 @@ class AuthCtrl {
   }
 
   Future<void> resetPwd() async {
-    final data = {
-      "email": ref.watch(textEmailProvider),
-      "password": ref.watch(textPasswordProvider),
+    final reqs = Reqs(path: '/api/v1/auth/reset_pwd', data: {
+      "email": ref.read(textEmailProvider),
+      "password": ref.read(textPasswordProvider),
       "need_confirm": false,
-    };
-    final state = await AsyncValue.guard(() async => await ref.read(authServiceProvider).resetPwd(data: data));
+    });
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     if (state.hasError) return;
 
@@ -248,12 +294,12 @@ class AuthCtrl {
   }
 
   Future<void> changePwd() async {
-    final data = {
-      "old_password": ref.watch(textPasswordOldProvider),
-      "new_password": ref.watch(textPasswordProvider),
+    final reqs = Reqs(path: '/api/v1/auth/change_pwd', data: {
+      "old_password": ref.read(textPasswordOldProvider),
+      "new_password": ref.read(textPasswordProvider),
       "need_confirm": false,
-    };
-    final state = await AsyncValue.guard(() async => await ref.read(authServiceProvider).changePwd(data: data));
+    });
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     if (state.hasError) return;
 
@@ -269,16 +315,15 @@ class AuthCtrl {
     await AlertService.confirm(
       body: 'Apakah anda ingin verifikasi email sekarang?'.hardcoded,
       onYes: () async {
-        final data = {
+        final reqs = Reqs(path: '/api/v1/auth/send_verification_code', data: {
           "type": "email",
           "is_testing": AppConfig.isTesting,
-        };
-        final state =
-            await AsyncValue.guard(() async => await ref.read(authServiceProvider).sendVerificationCode(data: data));
+        });
+        final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
         if (state.hasError) return;
 
-        log(state.value['verification_code']);
+        log("verifyEmail => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
         ref.read(verifyTypeProvider.notifier).state = 'email';
         ref.read(isCountdownExpiredProvider.notifier).state = false;
@@ -304,16 +349,15 @@ class AuthCtrl {
     await AlertService.confirm(
       body: 'Apakah anda ingin verifikasi nomor telepon sekarang?'.hardcoded,
       onYes: () async {
-        final data = {
+        final reqs = Reqs(path: '/api/v1/auth/send_verification_code', data: {
           "type": "phone",
           "is_testing": AppConfig.isTesting,
-        };
-        final state =
-            await AsyncValue.guard(() async => await ref.read(authServiceProvider).sendVerificationCode(data: data));
+        });
+        final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
         if (state.hasError) return;
 
-        log(state.value['verification_code']);
+        log("verifyPhone => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
         ref.read(verifyTypeProvider.notifier).state = 'phone';
         ref.read(isCountdownExpiredProvider.notifier).state = false;
@@ -336,11 +380,10 @@ class AuthCtrl {
   }
 
   Future<void> confirmVerificationCode() async {
-    final data = {
+    final reqs = Reqs(path: '/api/v1/auth/confirm_verification_code', data: {
       "type": ref.read(verifyTypeProvider),
-    };
-    final state =
-        await AsyncValue.guard(() async => await ref.read(authServiceProvider).confirmVerificationCode(data: data));
+    });
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     if (state.hasError) return;
 
@@ -358,16 +401,15 @@ class AuthCtrl {
     await AlertService.confirm(
       body: 'Anda yakin ingin menutup Akun ?'.hardcoded,
       onYes: () async {
-        final data = {
+        final reqs = Reqs(path: '/api/v1/auth/send_verification_code', data: {
           "type": "unregister",
           "is_testing": AppConfig.isTesting,
-        };
-        final state =
-            await AsyncValue.guard(() async => await ref.read(authServiceProvider).sendVerificationCode(data: data));
+        });
+        final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
         if (state.hasError) return;
 
-        log(state.value['verification_code']);
+        log("unregister => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
         ref.read(verifyTypeProvider.notifier).state = 'unregister';
         ref.read(isCountdownExpiredProvider.notifier).state = false;
@@ -392,15 +434,37 @@ class AuthCtrl {
   }
 
   Future<void> closingAccount() async {
-    final data = {
+    final reqs = Reqs(path: '/api/v1/auth/closing_account', data: {
       "is_send_email_info": true,
       "is_testing": AppConfig.isTesting,
-    };
-    final state = await AsyncValue.guard(() async => await ref.read(authServiceProvider).closingAccount(data: data));
+    });
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     if (state.hasError) return;
 
-    await signOut(force: true);
+    await signOut(silence: true);
+  }
+
+  Future signInCallback({required VoidCallback next}) async {
+    if (ref.read(authTokenProvider) == null) {
+      final result = await ref.read(pageUtilsProvider).goto(page: const SignInView());
+      if (result == true) {
+        return next();
+      }
+    } else {
+      return next();
+    }
+  }
+
+  Future signInGoto({required Widget page}) async {
+    if (ref.read(authTokenProvider) == null) {
+      final result = await ref.read(pageUtilsProvider).goto(page: const SignInView());
+      if (result == true) {
+        return await ref.read(pageUtilsProvider).goto(page: page);
+      }
+    } else {
+      return await ref.read(pageUtilsProvider).goto(page: page);
+    }
   }
 }
 

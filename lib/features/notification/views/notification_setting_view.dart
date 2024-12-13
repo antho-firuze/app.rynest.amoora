@@ -1,5 +1,5 @@
-import 'package:amoora/common/controllers/permission_controller.dart';
-import 'package:amoora/features/notification/controller/notification_controller.dart';
+import 'package:amoora/common/controllers/permission_ctrl.dart';
+import 'package:amoora/features/notification/controller/notification_ctrl.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_alert.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/utils/my_ui.dart';

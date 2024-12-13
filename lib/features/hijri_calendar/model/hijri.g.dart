@@ -51,7 +51,7 @@ Map<String, dynamic> _$$HijriWeekdayImplToJson(_$HijriWeekdayImpl instance) =>
 
 _$HijriMonthImpl _$$HijriMonthImplFromJson(Map<String, dynamic> json) =>
     _$HijriMonthImpl(
-      number: json['number'] as int?,
+      number: (json['number'] as num?)?.toInt(),
       en: json['en'] as String?,
       ar: json['ar'] as String?,
     );

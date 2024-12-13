@@ -51,7 +51,7 @@ class _CustomSheetState extends State<CustomSheet> {
         _width = _mediaQuery.size.width;
         _height = _mediaQuery.size.height;
 
-        log('_height * (1 - widget.maxSize) = ${_height * (1 - widget.maxSize)}');
+        log('_height * (1 - widget.maxSize) = ${_height * (1 - widget.maxSize)}', name: 'CUSTOM_SHEET-WIDGET');
         _maxSize = (_height * (1 - widget.maxSize));
         _maxSize = _maxSize == 0 ? _paddingTop : _maxSize;
         _minSize = _height - 25;
@@ -72,7 +72,7 @@ class _CustomSheetState extends State<CustomSheet> {
     _width = _mediaQuery.size.width;
     _height = _mediaQuery.size.height;
 
-    log('_height * (1 - widget.maxSize) = ${_height * (1 - widget.maxSize)}');
+    log('_height * (1 - widget.maxSize) = ${_height * (1 - widget.maxSize)}', name: 'CUSTOM_SHEET-WIDGET');
     _maxSize = (_height * (1 - widget.maxSize));
     _maxSize = _maxSize == 0 ? _paddingTop : _maxSize;
     _minSize = _height - 30;
@@ -91,7 +91,7 @@ class _CustomSheetState extends State<CustomSheet> {
   void toggle() {
     _currentPosition = _isExpanded ? _minSize : _lastPosition;
     _isExpanded = !_isExpanded;
-    log('toggle click');
+    log('toggle click', name: 'CUSTOM_SHEET-WIDGET');
     setState(() {});
   }
 
@@ -99,7 +99,7 @@ class _CustomSheetState extends State<CustomSheet> {
   Widget build(BuildContext context) {
     _currentPosition = _currentPosition < 1 ? _maxSize : _currentPosition;
 
-    log('Build Custom Sheet');
+    log('Build Custom Sheet', name: 'CUSTOM_SHEET-WIDGET');
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {

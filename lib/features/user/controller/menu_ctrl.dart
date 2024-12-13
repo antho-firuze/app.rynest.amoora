@@ -1,6 +1,5 @@
 import 'package:amoora/features/agenda/views/agenda_view.dart';
-import 'package:amoora/features/auth/controller/auth_controller.dart';
-import 'package:amoora/features/auth/views/signin_view.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/exchange_rate/views/exchange_rate_view.dart';
 import 'package:amoora/features/jelajah/views/jelajah_view.dart';
 import 'package:amoora/features/live_location/views/live_map_view.dart';
@@ -14,7 +13,6 @@ import 'package:amoora/features/user/model/app_menu.dart';
 import 'package:amoora/core/app_asset.dart';
 import 'package:amoora/features/user/service/menu_service.dart';
 import 'package:amoora/utils/page_utils.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MenuCtrl {
@@ -99,26 +97,12 @@ class MenuCtrl {
       "prayers" => await ref.read(pageUtilsProvider).goto(page: const PrayersView()),
       "agenda" => await ref.read(pageUtilsProvider).goto(page: const AgendaView()),
       "jelajah" => await ref.read(pageUtilsProvider).goto(page: const JelajahView()),
-      "liveLocation" =>
-        await needLogin(next: () async => await ref.read(pageUtilsProvider).goto(page: const LiveMapView())),
-      "presenter" =>
-        await needLogin(next: () async => await ref.read(pageUtilsProvider).goto(page: const PresenterView())),
-      "listener" =>
-        await needLogin(next: () async => await ref.read(pageUtilsProvider).goto(page: const AudienceView())),
+      "liveLocation" => await ref.read(authCtrlProvider).signInGoto(page: const LiveMapView()),
+      "presenter" =>await ref.read(authCtrlProvider).signInGoto(page: const PresenterView()),
+      "listener" =>await ref.read(authCtrlProvider).signInGoto(page: const AudienceView()),
       "exchangeRate" => await ref.read(pageUtilsProvider).goto(page: const ExchangeRateView()),
       String() => '',
     };
-  }
-
-  Future needLogin({VoidCallback? next}) async {
-    if (ref.read(authUserProvider) == null) {
-      final result = await ref.read(pageUtilsProvider).goto(page: const SignInView());
-      if (result != true) {
-        return false;
-      }
-      return next == null ? null : next();
-    }
-    return next == null ? null : next();
   }
 }
 

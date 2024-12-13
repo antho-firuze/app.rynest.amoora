@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:amoora/common/models/latlong.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -44,7 +46,7 @@ class LocationService {
     return locationSettings;
   }
 
-  Future<Position> getCurrentPosition() async {
+  Future<LatLong> fetchCurrentCoordinate() async {
     Position? position = await Geolocator.getLastKnownPosition(forceAndroidLocationManager: false);
 
     position ??= await Geolocator.getCurrentPosition(
@@ -53,14 +55,22 @@ class LocationService {
       timeLimit: const Duration(seconds: 10),
     );
 
-    return position;
+    return LatLong(position.latitude, position.longitude);
   }
 
-  Future<Placemark?> getPlacemark(LatLong latLong) async {
+  Stream<LatLong> streamCurrentCoordinate() async* {
+    LatLong latLong = LatLong(0, 0);
+    Geolocator.getPositionStream(locationSettings: _getLocationSettings).listen((position) {
+      latLong = LatLong(position.latitude, position.longitude);
+    });
+
+    yield latLong;
+  }
+
+  Future<Placemark?> fetchPlacemark(LatLong latLong) async {
     final result = await placemarkFromCoordinates(latLong.lat, latLong.lng);
     return result[0];
   }
-
 }
 
 final locationServiceProvider = Provider(LocationService.new);

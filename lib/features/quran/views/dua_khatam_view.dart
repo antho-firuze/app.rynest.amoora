@@ -1,6 +1,6 @@
 import 'package:amoora/core/app_theme.dart';
 import 'package:amoora/features/quran/helper/quran_string.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/orientation_utils.dart';
 import 'package:flutter/material.dart';
 

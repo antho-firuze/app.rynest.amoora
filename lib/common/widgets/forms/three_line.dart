@@ -1,5 +1,5 @@
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:super_icons/super_icons.dart';

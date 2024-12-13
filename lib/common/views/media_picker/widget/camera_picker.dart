@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:amoora/common/controllers/camera_controller.dart';
+import 'package:amoora/common/controllers/camera_ctrl.dart';
 import 'package:amoora/common/widgets/button/custom_button.dart';
 import 'package:amoora/common/widgets/button/custom_iconbutton.dart';
 import 'package:amoora/core/app_color.dart';

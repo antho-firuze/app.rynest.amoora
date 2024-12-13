@@ -12,7 +12,7 @@ part of 'member.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Member _$MemberFromJson(Map<String, dynamic> json) {
   return _Member.fromJson(json);
@@ -31,8 +31,12 @@ mixin _$Member {
   double get distance => throw _privateConstructorUsedError;
   bool get isOutOfRange => throw _privateConstructorUsedError;
 
+  /// Serializes this Member to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Member
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MemberCopyWith<Member> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -65,6 +69,8 @@ class _$MemberCopyWithImpl<$Res, $Val extends Member>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Member
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,6 +124,8 @@ class _$MemberCopyWithImpl<$Res, $Val extends Member>
     ) as $Val);
   }
 
+  /// Create a copy of Member
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProfileCopyWith<$Res>? get profile {
@@ -161,6 +169,8 @@ class __$$MemberImplCopyWithImpl<$Res>
       _$MemberImpl _value, $Res Function(_$MemberImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Member
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -282,12 +292,14 @@ class _$MemberImpl implements _Member {
                 other.isOutOfRange == isOutOfRange));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, lat, lng, label, userId,
       profile, heartbeat, distance, isOutOfRange);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Member
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MemberImplCopyWith<_$MemberImpl> get copyWith =>
@@ -334,8 +346,11 @@ abstract class _Member implements Member {
   double get distance;
   @override
   bool get isOutOfRange;
+
+  /// Create a copy of Member
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MemberImplCopyWith<_$MemberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

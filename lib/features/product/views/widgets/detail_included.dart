@@ -1,4 +1,4 @@
-import 'package:amoora/features/product/controller/product_controller.dart';
+import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';

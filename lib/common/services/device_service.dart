@@ -19,7 +19,7 @@ class DeviceService {
     try {
       if (kIsWeb) {
         var data = await deviceInfoPlugin.webBrowserInfo;
-        // log(jsonEncode(_readWebBrowserInfo(data)));
+        // log(jsonEncode(_readWebBrowserInfo(data)), name: 'DEVICE-SVC');
         result = {
           'id': const Uuid().v4(),
           'name': data.userAgent,
@@ -31,7 +31,7 @@ class DeviceService {
         switch (defaultTargetPlatform) {
           case TargetPlatform.android:
             var data = await deviceInfoPlugin.androidInfo;
-            // log(jsonEncode(_readAndroidBuildData(data)));
+            // log(jsonEncode(_readAndroidBuildData(data)), name: 'DEVICE-SVC');
             result = {
               'id': '${data.device}:${data.id}',
               'name': '${data.manufacturer.toUpperCase()} ${data.model}',
@@ -41,7 +41,7 @@ class DeviceService {
             return result;
           case TargetPlatform.iOS:
             var data = await deviceInfoPlugin.iosInfo;
-            // log(jsonEncode(_readIosDeviceInfo(data)));
+            // log(jsonEncode(_readIosDeviceInfo(data)), name: 'DEVICE-SVC');
             result = {
               'id': '${data.name}:${data.identifierForVendor}',
               'name': data.model,
@@ -53,7 +53,7 @@ class DeviceService {
           case TargetPlatform.linux:
           case TargetPlatform.macOS:
           case TargetPlatform.windows:
-            // log(jsonEncode({'id': const Uuid().v4(), 'name': 'Unknown'}));
+            // log(jsonEncode({'id': const Uuid().v4(), 'name': 'Unknown'}), name: 'DEVICE-SVC');
             result = {
               'id': const Uuid().v4(),
               'name': 'Unknown',
@@ -64,7 +64,7 @@ class DeviceService {
         }
       }
     } catch (e) {
-      // log(jsonEncode({'Error': 'Failed to get platform version.'}));
+      // log(jsonEncode({'Error': 'Failed to get platform version.'}), name: 'DEVICE-SVC');
       return {'Error': 'Failed to get platform version.'};
     }
   }

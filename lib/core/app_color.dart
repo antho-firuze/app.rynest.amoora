@@ -56,21 +56,17 @@ extension CustomColorScheme on ColorScheme {
   //     ? const Color.fromARGB(255, 255, 255, 255)
   //     : const Color(0xFF1B1B1B);
 
-  Color get infoText => brightness == Brightness.light ? const Color(0xff9EA05B) : const Color(0xFFF3F3F3);
-
   Color get appBar => brightness == Brightness.light ? primaryLight : primaryDark;
 
   Color get inputBorder => brightness == Brightness.light ? oGrey : oWhite70;
-
   Color get inputDisabledBorder => brightness == Brightness.light ? oGrey70 : oWhite70;
-
   Color get inputFocusedBorder => brightness == Brightness.light ? oGold50 : oGold50;
-
   Color get inputEnabledBorder => brightness == Brightness.light ? oBlack50 : oWhite70;
-
   Color get inputErrorBorder => brightness == Brightness.light ? oBlack50 : oWhite70;
-
   Color get inputFocusedErrorBorder => brightness == Brightness.light ? oBlack50 : oWhite70;
+
+  Color get checkBoxBorder => brightness == Brightness.light ? oGrey : oWhite70;
+  Color get checkBoxCheck => brightness == Brightness.light ? oGold50 : oGold50;
 
   Color get colorIcon => brightness == Brightness.light ? oBlack50 : oWhite70;
 
@@ -82,12 +78,11 @@ extension CustomColorScheme on ColorScheme {
   Color get navigationRailSelected => brightness == Brightness.light ? oBlack50 : oWhite30;
   Color get navigationRailUnSelected => brightness == Brightness.light ? oBlack50 : oWhite70;
 
-  Color get pageNumber => brightness == Brightness.light ? const Color(0x7B000000) : const Color(0x92FFFFFF);
-
   Color get div =>
       brightness == Brightness.light ? const Color.fromARGB(47, 0, 0, 0) : const Color.fromARGB(55, 255, 255, 255);
 
+  Color get infoText => brightness == Brightness.light ? const Color(0xff9EA05B) : const Color(0xFFF3F3F3);
+  Color get pageNumber => brightness == Brightness.light ? const Color(0x7B000000) : const Color(0x92FFFFFF);
   Color get juzCardText => brightness == Brightness.light ? const Color(0xFF353608) : const Color(0xFFECECEC);
-
   Color get surahNumber => brightness == Brightness.light ? const Color(0xFF94BEFD) : const Color(0xff2877EE);
 }

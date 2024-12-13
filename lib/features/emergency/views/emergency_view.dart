@@ -1,7 +1,7 @@
 import 'package:amoora/common/exceptions/loading_failed.dart';
 import 'package:amoora/common/widgets/button/custom_circle_button.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/emergency/controller/emergency_controller.dart';
+import 'package:amoora/features/emergency/controller/emergency_ctrl.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';

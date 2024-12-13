@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:amoora/common/views/splash_view.dart';
 import 'package:amoora/common/views/walkthrough_view.dart';
 import 'package:amoora/features/message/views/message_detail_view.dart';
-import 'package:amoora/utils/router_dashboard.dart';
+import 'package:amoora/common/views/dashboard_view.dart';
 
 // Private Navigators
 final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -23,7 +23,7 @@ final GoRouter router = GoRouter(
   debugLogDiagnostics: false,
   routes: [
     StatefulShellRoute.indexedStack(
-      builder: (context, state, navigationShell) => RouterDashboard(navigationShell: navigationShell),
+      builder: (context, state, navigationShell) => DashboardView(navigationShell: navigationShell),
       branches: [
         StatefulShellBranch(
           navigatorKey: _homeNavigatorKey,

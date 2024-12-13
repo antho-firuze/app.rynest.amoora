@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:amoora/common/exceptions/image_failed.dart';
 import 'package:amoora/common/exceptions/loading_failed.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/product/controller/product_controller.dart';
+import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/utils/datetime_utils.dart';
 import 'package:amoora/utils/download_utils.dart';

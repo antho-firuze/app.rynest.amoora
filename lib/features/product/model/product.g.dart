@@ -8,13 +8,13 @@ part of 'product.dart';
 
 _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String? ?? '',
-      duration: json['duration'] as int? ?? 9,
+      duration: (json['duration'] as num?)?.toInt() ?? 9,
       departureDate: json['departure_date'] == null
           ? null
           : DateTime.parse(json['departure_date'] as String),
-      quota: json['quota'] as int? ?? 50,
+      quota: (json['quota'] as num?)?.toInt() ?? 50,
       included: json['including'] as String? ?? '',
       notIncluded: json['not_included'] as String? ?? '',
       termsConditions: json['terms_and_condition'] as String?,
@@ -23,7 +23,7 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       triplePrice: (json['price_total_triple_rupiah'] as num?)?.toDouble() ?? 0,
       quadPrice: (json['price_total_quad_rupiah'] as num?)?.toDouble() ?? 0,
       image: json['image'] as String? ?? '',
-      categoryId: json['product_category_id'] as int? ?? 0,
+      categoryId: (json['product_category_id'] as num?)?.toInt() ?? 0,
       categoryName: json['product_category_name'] as String? ?? '',
       hotels: (json['hotels'] as List<dynamic>?)
           ?.map((e) => Hotel.fromJson(e as Map<String, dynamic>))

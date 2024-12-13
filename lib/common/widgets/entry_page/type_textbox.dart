@@ -15,6 +15,7 @@ class TypeTextBox extends ConsumerWidget {
     this.description,
     this.initialValue,
     this.inputType = TextInputType.text,
+    this.allowEmpty = false,
     this.onSubmit,
   });
 
@@ -22,6 +23,7 @@ class TypeTextBox extends ConsumerWidget {
   final String? description;
   final String? initialValue;
   final TextInputType inputType;
+  final bool allowEmpty;
   final Function(dynamic val)? onSubmit;
 
   @override
@@ -47,15 +49,19 @@ class TypeTextBox extends ConsumerWidget {
             CustomInput(
               initialValue: newVal,
               onChanged: (val) {
-                ref.read(isFormValidated.notifier).state =
-                    formStateKey.currentState!.validate() && (val!.trim() != initialValue!.trim());
+                if (allowEmpty) {
+                  ref.read(isFormValidated.notifier).state = formStateKey.currentState!.validate();
+                } else {
+                  ref.read(isFormValidated.notifier).state =
+                      formStateKey.currentState!.validate() && (val!.trim() != initialValue!.trim());
+                }
                 return newVal = val;
               },
               keyboardType: inputType,
               maxLines: inputType == TextInputType.multiline || inputType == TextInputType.streetAddress ? 3 : 1,
               hintText: hint,
               helperText: hint,
-              validator: (p0) => p0!.isEmpty ? 'Kolom harus di isi'.hardcoded : null,
+              validator: (p0) => p0!.isEmpty && !allowEmpty ? 'Kolom harus di isi'.hardcoded : null,
             ),
             30.height,
             CustomButton(

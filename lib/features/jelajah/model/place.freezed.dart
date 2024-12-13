@@ -12,7 +12,7 @@ part of 'place.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Place _$PlaceFromJson(Map<String, dynamic> json) {
   return _Place.fromJson(json);
@@ -26,8 +26,12 @@ mixin _$Place {
   double get lng => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
 
+  /// Serializes this Place to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Place
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlaceCopyWith<Place> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -49,6 +53,8 @@ class _$PlaceCopyWithImpl<$Res, $Val extends Place>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Place
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +107,8 @@ class __$$PlaceImplCopyWithImpl<$Res>
       _$PlaceImpl _value, $Res Function(_$PlaceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Place
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,11 +181,13 @@ class _$PlaceImpl implements _Place {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, lat, lng, image);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Place
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlaceImplCopyWith<_$PlaceImpl> get copyWith =>
@@ -211,8 +221,11 @@ abstract class _Place implements Place {
   double get lng;
   @override
   String? get image;
+
+  /// Create a copy of Place
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlaceImplCopyWith<_$PlaceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -226,8 +239,12 @@ mixin _$Places {
   @JsonKey(name: "data")
   List<Place>? get places => throw _privateConstructorUsedError;
 
+  /// Serializes this Places to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlacesCopyWith<Places> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -249,6 +266,8 @@ class _$PlacesCopyWithImpl<$Res, $Val extends Places>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -281,6 +300,8 @@ class __$$PlacesImplCopyWithImpl<$Res>
       _$PlacesImpl _value, $Res Function(_$PlacesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -328,12 +349,14 @@ class _$PlacesImpl implements _Places {
             const DeepCollectionEquality().equals(other._places, _places));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_places));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlacesImplCopyWith<_$PlacesImpl> get copyWith =>
@@ -356,8 +379,11 @@ abstract class _Places implements Places {
   @override
   @JsonKey(name: "data")
   List<Place>? get places;
+
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlacesImplCopyWith<_$PlacesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

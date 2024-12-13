@@ -6,7 +6,7 @@ import 'package:amoora/common/widgets/cross_paint.dart';
 import 'package:amoora/common/widgets/custom_interactive_viewer.dart';
 import 'package:amoora/common/widgets/one_ui/one_ui_nested_scroll_view.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/product/controller/product_controller.dart';
+import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/features/product/views/itinerary_view.dart';
 import 'package:amoora/features/product/views/widgets/detail_airlines.dart';
 import 'package:amoora/features/product/views/widgets/detail_header.dart';

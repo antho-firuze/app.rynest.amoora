@@ -1,12 +1,12 @@
-import 'package:amoora/common/controllers/camera_controller.dart';
-import 'package:amoora/common/controllers/media_picker_controller.dart';
-import 'package:amoora/common/controllers/permission_controller.dart';
+import 'package:amoora/common/controllers/camera_ctrl.dart';
+import 'package:amoora/common/controllers/media_picker_ctrl.dart';
+import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/exceptions/warning_exeption.dart';
 import 'package:amoora/common/views/media_picker/widget/camera_picker.dart';
 import 'package:amoora/common/views/media_picker/widget/gallery_picker.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -1,6 +1,5 @@
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/user/controller/user_setting_controller.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:super_icons/super_icons.dart';

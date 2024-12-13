@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amoora/features/auth/controller/auth_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/live_streaming/model/audience.dart';
 import 'package:amoora/features/live_streaming/model/presenter.dart';
 import 'package:amoora/features/live_streaming/service/signaling_service.dart';
@@ -58,37 +58,13 @@ class SignalingCtrl {
   void Function(String serverName)? onServerConnectionFailed;
   // STATE : join | offer | answer | connected | leave | inactive
 
-  // COMMON SECTION
-  void initialize() async {
-    log('Initialize Signaling !', name: 'signaling');
-    if (ref.read(authUserProvider)?.roleId == 1) {
-      log('listenForOnlineHost | listen', name: 'signaling');
-      await _onlineHostListener();
-    }
-
-    ref.listen(authUserProvider, (previous, next) async {
-      if (next == null) {
-        log('listenForOnlineHost | close', name: 'signaling');
-        _onlineHostSubs?.close();
-        _onlineHostSubs = null;
-        // ref.read(onlineHostProvider.notifier).state = [];
-        ref.read(selectedPresenterProvider.notifier).state = null;
-      } else {
-        if (next.roleId == 1 || next.roleId == 99) {
-          log('listenForOnlineHost | listen', name: 'signaling');
-          await _onlineHostListener();
-        }
-      }
-    });
-  }
-
   Future _fetchConfiguration() async {
     try {
-      log('fetchConfiguration :', name: 'signaling');
+      log('fetchConfiguration :', name: 'SIGNALING-CTRL');
 
       _configuration = await ref.read(signalingSvcProvider).fetchConfiguration(ref.read(serverProvider));
 
-      log('$_configuration', name: 'signaling');
+      log('$_configuration', name: 'SIGNALING-CTRL');
     } catch (e) {
       if (onServerConnectionFailed != null) onServerConnectionFailed!(serverName[ref.read(serverProvider)]!);
     }
@@ -96,7 +72,7 @@ class SignalingCtrl {
 
   // PRESENTER SECTION
   Future _openUserMedia() async {
-    log('openUserMedia', name: 'signaling');
+    log('openUserMedia', name: 'SIGNALING-CTRL');
     ref.read(localRendererProvider.notifier).state = RTCVideoRenderer();
     ref.read(localRendererProvider.notifier).state.initialize();
     // LOCAL STREAM
@@ -108,7 +84,7 @@ class SignalingCtrl {
   }
 
   Future _closeUserMedia() async {
-    log('closeUserMedia', name: 'signaling');
+    log('closeUserMedia', name: 'SIGNALING-CTRL');
     await _localStream?.dispose();
     _localStream = null;
     ref.read(localRendererProvider.notifier).state.srcObject = null;
@@ -120,9 +96,9 @@ class SignalingCtrl {
 
   Future<int?> _createRoom(Map<String, dynamic> data) async {
     try {
-      log('Create Room', name: 'signaling');
+      log('Create Room', name: 'SIGNALING-CTRL');
       data['state'] = 'active';
-      log("$data", name: 'signaling');
+      log("$data", name: 'SIGNALING-CTRL');
       final state = await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).createPresenter(data));
 
       final presenter = Presenter.fromJson(state.value);
@@ -130,7 +106,7 @@ class SignalingCtrl {
 
       return presenter.id;
     } catch (e) {
-      log('Create Room | error', error: e, name: 'signaling');
+      log('Create Room | error', error: e, name: 'SIGNALING-CTRL');
       throw Exception(e.toString());
     }
   }
@@ -146,7 +122,7 @@ class SignalingCtrl {
 
       List<dynamic> jsonList = jsonDecode(event.data);
       if (jsonList.isEmpty) {
-        log('total online participant : $jsonList', name: 'signaling');
+        log('total online participant : $jsonList', name: 'SIGNALING-CTRL');
         ref.read(participantProvider.notifier).state = [];
       } else {
         List<Audience> datas = jsonList.map((json) {
@@ -156,7 +132,7 @@ class SignalingCtrl {
         }).toList();
         for (var audience in datas) {
           // LOG STATE CHANGED
-          log('peer${audience.id} : audience state changed : ${audience.state}', name: 'signaling');
+          log('peer${audience.id} : audience state changed : ${audience.state}', name: 'SIGNALING-CTRL');
 
           // CREATE NEW PEER CONNECTION
           if (audience.state == 'join') {
@@ -177,7 +153,7 @@ class SignalingCtrl {
             await _closeInstancePeerConnection(audience.id);
           }
         }
-        log('total online participant : ${datas.length}', name: 'signaling');
+        log('total online participant : ${datas.length}', name: 'SIGNALING-CTRL');
         ref.read(participantProvider.notifier).state = datas;
       }
     });
@@ -185,7 +161,7 @@ class SignalingCtrl {
 
   Future _createInstancePeerConnection(int audienceId) async {
     try {
-      log('peer$audienceId : Create Peer Connection : $_configuration', name: 'signaling');
+      log('peer$audienceId : Create Peer Connection : $_configuration', name: 'SIGNALING-CTRL');
       _peers[audienceId] = await createPeerConnection(_configuration);
 
       _registerPeersConnectionListener(audienceId);
@@ -196,7 +172,7 @@ class SignalingCtrl {
       };
 
       // ADD TRACK FROM LOCAL STREAM
-      log('peer$audienceId : addTrack from local Stream', name: 'signaling');
+      log('peer$audienceId : addTrack from local Stream', name: 'SIGNALING-CTRL');
       _localStream?.getTracks().forEach((track) async => await _peers[audienceId]?.addTrack(track, _localStream!));
 
       await _peers[audienceId]?.addTransceiver(
@@ -210,25 +186,25 @@ class SignalingCtrl {
       );
 
       // CREATE OFFER
-      log('peer$audienceId : Create Offer', name: 'signaling');
+      log('peer$audienceId : Create Offer', name: 'SIGNALING-CTRL');
       final offer = await _peers[audienceId]?.createOffer();
 
       // SET LOCAL DESCRIPTION
-      log('peer$audienceId : setLocalDescription', name: 'signaling');
+      log('peer$audienceId : setLocalDescription', name: 'SIGNALING-CTRL');
       await _peers[audienceId]?.setLocalDescription(offer!);
       _offers[audienceId] = offer!.toMap();
     } catch (e) {
-      log('peer$audienceId : createInstancePeerConnection | error', error: e, name: 'signaling');
+      log('peer$audienceId : createInstancePeerConnection | error', error: e, name: 'SIGNALING-CTRL');
     }
   }
 
   void _registerPeersConnectionListener(int audienceId) {
     _peers[audienceId]?.onIceConnectionState = (RTCIceConnectionState state) {
-      log('peer$audienceId : ICE connection state change: $state', name: 'signaling');
+      log('peer$audienceId : ICE connection state change: $state', name: 'SIGNALING-CTRL');
     };
 
     _peers[audienceId]?.onIceGatheringState = (RTCIceGatheringState state) async {
-      log('peer$audienceId : ICE gathering state changed: $state', name: 'signaling');
+      log('peer$audienceId : ICE gathering state changed: $state', name: 'SIGNALING-CTRL');
 
       if (state == RTCIceGatheringState.RTCIceGatheringStateComplete) {
         var data = {
@@ -236,13 +212,13 @@ class SignalingCtrl {
           "offer": _offers[audienceId],
           "state": "offer",
         };
-        log('peer$audienceId : Got Local ICE Candidate', name: 'signaling');
+        log('peer$audienceId : Got Local ICE Candidate', name: 'SIGNALING-CTRL');
         await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).updateAudience(data));
       }
     };
 
     _peers[audienceId]?.onConnectionState = (RTCPeerConnectionState state) async {
-      log('peer$audienceId : Connection state change: $state', name: 'signaling');
+      log('peer$audienceId : Connection state change: $state', name: 'SIGNALING-CTRL');
 
       if (state == RTCPeerConnectionState.RTCPeerConnectionStateConnected) {
         var data = {
@@ -251,31 +227,31 @@ class SignalingCtrl {
           "answer": null,
           "state": "connected",
         };
-        log('peer$audienceId : Set connection state | connected', name: 'signaling');
+        log('peer$audienceId : Set connection state | connected', name: 'SIGNALING-CTRL');
         await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).updateAudience(data));
       }
     };
 
     _peers[audienceId]?.onSignalingState = (RTCSignalingState state) {
-      log('peer$audienceId : Signaling state change: $state', name: 'signaling');
+      log('peer$audienceId : Signaling state change: $state', name: 'SIGNALING-CTRL');
     };
   }
 
   Future _closeInstancePeerConnection(int audienceId) async {
     try {
-      log('peer$audienceId : closeInstancePeerConnection', name: 'signaling');
+      log('peer$audienceId : closeInstancePeerConnection', name: 'SIGNALING-CTRL');
 
       await _peers[audienceId]?.close();
       _peers.remove(audienceId);
 
       await ref.read(signalingSvcProvider).removeAudience({"id": audienceId});
     } catch (e) {
-      log('peer$audienceId : closeInstancePeerConnection | error', error: e, name: 'signaling');
+      log('peer$audienceId : closeInstancePeerConnection | error', error: e, name: 'SIGNALING-CTRL');
     }
   }
 
   void _heartbeatPresenter(int presenterId) async {
-    log('presenterId$presenterId : heartbeat presenter | start (every $heartbeat seconds)', name: 'signaling');
+    log('presenterId$presenterId : heartbeat presenter | start (every $heartbeat seconds)', name: 'SIGNALING-CTRL');
     await Future.doWhile(() async {
       await Future.delayed(Duration(seconds: heartbeat));
 
@@ -283,7 +259,7 @@ class SignalingCtrl {
       await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).updatePresenter(data));
 
       if (ref.read(presenterProvider) == null) {
-        log('presenterId$presenterId : heartbeat presenter | stop', name: 'signaling');
+        log('presenterId$presenterId : heartbeat presenter | stop', name: 'SIGNALING-CTRL');
         return false;
       }
       // log(':: heartbeat => $time');
@@ -306,7 +282,7 @@ class SignalingCtrl {
 
       _heartbeatPresenter(presenterId);
     } catch (e) {
-      log('start | error', error: e, name: 'signaling');
+      log('start | error', error: e, name: 'SIGNALING-CTRL');
       ref.read(isOnlineProvider.notifier).state = false;
       await closeMeeting();
       throw Exception(e.toString());
@@ -315,7 +291,7 @@ class SignalingCtrl {
 
   Future closeMeeting([int? presenterId]) async {
     try {
-      log('closeAllPeerConnection', name: 'signaling');
+      log('closeAllPeerConnection', name: 'SIGNALING-CTRL');
 
       ref.read(isOnlineProvider.notifier).state = false;
       ref.read(presenterProvider.notifier).state = null;
@@ -329,43 +305,66 @@ class SignalingCtrl {
         await ref.read(signalingSvcProvider).removePresenter({"id": presenterId});
       }
 
-      log('Closing Subscription', name: 'signaling');
+      log('Closing Subscription', name: 'SIGNALING-CTRL');
       _onlineParticipantSubs?.close();
 
       await _closeUserMedia();
     } catch (e) {
-      log('closeAllPeerConnection | error', error: e, name: 'signaling');
+      log('closeAllPeerConnection | error', error: e, name: 'SIGNALING-CTRL');
       throw Exception(e.toString());
     }
   }
 
   // AUDIENCE/PARTICIPANT SECTION
-  Future _onlineHostListener() async {
+  Future onlineHostListener() async {
+    if (_onlineHostSubs != null) {
+      _closedOnlineHostListener();
+    }
+
+    // CHECK USER LOGIN
+    if (ref.read(authUserProvider) == null) {
+      return;
+    }
+
+    // CHECK USER ROLE
+    if (![1, 99].contains(ref.read(authUserProvider)?.roleId)) {
+      log('_onlineHostListener => Not active. This is for role = 1 (roleId = ${ref.read(authUserProvider)?.roleId})',
+          name: 'SIGNALING-CTRL');
+      return;
+    }
+
     _onlineHostSubs = ref.listen(onlineHostStreamProvider, (previous, next) async {
       SseMessage event = next.value;
       // log("Event: ${event.id}, ${event.event}, ${event.retry}, ${event.data}");
 
       if (event.data.isEmpty) {
-        log('total online presenter : Empty', name: 'signaling');
+        log('total online presenter : Empty', name: 'SIGNALING-CTRL');
         ref.read(onlineHostProvider.notifier).state = [];
         return;
       }
 
       List<dynamic> jsonList = jsonDecode(event.data);
       if (jsonList.isEmpty) {
-        log('total online presenter : $jsonList', name: 'signaling');
+        log('total online presenter : $jsonList', name: 'SIGNALING-CTRL');
         ref.read(onlineHostProvider.notifier).state = [];
       } else {
         List<Presenter> datas = jsonList.map((json) => Presenter.fromJson(json)).toList();
-        log('total online presenter : ${datas.length}', name: 'signaling');
+        log('total online presenter : ${datas.length}', name: 'SIGNALING-CTRL');
         ref.read(onlineHostProvider.notifier).state = datas;
       }
     });
   }
 
+  void _closedOnlineHostListener() {
+    _onlineHostSubs?.close();
+    _onlineHostSubs = null;
+    ref.read(selectedPresenterProvider.notifier).state = null;
+    log('_onlineHostListener => stoped', name: 'SIGNALING-CTRL');
+  }
+
   Future<Audience> _addAudience(Presenter presenter) async {
     try {
-      log('Add Audience', name: 'signaling');
+      log('Add Audience', name: 'SIGNALING-CTRL');
       final data = {
         "presenter_id": presenter.id,
         "state": "join",
@@ -377,26 +376,26 @@ class SignalingCtrl {
 
       return audience;
     } catch (e) {
-      log('Add Audience | error', error: e, name: 'signaling');
+      log('Add Audience | error', error: e, name: 'SIGNALING-CTRL');
       throw Exception(e.toString());
     }
   }
 
   Future _setRemoteMedia() async {
-    log('Init remote media', name: 'signaling');
+    log('Init remote media', name: 'SIGNALING-CTRL');
     ref.read(remoteRendererProvider.notifier).state = RTCVideoRenderer();
     ref.read(remoteRendererProvider.notifier).state.initialize();
   }
 
   void _setConnectionTimeout(Audience audience) async {
     // Set Timeout connection to peerConnection
-    log('timeout | set connectionTimeout : $connectionTimeout', name: 'signaling');
+    log('timeout | set connectionTimeout : $connectionTimeout', name: 'SIGNALING-CTRL');
     _timeoutTimer = Timer.periodic(Duration(seconds: connectionTimeout), (timer) async {
       if (await _peer?.getConnectionState() == RTCPeerConnectionState.RTCPeerConnectionStateConnected) {
-        log('timeout | Timeout Cancelled !', name: 'signaling');
+        log('timeout | Timeout Cancelled !', name: 'SIGNALING-CTRL');
         timer.cancel();
       } else {
-        log('timeout | Timeout has occured !', name: 'signaling');
+        log('timeout | Timeout has occured !', name: 'SIGNALING-CTRL');
         if (onTimeout != null) onTimeout!();
         timer.cancel();
         await leaveMeeting(audience.id);
@@ -405,7 +404,7 @@ class SignalingCtrl {
   }
 
   Future _createPeerConnection(Audience audience) async {
-    log('createPeerConnection | $_configuration', name: 'signaling');
+    log('createPeerConnection | $_configuration', name: 'SIGNALING-CTRL');
     _peer = await createPeerConnection(_configuration);
 
     _registerPeerConnectionListener(audience.id);
@@ -420,17 +419,17 @@ class SignalingCtrl {
 
     // ADD REMOTE STREAM
     _peer?.onAddStream = (stream) {
-      log('Add remote stream', name: 'signaling');
+      log('Add remote stream', name: 'SIGNALING-CTRL');
       ref.read(remoteRendererProvider.notifier).state.srcObject = stream;
     };
 
     // ADD TRACK FROM REMOTE STREAM
     _peer?.onTrack = (RTCTrackEvent event) {
-      // log('Got remote track: ${event.streams[0]}', name: 'signaling');
+      // log('Got remote track: ${event.streams[0]}', name: 'SIGNALING-CTRL');
       if (event.streams.isEmpty) return;
-      
+
       event.streams[0].getTracks().forEach((track) async {
-        log('Add a track from remote stream $track', name: 'signaling');
+        log('Add a track from remote stream $track', name: 'SIGNALING-CTRL');
         await _remoteStream?.addTrack(track);
       });
     };
@@ -464,15 +463,15 @@ class SignalingCtrl {
 
         Audience audience = datas[0];
         if (audience.state == 'offer') {
-          log('setRemoteDescription', name: 'signaling');
+          log('setRemoteDescription', name: 'SIGNALING-CTRL');
           final offer = RTCSessionDescription(audience.offer!['sdp'], audience.offer!['type']);
           await _peer?.setRemoteDescription(offer);
 
-          log('Create Answer', name: 'signaling');
+          log('Create Answer', name: 'SIGNALING-CTRL');
           final createdAnswer = await _peer?.createAnswer();
           _answer = createdAnswer!.toMap();
 
-          log('setLocalDescription', name: 'signaling');
+          log('setLocalDescription', name: 'SIGNALING-CTRL');
           await _peer?.setLocalDescription(createdAnswer);
         }
       }
@@ -481,11 +480,11 @@ class SignalingCtrl {
 
   void _registerPeerConnectionListener(int audienceId) {
     _peer?.onIceConnectionState = (RTCIceConnectionState state) {
-      log('ICE connection state change: $state', name: 'signaling');
+      log('ICE connection state change: $state', name: 'SIGNALING-CTRL');
     };
 
     _peer?.onIceGatheringState = (RTCIceGatheringState state) async {
-      log('ICE gathering state changed: $state', name: 'signaling');
+      log('ICE gathering state changed: $state', name: 'SIGNALING-CTRL');
 
       if (state == RTCIceGatheringState.RTCIceGatheringStateComplete) {
         var data = {
@@ -493,13 +492,13 @@ class SignalingCtrl {
           "answer": _answer,
           "state": "answer",
         };
-        log('Got Local ICE Candidate', name: 'signaling');
+        log('Got Local ICE Candidate', name: 'SIGNALING-CTRL');
         await ref.read(signalingSvcProvider).updateAudience(data);
       }
     };
 
     _peer?.onConnectionState = (RTCPeerConnectionState state) async {
-      log('Connection state change: $state', name: 'signaling');
+      log('Connection state change: $state', name: 'SIGNALING-CTRL');
       if (state == RTCPeerConnectionState.RTCPeerConnectionStateConnected) {
         ref.read(isConnectedProvider.notifier).state = true;
       }
@@ -516,12 +515,12 @@ class SignalingCtrl {
     };
 
     _peer?.onSignalingState = (RTCSignalingState state) {
-      log('Signaling state change: $state', name: 'signaling');
+      log('Signaling state change: $state', name: 'SIGNALING-CTRL');
     };
   }
 
   void _heartbeatAudience(int audienceId) async {
-    log('audienceId$audienceId : heartbeat audience | start (every $heartbeat seconds)', name: 'signaling');
+    log('audienceId$audienceId : heartbeat audience | start (every $heartbeat seconds)', name: 'SIGNALING-CTRL');
     await Future.doWhile(() async {
       await Future.delayed(Duration(seconds: heartbeat));
 
@@ -529,7 +528,7 @@ class SignalingCtrl {
       await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).updateAudience(data));
 
       if (ref.read(selectedPresenterProvider) == null) {
-        log('audienceId$audienceId : heartbeat audience | stop', name: 'signaling');
+        log('audienceId$audienceId : heartbeat audience | stop', name: 'SIGNALING-CTRL');
         return false;
       }
       // log(':: heartbeat => $time');
@@ -539,7 +538,7 @@ class SignalingCtrl {
 
   Future joinMeeting(Presenter presenter) async {
     try {
-      log('Join Meeting', name: 'signaling');
+      log('Join Meeting', name: 'SIGNALING-CTRL');
 
       ref.read(isConnectedProvider.notifier).state = true;
       await _fetchConfiguration();
@@ -554,14 +553,14 @@ class SignalingCtrl {
 
       ref.read(selectedPresenterProvider.notifier).state = presenter;
     } catch (e) {
-      log('Join Meeting | error', error: e, name: 'signaling');
+      log('Join Meeting | error', error: e, name: 'SIGNALING-CTRL');
       throw Exception(e.toString());
     }
   }
 
   Future leaveMeeting([int? audienceId]) async {
     try {
-      log('Leave Meeting', name: 'signaling');
+      log('Leave Meeting', name: 'SIGNALING-CTRL');
 
       ref.read(isConnectedProvider.notifier).state = false;
       ref.read(selectedPresenterProvider.notifier).state = null;
@@ -581,10 +580,10 @@ class SignalingCtrl {
         await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).updateAudience(data));
       }
 
-      log('Closing Subscription', name: 'signaling');
+      log('Closing Subscription', name: 'SIGNALING-CTRL');
       _audienceSubs?.close();
     } catch (e) {
-      log('Leave Meeting | error', error: e, name: 'signaling');
+      log('Leave Meeting | error', error: e, name: 'SIGNALING-CTRL');
     }
   }
 }

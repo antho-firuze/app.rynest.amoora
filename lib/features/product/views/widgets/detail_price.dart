@@ -1,5 +1,5 @@
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/product/controller/product_controller.dart';
+import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/features/product/views/product_price_view.dart';
 import 'package:amoora/utils/currency_utils.dart';
 import 'package:amoora/utils/page_utils.dart';

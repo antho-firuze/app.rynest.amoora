@@ -1,5 +1,6 @@
 import 'package:amoora/utils/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // final darkModeProvider = StateNotifierProvider<DarkModeNotifier, bool>(
 //     (ref) => DarkModeNotifier(ref));
@@ -26,6 +27,8 @@ import 'package:flutter/material.dart';
 //     _setDarkMode(state);
 //   }
 // }
+
+final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.light);
 
 extension DarkModeContext on BuildContext {
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;

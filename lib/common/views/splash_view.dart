@@ -8,7 +8,7 @@ import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:amoora/common/controllers/init_controller.dart';
+import 'package:amoora/common/controllers/initialize_controller.dart';
 import 'package:amoora/common/widgets/clipper/smile_clipper.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/utils/ui_helper.dart';
@@ -25,13 +25,26 @@ class SplashView extends ConsumerStatefulWidget {
 class _SplashViewState extends ConsumerState<SplashView> {
   @override
   void initState() {
-    ref.read(initCtrlProvider).initApps();
+    initialize();
     super.initState();
+  }
+
+  void initialize() async {
+    // Note:
+    // Gunakan method di bawah ini sesuai kebutuhan,
+    // running action after widget building is complete.
+    // - WidgetsBinding.instance.addPostFrameCallback((_) {});
+    // - await Future.delayed(Duration.zero);
+    // - await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
+    ref.read(initCtrlProvider).initializeApps();
   }
 
   @override
   Widget build(BuildContext context) {
     return MyUI(
+      enabledSafeArea: false,
+      showConnectivityInfo: false,
       child: Scaffold(
         body: Stack(
           children: [
@@ -66,8 +79,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
                           height: context.screenHeight * .6,
                           child: BackdropFilter(
                             filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-                            child:
-                                Container(color: Colors.black.withOpacity(0)),
+                            child: Container(color: Colors.black.withOpacity(0)),
                           ),
                         ),
                       ),

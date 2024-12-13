@@ -1,5 +1,5 @@
 import 'package:amoora/common/widgets/custom_rich_text.dart';
-import 'package:amoora/features/auth/controller/auth_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/common/services/snackbar_service.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:flutter/gestures.dart';
@@ -20,9 +20,7 @@ class CodeVerifyView extends ConsumerWidget {
 
     return MyUI(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Verifikasi Kode'.hardcoded),
-        ),
+        appBar: AppBar(title: Text('Verifikasi Kode'.hardcoded)),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -33,16 +31,9 @@ class CodeVerifyView extends ConsumerWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       10.height,
-                      Text(
-                        'Kode verifikasi telah dikirim'.hardcoded,
-                        style: tsBodyL(),
-                      ),
+                      Text('Kode verifikasi telah dikirim'.hardcoded).tsBodyL(),
                       20.height,
-                      Text(
-                        'Silahkan masukkan kode verifikasi yang telah anda terima'.hardcoded,
-                        textAlign: TextAlign.center,
-                        style: tsBodyM(),
-                      ),
+                      Text('Silahkan masukkan kode verifikasi yang telah anda terima'.hardcoded).tsBodyM().center(),
                       15.height,
                     ],
                   ),
@@ -58,7 +49,7 @@ class CodeVerifyView extends ConsumerWidget {
                         if (pin == ref.read(verifyCodeProvider)) {
                           return context.pop(true);
                         }
-                        
+
                         SnackBarService.show(message: 'Kode yang anda masukkan salah !'.hardcoded);
                       }
                     },
@@ -75,10 +66,7 @@ class CodeVerifyView extends ConsumerWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              'Kode akan kadaluarsa dalam '.hardcoded,
-                              style: tsBodyM(),
-                            ),
+                            Text('Kode akan kadaluarsa dalam '.hardcoded).tsBodyM(),
                             CountDownTimer(
                               secondsRemaining: ref.read(countdownTimerProvider),
                               countDownStyle: tsBodyM(),

@@ -2,7 +2,7 @@ import 'package:amoora/common/widgets/custom_ink_well.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/qibla/view/qibla_view.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/page_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';

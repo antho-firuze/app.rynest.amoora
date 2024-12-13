@@ -1,6 +1,6 @@
 import 'package:amoora/common/exceptions/data_failed.dart';
 import 'package:amoora/common/widgets/forms/field_list.dart';
-import 'package:amoora/features/product/controller/product_controller.dart';
+import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/utils/datetime_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';

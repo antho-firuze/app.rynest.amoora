@@ -1,13 +1,14 @@
-import 'package:amoora/common/controllers/package_info_controller.dart';
+import 'package:amoora/common/controllers/package_info_ctrl.dart';
 import 'package:amoora/common/views/about_view.dart';
 import 'package:amoora/common/views/contact_us_view.dart';
 import 'package:amoora/common/widgets/forms/group_list.dart';
-import 'package:amoora/features/auth/controller/auth_controller.dart';
+import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/auth/views/pwd_change_view.dart';
-import 'package:amoora/features/user/controller/user_setting_controller.dart';
+import 'package:amoora/features/user/controller/user_setting_ctrl.dart';
 import 'package:amoora/features/user/views/profile/profile_edit_view.dart';
 import 'package:amoora/features/user/views/user_setting/widgets/device_check_view.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:amoora/utils/page_utils.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class UserSettingView extends ConsumerWidget {
             children: [
               if (ref.watch(authUserProvider) != null) ...[
                 GroupList(
+                  padding: EdgeInsets.zero,
                   children: [
                     ListTile(
                       leading: const Icon(SuperIcons.mg_location_2_fill),
@@ -88,6 +90,7 @@ class UserSettingView extends ConsumerWidget {
                   ],
                 ),
                 GroupList(
+                  padding: EdgeInsets.zero,
                   children: [
                     ListTile(
                       leading: const Icon(Icons.edit),
@@ -97,6 +100,7 @@ class UserSettingView extends ConsumerWidget {
                   ],
                 ),
                 GroupList(
+                  padding: EdgeInsets.zero,
                   children: [
                     ListTile(
                       leading: const Icon(Icons.password_outlined),
@@ -204,6 +208,7 @@ class UserSettingView extends ConsumerWidget {
               ),
               if (ref.watch(authUserProvider) != null) ...[
                 GroupList(
+                  padding: EdgeInsets.zero,
                   children: [
                     ListTile(
                       leading: const Icon(Icons.exit_to_app),

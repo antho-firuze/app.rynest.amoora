@@ -7,7 +7,7 @@ part of 'post.dart';
 // **************************************************************************
 
 _$PostImpl _$$PostImplFromJson(Map<String, dynamic> json) => _$PostImpl(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String? ?? '',
       category: json['category'] as String? ?? '',
       pubDate: json['pubDate'] == null

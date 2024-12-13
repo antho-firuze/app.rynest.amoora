@@ -8,8 +8,8 @@ part of 'profile.dart';
 
 _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
     _$ProfileImpl(
-      userId: json['user_id'] as int?,
-      memberId: json['member_id'] as int?,
+      userId: (json['user_id'] as num?)?.toInt(),
+      memberId: (json['member_id'] as num?)?.toInt(),
       identifier: json['identifier'] as String? ?? '',
       name: json['name'] as String? ?? '',
       fullName: json['full_name'] as String? ?? '',
@@ -18,11 +18,11 @@ _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
       isPhoneVerified: json['is_phone_verified'] == null
           ? false
           : const IntToBoolConverter()
-              .fromJson(json['is_phone_verified'] as int),
+              .fromJson((json['is_phone_verified'] as num).toInt()),
       isEmailVerified: json['is_email_verified'] == null
           ? false
           : const IntToBoolConverter()
-              .fromJson(json['is_email_verified'] as int),
+              .fromJson((json['is_email_verified'] as num).toInt()),
       address: json['address'] as String? ?? '',
       photo: json['photo'] as String? ?? '',
       passportNo: json['passport_no'] as String?,

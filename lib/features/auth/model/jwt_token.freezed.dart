@@ -12,7 +12,7 @@ part of 'jwt_token.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 JwtToken _$JwtTokenFromJson(Map<String, dynamic> json) {
   return _JwtToken.fromJson(json);
@@ -27,8 +27,12 @@ mixin _$JwtToken {
   @JsonKey(name: 'refresh_token')
   String? get refreshToken => throw _privateConstructorUsedError;
 
+  /// Serializes this JwtToken to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of JwtToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $JwtTokenCopyWith<JwtToken> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$JwtTokenCopyWithImpl<$Res, $Val extends JwtToken>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of JwtToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$JwtTokenImplCopyWithImpl<$Res>
       _$JwtTokenImpl _value, $Res Function(_$JwtTokenImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of JwtToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,11 +155,13 @@ class _$JwtTokenImpl implements _JwtToken {
                 other.refreshToken == refreshToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, accessToken, refreshToken);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of JwtToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$JwtTokenImplCopyWith<_$JwtTokenImpl> get copyWith =>
@@ -174,15 +184,19 @@ abstract class _JwtToken implements JwtToken {
   factory _JwtToken.fromJson(Map<String, dynamic> json) =
       _$JwtTokenImpl.fromJson;
 
-  @override // @JsonKey(name: 'token_type') @Default('Bearer') String type,
+// @JsonKey(name: 'token_type') @Default('Bearer') String type,
 // @JsonKey(name: 'expires_in') @Default(0) int expiresIn,
+  @override
   @JsonKey(name: 'access_token')
   String? get accessToken;
   @override
   @JsonKey(name: 'refresh_token')
   String? get refreshToken;
+
+  /// Create a copy of JwtToken
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$JwtTokenImplCopyWith<_$JwtTokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

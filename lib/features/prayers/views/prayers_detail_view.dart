@@ -1,10 +1,10 @@
 import 'package:amoora/common/widgets/button/darkmode_button.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/core/app_theme.dart';
-import 'package:amoora/features/prayers/controller/prayer_controller.dart';
+import 'package:amoora/features/prayers/controller/prayer_ctrl.dart';
 import 'package:amoora/features/prayers/controller/prayer_experience.dart';
 import 'package:amoora/features/prayers/views/widgets/bottom_overlay.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:amoora/utils/string_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';

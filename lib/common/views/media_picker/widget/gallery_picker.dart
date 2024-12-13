@@ -1,10 +1,10 @@
-import 'package:amoora/common/controllers/media_picker_controller.dart';
+import 'package:amoora/common/controllers/media_picker_ctrl.dart';
 import 'package:amoora/common/exceptions/warning_exeption.dart';
 import 'package:amoora/common/views/media_picker/widget/album_list.dart';
 import 'package:amoora/common/views/media_picker/widget/asset_card.dart';
 import 'package:amoora/common/widgets/button/custom_button.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/router.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';

@@ -1,8 +1,8 @@
 import 'package:amoora/common/widgets/custom_card.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_alert.dart';
-import 'package:amoora/features/prayer_times/controller/prayer_times_controller.dart';
-import 'package:amoora/utils/darkmode_utils.dart';
+import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/orientation_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';

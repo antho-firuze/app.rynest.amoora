@@ -8,7 +8,7 @@ part of 'itinerary.dart';
 
 _$ItineraryImpl _$$ItineraryImplFromJson(Map<String, dynamic> json) =>
     _$ItineraryImpl(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String? ?? '',
       subTitle: json['sub_title'] as String? ?? '',
       desc: json['detail_itinerary'] as String? ?? '',

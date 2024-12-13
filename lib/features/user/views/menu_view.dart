@@ -1,8 +1,8 @@
 import 'dart:developer';
 
-import 'package:amoora/features/live_location/controller/live_maps_controller.dart';
-import 'package:amoora/features/live_streaming/controller/signaling_controller.dart';
-import 'package:amoora/features/user/controller/menu_controller.dart';
+import 'package:amoora/features/live_location/controller/live_maps_ctrl.dart';
+import 'package:amoora/features/live_streaming/controller/signaling_ctrl.dart';
+import 'package:amoora/features/user/controller/menu_ctrl.dart';
 import 'package:amoora/features/user/views/home/widgets/menu_button.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:amoora/utils/ui_helper.dart';
