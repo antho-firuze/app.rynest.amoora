@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:amoora/common/models/reqs.dart';
+import 'package:amoora/common/services/api_service.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/live_streaming/model/audience.dart';
 import 'package:amoora/features/live_streaming/model/presenter.dart';
@@ -95,20 +97,22 @@ class SignalingCtrl {
   }
 
   Future<int?> _createRoom(Map<String, dynamic> data) async {
-    try {
-      log('Create Room', name: 'SIGNALING-CTRL');
-      data['state'] = 'active';
-      log("$data", name: 'SIGNALING-CTRL');
-      final state = await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).createPresenter(data));
+    log('Create Room => start', name: 'SIGNALING-CTRL');
+    data['state'] = 'active';
+    log("$data", name: 'SIGNALING-CTRL');
+    final reqs = Reqs(path: '/api/v1/signaling/createPresenter', data: data);
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
-      final presenter = Presenter.fromJson(state.value);
-      ref.read(presenterProvider.notifier).state = presenter;
-
-      return presenter.id;
-    } catch (e) {
-      log('Create Room | error', error: e, name: 'SIGNALING-CTRL');
-      throw Exception(e.toString());
+    if (state.hasError) {
+      log('Create Room => error', name: 'SIGNALING-CTRL');
+      // throw Exception(state.error. .toString());
+      return null;
     }
+
+    final presenter = Presenter.fromJson(state.value);
+    ref.read(presenterProvider.notifier).state = presenter;
+
+    return presenter.id;
   }
 
   Future _waitingAudiences(int presenterId) async {
@@ -207,13 +211,13 @@ class SignalingCtrl {
       log('peer$audienceId : ICE gathering state changed: $state', name: 'SIGNALING-CTRL');
 
       if (state == RTCIceGatheringState.RTCIceGatheringStateComplete) {
-        var data = {
+        final reqs = Reqs(path: '/api/v1/signaling/updateAudience', data: {
           "id": audienceId,
           "offer": _offers[audienceId],
           "state": "offer",
-        };
+        });
+        await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
         log('peer$audienceId : Got Local ICE Candidate', name: 'SIGNALING-CTRL');
-        await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).updateAudience(data));
       }
     };
 
@@ -221,14 +225,14 @@ class SignalingCtrl {
       log('peer$audienceId : Connection state change: $state', name: 'SIGNALING-CTRL');
 
       if (state == RTCPeerConnectionState.RTCPeerConnectionStateConnected) {
-        var data = {
+        final reqs = Reqs(path: '/api/v1/signaling/updateAudience', data: {
           "id": audienceId,
           "offer": null,
           "answer": null,
           "state": "connected",
-        };
+        });
+        await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
         log('peer$audienceId : Set connection state | connected', name: 'SIGNALING-CTRL');
-        await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).updateAudience(data));
       }
     };
 
@@ -244,7 +248,8 @@ class SignalingCtrl {
       await _peers[audienceId]?.close();
       _peers.remove(audienceId);
 
-      await ref.read(signalingSvcProvider).removeAudience({"id": audienceId});
+      final reqs = Reqs(path: '/api/v1/signaling/removeAudience', data: {"id": audienceId});
+      await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
     } catch (e) {
       log('peer$audienceId : closeInstancePeerConnection | error', error: e, name: 'SIGNALING-CTRL');
     }
@@ -255,8 +260,11 @@ class SignalingCtrl {
     await Future.doWhile(() async {
       await Future.delayed(Duration(seconds: heartbeat));
 
-      final data = {"id": presenterId, "heartbeat": DateTime.now().dbDateTime()};
-      await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).updatePresenter(data));
+      final reqs = Reqs(path: '/api/v1/signaling/updatePresenter', data: {
+        "id": presenterId,
+        "heartbeat": DateTime.now().dbDateTime(),
+      });
+      await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
       if (ref.read(presenterProvider) == null) {
         log('presenterId$presenterId : heartbeat presenter | stop', name: 'SIGNALING-CTRL');
@@ -301,8 +309,11 @@ class SignalingCtrl {
           await peer.value?.close();
         }
 
-        await ref.read(signalingSvcProvider).removeAudienceByPresenterId({"presenter_id": presenterId});
-        await ref.read(signalingSvcProvider).removePresenter({"id": presenterId});
+        var reqs = Reqs(path: '/api/v1/signaling/removeAudienceByPresenterId', data: {"presenter_id": presenterId});
+        await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
+
+        reqs = Reqs(path: '/api/v1/signaling/removePresenter', data: {"id": presenterId});
+        await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
       }
 
       log('Closing Subscription', name: 'SIGNALING-CTRL');
@@ -363,22 +374,23 @@ class SignalingCtrl {
   }
 
   Future<Audience> _addAudience(Presenter presenter) async {
-    try {
-      log('Add Audience', name: 'SIGNALING-CTRL');
-      final data = {
-        "presenter_id": presenter.id,
-        "state": "join",
-      };
-      final state = await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).createAudience(data));
+    log('Add Audience', name: 'SIGNALING-CTRL');
 
-      final audience = Audience.fromJson(state.value);
-      ref.read(audienceProvider.notifier).state = audience;
+    final reqs = Reqs(path: '/api/v1/signaling/createAudience', data: {
+      "presenter_id": presenter.id,
+      "state": "join",
+    });
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
-      return audience;
-    } catch (e) {
-      log('Add Audience | error', error: e, name: 'SIGNALING-CTRL');
-      throw Exception(e.toString());
+    if (state.hasError) {
+      log('Add Audience | error', name: 'SIGNALING-CTRL');
+      // throw Exception(e.toString());
     }
+
+    final audience = Audience.fromJson(state.value);
+    ref.read(audienceProvider.notifier).state = audience;
+
+    return audience;
   }
 
   Future _setRemoteMedia() async {
@@ -487,13 +499,13 @@ class SignalingCtrl {
       log('ICE gathering state changed: $state', name: 'SIGNALING-CTRL');
 
       if (state == RTCIceGatheringState.RTCIceGatheringStateComplete) {
-        var data = {
+        final reqs = Reqs(path: '/api/v1/signaling/updateAudience', data: {
           "id": audienceId,
           "answer": _answer,
           "state": "answer",
-        };
+        });
+        await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
         log('Got Local ICE Candidate', name: 'SIGNALING-CTRL');
-        await ref.read(signalingSvcProvider).updateAudience(data);
       }
     };
 
@@ -524,8 +536,11 @@ class SignalingCtrl {
     await Future.doWhile(() async {
       await Future.delayed(Duration(seconds: heartbeat));
 
-      final data = {"id": audienceId, "heartbeat": DateTime.now().dbDateTime()};
-      await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).updateAudience(data));
+      final reqs = Reqs(path: '/api/v1/signaling/updateAudience', data: {
+        "id": audienceId,
+        "heartbeat": DateTime.now().dbDateTime(),
+      });
+      await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
       if (ref.read(selectedPresenterProvider) == null) {
         log('audienceId$audienceId : heartbeat audience | stop', name: 'SIGNALING-CTRL');
@@ -573,11 +588,11 @@ class SignalingCtrl {
       _peer = null;
 
       if (audienceId != null) {
-        var data = {
+        final reqs = Reqs(path: '/api/v1/signaling/updateAudience', data: {
           "id": audienceId,
           "state": "leave",
-        };
-        await AsyncValue.guard(() async => await ref.read(signalingSvcProvider).updateAudience(data));
+        });
+        await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
       }
 
       log('Closing Subscription', name: 'SIGNALING-CTRL');

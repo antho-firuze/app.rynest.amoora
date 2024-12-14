@@ -14,6 +14,7 @@ class BroadcastCtrl {
 
   Future<void> initialize() async {
     log('Initialize Broadcast !');
+    
     await checkMicrophonePermission();
     await ref.read(signalingCtrlProvider).onlineHostListener();
 
@@ -24,13 +25,13 @@ class BroadcastCtrl {
 
   Future<void> checkMicrophonePermission() async {
     final result = await ref.read(permissionServiceProvider).checkMicrophonePermission();
-    log(':: isMicrophoneAllow => $result', name: 'BROADCAST-CTRL');
+    log('checkMicrophonePermission => isMicrophoneAllow : $result', name: 'BROADCAST-CTRL');
     ref.read(allowMicrophoneProvider.notifier).state = result;
   }
 
   Future<void> requestMicrophonePermission() async {
     final result = await ref.read(permissionServiceProvider).requestMicrophonePermission();
-    log(':: requestMicrophonePermission => isMicrophoneAllowProvider: $result', name: 'BROADCAST-CTRL');
+    log('requestMicrophonePermission => isMicrophoneAllowProvider : $result', name: 'BROADCAST-CTRL');
     ref.read(allowMicrophoneProvider.notifier).state = result;
   }
 }

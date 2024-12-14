@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/controllers/network_ctrl.dart';
 import 'package:amoora/common/controllers/package_info_ctrl.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
+import 'package:amoora/features/auth/model/jwt_token.dart';
 import 'package:amoora/features/live_location/controller/live_location_ctrl.dart';
 import 'package:amoora/features/live_streaming/controller/broadcast_ctrl.dart';
-import 'package:amoora/features/live_streaming/controller/signaling_ctrl.dart';
 import 'package:amoora/features/notification/controller/notification_ctrl.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_alert.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
@@ -56,7 +58,7 @@ class InitializeCtrl {
     // Initialized Quran
     ref.read(quranCtrlProvider).initialize();
 
-    // Initialize Broadcast 
+    // Initialize Broadcast
     // for presenter  => broadcast audio streaming
     // for audience   => received/listen audio streaming (from presenter)
     ref.read(broadcastCtrlProvider).initialize();
@@ -65,6 +67,20 @@ class InitializeCtrl {
     // for muthowwif  => monitoring jamaah
     // for jamaah     => push coordinate
     ref.read(liveLocationCtrlProvider).initialize();
+
+    // Check Is Token Expired
+    if (ref.read(authTokenProvider) != null) {
+      log("initialize => check token ?", name: "INITIALIZE-CTRL");
+      if (ref.read(authTokenProvider)!.hasExpired()) {
+        log("initialize => token has expired", name: "INITIALIZE-CTRL");
+        await ref.read(authCtrlProvider).signOut(silence: true);
+      } else {
+        log("initialize => token still valid", name: "INITIALIZE-CTRL");
+      }
+    } else {
+      log("initialize => token is null", name: "INITIALIZE-CTRL");
+      await ref.read(authCtrlProvider).signOut(silence: true);
+    }
 
     // Goto Next Route
     if (_showWalkThrough) {

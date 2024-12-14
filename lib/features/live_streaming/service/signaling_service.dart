@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/common/services/stream_service.dart';
-import 'package:amoora/core/app_base.dart';
 import 'package:amoora/env/env.dart';
 import 'package:amoora/utils/dio_service.dart';
 import 'package:amoora/utils/sse_utils.dart';
@@ -22,56 +21,33 @@ final serverName = <Server, String>{
 
 // AUDIENCE SECTION
 final onlineHostStreamProvider = StreamProvider<SseMessage?>((ref) async* {
-  final reqs = Reqs(data: {"stream_type": "online_host"});
+  final reqs = Reqs(data: {
+    "stream_type": "online_host",
+  });
   final fetchStream = await ref.read(streamServiceProvider).call(reqs: reqs);
 
   yield* fetchStream!;
-
-  // final url = Uri.parse(AppBase.broadcastStreamUrl).toString();
-  // final data = {
-  //   "stream_type": "online_host",
-  // };
-  // Response<ResponseBody>? response = await ref.read(dioStreamProvider).get(url, data: FormData.fromMap(data));
-
-  // // Transform stream value Uint8List to SseMessage
-  // yield* response.data!.stream
-  //     .transform(uInt8Transformer)
-  //     .transform(const Utf8Decoder())
-  //     .transform(const LineSplitter())
-  //     .transform(const SseTransformer());
 });
 
 final audienceStreamProvider = StreamProvider.family<SseMessage?, int>((ref, audienceId) async* {
-  final url = Uri.parse(AppBase.broadcastStreamUrl).toString();
-  final data = {
+  final reqs = Reqs(data: {
     "stream_type": "audience",
     "id": audienceId,
-  };
-  Response<ResponseBody>? response = await ref.read(dioStreamProvider).get(url, data: FormData.fromMap(data));
+  });
+  final fetchStream = await ref.read(streamServiceProvider).call(reqs: reqs);
 
-  // Transform stream value Uint8List to SseMessage
-  yield* response.data!.stream
-      .transform(uInt8Transformer)
-      .transform(const Utf8Decoder())
-      .transform(const LineSplitter())
-      .transform(const SseTransformer());
+  yield* fetchStream!;
 });
 
 // PRESENTER SECTION
 final onlineParticipantStreamProvider = StreamProvider.family<SseMessage?, int>((ref, presenterId) async* {
-  final url = Uri.parse(AppBase.broadcastStreamUrl).toString();
-  final data = {
+  final reqs = Reqs(data: {
     "stream_type": "participant",
     "presenter_id": presenterId,
-  };
-  Response<ResponseBody>? response = await ref.read(dioStreamProvider).get(url, data: FormData.fromMap(data));
+  });
+  final fetchStream = await ref.read(streamServiceProvider).call(reqs: reqs);
 
-  // Transform stream value Uint8List to SseMessage
-  yield* response.data!.stream
-      .transform(uInt8Transformer)
-      .transform(const Utf8Decoder())
-      .transform(const LineSplitter())
-      .transform(const SseTransformer());
+  yield* fetchStream!;
 });
 
 class SignalingSvc {
@@ -154,55 +130,6 @@ class SignalingSvc {
     });
     final state =
         await AsyncValue.guard(() async => await ref.read(dioProvider).post(url, data: data, options: options));
-
-    return state.value?.data;
-  }
-
-  Future createPresenter(Map<String, dynamic> data) async {
-    final url = Uri.parse(AppBase.url).replace(path: '/api/v1/signaling/createPresenter').toString();
-    final state = await AsyncValue.guard(() async => await ref.read(dioApiProvider).post(url, data: data));
-
-    return state.value?.data;
-  }
-
-  Future updatePresenter(Map<String, dynamic> data) async {
-    final url = Uri.parse(AppBase.url).replace(path: '/api/v1/signaling/updatePresenter').toString();
-    final state = await AsyncValue.guard(() async => await ref.read(dioApiProvider).post(url, data: data));
-
-    return state.value?.data;
-  }
-
-  Future removePresenter(Map<String, dynamic> data) async {
-    final url = Uri.parse(AppBase.url).replace(path: '/api/v1/signaling/removePresenter').toString();
-    final state = await AsyncValue.guard(() async => await ref.read(dioApiProvider).post(url, data: data));
-
-    return state.value?.data;
-  }
-
-  Future createAudience(Map<String, dynamic> data) async {
-    final url = Uri.parse(AppBase.url).replace(path: '/api/v1/signaling/createAudience').toString();
-    final state = await AsyncValue.guard(() async => await ref.read(dioApiProvider).post(url, data: data));
-
-    return state.value?.data;
-  }
-
-  Future updateAudience(Map<String, dynamic> data) async {
-    final url = Uri.parse(AppBase.url).replace(path: '/api/v1/signaling/updateAudience').toString();
-    final state = await AsyncValue.guard(() async => await ref.read(dioApiProvider).post(url, data: data));
-
-    return state.value?.data;
-  }
-
-  Future removeAudience(Map<String, dynamic> data) async {
-    final url = Uri.parse(AppBase.url).replace(path: '/api/v1/signaling/removeAudience').toString();
-    final state = await AsyncValue.guard(() async => await ref.read(dioApiProvider).post(url, data: data));
-
-    return state.value?.data;
-  }
-
-  Future removeAudienceByPresenterId(Map<String, dynamic> data) async {
-    final url = Uri.parse(AppBase.url).replace(path: '/api/v1/signaling/removeAudienceByPresenterId').toString();
-    final state = await AsyncValue.guard(() async => await ref.read(dioApiProvider).post(url, data: data));
 
     return state.value?.data;
   }

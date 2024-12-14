@@ -1,6 +1,5 @@
 import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/exceptions/warning_exeption.dart';
-import 'package:amoora/common/widgets/connectivity_wrapper.dart';
 import 'package:amoora/common/widgets/button/settings_button.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/notification/views/notification_setting_view.dart';

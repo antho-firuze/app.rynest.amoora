@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:amoora/core/app_color.dart';
 import 'package:amoora/utils/ui_helper.dart';
 
 class CustomCheckBox extends StatelessWidget {

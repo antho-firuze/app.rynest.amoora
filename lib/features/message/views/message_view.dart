@@ -1,4 +1,3 @@
-import 'package:amoora/common/widgets/connectivity_wrapper.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/auth/views/signin_view.dart';

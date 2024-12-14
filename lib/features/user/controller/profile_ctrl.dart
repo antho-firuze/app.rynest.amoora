@@ -22,19 +22,19 @@ class ProfileCtrl {
   Future<void> initialize() async {
     log('Initialize Profile !');
 
-    loadProfile();
+    if (ref.read(authUserProvider) != null) {
+      loadProfile();
+    }
 
     ref.listen(authUserProvider, (previous, next) async {
-      if (next != null) {
-        await fetchProfile();
-      } else {
-        saveProfile(null);
-      }
+      await fetchProfile();
     });
   }
 
   Future<void> fetchProfile() async {
     if (ref.read(authUserProvider) == null) {
+      log("fetchProfile => authUserProvider = null", name: 'PROFILE-CTRL');
+      saveProfile(null);
       return;
     }
 

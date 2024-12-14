@@ -46,7 +46,7 @@ class AuthCtrl {
   final _userKey = 'COOKIE_USER';
   final _rememberKey = 'COOKIE_REMEMBER';
 
-  void initialize() {
+  void  initialize() {
     log('Initialize User & Token !');
 
     loadUser();

@@ -1,6 +1,5 @@
 import 'package:amoora/common/widgets/button/custom_button.dart';
 import 'package:amoora/common/widgets/button/darkmode_button.dart';
-import 'package:amoora/common/widgets/connectivity_wrapper.dart';
 import 'package:amoora/common/widgets/button/custom_circle_button.dart';
 import 'package:amoora/common/widgets/custom_ink_well.dart';
 import 'package:amoora/common/widgets/custom_rich_text.dart';
