@@ -27,7 +27,7 @@ class InfoQiblaDirection extends ConsumerWidget {
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
-              color: const Color(0x25000000).whenDark(oWhite70),
+              color: const Color(0x25000000).whenDark(oWhite70)!,
               blurRadius: 3.0,
               offset: const Offset(0, 1),
             ),

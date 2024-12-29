@@ -36,6 +36,7 @@ const Color oGold = Color(0xFFF3CD05); // font
 const Color oGold50 = Color(0xFFF49F05); // font alt1
 const Color oGold100 = Color(0xFFFFBB00); // font alt2
 const Color oGold200 = Color(0xFFE3B212); // font alt3
+const Color oGold300 = Color(0xFFA9850E); // font alt4
 
 // ka'bah
 const Color oDarkBlue = Color(0xFF162844); // font

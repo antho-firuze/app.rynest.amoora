@@ -71,7 +71,7 @@ TextStyle tsCaption() => Theme.of(rootNavigatorKey.currentContext!).textTheme.bo
 
 extension TextStyleHelpers on TextStyle {
   TextStyle family(String family) => copyWith(fontFamily: family);
-  TextStyle clr(Color color) => copyWith(color: color);
+  TextStyle clr(Color? color) => copyWith(color: color);
   TextStyle size(double size) => copyWith(fontSize: size);
   TextStyle get italic => copyWith(fontStyle: FontStyle.italic);
   TextStyle get thin => copyWith(fontWeight: FontWeight.w100);
@@ -147,6 +147,7 @@ extension AnotherTextStyleHelpers on Text {
   Text get thin => _text(newStyle: (style ?? ts).copyWith(fontWeight: FontWeight.w100));
   Text get extraLight => _text(newStyle: (style ?? ts).copyWith(fontWeight: FontWeight.w200));
   Text get light => _text(newStyle: (style ?? ts).copyWith(fontWeight: FontWeight.w300));
+  Text height(double? height) => _text(newStyle: (style ?? ts).copyWith(height: height));
   Text space(double? ltrSpacing) => _text(newStyle: (style ?? ts).copyWith(letterSpacing: ltrSpacing));
   Text letterSpace(double value) => _text(newStyle: (style ?? ts).copyWith(letterSpacing: value));
   Text bold([FontWeight? fontWeight]) =>

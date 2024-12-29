@@ -8,7 +8,7 @@ import 'package:amoora/features/live_streaming/views/presenter_view.dart';
 import 'package:amoora/features/prayer_times/views/prayer_times_view.dart';
 import 'package:amoora/features/prayers/views/prayers_view.dart';
 import 'package:amoora/features/qibla/view/qibla_view.dart';
-import 'package:amoora/features/quran/views/home_quran_view.dart';
+import 'package:amoora/features/quran2/views/home_quran_view.dart';
 import 'package:amoora/features/user/model/app_menu.dart';
 import 'package:amoora/core/app_asset.dart';
 import 'package:amoora/features/user/service/menu_service.dart';
@@ -98,8 +98,8 @@ class MenuCtrl {
       "agenda" => await ref.read(pageUtilsProvider).goto(page: const AgendaView()),
       "jelajah" => await ref.read(pageUtilsProvider).goto(page: const JelajahView()),
       "liveLocation" => await ref.read(authCtrlProvider).signInGoto(page: const LiveMapView()),
-      "presenter" =>await ref.read(authCtrlProvider).signInGoto(page: const PresenterView()),
-      "listener" =>await ref.read(authCtrlProvider).signInGoto(page: const AudienceView()),
+      "presenter" => await ref.read(authCtrlProvider).signInGoto(page: const PresenterView()),
+      "listener" => await ref.read(authCtrlProvider).signInGoto(page: const AudienceView()),
       "exchangeRate" => await ref.read(pageUtilsProvider).goto(page: const ExchangeRateView()),
       String() => '',
     };

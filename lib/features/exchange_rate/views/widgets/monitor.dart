@@ -33,9 +33,7 @@ class Monitor extends ConsumerWidget {
   Future<dynamic> selectCurrency(BuildContext context) {
     return showDialog(
       context: context,
-      builder: (context) {
-        return const CurrencyList();
-      },
+      builder: (context) => const CurrencyList(),
     );
   }
 }

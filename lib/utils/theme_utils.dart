@@ -34,6 +34,11 @@ extension DarkModeContext on BuildContext {
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
 }
 
-extension LightDark on Color {
-  Color whenDark(Color dark) => Theme.of(rootNavigatorKey.currentContext!).brightness == Brightness.light ? this : dark;
+extension ExtColor on Color {
+  Color? whenDark(Color? dark) => Theme.of(rootNavigatorKey.currentContext!).brightness == Brightness.light ? this : dark;
 }
+
+extension ExtNull on Null {
+  Color? whenDark(Color? dark) => Theme.of(rootNavigatorKey.currentContext!).brightness == Brightness.light ? this : dark;
+}
+

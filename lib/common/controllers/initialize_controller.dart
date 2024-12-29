@@ -10,7 +10,7 @@ import 'package:amoora/features/live_streaming/controller/broadcast_ctrl.dart';
 import 'package:amoora/features/notification/controller/notification_ctrl.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_alert.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
-import 'package:amoora/features/quran/controller/quran_controller.dart';
+import 'package:amoora/features/quran2/controller/quran_ctrl.dart';
 import 'package:amoora/features/user/controller/profile_ctrl.dart';
 import 'package:amoora/features/user/controller/user_setting_ctrl.dart';
 import 'package:amoora/utils/router.dart';
@@ -56,6 +56,7 @@ class InitializeCtrl {
     ref.read(notificationCtrlProvider).initialize();
 
     // Initialized Quran
+    // ref.read(quranCtrlProvider).initialize();
     ref.read(quranCtrlProvider).initialize();
 
     // Initialize Broadcast

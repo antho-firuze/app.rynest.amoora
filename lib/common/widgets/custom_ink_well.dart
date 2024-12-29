@@ -23,8 +23,7 @@ class CustomInkWell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius:
-          isCircle ? BorderRadius.circular(35) : BorderRadius.circular(radius),
+      borderRadius: isCircle ? BorderRadius.circular(35) : BorderRadius.circular(radius),
       child: Material(
         color: color ?? Colors.transparent,
         child: Tooltip(

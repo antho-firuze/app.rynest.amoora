@@ -43,9 +43,7 @@ class BottomOverlay extends ConsumerWidget {
                           child: Text(
                             prayers[index - 1].title!.toUpperCase(),
                             overflow: TextOverflow.ellipsis,
-                            style: tsButton().clr(
-                              oWhite.whenDark(oBlack),
-                            ),
+                            style: tsButton().clr(oWhite.whenDark(oBlack)),
                           ),
                         ),
                     ],
@@ -67,9 +65,7 @@ class BottomOverlay extends ConsumerWidget {
                             prayers[index + 1].title!.toUpperCase(),
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.right,
-                            style: tsButton().clr(
-                              oWhite.whenDark(oBlack),
-                            ),
+                            style: tsButton().clr(oWhite.whenDark(oBlack)),
                           ),
                         ),
                       const Icon(Icons.chevron_right),

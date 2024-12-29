@@ -141,7 +141,7 @@ class OptionsPrice extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       width: double.infinity,
       decoration: BoxDecoration(
-        border: Border.all(color: oBlack.whenDark(oWhite)),
+        border: Border.all(color: oBlack.whenDark(oWhite)!),
         borderRadius: BorderRadius.circular(4),
       ),
       child: Column(

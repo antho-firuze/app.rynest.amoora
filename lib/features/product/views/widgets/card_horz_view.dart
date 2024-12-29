@@ -207,7 +207,7 @@ class LeftSideUI extends ConsumerWidget {
                   width: double.infinity,
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 2),
-                    color: oWhite.whenDark(oBlack).withOpacity(.8),
+                    color: oWhite.whenDark(oBlack)!.withOpacity(.8),
                     child: CustomRichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(

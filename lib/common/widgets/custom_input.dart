@@ -24,6 +24,7 @@ class CustomInput extends StatefulWidget {
     this.formatter,
     this.validator,
     this.onChanged,
+    this.showCaptionFromHint = true,
   });
 
   final String? initialValue;
@@ -35,6 +36,7 @@ class CustomInput extends StatefulWidget {
   final Function(String val)? onSubmitted;
   final bool enabled;
   final bool readOnly;
+  final bool showCaptionFromHint;
   final bool? isPassword;
   final int maxLines;
   final int? maxLength;
@@ -79,6 +81,7 @@ class _CustomInputState extends State<CustomInput> with SingleTickerProviderStat
     setState(() {
       isEmpty = controller.text.isEmpty;
       labelText = controller.text.isEmpty ? null : widget.hintText;
+      labelText = widget.showCaptionFromHint ? labelText : null;
     });
   }
 

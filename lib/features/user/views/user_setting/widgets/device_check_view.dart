@@ -71,15 +71,12 @@ class _DeviceCheckViewState extends ConsumerState<DeviceCheckView> with WidgetsB
 
     return MyUI(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Device Check'),
-        ),
+        appBar: AppBar(title: const Text('Device Check')),
         body: ListView(
           shrinkWrap: true,
           children: [
             GroupList(
-              padding: const EdgeInsets.only(left: 18, top: 18),
-              title: "Services",
+              header: ListTile(title: const Text("Services").bold()),
               children: [
                 ListTile(
                   leading: const Icon(SuperIcons.mg_location_2_line),
@@ -98,8 +95,7 @@ class _DeviceCheckViewState extends ConsumerState<DeviceCheckView> with WidgetsB
               ],
             ),
             GroupList(
-              padding: const EdgeInsets.only(left: 18, top: 18),
-              title: "Permissions",
+              header: ListTile(title: const Text("Permissions").bold()),
               children: [
                 ListTile(
                   leading: const Icon(SuperIcons.mg_location_2_line),

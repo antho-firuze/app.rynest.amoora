@@ -1,3 +1,4 @@
+import 'package:amoora/common/widgets/custom_ink_well.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/exchange_rate/service/calculator_service.dart';
 import 'package:amoora/utils/ui_helper.dart';
@@ -76,11 +77,12 @@ class CustomAppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: buttonTapped,
-      child: Card(
-        color: color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+    return Card(
+      color: color,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+      child: CustomInkWell(
+        radius: 30,
+        onTap: buttonTapped,
         child: Center(
           child: Text(
             text,

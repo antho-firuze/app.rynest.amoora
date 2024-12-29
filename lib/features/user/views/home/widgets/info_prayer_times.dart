@@ -37,7 +37,7 @@ class InfoPrayerTimes extends ConsumerWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color(0x25000000).whenDark(oWhite70),
+              color: const Color(0x25000000).whenDark(oWhite70)!,
               blurRadius: 3.0,
               offset: const Offset(0.0, 1.0),
             ),
