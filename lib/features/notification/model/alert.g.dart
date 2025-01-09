@@ -18,12 +18,10 @@ _$AlertImpl _$$AlertImplFromJson(Map<String, dynamic> json) => _$AlertImpl(
           : DateTime.parse(json['created_at'] as String),
       isRead: json['is_read'] == null
           ? false
-          : const IntToBoolConverter()
-              .fromJson((json['is_read'] as num).toInt()),
+          : const JsonBoolConverter().fromJson(json['is_read']),
       pinned: json['pinned'] == null
           ? false
-          : const IntToBoolConverter()
-              .fromJson((json['pinned'] as num).toInt()),
+          : const JsonBoolConverter().fromJson(json['pinned']),
       pinnedDuration: (json['pinned_duration'] as num?)?.toInt() ?? 86400,
     );
 
@@ -36,7 +34,7 @@ Map<String, dynamic> _$$AlertImplToJson(_$AlertImpl instance) =>
       'image': instance.image,
       'topic': instance.topic,
       'created_at': instance.createdAt?.toIso8601String(),
-      'is_read': const IntToBoolConverter().toJson(instance.isRead),
-      'pinned': const IntToBoolConverter().toJson(instance.pinned),
+      'is_read': const JsonBoolConverter().toJson(instance.isRead),
+      'pinned': const JsonBoolConverter().toJson(instance.pinned),
       'pinned_duration': instance.pinnedDuration,
     };

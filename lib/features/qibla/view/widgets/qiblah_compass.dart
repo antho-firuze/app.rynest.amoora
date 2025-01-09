@@ -17,8 +17,7 @@ class QiblahCompass extends StatefulWidget {
 }
 
 class QiblahCompassState extends State<QiblahCompass> {
-  final _locationStreamController =
-      StreamController<LocationStatus>.broadcast();
+  final _locationStreamController = StreamController<LocationStatus>.broadcast();
 
   Stream<LocationStatus> get stream => _locationStreamController.stream;
 
@@ -83,8 +82,7 @@ class QiblahCompassState extends State<QiblahCompass> {
 
   Future<void> _checkLocationStatus() async {
     final locationStatus = await FlutterQiblah.checkLocationStatus();
-    if (locationStatus.enabled &&
-        locationStatus.status == LocationPermission.denied) {
+    if (locationStatus.enabled && locationStatus.status == LocationPermission.denied) {
       await FlutterQiblah.requestPermissions();
       final s = await FlutterQiblah.checkLocationStatus();
       _locationStreamController.sink.add(s);

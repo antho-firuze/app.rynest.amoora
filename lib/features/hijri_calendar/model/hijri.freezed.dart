@@ -23,9 +23,9 @@ mixin _$Hijri {
   String? get date => throw _privateConstructorUsedError;
   String? get format => throw _privateConstructorUsedError;
   HijriWeekday? get weekday => throw _privateConstructorUsedError;
-  @StringToIntConverter()
+  @JsonIntConverter()
   int? get day => throw _privateConstructorUsedError;
-  @StringToIntConverter()
+  @JsonIntConverter()
   int? get year => throw _privateConstructorUsedError;
   HijriMonth? get month => throw _privateConstructorUsedError;
 
@@ -47,8 +47,8 @@ abstract class $HijriCopyWith<$Res> {
       {String? date,
       String? format,
       HijriWeekday? weekday,
-      @StringToIntConverter() int? day,
-      @StringToIntConverter() int? year,
+      @JsonIntConverter() int? day,
+      @JsonIntConverter() int? year,
       HijriMonth? month});
 
   $HijriWeekdayCopyWith<$Res>? get weekday;
@@ -145,8 +145,8 @@ abstract class _$$HijriImplCopyWith<$Res> implements $HijriCopyWith<$Res> {
       {String? date,
       String? format,
       HijriWeekday? weekday,
-      @StringToIntConverter() int? day,
-      @StringToIntConverter() int? year,
+      @JsonIntConverter() int? day,
+      @JsonIntConverter() int? year,
       HijriMonth? month});
 
   @override
@@ -211,8 +211,8 @@ class _$HijriImpl implements _Hijri {
       {this.date,
       this.format,
       this.weekday,
-      @StringToIntConverter() this.day,
-      @StringToIntConverter() this.year,
+      @JsonIntConverter() this.day,
+      @JsonIntConverter() this.year,
       this.month});
 
   factory _$HijriImpl.fromJson(Map<String, dynamic> json) =>
@@ -225,10 +225,10 @@ class _$HijriImpl implements _Hijri {
   @override
   final HijriWeekday? weekday;
   @override
-  @StringToIntConverter()
+  @JsonIntConverter()
   final int? day;
   @override
-  @StringToIntConverter()
+  @JsonIntConverter()
   final int? year;
   @override
   final HijriMonth? month;
@@ -277,8 +277,8 @@ abstract class _Hijri implements Hijri {
       {final String? date,
       final String? format,
       final HijriWeekday? weekday,
-      @StringToIntConverter() final int? day,
-      @StringToIntConverter() final int? year,
+      @JsonIntConverter() final int? day,
+      @JsonIntConverter() final int? year,
       final HijriMonth? month}) = _$HijriImpl;
 
   factory _Hijri.fromJson(Map<String, dynamic> json) = _$HijriImpl.fromJson;
@@ -290,10 +290,10 @@ abstract class _Hijri implements Hijri {
   @override
   HijriWeekday? get weekday;
   @override
-  @StringToIntConverter()
+  @JsonIntConverter()
   int? get day;
   @override
-  @StringToIntConverter()
+  @JsonIntConverter()
   int? get year;
   @override
   HijriMonth? get month;

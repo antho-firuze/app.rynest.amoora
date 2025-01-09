@@ -1,3 +1,4 @@
+import 'package:amoora/common/widgets/button/custom_button.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/utils/ui_helper.dart';
@@ -8,13 +9,15 @@ class DataFailed extends StatelessWidget {
   const DataFailed({
     super.key,
     this.message,
-    this.onTap,
+    this.onReload,
+    this.onBack,
     this.padding,
   });
 
   final String? message;
   final EdgeInsetsGeometry? padding;
-  final Function()? onTap;
+  final Function()? onReload;
+  final Function()? onBack;
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +33,28 @@ class DataFailed extends StatelessWidget {
             ),
           ),
           Text(message ?? 'Data belum tersedia !'.hardcoded).tsTitleM().center(),
-          if (onTap != null)
+          if (onReload != null) ...[
+            10.height,
             GestureDetector(
-              onTap: onTap,
+              onTap: onReload,
               child: Opacity(
                 opacity: .3,
                 child: Column(
-                  children: [const Icon(SuperIcons.is_refresh_2_bold, size: 35), const Text('Reload').size(10).clr(oBlack)],
+                  children: [
+                    const Icon(SuperIcons.is_refresh_2_bold, size: 35),
+                    const Text('Reload').size(10).clr(oBlack)
+                  ],
                 ),
               ),
             ),
-          // CustomIconButton(
-          //   onPressed: onTap,
-          //   icon: const Icon(Iconsax.refresh_2, size: 35),
-          // ),
+          ],
+          if (onBack != null) ...[
+            10.height,
+            CustomButton(
+              onPressed: onBack,
+              child: const Text('Tutup'),
+            ),
+          ],
         ],
       ),
     );

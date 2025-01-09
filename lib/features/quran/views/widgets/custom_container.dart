@@ -32,7 +32,7 @@ class CustomContainer extends ConsumerWidget {
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: oBlack.withOpacity(.8).whenDark(oBlack.withOpacity(.9)),
+            color: oBlack.withValues(alpha: .8).whenDark(oBlack.withValues(alpha: .9)),
             border: context.isDarkMode ? Border.all(width: 2, color: oWhite70) : null,
           ),
           child: child,

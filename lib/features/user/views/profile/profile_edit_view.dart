@@ -7,6 +7,7 @@ import 'package:amoora/common/widgets/entry_page/entry_page.dart';
 import 'package:amoora/common/widgets/forms/group_list.dart';
 import 'package:amoora/common/widgets/forms/three_line.dart';
 import 'package:amoora/core/app_base.dart';
+import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/user/controller/profile_ctrl.dart';
 import 'package:amoora/utils/my_ui.dart';
@@ -221,6 +222,7 @@ class ProfileEditView extends ConsumerWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: CustomButton(
+                    color: oRed50,
                     child: const Text('Tutup Akun'),
                     onPressed: () async => await ref.read(authCtrlProvider).unregister(),
                   ),

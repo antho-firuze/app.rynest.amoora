@@ -42,10 +42,6 @@ mixin _$PrayerTimes {
   String? get firstthird => throw _privateConstructorUsedError;
   @JsonKey(name: 'Lastthird')
   String? get lastthird => throw _privateConstructorUsedError;
-  String? get nextPrayer => throw _privateConstructorUsedError;
-  String? get nextPrayerTime => throw _privateConstructorUsedError;
-  String? get currPrayer => throw _privateConstructorUsedError;
-  String? get currPrayerTime => throw _privateConstructorUsedError;
 
   /// Serializes this PrayerTimes to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -74,11 +70,7 @@ abstract class $PrayerTimesCopyWith<$Res> {
       @JsonKey(name: 'Imsak') String? imsak,
       @JsonKey(name: 'Midnight') String? midnight,
       @JsonKey(name: 'Firstthird') String? firstthird,
-      @JsonKey(name: 'Lastthird') String? lastthird,
-      String? nextPrayer,
-      String? nextPrayerTime,
-      String? currPrayer,
-      String? currPrayerTime});
+      @JsonKey(name: 'Lastthird') String? lastthird});
 }
 
 /// @nodoc
@@ -107,10 +99,6 @@ class _$PrayerTimesCopyWithImpl<$Res, $Val extends PrayerTimes>
     Object? midnight = freezed,
     Object? firstthird = freezed,
     Object? lastthird = freezed,
-    Object? nextPrayer = freezed,
-    Object? nextPrayerTime = freezed,
-    Object? currPrayer = freezed,
-    Object? currPrayerTime = freezed,
   }) {
     return _then(_value.copyWith(
       fajr: freezed == fajr
@@ -157,22 +145,6 @@ class _$PrayerTimesCopyWithImpl<$Res, $Val extends PrayerTimes>
           ? _value.lastthird
           : lastthird // ignore: cast_nullable_to_non_nullable
               as String?,
-      nextPrayer: freezed == nextPrayer
-          ? _value.nextPrayer
-          : nextPrayer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nextPrayerTime: freezed == nextPrayerTime
-          ? _value.nextPrayerTime
-          : nextPrayerTime // ignore: cast_nullable_to_non_nullable
-              as String?,
-      currPrayer: freezed == currPrayer
-          ? _value.currPrayer
-          : currPrayer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      currPrayerTime: freezed == currPrayerTime
-          ? _value.currPrayerTime
-          : currPrayerTime // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -196,11 +168,7 @@ abstract class _$$PrayerTimesImplCopyWith<$Res>
       @JsonKey(name: 'Imsak') String? imsak,
       @JsonKey(name: 'Midnight') String? midnight,
       @JsonKey(name: 'Firstthird') String? firstthird,
-      @JsonKey(name: 'Lastthird') String? lastthird,
-      String? nextPrayer,
-      String? nextPrayerTime,
-      String? currPrayer,
-      String? currPrayerTime});
+      @JsonKey(name: 'Lastthird') String? lastthird});
 }
 
 /// @nodoc
@@ -227,10 +195,6 @@ class __$$PrayerTimesImplCopyWithImpl<$Res>
     Object? midnight = freezed,
     Object? firstthird = freezed,
     Object? lastthird = freezed,
-    Object? nextPrayer = freezed,
-    Object? nextPrayerTime = freezed,
-    Object? currPrayer = freezed,
-    Object? currPrayerTime = freezed,
   }) {
     return _then(_$PrayerTimesImpl(
       fajr: freezed == fajr
@@ -277,22 +241,6 @@ class __$$PrayerTimesImplCopyWithImpl<$Res>
           ? _value.lastthird
           : lastthird // ignore: cast_nullable_to_non_nullable
               as String?,
-      nextPrayer: freezed == nextPrayer
-          ? _value.nextPrayer
-          : nextPrayer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nextPrayerTime: freezed == nextPrayerTime
-          ? _value.nextPrayerTime
-          : nextPrayerTime // ignore: cast_nullable_to_non_nullable
-              as String?,
-      currPrayer: freezed == currPrayer
-          ? _value.currPrayer
-          : currPrayer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      currPrayerTime: freezed == currPrayerTime
-          ? _value.currPrayerTime
-          : currPrayerTime // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -311,11 +259,7 @@ class _$PrayerTimesImpl implements _PrayerTimes {
       @JsonKey(name: 'Imsak') this.imsak,
       @JsonKey(name: 'Midnight') this.midnight,
       @JsonKey(name: 'Firstthird') this.firstthird,
-      @JsonKey(name: 'Lastthird') this.lastthird,
-      this.nextPrayer,
-      this.nextPrayerTime,
-      this.currPrayer,
-      this.currPrayerTime});
+      @JsonKey(name: 'Lastthird') this.lastthird});
 
   factory _$PrayerTimesImpl.fromJson(Map<String, dynamic> json) =>
       _$$PrayerTimesImplFromJson(json);
@@ -353,18 +297,10 @@ class _$PrayerTimesImpl implements _PrayerTimes {
   @override
   @JsonKey(name: 'Lastthird')
   final String? lastthird;
-  @override
-  final String? nextPrayer;
-  @override
-  final String? nextPrayerTime;
-  @override
-  final String? currPrayer;
-  @override
-  final String? currPrayerTime;
 
   @override
   String toString() {
-    return 'PrayerTimes(fajr: $fajr, sunrise: $sunrise, dhuhr: $dhuhr, asr: $asr, sunset: $sunset, maghrib: $maghrib, isha: $isha, imsak: $imsak, midnight: $midnight, firstthird: $firstthird, lastthird: $lastthird, nextPrayer: $nextPrayer, nextPrayerTime: $nextPrayerTime, currPrayer: $currPrayer, currPrayerTime: $currPrayerTime)';
+    return 'PrayerTimes(fajr: $fajr, sunrise: $sunrise, dhuhr: $dhuhr, asr: $asr, sunset: $sunset, maghrib: $maghrib, isha: $isha, imsak: $imsak, midnight: $midnight, firstthird: $firstthird, lastthird: $lastthird)';
   }
 
   @override
@@ -385,36 +321,13 @@ class _$PrayerTimesImpl implements _PrayerTimes {
             (identical(other.firstthird, firstthird) ||
                 other.firstthird == firstthird) &&
             (identical(other.lastthird, lastthird) ||
-                other.lastthird == lastthird) &&
-            (identical(other.nextPrayer, nextPrayer) ||
-                other.nextPrayer == nextPrayer) &&
-            (identical(other.nextPrayerTime, nextPrayerTime) ||
-                other.nextPrayerTime == nextPrayerTime) &&
-            (identical(other.currPrayer, currPrayer) ||
-                other.currPrayer == currPrayer) &&
-            (identical(other.currPrayerTime, currPrayerTime) ||
-                other.currPrayerTime == currPrayerTime));
+                other.lastthird == lastthird));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      fajr,
-      sunrise,
-      dhuhr,
-      asr,
-      sunset,
-      maghrib,
-      isha,
-      imsak,
-      midnight,
-      firstthird,
-      lastthird,
-      nextPrayer,
-      nextPrayerTime,
-      currPrayer,
-      currPrayerTime);
+  int get hashCode => Object.hash(runtimeType, fajr, sunrise, dhuhr, asr,
+      sunset, maghrib, isha, imsak, midnight, firstthird, lastthird);
 
   /// Create a copy of PrayerTimes
   /// with the given fields replaced by the non-null parameter values.
@@ -444,11 +357,7 @@ abstract class _PrayerTimes implements PrayerTimes {
       @JsonKey(name: 'Imsak') final String? imsak,
       @JsonKey(name: 'Midnight') final String? midnight,
       @JsonKey(name: 'Firstthird') final String? firstthird,
-      @JsonKey(name: 'Lastthird') final String? lastthird,
-      final String? nextPrayer,
-      final String? nextPrayerTime,
-      final String? currPrayer,
-      final String? currPrayerTime}) = _$PrayerTimesImpl;
+      @JsonKey(name: 'Lastthird') final String? lastthird}) = _$PrayerTimesImpl;
 
   factory _PrayerTimes.fromJson(Map<String, dynamic> json) =
       _$PrayerTimesImpl.fromJson;
@@ -486,14 +395,6 @@ abstract class _PrayerTimes implements PrayerTimes {
   @override
   @JsonKey(name: 'Lastthird')
   String? get lastthird;
-  @override
-  String? get nextPrayer;
-  @override
-  String? get nextPrayerTime;
-  @override
-  String? get currPrayer;
-  @override
-  String? get currPrayerTime;
 
   /// Create a copy of PrayerTimes
   /// with the given fields replaced by the non-null parameter values.

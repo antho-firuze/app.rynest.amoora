@@ -34,13 +34,13 @@ class ItineraryView extends ConsumerWidget {
                 if (itinerary == null) return null;
                 final isDone = itinerary.activityDate?.isBefore(DateTime.now()) ?? false;
                 return Card(
-                  color: isDone ? oGrey.withOpacity(.1) : null,
+                  color: isDone ? oGrey.withValues(alpha: .1) : null,
                   child: Stack(
                     children: [
                       Positioned(
                         right: 0,
                         bottom: 0,
-                        child: isDone ? Icon(Icons.done, color: oDarkGreen.withOpacity(.5), size: 70) : Container(),
+                        child: isDone ? Icon(Icons.done, color: oDarkGreen.withValues(alpha: .5), size: 70) : Container(),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(16),

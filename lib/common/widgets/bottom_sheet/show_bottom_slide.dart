@@ -18,7 +18,7 @@ Future<T?> showBottomSlide<T>({
   return showGeneralDialog(
     context: context,
     pageBuilder: (context, animation1, animation2) => const SizedBox(),
-    barrierColor: barrierColor ?? Colors.black.withOpacity(0.7),
+    barrierColor: barrierColor ?? Colors.black.withValues(alpha: 0.7),
     barrierDismissible: barrierDismissible,
     barrierLabel: "Dismiss",
     transitionDuration: transitionDuration,

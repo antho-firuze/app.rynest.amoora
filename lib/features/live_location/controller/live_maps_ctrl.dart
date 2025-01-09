@@ -30,10 +30,10 @@ class LiveMapsCtrl {
   final double _defaultZoomLevel = 17;
   double _defaultSelfRadiusCircle = 100;
   final double _defaultMemberRadiusCircle = 10;
-  final Color _defaultSelfFillColorCircle = Colors.blue.shade100.withOpacity(.5);
-  final Color _defaultSelfStrokeColorCircle = Colors.blue.shade100.withOpacity(.1);
-  final Color _defaultMemberFillColorCircle = Colors.purple.shade100.withOpacity(.5);
-  final Color _defaultMemberStrokeColorCircle = Colors.purple.shade100.withOpacity(.1);
+  final Color _defaultSelfFillColorCircle = Colors.blue.shade100.withValues(alpha: .5);
+  final Color _defaultSelfStrokeColorCircle = Colors.blue.shade100.withValues(alpha: .1);
+  final Color _defaultMemberFillColorCircle = Colors.purple.shade100.withValues(alpha: .5);
+  final Color _defaultMemberStrokeColorCircle = Colors.purple.shade100.withValues(alpha: .1);
 
   List<Member> _onlineMember = [];
 

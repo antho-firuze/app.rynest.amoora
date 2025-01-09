@@ -12,8 +12,8 @@ _$HijriImpl _$$HijriImplFromJson(Map<String, dynamic> json) => _$HijriImpl(
       weekday: json['weekday'] == null
           ? null
           : HijriWeekday.fromJson(json['weekday'] as Map<String, dynamic>),
-      day: const StringToIntConverter().fromJson(json['day'] as String?),
-      year: const StringToIntConverter().fromJson(json['year'] as String?),
+      day: const JsonIntConverter().fromJson(json['day']),
+      year: const JsonIntConverter().fromJson(json['year']),
       month: json['month'] == null
           ? null
           : HijriMonth.fromJson(json['month'] as Map<String, dynamic>),
@@ -24,10 +24,10 @@ Map<String, dynamic> _$$HijriImplToJson(_$HijriImpl instance) =>
       'date': instance.date,
       'format': instance.format,
       'weekday': instance.weekday,
-      'day': _$JsonConverterToJson<String?, int>(
-          instance.day, const StringToIntConverter().toJson),
-      'year': _$JsonConverterToJson<String?, int>(
-          instance.year, const StringToIntConverter().toJson),
+      'day': _$JsonConverterToJson<dynamic, int>(
+          instance.day, const JsonIntConverter().toJson),
+      'year': _$JsonConverterToJson<dynamic, int>(
+          instance.year, const JsonIntConverter().toJson),
       'month': instance.month,
     };
 

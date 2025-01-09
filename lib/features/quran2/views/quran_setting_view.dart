@@ -5,7 +5,7 @@ import 'package:amoora/features/quran2/controller/quran_ctrl.dart';
 import 'package:amoora/features/quran2/views/widgets/arabic_font_dialog.dart';
 import 'package:amoora/features/quran2/views/widgets/latin_font_dialog.dart';
 import 'package:amoora/features/quran2/views/widgets/trans_font_dialog.dart';
-import 'package:amoora/features/user/views/user_setting/widgets/appearance_dialog.dart';
+import 'package:amoora/common/widgets/appearance_dialog.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:amoora/utils/ui_helper.dart';

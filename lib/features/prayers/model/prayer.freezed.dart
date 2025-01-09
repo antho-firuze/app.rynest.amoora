@@ -30,8 +30,9 @@ mixin _$Prayer {
   String? get latin => throw _privateConstructorUsedError;
   @JsonKey(name: "translasi")
   String? get translate => throw _privateConstructorUsedError;
-  @JsonKey(name: "next")
-  List<Prayer>? get next => throw _privateConstructorUsedError;
+  bool get bookmark => throw _privateConstructorUsedError;
+  String? get tags => throw _privateConstructorUsedError;
+  String? get note => throw _privateConstructorUsedError;
 
   /// Serializes this Prayer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +54,9 @@ abstract class $PrayerCopyWith<$Res> {
       @JsonKey(name: "arab") String? arabic,
       @JsonKey(name: "transliterasi") String? latin,
       @JsonKey(name: "translasi") String? translate,
-      @JsonKey(name: "next") List<Prayer>? next});
+      bool bookmark,
+      String? tags,
+      String? note});
 }
 
 /// @nodoc
@@ -76,7 +79,9 @@ class _$PrayerCopyWithImpl<$Res, $Val extends Prayer>
     Object? arabic = freezed,
     Object? latin = freezed,
     Object? translate = freezed,
-    Object? next = freezed,
+    Object? bookmark = null,
+    Object? tags = freezed,
+    Object? note = freezed,
   }) {
     return _then(_value.copyWith(
       title: freezed == title
@@ -99,10 +104,18 @@ class _$PrayerCopyWithImpl<$Res, $Val extends Prayer>
           ? _value.translate
           : translate // ignore: cast_nullable_to_non_nullable
               as String?,
-      next: freezed == next
-          ? _value.next
-          : next // ignore: cast_nullable_to_non_nullable
-              as List<Prayer>?,
+      bookmark: null == bookmark
+          ? _value.bookmark
+          : bookmark // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tags: freezed == tags
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as String?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -120,7 +133,9 @@ abstract class _$$PrayerImplCopyWith<$Res> implements $PrayerCopyWith<$Res> {
       @JsonKey(name: "arab") String? arabic,
       @JsonKey(name: "transliterasi") String? latin,
       @JsonKey(name: "translasi") String? translate,
-      @JsonKey(name: "next") List<Prayer>? next});
+      bool bookmark,
+      String? tags,
+      String? note});
 }
 
 /// @nodoc
@@ -141,7 +156,9 @@ class __$$PrayerImplCopyWithImpl<$Res>
     Object? arabic = freezed,
     Object? latin = freezed,
     Object? translate = freezed,
-    Object? next = freezed,
+    Object? bookmark = null,
+    Object? tags = freezed,
+    Object? note = freezed,
   }) {
     return _then(_$PrayerImpl(
       title: freezed == title
@@ -164,10 +181,18 @@ class __$$PrayerImplCopyWithImpl<$Res>
           ? _value.translate
           : translate // ignore: cast_nullable_to_non_nullable
               as String?,
-      next: freezed == next
-          ? _value._next
-          : next // ignore: cast_nullable_to_non_nullable
-              as List<Prayer>?,
+      bookmark: null == bookmark
+          ? _value.bookmark
+          : bookmark // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tags: freezed == tags
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as String?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -181,8 +206,9 @@ class _$PrayerImpl implements _Prayer {
       @JsonKey(name: "arab") this.arabic,
       @JsonKey(name: "transliterasi") this.latin,
       @JsonKey(name: "translasi") this.translate,
-      @JsonKey(name: "next") final List<Prayer>? next})
-      : _next = next;
+      this.bookmark = false,
+      this.tags,
+      this.note});
 
   factory _$PrayerImpl.fromJson(Map<String, dynamic> json) =>
       _$$PrayerImplFromJson(json);
@@ -202,20 +228,17 @@ class _$PrayerImpl implements _Prayer {
   @override
   @JsonKey(name: "translasi")
   final String? translate;
-  final List<Prayer>? _next;
   @override
-  @JsonKey(name: "next")
-  List<Prayer>? get next {
-    final value = _next;
-    if (value == null) return null;
-    if (_next is EqualUnmodifiableListView) return _next;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  @JsonKey()
+  final bool bookmark;
+  @override
+  final String? tags;
+  @override
+  final String? note;
 
   @override
   String toString() {
-    return 'Prayer(title: $title, subTitle: $subTitle, arabic: $arabic, latin: $latin, translate: $translate, next: $next)';
+    return 'Prayer(title: $title, subTitle: $subTitle, arabic: $arabic, latin: $latin, translate: $translate, bookmark: $bookmark, tags: $tags, note: $note)';
   }
 
   @override
@@ -230,13 +253,16 @@ class _$PrayerImpl implements _Prayer {
             (identical(other.latin, latin) || other.latin == latin) &&
             (identical(other.translate, translate) ||
                 other.translate == translate) &&
-            const DeepCollectionEquality().equals(other._next, _next));
+            (identical(other.bookmark, bookmark) ||
+                other.bookmark == bookmark) &&
+            (identical(other.tags, tags) || other.tags == tags) &&
+            (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title, subTitle, arabic, latin,
-      translate, const DeepCollectionEquality().hash(_next));
+      translate, bookmark, tags, note);
 
   /// Create a copy of Prayer
   /// with the given fields replaced by the non-null parameter values.
@@ -261,7 +287,9 @@ abstract class _Prayer implements Prayer {
       @JsonKey(name: "arab") final String? arabic,
       @JsonKey(name: "transliterasi") final String? latin,
       @JsonKey(name: "translasi") final String? translate,
-      @JsonKey(name: "next") final List<Prayer>? next}) = _$PrayerImpl;
+      final bool bookmark,
+      final String? tags,
+      final String? note}) = _$PrayerImpl;
 
   factory _Prayer.fromJson(Map<String, dynamic> json) = _$PrayerImpl.fromJson;
 
@@ -281,170 +309,16 @@ abstract class _Prayer implements Prayer {
   @JsonKey(name: "translasi")
   String? get translate;
   @override
-  @JsonKey(name: "next")
-  List<Prayer>? get next;
+  bool get bookmark;
+  @override
+  String? get tags;
+  @override
+  String? get note;
 
   /// Create a copy of Prayer
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PrayerImplCopyWith<_$PrayerImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Prayers _$PrayersFromJson(Map<String, dynamic> json) {
-  return _Prayers.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Prayers {
-  @JsonKey(name: 'data')
-  List<Prayer> get prayers => throw _privateConstructorUsedError;
-
-  /// Serializes this Prayers to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Prayers
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PrayersCopyWith<Prayers> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PrayersCopyWith<$Res> {
-  factory $PrayersCopyWith(Prayers value, $Res Function(Prayers) then) =
-      _$PrayersCopyWithImpl<$Res, Prayers>;
-  @useResult
-  $Res call({@JsonKey(name: 'data') List<Prayer> prayers});
-}
-
-/// @nodoc
-class _$PrayersCopyWithImpl<$Res, $Val extends Prayers>
-    implements $PrayersCopyWith<$Res> {
-  _$PrayersCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Prayers
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? prayers = null,
-  }) {
-    return _then(_value.copyWith(
-      prayers: null == prayers
-          ? _value.prayers
-          : prayers // ignore: cast_nullable_to_non_nullable
-              as List<Prayer>,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$PrayersImplCopyWith<$Res> implements $PrayersCopyWith<$Res> {
-  factory _$$PrayersImplCopyWith(
-          _$PrayersImpl value, $Res Function(_$PrayersImpl) then) =
-      __$$PrayersImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({@JsonKey(name: 'data') List<Prayer> prayers});
-}
-
-/// @nodoc
-class __$$PrayersImplCopyWithImpl<$Res>
-    extends _$PrayersCopyWithImpl<$Res, _$PrayersImpl>
-    implements _$$PrayersImplCopyWith<$Res> {
-  __$$PrayersImplCopyWithImpl(
-      _$PrayersImpl _value, $Res Function(_$PrayersImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Prayers
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? prayers = null,
-  }) {
-    return _then(_$PrayersImpl(
-      prayers: null == prayers
-          ? _value._prayers
-          : prayers // ignore: cast_nullable_to_non_nullable
-              as List<Prayer>,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$PrayersImpl implements _Prayers {
-  _$PrayersImpl({@JsonKey(name: 'data') required final List<Prayer> prayers})
-      : _prayers = prayers;
-
-  factory _$PrayersImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PrayersImplFromJson(json);
-
-  final List<Prayer> _prayers;
-  @override
-  @JsonKey(name: 'data')
-  List<Prayer> get prayers {
-    if (_prayers is EqualUnmodifiableListView) return _prayers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_prayers);
-  }
-
-  @override
-  String toString() {
-    return 'Prayers(prayers: $prayers)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PrayersImpl &&
-            const DeepCollectionEquality().equals(other._prayers, _prayers));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_prayers));
-
-  /// Create a copy of Prayers
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PrayersImplCopyWith<_$PrayersImpl> get copyWith =>
-      __$$PrayersImplCopyWithImpl<_$PrayersImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PrayersImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Prayers implements Prayers {
-  factory _Prayers(
-          {@JsonKey(name: 'data') required final List<Prayer> prayers}) =
-      _$PrayersImpl;
-
-  factory _Prayers.fromJson(Map<String, dynamic> json) = _$PrayersImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'data')
-  List<Prayer> get prayers;
-
-  /// Create a copy of Prayers
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PrayersImplCopyWith<_$PrayersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -25,7 +25,7 @@ class ProductView extends ConsumerWidget {
                 data: (data) {
                   if (data.isEmpty) {
                     return DataFailed(
-                      onTap: () => ref.refresh(fetchProductsProvider),
+                      onReload: () => ref.refresh(fetchProductsProvider),
                     );
                   }
                   return ListView.separated(
@@ -40,7 +40,7 @@ class ProductView extends ConsumerWidget {
                             data: (data) {
                               if (data == null) {
                                 return DataFailed(
-                                  onTap: () => ref.refresh(fetchProductProvider(id)),
+                                  onReload: () => ref.refresh(fetchProductProvider(id)),
                                 );
                               }
                               return CardVertView(

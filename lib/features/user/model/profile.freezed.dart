@@ -31,10 +31,10 @@ mixin _$Profile {
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_phone_verified')
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   bool get isPhoneVerified => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_email_verified')
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   bool get isEmailVerified => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get photo => throw _privateConstructorUsedError;
@@ -64,10 +64,10 @@ abstract class $ProfileCopyWith<$Res> {
       String email,
       String phone,
       @JsonKey(name: 'is_phone_verified')
-      @IntToBoolConverter()
+      @JsonBoolConverter()
       bool isPhoneVerified,
       @JsonKey(name: 'is_email_verified')
-      @IntToBoolConverter()
+      @JsonBoolConverter()
       bool isEmailVerified,
       String address,
       String photo,
@@ -171,10 +171,10 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
       String email,
       String phone,
       @JsonKey(name: 'is_phone_verified')
-      @IntToBoolConverter()
+      @JsonBoolConverter()
       bool isPhoneVerified,
       @JsonKey(name: 'is_email_verified')
-      @IntToBoolConverter()
+      @JsonBoolConverter()
       bool isEmailVerified,
       String address,
       String photo,
@@ -272,10 +272,10 @@ class _$ProfileImpl implements _Profile {
       this.email = '',
       this.phone = '',
       @JsonKey(name: 'is_phone_verified')
-      @IntToBoolConverter()
+      @JsonBoolConverter()
       this.isPhoneVerified = false,
       @JsonKey(name: 'is_email_verified')
-      @IntToBoolConverter()
+      @JsonBoolConverter()
       this.isEmailVerified = false,
       this.address = '',
       this.photo = '',
@@ -307,11 +307,11 @@ class _$ProfileImpl implements _Profile {
   final String phone;
   @override
   @JsonKey(name: 'is_phone_verified')
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   final bool isPhoneVerified;
   @override
   @JsonKey(name: 'is_email_verified')
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   final bool isEmailVerified;
   @override
   @JsonKey()
@@ -396,10 +396,10 @@ abstract class _Profile implements Profile {
       final String email,
       final String phone,
       @JsonKey(name: 'is_phone_verified')
-      @IntToBoolConverter()
+      @JsonBoolConverter()
       final bool isPhoneVerified,
       @JsonKey(name: 'is_email_verified')
-      @IntToBoolConverter()
+      @JsonBoolConverter()
       final bool isEmailVerified,
       final String address,
       final String photo,
@@ -426,11 +426,11 @@ abstract class _Profile implements Profile {
   String get phone;
   @override
   @JsonKey(name: 'is_phone_verified')
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   bool get isPhoneVerified;
   @override
   @JsonKey(name: 'is_email_verified')
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   bool get isEmailVerified;
   @override
   String get address;

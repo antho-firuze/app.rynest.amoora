@@ -14,18 +14,10 @@ class Prayer with _$Prayer {
     @JsonKey(name: "arab") String? arabic,
     @JsonKey(name: "transliterasi") String? latin,
     @JsonKey(name: "translasi") String? translate,
-    @JsonKey(name: "next") List<Prayer>? next, 
+    @Default(false) bool bookmark,
+    String? tags,
+    String? note,
   }) = _Prayer;
 
   factory Prayer.fromJson(Map<String, dynamic> json) => _$PrayerFromJson(json);
-}
-
-@freezed
-class Prayers with _$Prayers {
-
-  factory Prayers({
-    @JsonKey(name: 'data') required List<Prayer> prayers,
-  }) = _Prayers;
-
-  factory Prayers.fromJson(Map<String, dynamic> json) => _$PrayersFromJson(json);
 }

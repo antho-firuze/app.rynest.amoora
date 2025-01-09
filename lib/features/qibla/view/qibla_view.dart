@@ -3,7 +3,7 @@ import 'package:amoora/common/controllers/permission_ctrl.dart';
 import 'package:amoora/common/exceptions/warning_exeption.dart';
 import 'package:amoora/common/services/permission_service.dart';
 import 'package:amoora/core/app_string.dart';
-import 'package:amoora/features/qibla/controller/qibla_controller.dart';
+import 'package:amoora/features/qibla/controller/qibla_ctrl.dart';
 import 'package:amoora/features/qibla/view/widgets/loading_indicator.dart';
 import 'package:amoora/features/qibla/view/widgets/qiblah_compass.dart';
 import 'package:amoora/features/qibla/view/widgets/qiblah_maps.dart';

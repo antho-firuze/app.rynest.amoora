@@ -128,7 +128,7 @@ class PrayerTimesView extends ConsumerWidget {
                   child: CustomAppBar(
                     title: Text('Jadwal Waktu Sholat'.hardcoded),
                     decoration: BoxDecoration(
-                      color: oWhite70.withOpacity(.1),
+                      color: oWhite70.withValues(alpha: .1),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     actions: const [

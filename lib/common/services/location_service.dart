@@ -50,9 +50,10 @@ class LocationService {
     Position? position = await Geolocator.getLastKnownPosition(forceAndroidLocationManager: false);
 
     position ??= await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
-      forceAndroidLocationManager: false,
-      timeLimit: const Duration(seconds: 10),
+      locationSettings: _getLocationSettings,
+      // desiredAccuracy: LocationAccuracy.high,
+      // forceAndroidLocationManager: false,
+      // timeLimit: const Duration(seconds: 10),
     );
 
     return LatLong(position.latitude, position.longitude);

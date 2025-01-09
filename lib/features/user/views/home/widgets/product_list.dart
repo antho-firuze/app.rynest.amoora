@@ -20,11 +20,11 @@ class ProductList extends ConsumerWidget {
       height: 340,
       child: products.when(
         skipLoadingOnRefresh: false,
-        error: (error, stackTrace) => DataFailed(onTap: () => ref.refresh(fetchProductsProvider)),
+        error: (error, stackTrace) => DataFailed(onReload: () => ref.refresh(fetchProductsProvider)),
         loading: () => const Center(child: CircularProgressIndicator()),
         data: (data) {
           if (data.isEmpty) {
-            return DataFailed(onTap: () => ref.refresh(fetchProductsProvider));
+            return DataFailed(onReload: () => ref.refresh(fetchProductsProvider));
           }
           return ListView.separated(
             shrinkWrap: true,
@@ -48,7 +48,7 @@ class ProductList extends ConsumerWidget {
                   );
                 },
                 error: (error, stackTrace) => DataFailed(
-                  onTap: () => ref.refresh(fetchProductProvider(data[index])),
+                  onReload: () => ref.refresh(fetchProductProvider(data[index])),
                 ),
                 loading: () => const Center(child: CircularProgressIndicator()),
               );

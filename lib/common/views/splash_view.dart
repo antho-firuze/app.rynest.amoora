@@ -79,7 +79,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
                           height: context.screenHeight * .6,
                           child: BackdropFilter(
                             filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-                            child: Container(color: Colors.black.withOpacity(0)),
+                            child: Container(color: Colors.black.withValues(alpha: 0)),
                           ),
                         ),
                       ),

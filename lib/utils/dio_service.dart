@@ -1,5 +1,6 @@
 import 'package:amoora/utils/dio_auth_interceptor.dart';
 import 'package:amoora/utils/dio_busy_interceptor.dart';
+import 'package:amoora/utils/dio_download_interceptor.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio/dio.dart';
 import 'package:amoora/utils/dio_logger_interceptor.dart';
@@ -42,7 +43,7 @@ final dioApiFileUploadProvider = Provider.autoDispose((ref) {
 final dioFileDownloadProvider = Provider.autoDispose((ref) {
   final dio = Dio();
 
-  dio.interceptors.add(DioLoggerInterceptor());
+  dio.interceptors.add(DioDownloadInterceptor());
   dio.options.responseType = ResponseType.bytes;
   dio.options.followRedirects = false;
   dio.options.validateStatus = (status) => status! < 500;

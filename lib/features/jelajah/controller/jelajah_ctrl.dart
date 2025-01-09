@@ -16,9 +16,14 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 PanelController panelController = PanelController();
 
 final radiusCircleProvider = StateProvider.autoDispose<double>((ref) => 100);
-
 final markersProvider = StateProvider<Map<MarkerId, Marker>?>((ref) => null);
 final circlesProvider = StateProvider<Map<CircleId, Circle>?>((ref) => null);
+
+final fetchPlacesProvider =
+    FutureProvider<List<Place>>((ref) async => await ref.read(jelajahServiceProvider).fetchPlaces());
+
+final getImageJelajahProvider = FutureProvider.family<String, String>(
+    (ref, filename) async => await ref.read(jelajahServiceProvider).downloadAndSafeByFilename(filename));
 
 class JelajahCtrl {
   Ref ref;
@@ -28,10 +33,10 @@ class JelajahCtrl {
   final double _defaultZoomLevel = 17;
   double _defaultSelfRadiusCircle = 100;
   final double _defaultPlaceRadiusCircle = 10;
-  final Color _defaultSelfFillColorCircle = Colors.blue.shade100.withOpacity(.5);
-  final Color _defaultSelfStrokeColorCircle = Colors.blue.shade100.withOpacity(.1);
-  final Color _defaultPlaceFillColorCircle = Colors.purple.shade100.withOpacity(.5);
-  final Color _defaultPlaceStrokeColorCircle = Colors.purple.shade100.withOpacity(.1);
+  final Color _defaultSelfFillColorCircle = Colors.blue.shade100.withValues(alpha: .5);
+  final Color _defaultSelfStrokeColorCircle = Colors.blue.shade100.withValues(alpha: .1);
+  final Color _defaultPlaceFillColorCircle = Colors.purple.shade100.withValues(alpha: .5);
+  final Color _defaultPlaceStrokeColorCircle = Colors.purple.shade100.withValues(alpha: .1);
 
   List<Place> _places = [];
 
@@ -54,7 +59,7 @@ class JelajahCtrl {
   }
 
   Future initPlaces() async {
-    _places = await ref.read(jelajahServiceProvider).getPlaces();
+    _places = await ref.read(jelajahServiceProvider).fetchPlaces();
   }
 
   CameraPosition initCameraPosition() {
@@ -65,7 +70,7 @@ class JelajahCtrl {
   }
 
   void gotoMyLocation() async {
-    await ref.read(locationCtrlProvider).getPosition();
+    await ref.read(locationCtrlProvider).fetchPosition();
     _myPos = ref.read(latLongProvider);
     await mapController!.animateCamera(CameraUpdate.newLatLngZoom(LatLng(_myPos!.lat, _myPos!.lng), 17));
   }

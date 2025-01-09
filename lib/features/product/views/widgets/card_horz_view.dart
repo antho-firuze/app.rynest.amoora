@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/common/widgets/cross_paint.dart';
 import 'package:amoora/common/widgets/custom_ink_well.dart';
 import 'package:amoora/common/widgets/custom_rating_star.dart';
@@ -179,10 +180,10 @@ class LeftSideUI extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final filename = "${item.id}_${item.categoryName}";
-    final image = ref.watch(getImageProvider("${item.image}|$filename"));
+    final fetchImage = ref.watch(fetchImageProvider(Reqs(url: item.image, fileKey: filename)));
     return Positioned.fill(
       right: context.screenWidth - (context.screenWidth / 2.3),
-      child: image.when(
+      child: fetchImage.when(
         data: (data) {
           return Stack(
             children: [
@@ -207,7 +208,7 @@ class LeftSideUI extends ConsumerWidget {
                   width: double.infinity,
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 2),
-                    color: oWhite.whenDark(oBlack)!.withOpacity(.8),
+                    color: oWhite.whenDark(oBlack)!,
                     child: CustomRichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
@@ -233,7 +234,7 @@ class LeftSideUI extends ConsumerWidget {
             children: [
               SizedBox.expand(
                 child: CustomPaint(
-                  painter: CrossPaint(color: oBlack50.withOpacity(.3)),
+                  painter: CrossPaint(color: oBlack50),
                   child: Center(
                     child: Text(
                       'Image Not Available',
@@ -249,7 +250,7 @@ class LeftSideUI extends ConsumerWidget {
                   width: double.infinity,
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 2),
-                    color: oWhite.withOpacity(.8),
+                    color: oWhite,
                     child: CustomRichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
@@ -324,7 +325,7 @@ class LeftSideUI extends ConsumerWidget {
 //               width: double.infinity,
 //               child: Container(
 //                 padding: const EdgeInsets.symmetric(vertical: 2),
-//                 color: oWhite.whenDark(oBlack).withOpacity(.8),
+//                 color: oWhite.whenDark(oBlack).withValues(alpha: .8),
 //                 child: CustomRichText(
 //                   textAlign: TextAlign.center,
 //                   text: TextSpan(

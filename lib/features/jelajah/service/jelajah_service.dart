@@ -11,9 +11,6 @@ part 'jelajah_service.g.dart';
 @JsonLiteral('../repository/places_repo.json', asConst: true)
 const placesRepo = _$placesRepoJsonLiteral;
 
-final getImageJelajahProvider = FutureProvider.family<String, String>(
-    (ref, filename) async => await ref.read(jelajahServiceProvider).downloadAndSafeByFilename(filename));
-
 class JelajahService {
   final Ref ref;
   JelajahService(this.ref);
@@ -21,7 +18,7 @@ class JelajahService {
   static String baseUrl = Env.jelajahRepoUrl;
   static const dirpath = 'assets/amoora/jelajah';
 
-  Future<List<Place>> getPlaces() async {
+  Future<List<Place>> fetchPlaces() async {
     if (placesRepo.isEmpty) {
       return [];
     } else {

@@ -30,9 +30,9 @@ mixin _$Alert {
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_read')
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   bool get isRead => throw _privateConstructorUsedError;
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   bool get pinned => throw _privateConstructorUsedError;
   @JsonKey(name: 'pinned_duration')
   int get pinnedDuration => throw _privateConstructorUsedError;
@@ -59,8 +59,8 @@ abstract class $AlertCopyWith<$Res> {
       String? image,
       String? topic,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'is_read') @IntToBoolConverter() bool isRead,
-      @IntToBoolConverter() bool pinned,
+      @JsonKey(name: 'is_read') @JsonBoolConverter() bool isRead,
+      @JsonBoolConverter() bool pinned,
       @JsonKey(name: 'pinned_duration') int pinnedDuration});
 }
 
@@ -150,8 +150,8 @@ abstract class _$$AlertImplCopyWith<$Res> implements $AlertCopyWith<$Res> {
       String? image,
       String? topic,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'is_read') @IntToBoolConverter() bool isRead,
-      @IntToBoolConverter() bool pinned,
+      @JsonKey(name: 'is_read') @JsonBoolConverter() bool isRead,
+      @JsonBoolConverter() bool pinned,
       @JsonKey(name: 'pinned_duration') int pinnedDuration});
 }
 
@@ -235,8 +235,8 @@ class _$AlertImpl implements _Alert {
       this.image,
       this.topic,
       @JsonKey(name: 'created_at') this.createdAt,
-      @JsonKey(name: 'is_read') @IntToBoolConverter() this.isRead = false,
-      @IntToBoolConverter() this.pinned = false,
+      @JsonKey(name: 'is_read') @JsonBoolConverter() this.isRead = false,
+      @JsonBoolConverter() this.pinned = false,
       @JsonKey(name: 'pinned_duration') this.pinnedDuration = 86400});
 
   factory _$AlertImpl.fromJson(Map<String, dynamic> json) =>
@@ -261,11 +261,11 @@ class _$AlertImpl implements _Alert {
   final DateTime? createdAt;
   @override
   @JsonKey(name: 'is_read')
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   final bool isRead;
   @override
   @JsonKey()
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   final bool pinned;
   @override
   @JsonKey(name: 'pinned_duration')
@@ -325,8 +325,8 @@ abstract class _Alert implements Alert {
           final String? image,
           final String? topic,
           @JsonKey(name: 'created_at') final DateTime? createdAt,
-          @JsonKey(name: 'is_read') @IntToBoolConverter() final bool isRead,
-          @IntToBoolConverter() final bool pinned,
+          @JsonKey(name: 'is_read') @JsonBoolConverter() final bool isRead,
+          @JsonBoolConverter() final bool pinned,
           @JsonKey(name: 'pinned_duration') final int pinnedDuration}) =
       _$AlertImpl;
 
@@ -350,10 +350,10 @@ abstract class _Alert implements Alert {
   DateTime? get createdAt;
   @override
   @JsonKey(name: 'is_read')
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   bool get isRead;
   @override
-  @IntToBoolConverter()
+  @JsonBoolConverter()
   bool get pinned;
   @override
   @JsonKey(name: 'pinned_duration')

@@ -89,184 +89,188 @@ class _JelajahViewState extends ConsumerState<JelajahView> {
 
     double panelHeightOpen = context.isLandscape() ? height * .77 : height * .87;
 
-    log('build | JelajahView', name: 'jelajah');
-    return PopScope(
-      canPop: false,
-      onPopInvokedWithResult: (didPop, result) {
-        if (didPop) return;
+    // log('build | JelajahView', name: 'jelajah');
+    return ref.watch(fetchPlacesProvider).when(
+          data: (data) => PopScope(
+            canPop: false,
+            onPopInvokedWithResult: (didPop, result) {
+              if (didPop) return;
 
-        if (panelController.panelPosition > .8) {
-          panelController.animatePanelToSnapPoint();
-        } else if (panelController.panelPosition < .8 && panelController.panelPosition > .1) {
-          panelController.close();
-        } else {
-          context.pop();
-        }
-      },
-      child: MyUI(
-        enabledSafeArea: false,
-        child: Scaffold(
-          body: Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              SlidingUpPanel(
-                controller: panelController,
-                maxHeight: panelHeightOpen,
-                minHeight: 37,
-                parallaxEnabled: true,
-                parallaxOffset: .5,
-                snapPoint: .5,
-                header: PillStripe(
-                  onTap: () {
-                    log('onTap | ${panelController.panelPosition}', name: 'jelajah');
-                    if (panelController.panelPosition > .8) {
-                      panelController.animatePanelToSnapPoint();
-                    } else if (panelController.panelPosition < 0.8 && panelController.panelPosition > 0.1) {
-                      panelController.close();
-                    } else if (panelController.panelPosition < 0.1) {
-                      panelController.animatePanelToSnapPoint();
-                    }
-                  },
-                ),
-                body: const BodyPage(),
-                panelBuilder: (sc) => PanelPage(sc: sc),
-                borderRadius: borderRadius,
-              ),
-              SafeArea(
-                top: true,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: CustomAppBar(
-                    title: const Text('Jelajah'),
-                    decoration: BoxDecoration(
-                      color: primaryLight.withOpacity(.7),
-                      borderRadius: BorderRadius.circular(30),
+              if (panelController.panelPosition > .8) {
+                panelController.animatePanelToSnapPoint();
+              } else if (panelController.panelPosition < .8 && panelController.panelPosition > .1) {
+                panelController.close();
+              } else {
+                context.pop();
+              }
+            },
+            child: MyUI(
+              enabledSafeArea: false,
+              child: Scaffold(
+                body: Stack(
+                  alignment: Alignment.topCenter,
+                  children: [
+                    SlidingUpPanel(
+                      controller: panelController,
+                      maxHeight: panelHeightOpen,
+                      minHeight: 37,
+                      parallaxEnabled: true,
+                      parallaxOffset: .5,
+                      snapPoint: .5,
+                      header: PillStripe(
+                        onTap: () {
+                          log('onTap | ${panelController.panelPosition}', name: 'jelajah');
+                          if (panelController.panelPosition > .8) {
+                            panelController.animatePanelToSnapPoint();
+                          } else if (panelController.panelPosition < 0.8 && panelController.panelPosition > 0.1) {
+                            panelController.close();
+                          } else if (panelController.panelPosition < 0.1) {
+                            panelController.animatePanelToSnapPoint();
+                          }
+                        },
+                      ),
+                      body: const BodyPage(),
+                      panelBuilder: (sc) => PanelPage(sc: sc),
+                      borderRadius: borderRadius,
                     ),
-                    actions: [
-                      // const DarkModeButton(),
-                      MoreButton(
-                        onPressed: () async => showModalBottomSheet(
-                          context: context,
-                          useSafeArea: true,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.only(topLeft: Radius.circular(18), topRight: Radius.circular(18)),
+                    SafeArea(
+                      top: true,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: CustomAppBar(
+                          title: const Text('Jelajah'),
+                          decoration: BoxDecoration(
+                            color: primaryLight.withValues(alpha: .7),
+                            borderRadius: BorderRadius.circular(30),
                           ),
-                          builder: (context) => Consumer(
-                            builder: (context, ref, child) {
-                              ref.watch(radiusCircleProvider);
-                              final radius = ref.read(jelajahCtrlProvider).getRadiusCircle;
-                              return MyUI(
-                                isTransparent: true,
-                                child: ListView(
-                                  shrinkWrap: true,
-                                  // mainAxisSize: MainAxisSize.min,
-                                  // crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Stack(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: CloseButton(onPressed: () => context.pop()),
-                                        ),
-                                        const Align(
-                                          alignment: Alignment.center,
-                                          child: Padding(
-                                            padding: EdgeInsets.fromLTRB(10, 12, 10, 0),
-                                            child: Text('Pengaturan Peta Jelajah'),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    divider(),
-                                    ListTile(
-                                      leading: const Icon(SuperIcons.is_radar_1_outline),
-                                      title: Text('Radius lingkaran => ${radius.round()}meter').bold(),
-                                      subtitle: const Text('Area lingkaran yang berwarna biru'
-                                              '\n\nDefault: 100m')
-                                          .tsLabelL(),
-                                      onTap: () async {
-                                        bool? result = await showModalBottomSheet(
-                                          context: context,
-                                          shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(18), topRight: Radius.circular(18)),
-                                          ),
-                                          builder: (context) => MyUI(
-                                            isTransparent: true,
-                                            child: ListView(
-                                              shrinkWrap: true,
-                                              children: [
-                                                Stack(
-                                                  children: [
-                                                    Align(
-                                                      alignment: Alignment.centerLeft,
-                                                      child: CloseButton(onPressed: () => context.pop()),
-                                                    ),
-                                                    const Align(
-                                                      alignment: Alignment.center,
-                                                      child: Padding(
-                                                        padding: EdgeInsets.fromLTRB(10, 12, 10, 0),
-                                                        child: Text('Pilih jarak radius jangkauan'),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                10.height,
-                                                ListTile(
-                                                  title: const Text('100m (default)').bold(),
-                                                  onTap: () {
-                                                    ref.read(jelajahCtrlProvider).setRadiusCircle(100);
-                                                    context.pop(true);
-                                                  },
-                                                ),
-                                                ListTile(
-                                                  title: const Text('200m').bold(),
-                                                  onTap: () {
-                                                    ref.read(jelajahCtrlProvider).setRadiusCircle(200);
-                                                    context.pop(true);
-                                                  },
-                                                ),
-                                                ListTile(
-                                                  title: const Text('300m').bold(),
-                                                  onTap: () {
-                                                    ref.read(jelajahCtrlProvider).setRadiusCircle(300);
-                                                    context.pop(true);
-                                                  },
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
-
-                                        if (result == true) {
-                                          if (context.mounted) Navigator.of(context).pop();
-                                        }
-                                      },
-                                    ),
-                                  ],
+                          actions: [
+                            // const DarkModeButton(),
+                            MoreButton(
+                              onPressed: () async => showModalBottomSheet(
+                                context: context,
+                                useSafeArea: true,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.only(topLeft: Radius.circular(18), topRight: Radius.circular(18)),
                                 ),
-                              );
-                            },
-                          ),
+                                builder: (context) => Consumer(
+                                  builder: (context, ref, child) {
+                                    ref.watch(radiusCircleProvider);
+                                    final radius = ref.read(jelajahCtrlProvider).getRadiusCircle;
+                                    return MyUI(
+                                      isTransparent: true,
+                                      child: ListView(
+                                        shrinkWrap: true,
+                                        // mainAxisSize: MainAxisSize.min,
+                                        // crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Stack(
+                                            children: [
+                                              Align(
+                                                alignment: Alignment.centerLeft,
+                                                child: CloseButton(onPressed: () => context.pop()),
+                                              ),
+                                              const Align(
+                                                alignment: Alignment.center,
+                                                child: Padding(
+                                                  padding: EdgeInsets.fromLTRB(10, 12, 10, 0),
+                                                  child: Text('Pengaturan Peta Jelajah'),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          divider(),
+                                          ListTile(
+                                            leading: const Icon(SuperIcons.is_radar_1_outline),
+                                            title: Text('Radius lingkaran => ${radius.round()}meter').bold(),
+                                            subtitle: const Text('Area lingkaran yang berwarna biru'
+                                                    '\n\nDefault: 100m')
+                                                .tsLabelL(),
+                                            onTap: () async {
+                                              bool? result = await showModalBottomSheet(
+                                                context: context,
+                                                shape: const RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.only(
+                                                      topLeft: Radius.circular(18), topRight: Radius.circular(18)),
+                                                ),
+                                                builder: (context) => MyUI(
+                                                  isTransparent: true,
+                                                  child: ListView(
+                                                    shrinkWrap: true,
+                                                    children: [
+                                                      Stack(
+                                                        children: [
+                                                          Align(
+                                                            alignment: Alignment.centerLeft,
+                                                            child: CloseButton(onPressed: () => context.pop()),
+                                                          ),
+                                                          const Align(
+                                                            alignment: Alignment.center,
+                                                            child: Padding(
+                                                              padding: EdgeInsets.fromLTRB(10, 12, 10, 0),
+                                                              child: Text('Pilih jarak radius jangkauan'),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      10.height,
+                                                      ListTile(
+                                                        title: const Text('100m (default)').bold(),
+                                                        onTap: () {
+                                                          ref.read(jelajahCtrlProvider).setRadiusCircle(100);
+                                                          context.pop(true);
+                                                        },
+                                                      ),
+                                                      ListTile(
+                                                        title: const Text('200m').bold(),
+                                                        onTap: () {
+                                                          ref.read(jelajahCtrlProvider).setRadiusCircle(200);
+                                                          context.pop(true);
+                                                        },
+                                                      ),
+                                                      ListTile(
+                                                        title: const Text('300m').bold(),
+                                                        onTap: () {
+                                                          ref.read(jelajahCtrlProvider).setRadiusCircle(300);
+                                                          context.pop(true);
+                                                        },
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              );
+
+                                              if (result == true) {
+                                                if (context.mounted) Navigator.of(context).pop();
+                                              }
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                            // FeedbackButton(),
+                          ],
                         ),
                       ),
-                      // FeedbackButton(),
-                    ],
+                    ),
+                  ],
+                ),
+                floatingActionButton: Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: FloatingActionButton(
+                    onPressed: ref.read(jelajahCtrlProvider).gotoMyLocation,
+                    child: const Icon(SuperIcons.bx_current_location),
                   ),
                 ),
               ),
-            ],
-          ),
-          floatingActionButton: Padding(
-            padding: const EdgeInsets.only(bottom: 30),
-            child: FloatingActionButton(
-              onPressed: ref.read(jelajahCtrlProvider).gotoMyLocation,
-              child: const Icon(SuperIcons.bx_current_location),
             ),
           ),
-        ),
-      ),
-    );
+          error: (error, stackTrace) => Container(),
+          loading: () => Center(child: CircularProgressIndicator()),
+        );
   }
 }

@@ -26,7 +26,7 @@ mixin _$Hotel {
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'rating')
-  @StringToIntConverter()
+  @JsonIntConverter()
   int get rating => throw _privateConstructorUsedError;
   @JsonKey(name: 'address')
   String get address => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ abstract class $HotelCopyWith<$Res> {
       {int? id,
       @JsonKey(name: 'hotel_id') int? hotelId,
       @JsonKey(name: 'name') String name,
-      @JsonKey(name: 'rating') @StringToIntConverter() int rating,
+      @JsonKey(name: 'rating') @JsonIntConverter() int rating,
       @JsonKey(name: 'address') String address,
       @JsonKey(name: 'link_map') String linkMap,
       @JsonKey(name: 'check_in') DateTime? checkIn,
@@ -134,7 +134,7 @@ abstract class _$$HotelImplCopyWith<$Res> implements $HotelCopyWith<$Res> {
       {int? id,
       @JsonKey(name: 'hotel_id') int? hotelId,
       @JsonKey(name: 'name') String name,
-      @JsonKey(name: 'rating') @StringToIntConverter() int rating,
+      @JsonKey(name: 'rating') @JsonIntConverter() int rating,
       @JsonKey(name: 'address') String address,
       @JsonKey(name: 'link_map') String linkMap,
       @JsonKey(name: 'check_in') DateTime? checkIn,
@@ -207,7 +207,7 @@ class _$HotelImpl implements _Hotel {
       {this.id,
       @JsonKey(name: 'hotel_id') this.hotelId,
       @JsonKey(name: 'name') this.name = '',
-      @JsonKey(name: 'rating') @StringToIntConverter() this.rating = 3,
+      @JsonKey(name: 'rating') @JsonIntConverter() this.rating = 3,
       @JsonKey(name: 'address') this.address = '',
       @JsonKey(name: 'link_map') this.linkMap = '',
       @JsonKey(name: 'check_in') this.checkIn,
@@ -226,7 +226,7 @@ class _$HotelImpl implements _Hotel {
   final String name;
   @override
   @JsonKey(name: 'rating')
-  @StringToIntConverter()
+  @JsonIntConverter()
   final int rating;
   @override
   @JsonKey(name: 'address')
@@ -288,7 +288,7 @@ abstract class _Hotel implements Hotel {
       {final int? id,
       @JsonKey(name: 'hotel_id') final int? hotelId,
       @JsonKey(name: 'name') final String name,
-      @JsonKey(name: 'rating') @StringToIntConverter() final int rating,
+      @JsonKey(name: 'rating') @JsonIntConverter() final int rating,
       @JsonKey(name: 'address') final String address,
       @JsonKey(name: 'link_map') final String linkMap,
       @JsonKey(name: 'check_in') final DateTime? checkIn,
@@ -306,7 +306,7 @@ abstract class _Hotel implements Hotel {
   String get name;
   @override
   @JsonKey(name: 'rating')
-  @StringToIntConverter()
+  @JsonIntConverter()
   int get rating;
   @override
   @JsonKey(name: 'address')

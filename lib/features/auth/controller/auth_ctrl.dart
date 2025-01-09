@@ -399,7 +399,7 @@ class AuthCtrl {
 
   Future<void> unregister() async {
     await AlertService.confirm(
-      body: 'Anda yakin ingin menutup Akun ?'.hardcoded,
+      body: 'Anda yakin ingin menutup Akun Anda di Amoora ?'.hardcoded,
       onYes: () async {
         final reqs = Reqs(path: '/api/v1/auth/send_verification_code', data: {
           "type": "unregister",

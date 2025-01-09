@@ -1,9 +1,9 @@
 import 'package:amoora/common/widgets/custom_ink_well.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/core/app_theme.dart';
 import 'package:amoora/features/quran2/controller/quran_ctrl.dart';
 import 'package:amoora/features/quran2/model/chapter.dart';
 import 'package:amoora/features/quran2/model/verse.dart';
+import 'package:amoora/features/quran2/views/widgets/custom_text.dart';
 import 'package:amoora/features/quran2/views/widgets/verse_bottom_sheet.dart';
 import 'package:amoora/features/quran2/views/widgets/verse_no.dart';
 import 'package:amoora/utils/theme_utils.dart';
@@ -72,32 +72,33 @@ class VerseTile extends ConsumerWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 50, right: 5, top: 5),
-                    child: Text(verse.ar)
-                        .size(ref.watch(arabicFontSizeProvider))
-                        .family(AppTheme.secondaryFont)
-                        .right()
-                        .clr(oBlack.whenDark(oWhite)),
-                    // child: CustomText(verseAr, fontSize: ref.watch(arabicFontSizeProvider)),
+                    // child: Text(verse.ar)
+                    //     .size(ref.watch(arabicFontSizeProvider))
+                    //     .family(AppTheme.secondaryFont)
+                    //     .right()
+                    //     .clr(oBlack.whenDark(oWhite)),
+                    child: CustomText(verse.ar, fontSize: ref.watch(arabicFontSizeProvider)),
                   ),
-                  10.height,
                   Padding(
                     padding: const EdgeInsets.only(left: 50, right: 5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         if (ref.watch(showLatinProvider)) ...[
-                          Text(verse.tr).size(ref.watch(latinFontSizeProvider)).family('glyphs').clr(oGold300),
                           10.height,
+                          Text(verse.tr).size(ref.watch(latinFontSizeProvider)).family('glyphs').clr(oGold300),
                         ],
-                        if (ref.watch(showTransProvider))
+                        if (ref.watch(showTransProvider)) ...[
+                          10.height,
                           Text(verse.idn)
                               .size(ref.watch(transFontSizeProvider))
                               .family('glyphs')
                               .clr(oBlack.whenDark(oWhite)),
+                        ],
+                        if (ref.watch(showLatinProvider) || ref.watch(showTransProvider)) 15.height,
                       ],
                     ),
                   ),
-                  15.height,
                 ],
               ),
             ),

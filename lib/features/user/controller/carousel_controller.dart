@@ -14,10 +14,10 @@ final fetchCarouselProvider = FutureProvider.autoDispose<List<Carousel>>((ref) a
 
   if (state.hasError) return [];
 
-  List<dynamic> jsonList = state.value;
-  if (jsonList.isEmpty) return [];
+  List<dynamic>? jsonList = state.value;
+  if (jsonList == null || jsonList.isEmpty) return [];
 
-  final result = jsonList.map((json) => Carousel.fromJson(json)).toList();
+  final result = jsonList.map((e) => Carousel.fromJson(e)).toList();
   log('fetchCarouselProvider | $result', name: 'carousel_controller');
 
   return result;

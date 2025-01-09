@@ -11,8 +11,8 @@ class QiblaService {
   QiblaService(this.ref);
 
   Future<bool> checkDeviceSensorSupport() async {
-    log('checkDeviceSensorSupport');
     bool result = await FlutterQiblah.androidDeviceSensorSupport() ?? false;
+    log('checkDeviceSensorSupport : $result');
     return result;
   }
 }

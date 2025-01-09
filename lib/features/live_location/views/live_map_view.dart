@@ -195,7 +195,7 @@ class _LiveMapViewState extends ConsumerState<LiveMapView> with WidgetsBindingOb
                 child: CustomAppBar(
                   title: const Text('Pantau Rombongan'),
                   decoration: BoxDecoration(
-                    color: primaryLight.withOpacity(.7),
+                    color: primaryLight.withValues(alpha: .7),
                     borderRadius: BorderRadius.circular(30),
                   ),
                   actions: [

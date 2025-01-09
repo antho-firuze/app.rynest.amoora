@@ -45,7 +45,7 @@ class AgendaList extends StatelessWidget {
         }
 
         return Card(
-          color: isDone ? Colors.green.withOpacity(.1) : null,
+          color: isDone ? Colors.green.withValues(alpha: .1) : null,
           child: Stack(
             children: [
               Positioned(
@@ -54,7 +54,7 @@ class AgendaList extends StatelessWidget {
                 child: isDone
                     ? Icon(
                         Icons.done,
-                        color: oDarkGreen.withOpacity(.5),
+                        color: oDarkGreen.withValues(alpha: .5),
                         size: 70,
                       )
                     : Container(),

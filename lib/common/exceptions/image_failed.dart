@@ -19,7 +19,7 @@ class ImageFailed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: CrossPaint(color: foregroundColor ?? oBlack50.withOpacity(.3)),
+      painter: CrossPaint(color: foregroundColor ?? oBlack50.withValues(alpha: .3)),
       child: Center(
           child: Stack(
         children: [

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:amoora/common/exceptions/image_failed.dart';
+import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/common/widgets/custom_ink_well.dart';
 import 'package:amoora/common/widgets/custom_rating_star.dart';
 import 'package:amoora/core/app_color.dart';
@@ -29,7 +30,7 @@ class CardVertView extends StatelessWidget {
       child: CustomInkWell(
         onTap: onTap,
         radius: 10,
-        // color: oBlack.withOpacity(.05),
+        // color: oBlack.withValues(alpha: .05),
         child: Stack(
           children: [
             Padding(
@@ -146,14 +147,14 @@ class HeaderUI extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final filename = "${item.id}_${item.categoryName}";
-    final image = ref.watch(getImageProvider("${item.image}|$filename"));
+    final fetchImage = ref.watch(fetchImageProvider(Reqs(url: item.image, fileKey: filename)));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Thumbnail
         SizedBox(
           height: 130,
-          child: image.when(
+          child: fetchImage.when(
             skipLoadingOnRefresh: false,
             data: (data) {
               return Container(
@@ -174,7 +175,7 @@ class HeaderUI extends ConsumerWidget {
             },
             error: (error, stackTrace) {
               return ImageFailed(
-                onTap: () => ref.refresh(getImageProvider("${item.image}|$filename")),
+                onTap: () => ref.refresh(fetchImageProvider(Reqs(url: item.image, fileKey: filename))),
               );
             },
             loading: () => const Center(child: CircularProgressIndicator()),

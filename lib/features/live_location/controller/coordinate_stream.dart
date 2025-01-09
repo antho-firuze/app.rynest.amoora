@@ -138,20 +138,37 @@ class CoordinateStream {
       return;
     }
 
-    if (!ref.read(allowMonitorLocationProvider)) {
-      log('_pushCoordinate => allowMonitorLocationProvider : false', name: 'COORDINATE-STREAM');
-      return;
+    switch (ref.read(trackingLocationProvider)) {
+      case TrackingMyLocation.notAllowed:
+        log('trackingLocationProvider : notAllowed', name: 'COORDINATE-STREAM');
+        return;
+      case TrackingMyLocation.allowed:
+        log('trackingLocationProvider : allowed', name: 'COORDINATE-STREAM');
+        break;
+      case TrackingMyLocation.onlyInSaudiArabia:
+        log('trackingLocationProvider : onlyInSaudiArabia', name: 'COORDINATE-STREAM');
+        var placemark = ref.read(placemarkProvider);
+        log('Your placemark: ${placemark?.isoCountryCode}', name: 'COORDINATE-STREAM');
+        if (!['AE', 'SA'].contains(placemark?.isoCountryCode)) {
+          log('trackingLocationProvider : cancelled, reason: not in Arab Saudi !', name: 'COORDINATE-STREAM');
+          return;
+        }
     }
 
-    if (ref.read(allowMonitorInArabOnlyProvider)) {
-      log('_pushCoordinate => allowMonitorInArabOnlyProvider : true', name: 'COORDINATE-STREAM');
-      var placemark = ref.read(placemarkProvider);
-      log('_pushCoordinate => Your placemark: ${placemark?.isoCountryCode}', name: 'COORDINATE-STREAM');
-      if (!['AE', 'SA'].contains(placemark?.isoCountryCode)) {
-        log('_pushCoordinate => Sorry, you are not in Arab Saudi !', name: 'COORDINATE-STREAM');
-        return;
-      }
-    }
+    // if (!ref.read(allowMonitorLocationProvider)) {
+    //   log('_pushCoordinate => allowMonitorLocationProvider : false', name: 'COORDINATE-STREAM');
+    //   return;
+    // }
+
+    // if (ref.read(allowMonitorInArabOnlyProvider)) {
+    //   log('_pushCoordinate => allowMonitorInArabOnlyProvider : true', name: 'COORDINATE-STREAM');
+    //   var placemark = ref.read(placemarkProvider);
+    //   log('_pushCoordinate => Your placemark: ${placemark?.isoCountryCode}', name: 'COORDINATE-STREAM');
+    //   if (!['AE', 'SA'].contains(placemark?.isoCountryCode)) {
+    //     log('_pushCoordinate => Sorry, you are not in Arab Saudi !', name: 'COORDINATE-STREAM');
+    //     return;
+    //   }
+    // }
 
     log('_pushCoordinate => start', name: 'COORDINATE-STREAM');
     _pushStreamSubs = _fetchCoordinateStream().listen((latLong) async {

@@ -10,8 +10,8 @@ class Hijri with _$Hijri {
     String? date,
     String? format,
     HijriWeekday? weekday,
-    @StringToIntConverter() int? day,
-    @StringToIntConverter() int? year,
+    @JsonIntConverter() int? day,
+    @JsonIntConverter() int? year,
     HijriMonth? month,
   }) = _Hijri;
 
@@ -25,8 +25,7 @@ class HijriWeekday with _$HijriWeekday {
     String? ar,
   }) = _HijriWeekday;
 
-  factory HijriWeekday.fromJson(Map<String, dynamic> json) =>
-      _$HijriWeekdayFromJson(json);
+  factory HijriWeekday.fromJson(Map<String, dynamic> json) => _$HijriWeekdayFromJson(json);
 }
 
 @freezed
@@ -37,6 +36,5 @@ class HijriMonth with _$HijriMonth {
     String? ar,
   }) = _HijriMonth;
 
-  factory HijriMonth.fromJson(Map<String, dynamic> json) =>
-      _$HijriMonthFromJson(json);
+  factory HijriMonth.fromJson(Map<String, dynamic> json) => _$HijriMonthFromJson(json);
 }

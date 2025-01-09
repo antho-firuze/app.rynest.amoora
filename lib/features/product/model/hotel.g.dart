@@ -12,7 +12,7 @@ _$HotelImpl _$$HotelImplFromJson(Map<String, dynamic> json) => _$HotelImpl(
       name: json['name'] as String? ?? '',
       rating: json['rating'] == null
           ? 3
-          : const StringToIntConverter().fromJson(json['rating'] as String?),
+          : const JsonIntConverter().fromJson(json['rating']),
       address: json['address'] as String? ?? '',
       linkMap: json['link_map'] as String? ?? '',
       checkIn: json['check_in'] == null
@@ -28,7 +28,7 @@ Map<String, dynamic> _$$HotelImplToJson(_$HotelImpl instance) =>
       'id': instance.id,
       'hotel_id': instance.hotelId,
       'name': instance.name,
-      'rating': const StringToIntConverter().toJson(instance.rating),
+      'rating': const JsonIntConverter().toJson(instance.rating),
       'address': instance.address,
       'link_map': instance.linkMap,
       'check_in': instance.checkIn?.toIso8601String(),

@@ -38,7 +38,7 @@ class HomeQuranView extends ConsumerWidget {
           body: Stack(
             children: [
               Container(
-                color: oBlack50.withOpacity(.5),
+                color: oBlack50,
               ),
               Center(
                 child: SizedBox(
@@ -127,7 +127,7 @@ class HomeQuranView extends ConsumerWidget {
       child: MyUI(
         customUiOverlayStyle: ref.watch(quranOverlayProvider)
             ? SystemUiOverlayStyle(
-                statusBarColor: Colors.black.withOpacity(.9),
+                statusBarColor: Colors.black,
                 statusBarBrightness: Brightness.light,
                 statusBarIconBrightness: Brightness.light,
               )

@@ -8,12 +8,11 @@ part 'hotel.g.dart';
 
 @freezed
 class Hotel with _$Hotel {
-
   factory Hotel({
     int? id,
     @JsonKey(name: 'hotel_id') int? hotelId,
     @JsonKey(name: 'name') @Default('') String name,
-    @JsonKey(name: 'rating') @Default(3) @StringToIntConverter() int rating,
+    @JsonKey(name: 'rating') @Default(3) @JsonIntConverter() int rating,
     @JsonKey(name: 'address') @Default('') String address,
     @JsonKey(name: 'link_map') @Default('') String linkMap,
     @JsonKey(name: 'check_in') DateTime? checkIn,

@@ -12,9 +12,9 @@ _$PrayerImpl _$$PrayerImplFromJson(Map<String, dynamic> json) => _$PrayerImpl(
       arabic: json['arab'] as String?,
       latin: json['transliterasi'] as String?,
       translate: json['translasi'] as String?,
-      next: (json['next'] as List<dynamic>?)
-          ?.map((e) => Prayer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      bookmark: json['bookmark'] as bool? ?? false,
+      tags: json['tags'] as String?,
+      note: json['note'] as String?,
     );
 
 Map<String, dynamic> _$$PrayerImplToJson(_$PrayerImpl instance) =>
@@ -24,17 +24,7 @@ Map<String, dynamic> _$$PrayerImplToJson(_$PrayerImpl instance) =>
       'arab': instance.arabic,
       'transliterasi': instance.latin,
       'translasi': instance.translate,
-      'next': instance.next,
-    };
-
-_$PrayersImpl _$$PrayersImplFromJson(Map<String, dynamic> json) =>
-    _$PrayersImpl(
-      prayers: (json['data'] as List<dynamic>)
-          .map((e) => Prayer.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$$PrayersImplToJson(_$PrayersImpl instance) =>
-    <String, dynamic>{
-      'data': instance.prayers,
+      'bookmark': instance.bookmark,
+      'tags': instance.tags,
+      'note': instance.note,
     };

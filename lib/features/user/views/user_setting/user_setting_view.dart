@@ -5,8 +5,8 @@ import 'package:amoora/common/widgets/forms/group_list.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/auth/views/pwd_change_view.dart';
 import 'package:amoora/features/user/views/profile/profile_edit_view.dart';
-import 'package:amoora/features/user/views/user_setting/widgets/appearance_dialog.dart';
-import 'package:amoora/features/user/views/user_setting/widgets/device_check_view.dart';
+import 'package:amoora/common/widgets/appearance_dialog.dart';
+import 'package:amoora/common/views/device_check_view.dart';
 import 'package:amoora/features/user/views/user_setting/widgets/my_location_dialog.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/utils/my_ui.dart';
@@ -22,6 +22,8 @@ class UserSettingView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(authUserProvider);
+
     return MyUI(
       child: Scaffold(
         appBar: AppBar(title: Text('Akun Saya'.hardcoded)),
@@ -30,17 +32,18 @@ class UserSettingView extends ConsumerWidget {
           child: ListView(
             shrinkWrap: true,
             children: [
-              if (ref.watch(authUserProvider) != null) ...[
-                GroupList(
-                  header: ListTile(
-                    leading: const Icon(SuperIcons.mg_location_2_fill),
-                    title: const Text('Pantau lokasi saya').bold(),
-                    onTap: () async => showDialog(
-                      context: context,
-                      builder: (context) => const MyLocationDialog(),
+              if (user != null) ...[
+                if (user.roleId == 1)
+                  GroupList(
+                    header: ListTile(
+                      leading: const Icon(SuperIcons.mg_location_2_fill),
+                      title: const Text('Pantau lokasi saya').bold(),
+                      onTap: () async => showDialog(
+                        context: context,
+                        builder: (context) => const MyLocationDialog(),
+                      ),
                     ),
                   ),
-                ),
                 GroupList(
                   header: ListTile(
                     leading: const Icon(Icons.edit),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:amoora/common/exceptions/data_failed.dart';
+import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/common/widgets/button/custom_button.dart';
 import 'package:amoora/common/widgets/cross_paint.dart';
 import 'package:amoora/common/widgets/custom_interactive_viewer.dart';
@@ -33,43 +34,44 @@ class ProductDetailView extends ConsumerWidget {
     }
 
     final product = ref.watch(fetchProductProvider(item!.id!));
+    final fetchImage = ref.watch(fetchImageProvider(Reqs(url: item.image, fileKey: "${item.id}_${item.categoryName}")));
     return MyUI(
       enabledSafeArea: false,
       child: Scaffold(
         body: OneUINestedScrollView(
           foregroundColor: oWhite,
-          background: ref.watch(getImageProvider("${item.image}|${item.id}_${item.categoryName}")).when(
-                data: (data) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Colors.brown,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
-                      ),
-                      image: DecorationImage(
-                        image: FileImage(File(data)),
-                        fit: BoxFit.cover,
-                      ),
+          background: fetchImage.when(
+            data: (data) {
+              return Container(
+                decoration: BoxDecoration(
+                  color: Colors.brown,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
+                  image: DecorationImage(
+                    image: FileImage(File(data)),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              );
+            },
+            error: (error, stackTrace) {
+              return SizedBox.expand(
+                child: CustomPaint(
+                  painter: CrossPaint(color: oBlack50),
+                  child: Center(
+                    child: Text(
+                      'Image Not Available',
+                      textAlign: TextAlign.center,
+                      style: tsCaption(),
                     ),
-                  );
-                },
-                error: (error, stackTrace) {
-                  return SizedBox.expand(
-                    child: CustomPaint(
-                      painter: CrossPaint(color: oBlack50.withOpacity(.3)),
-                      child: Center(
-                        child: Text(
-                          'Image Not Available',
-                          textAlign: TextAlign.center,
-                          style: tsCaption(),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-                loading: () => const Center(child: CircularProgressIndicator()),
-              ),
+                  ),
+                ),
+              );
+            },
+            loading: () => const Center(child: CircularProgressIndicator()),
+          ),
           expandedWidget: Text(
             item.name,
             style: tsHeadlineS().clr(oWhite),
@@ -122,11 +124,11 @@ class ProductDetailView extends ConsumerWidget {
                             CustomButton(
                               child: const Text('Lihat Banner'),
                               onPressed: () => context.goto(
-                                page: ref.watch(getImageProvider("${item.image}|${item.id}_${item.categoryName}")).when(
-                                      data: (data) => CustomInteractiveViewer(child: Image.file(File(data))),
-                                      error: (error, stackTrace) => Container(),
-                                      loading: () => const Center(child: CircularProgressIndicator()),
-                                    ),
+                                page: fetchImage.when(
+                                  data: (data) => CustomInteractiveViewer(child: Image.file(File(data))),
+                                  error: (error, stackTrace) => Container(),
+                                  loading: () => const Center(child: CircularProgressIndicator()),
+                                ),
                               ),
                             ),
                           ],

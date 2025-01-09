@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:amoora/common/exceptions/image_failed.dart';
 import 'package:amoora/common/exceptions/loading_failed.dart';
+import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
@@ -39,6 +40,8 @@ class DetailAirlines extends ConsumerWidget {
             itemBuilder: (context, index) {
               var airline = item.airlines?[index];
               if (airline == null) return null;
+              final imageProvider = fetchImageProvider(Reqs(url: airline.image, fileKey: airline.code));
+              final fetchImage = ref.watch(imageProvider);
               return Card(
                 child: Stack(
                   children: [
@@ -49,17 +52,17 @@ class DetailAirlines extends ConsumerWidget {
                           padding: const EdgeInsets.fromLTRB(20, 10, 10, 0),
                           child: Row(
                             children: [
-                              ref.watch(getImageProvider("${airline.image}|${airline.code}")).when(
-                                    data: (data) => Image.file(
-                                      File(data),
-                                      height: 40,
-                                      errorBuilder: (context, error, stackTrace) => const ImageFailed(),
-                                    ),
-                                    error: (error, stackTrace) => LoadingFailed(
-                                      onTap: () => ref.refresh(getImageProvider("${airline.image}|${airline.code}")),
-                                    ),
-                                    loading: () => const CircularProgressIndicator(),
-                                  ),
+                              fetchImage.when(
+                                data: (data) => Image.file(
+                                  File(data),
+                                  height: 40,
+                                  errorBuilder: (context, error, stackTrace) => const ImageFailed(),
+                                ),
+                                error: (error, stackTrace) => LoadingFailed(
+                                  onTap: () => ref.refresh(imageProvider),
+                                ),
+                                loading: () => const CircularProgressIndicator(),
+                              ),
                               5.width,
                               Expanded(
                                 child: Column(

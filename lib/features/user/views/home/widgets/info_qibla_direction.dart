@@ -1,13 +1,12 @@
 import 'package:amoora/common/widgets/custom_ink_well.dart';
+import 'package:amoora/core/app_asset.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/qibla/view/qibla_view.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/page_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:super_icons/super_icons.dart';
 
 class InfoQiblaDirection extends ConsumerWidget {
   const InfoQiblaDirection({
@@ -33,15 +32,7 @@ class InfoQiblaDirection extends ConsumerWidget {
             ),
           ],
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(SuperIcons.is_direct_up_bold, color: oBlack.whenDark(oGold)),
-            5.height,
-            Text('ARAH KIBLAT'.hardcoded).tsLabelS().bold(),
-          ],
-        ),
+        child: Image.asset(AppAsset.icQibla),
       ),
     );
   }

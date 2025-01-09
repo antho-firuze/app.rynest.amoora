@@ -15,13 +15,6 @@ class InfoLocation extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (ref.watch(isBusyLocationProvider)) {
-      return GestureDetector(
-        onTap: () async => await ref.read(locationCtrlProvider).refresh(),
-        child: Skelton(width: context.screenWidth * .4),
-      );
-    }
-
     if (!ref.watch(isGpsEnableProvider)) {
       return IconText(
         onTap: () async => await ref.read(locationCtrlProvider).refresh(),
@@ -66,31 +59,32 @@ class InfoLocation extends ConsumerWidget {
       );
     }
 
-    if (ref.watch(locationProvider).isEmpty) {
-      return Skelton(width: context.screenWidth * .4);
-    }
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         IconText(
-          onTap: () async => await ref.read(locationCtrlProvider).refresh(),
+          onTap: () async => ref.refresh(fetchLocationProvider),
           icon: const Icon(Icons.near_me, color: oGold200),
           text: SizedBox(
             height: 20,
             width: context.screenWidthRatio(.4, .3),
-            child: Marquee(
-              text: ref.watch(locationProvider) ?? '',
-              style: ts.clr(oWhite70),
-              blankSpace: 30,
-              startPadding: 5,
-              pauseAfterRound: const Duration(seconds: 2),
-              accelerationDuration: const Duration(seconds: 3),
-              fadingEdgeStartFraction: .1,
-              fadingEdgeEndFraction: .1,
-              showFadingOnlyWhenScrolling: false,
-            ),
+            child: ref.watch(fetchLocationProvider).when(
+                  skipLoadingOnRefresh: false,
+                  data: (data) => Marquee(
+                    text: ref.watch(locationProvider) ?? '',
+                    style: ts.clr(oWhite70),
+                    blankSpace: 30,
+                    startPadding: 5,
+                    pauseAfterRound: const Duration(seconds: 2),
+                    accelerationDuration: const Duration(seconds: 3),
+                    fadingEdgeStartFraction: .1,
+                    fadingEdgeEndFraction: .1,
+                    showFadingOnlyWhenScrolling: false,
+                  ),
+                  error: (error, stackTrace) => Container(),
+                  loading: () => Skelton(width: context.screenWidth * .4),
+                ),
           ),
         )
       ],

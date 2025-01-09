@@ -14,8 +14,8 @@ class Pill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var clr = color ?? Colors.green;
-    var backgroundColor = clr.withOpacity(0.2);
-    var fontColor = clr.withOpacity(0.9);
+    var backgroundColor = clr.withValues(alpha: 0.2);
+    var fontColor = clr.withValues(alpha: 0.9);
 
     return Padding(
       padding: const EdgeInsets.only(right: 4),

@@ -19,10 +19,6 @@ _$PrayerTimesImpl _$$PrayerTimesImplFromJson(Map<String, dynamic> json) =>
       midnight: json['Midnight'] as String?,
       firstthird: json['Firstthird'] as String?,
       lastthird: json['Lastthird'] as String?,
-      nextPrayer: json['nextPrayer'] as String?,
-      nextPrayerTime: json['nextPrayerTime'] as String?,
-      currPrayer: json['currPrayer'] as String?,
-      currPrayerTime: json['currPrayerTime'] as String?,
     );
 
 Map<String, dynamic> _$$PrayerTimesImplToJson(_$PrayerTimesImpl instance) =>
@@ -38,10 +34,6 @@ Map<String, dynamic> _$$PrayerTimesImplToJson(_$PrayerTimesImpl instance) =>
       'Midnight': instance.midnight,
       'Firstthird': instance.firstthird,
       'Lastthird': instance.lastthird,
-      'nextPrayer': instance.nextPrayer,
-      'nextPrayerTime': instance.nextPrayerTime,
-      'currPrayer': instance.currPrayer,
-      'currPrayerTime': instance.currPrayerTime,
     };
 
 _$PrayerMethodImpl _$$PrayerMethodImplFromJson(Map<String, dynamic> json) =>

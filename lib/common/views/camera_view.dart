@@ -303,7 +303,7 @@ class _CameraViewState extends ConsumerState<CameraView> {
 class Paint extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    canvas.drawColor(Colors.grey.withOpacity(0.8), BlendMode.dstOut);
+    canvas.drawColor(Colors.grey.withValues(alpha: 0.8), BlendMode.dstOut);
   }
 
   @override

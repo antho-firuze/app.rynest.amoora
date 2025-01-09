@@ -45,7 +45,7 @@ Widget divider({
       child: Container(
         width: isHorizontal ? null : thick,
         height: isHorizontal ? thick : null,
-        color: color ?? Colors.grey.withOpacity(0.5),
+        color: color ?? Colors.grey.withValues(alpha: 0.5),
       ),
     );
 
@@ -127,7 +127,7 @@ extension AnotherTextStyleHelpers on Text {
   Text tsHeadlineDS() => _text(newStyle: Theme.of(rootNavigatorKey.currentContext!).textTheme.displaySmall!);
   Text tsHeadlineL() => _text(newStyle: Theme.of(rootNavigatorKey.currentContext!).textTheme.headlineLarge!);
   Text tsHeadlineM() => _text(newStyle: Theme.of(rootNavigatorKey.currentContext!).textTheme.headlineMedium!);
-  Text tsHeadlineS() => _text(newStyle: Theme.of(rootNavigatorKey.currentContext!).textTheme.headlineSmall!);
+  Text tsHeadlineS([BuildContext? context]) => _text(newStyle: Theme.of(context ?? rootNavigatorKey.currentContext!).textTheme.headlineSmall!);
   Text tsTitleL() => _text(newStyle: Theme.of(rootNavigatorKey.currentContext!).textTheme.titleLarge!);
   Text tsTitleM() => _text(newStyle: Theme.of(rootNavigatorKey.currentContext!).textTheme.titleMedium!);
   Text tsTitleS() => _text(newStyle: Theme.of(rootNavigatorKey.currentContext!).textTheme.titleSmall!);
@@ -216,7 +216,7 @@ Widget bumperBottom(BuildContext context) => SizedBox(
     );
 
 Color getRandomColor() {
-  return Color((math.Random().nextDouble() * 0xFFFFFF).toInt() << 0).withOpacity(1.0);
+  return Color((math.Random().nextDouble() * 0xFFFFFF).toInt() << 0).withValues(alpha: 1.0);
 }
 
 String countryCodeToEmoji(String? countryCode) {

@@ -34,7 +34,7 @@ class ConnectivityWrapper extends ConsumerWidget {
             children: [
               OverlayContainer(
                 isShowOverlay: isShowOverlay,
-                backgroundColor: oRed.withOpacity(.8),
+                backgroundColor: oRed.withValues(alpha: .8),
                 child: SizedBox(
                   height: 50,
                   child: Row(

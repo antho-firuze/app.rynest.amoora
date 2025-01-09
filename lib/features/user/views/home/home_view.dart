@@ -3,8 +3,10 @@ import 'dart:developer';
 import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/widgets/clipper/smile_clipper.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
+import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/features/product/views/product_view.dart';
+import 'package:amoora/features/user/controller/carousel_controller.dart';
 import 'package:amoora/features/user/views/home/widgets/home_app_bar.dart';
 import 'package:amoora/features/user/views/home/widgets/menu_list.dart';
 import 'package:amoora/features/user/views/home/widgets/carousel_page.dart';
@@ -67,7 +69,11 @@ class _HomeViewState extends ConsumerState<HomeView> with WidgetsBindingObserver
             const HomeAppBar(),
             Expanded(
               child: RefreshIndicator(
-                onRefresh: () async => ref.refresh(fetchProductsProvider),
+                onRefresh: () async {
+                  ref.refresh(fetchCarouselProvider);
+                  ref.refresh(fetchProductsProvider);
+                  ref.refresh(fetchPrayerTimesProvider);
+                },
                 child: SingleChildScrollView(
                   child: Stack(
                     children: [

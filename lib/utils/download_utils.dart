@@ -1,24 +1,15 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/utils/dio_service.dart';
 import 'package:amoora/utils/path_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 
-final downloadAndSaveFile = FutureProvider.autoDispose.family<String, List<String>>((ref, args) async {
-  // log(":: url => ${args[0]}");
-  // log(":: fileName => ${args[1]}");
-  return await ref.read(downloadUtilsProvider).downloadAndSaveImage(args[0], args[1]);
-});
-
-final getImageProvider = FutureProvider.autoDispose.family<String, String>((ref, arguments) async {
-  final args = arguments.split('|');
-  // log(":: url => ${args[0]}");
-  // log(":: fileName => ${args[1]}");
-  return await ref.read(downloadUtilsProvider).downloadAndSaveImage(args[0], args[1]);
-});
+final fetchImageProvider = FutureProvider.autoDispose.family<String, Reqs>((ref, arguments) async =>
+    await ref.read(downloadUtilsProvider).downloadAndSaveImage(arguments.url!, arguments.fileKey));
 
 class DownloadUtils {
   final Ref ref;
