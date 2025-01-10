@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:amoora/common/controllers/splash_provider.dart';
+import 'package:amoora/common/controllers/package_info_ctrl.dart';
 import 'package:amoora/common/widgets/app_logo.dart';
 import 'package:amoora/common/widgets/skelton.dart';
 import 'package:amoora/core/app_asset.dart';
@@ -8,7 +8,7 @@ import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:amoora/common/controllers/initialize_controller.dart';
+import 'package:amoora/common/controllers/init_ctrl.dart';
 import 'package:amoora/common/widgets/clipper/smile_clipper.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/utils/ui_helper.dart';
@@ -126,16 +126,11 @@ class _SplashViewState extends ConsumerState<SplashView> {
               padding: EdgeInsets.only(bottom: context.screenHeight * .05),
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: ref.watch(getVersionProvider).when(loading: () {
-                  return const Skelton();
-                }, error: (Object error, StackTrace stackTrace) {
-                  return Container();
-                }, data: (String data) {
-                  return Text(
-                    'Version $data',
-                    style: tsTitleM().copyWith(color: primaryLight),
-                  );
-                }),
+                child: ref.watch(fetchVersionProvider).when(
+                      loading: () => const Skelton(),
+                      error: (Object error, StackTrace stackTrace) => Container(),
+                      data: (String data) => Text('Version $data').tsTitleM(),
+                    ),
               ),
             ),
           ],

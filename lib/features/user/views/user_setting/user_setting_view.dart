@@ -2,6 +2,7 @@ import 'package:amoora/common/controllers/package_info_ctrl.dart';
 import 'package:amoora/common/views/about_view.dart';
 import 'package:amoora/common/views/contact_us_view.dart';
 import 'package:amoora/common/widgets/forms/group_list.dart';
+import 'package:amoora/common/widgets/skelton.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/auth/views/pwd_change_view.dart';
 import 'package:amoora/features/user/views/profile/profile_edit_view.dart';
@@ -104,7 +105,11 @@ class UserSettingView extends ConsumerWidget {
                 ),
               ],
               20.height,
-              Text("Versi: ${ref.watch(versionInfoProvider)}").center()
+              ref.watch(fetchVersionProvider).when(
+                    loading: () => const Skelton(),
+                    error: (Object error, StackTrace stackTrace) => Container(),
+                    data: (String data) => Text('Versi $data').center(),
+                  ),
             ],
           ),
         ),

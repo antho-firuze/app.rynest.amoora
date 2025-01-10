@@ -1,19 +1,20 @@
-import 'dart:developer';
-
 import 'package:amoora/common/services/package_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final versionInfoProvider = StateProvider<String>((ref) => '');
+final fetchVersionProvider =
+    FutureProvider<String>((ref) async => await ref.read(packageInfoServiceProvider).getVersion());
 
-class PackageInfoCtrl {
-  Ref ref;
-  PackageInfoCtrl(this.ref);
+// final versionInfoProvider = StateProvider<String>((ref) => '');
 
-  void initialize() async {
-    log('Initialize Package Info !');
+// class PackageInfoCtrl {
+//   Ref ref;
+//   PackageInfoCtrl(this.ref);
 
-    ref.read(versionInfoProvider.notifier).state = await ref.read(packageInfoServiceProvider).getVersion();
-  }
-}
+//   void initialize() async {
+//     log('Initialize Package Info !');
 
-final packageInfoCtrlProvider = Provider(PackageInfoCtrl.new);
+//     ref.read(versionInfoProvider.notifier).state = await ref.read(packageInfoServiceProvider).getVersion();
+//   }
+// }
+
+// final packageInfoCtrlProvider = Provider(PackageInfoCtrl.new);

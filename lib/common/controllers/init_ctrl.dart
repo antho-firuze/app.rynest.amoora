@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/controllers/network_ctrl.dart';
-import 'package:amoora/common/controllers/package_info_ctrl.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/auth/model/jwt_token.dart';
 import 'package:amoora/features/live_location/controller/live_location_ctrl.dart';
@@ -18,20 +17,14 @@ import 'package:amoora/utils/router.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class InitializeCtrl {
+class InitCtrl {
   final Ref ref;
 
-  InitializeCtrl(this.ref) : _showWalkThrough = ref.read(sharedPrefProvider).getBool('SHOW_WALKTHROUGH') ?? true;
+  InitCtrl(this.ref) : _showWalkThrough = ref.read(sharedPrefProvider).getBool('SHOW_WALKTHROUGH') ?? true;
 
   final bool _showWalkThrough;
 
   void initializeApps() async {
-    // Get Device Info
-    // await ref.read(deviceServiceProvider).getDeviceInfo();
-
-    // Initialize Package Info
-    ref.read(packageInfoCtrlProvider).initialize();
-
     // Initialize Network
     ref.read(networkCtrlProvider).initialize();
 
@@ -96,4 +89,4 @@ class InitializeCtrl {
   }
 }
 
-final initCtrlProvider = Provider(InitializeCtrl.new);
+final initCtrlProvider = Provider(InitCtrl.new);
