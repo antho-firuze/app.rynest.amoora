@@ -1,6 +1,5 @@
 // ignore_for_file: provider_parameters
-import 'package:amoora/features/exchange_rate/service/calculator_service.dart';
-import 'package:amoora/features/exchange_rate/service/exchange_rate_service.dart';
+import 'package:amoora/features/exchange_rate/controller/calculator_ctrl.dart';
 import 'package:amoora/features/exchange_rate/views/widgets/info_exchange.dart';
 import 'package:amoora/features/exchange_rate/views/widgets/monitor.dart';
 import 'package:amoora/features/exchange_rate/views/widgets/numpad.dart';
@@ -23,8 +22,7 @@ class _ExchangeRateViewState extends ConsumerState<ExchangeRateView> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(calcSvc).clear();
-      ref.read(exchangeRateSvc).initialize();
+      ref.read(calcCtrl).clear();
     });
     super.initState();
   }
@@ -33,43 +31,46 @@ class _ExchangeRateViewState extends ConsumerState<ExchangeRateView> {
   Widget build(BuildContext context) {
     return MyUI(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Konversi Mata Uang'),
-        ),
+        appBar: AppBar(title: const Text('Konversi Mata Uang')),
         body: context.isLandscape()
             ? Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(
-                    width: context.screenWidthRatio(1, .6),
+                  Expanded(
                     child: const Padding(
                       padding: EdgeInsets.only(left: 8, top: 8, bottom: 8),
                       child: Column(
                         children: [
+                          // MONITOR
                           Monitor(),
+                          // INFO
                           InfoExchange(),
                         ],
                       ),
                     ),
                   ),
+                  // NUMPAD
                   SizedBox(
                     width: context.screenWidthRatio(1, .4),
+                    // height: 300,
                     child: const Numpad(),
                   ),
                 ],
               )
-            : const Column(
+            : Column(
                 children: [
+                  // MONITOR
                   Padding(
                     padding: EdgeInsets.fromLTRB(12, 12, 12, 4),
-                    child: SizedBox(
-                      child: Monitor(),
-                    ),
+                    child: Monitor(),
                   ),
+                  // INFO
                   InfoExchange(),
+                  // NUMPAD
                   Flexible(
                     child: Numpad(),
                   ),
+                  // ref.watch(fetchKursProvider).when(data: (data) => Text('Finish'), error: (error, stackTrace) => Container(), loading: () => Skelton(),),
                 ],
               ),
       ),

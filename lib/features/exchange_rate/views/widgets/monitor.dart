@@ -1,7 +1,7 @@
 import 'package:amoora/common/widgets/custom_ink_well.dart';
-import 'package:amoora/features/exchange_rate/service/calculator_service.dart';
-import 'package:amoora/features/exchange_rate/service/exchange_rate_service.dart';
-import 'package:amoora/features/exchange_rate/views/widgets/currency_list.dart';
+import 'package:amoora/features/exchange_rate/controller/exchange_rate_ctrl.dart';
+import 'package:amoora/features/exchange_rate/controller/calculator_ctrl.dart';
+import 'package:amoora/features/exchange_rate/views/widgets/currency_list_dialog.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,23 +17,24 @@ class Monitor extends ConsumerWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         MonitorBox(
-          code: ref.watch(currExchangeCode),
+          code: ref.watch(exchangeCodeProvider),
           valueInput: ref.watch(inputValue),
           valueOutput: ref.watch(outputValue),
-          onTap: () async => await selectCurrency(context),
+          onTap: () async => await showDialog(
+            context: context,
+            builder: (context) => CurrencyListDialog(
+              onSelected: (code) {
+                ref.read(exchangeRateCtrl).getRateByCurrency(code);
+                ref.read(calcCtrl).equal();
+              },
+            ),
+          ),
         ),
         MonitorBox(
-          code: ref.watch(currExchangeBaseCode),
+          code: ref.watch(baseCodeProvider),
           valueInput: ref.watch(exchangeValue),
         ),
       ],
-    );
-  }
-
-  Future<dynamic> selectCurrency(BuildContext context) {
-    return showDialog(
-      context: context,
-      builder: (context) => const CurrencyList(),
     );
   }
 }
@@ -66,14 +67,8 @@ class MonitorBox extends StatelessWidget {
                 width: 40,
                 child: Column(
                   children: [
-                    Image.asset(
-                      'assets/icons/currency/round-country-flag-${code.toLowerCase()}.png',
-                      width: 30,
-                    ),
-                    Text(
-                      code.toUpperCase(),
-                      style: ts.bold(),
-                    ),
+                    Image.asset('assets/icons/currency/round-country-flag-${code.toLowerCase()}.png', width: 30),
+                    Text(code.toUpperCase()).bold(),
                   ],
                 ),
               ),
@@ -82,17 +77,9 @@ class MonitorBox extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    valueInput,
-                    style: tsHeadlineDS(),
-                    textAlign: TextAlign.right,
-                  ),
+                  Text(valueInput).tsHeadlineDS().right(),
                   if (valueOutput != null && valueOutput!.isNotEmpty && valueOutput != '0')
-                    Text(
-                      valueOutput ?? '',
-                      style: tsHeadlineS(),
-                      textAlign: TextAlign.right,
-                    ),
+                    Text(valueOutput ?? '').tsHeadlineS().right(),
                 ],
               ),
             ),

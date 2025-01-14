@@ -27,8 +27,7 @@ extension DateTimeExtension on DateTime {
   /// ```
   /// -> 7 Oktober 1996
   /// ```
-  String yMMMMd([String locale = 'id']) =>
-      DateFormat.yMMMMd(locale).format(this);
+  String yMMMMd([String locale = 'id']) => DateFormat.yMMMMd(locale).format(this);
 
   // a hour is force using locale 'en' because it using ':' separator
   // beside it for 'id' it using '.'
@@ -110,8 +109,7 @@ extension DateTimeExtension on DateTime {
   /// 'HH:mm a'                -> 05:08 PM
   /// 'HH:mm:ss a'             -> 05:08:01 PM
   /// ```
-  String custom(String pattern, [String locale = 'id']) =>
-      DateFormat(pattern, locale).format(this);
+  String custom(String pattern, [String locale = 'id']) => DateFormat(pattern, locale).format(this);
 
   /// Format dMYHm
   ///
@@ -163,8 +161,7 @@ extension TimeOfDayExtension on TimeOfDay {
   }
 
   String formatAMPM() {
-    String time =
-        '${hourOfPeriod.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
+    String time = '${hourOfPeriod.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
     return period == DayPeriod.am ? '$time AM' : '$time PM';
   }
 
@@ -189,5 +186,19 @@ extension StringConversionDateTime on String {
     return DateTime.now();
   }
 
-  DateTime toDateTime() => DateTime.parse(this);
+  DateTime toDateTime([String? format]) {
+    if (format != null) {
+      return DateFormat(format).parse(this);
+    }
+    return DateTime.parse(this);
+  }
+}
+
+extension DurationExtension on Duration {
+  String toHHNNSS() {
+    String hh = inHours.toString().padLeft(2, "0");
+    String nn = inMinutes.remainder(60).toString().padLeft(2, "0");
+    String ss = inSeconds.remainder(60).toString().padLeft(2, "0");
+    return '$hh:$nn:$ss';
+  }
 }

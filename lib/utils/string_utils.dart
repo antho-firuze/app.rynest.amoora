@@ -1,7 +1,8 @@
 import 'package:amoora/localization/string_hardcoded.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 extension StringExtension on String {
-  double toDouble() => double.parse(this);
+  double toDouble() => double.parse(replaceAll(RegExp(r'[.]'), '').replaceAll(RegExp(r'[,]'), '.'));
 
   int toInt() => int.parse(this);
 
@@ -47,4 +48,6 @@ extension StringExtension on String {
       .split(' ')
       .map((e) => '${e[0].toUpperCase()}${e.substring(1)}')
       .join(' ');
+
+  String lastChars(int n) => substring(length - n.abs());
 }

@@ -1,4 +1,4 @@
-import 'package:amoora/features/exchange_rate/service/exchange_rate_service.dart';
+import 'package:amoora/features/exchange_rate/controller/exchange_rate_ctrl.dart';
 import 'package:amoora/utils/currency_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:math_expressions/math_expressions.dart';
@@ -7,12 +7,12 @@ final inputValue = StateProvider<String>((ref) => '');
 final outputValue = StateProvider<String>((ref) => '');
 final exchangeValue = StateProvider<String>((ref) => '');
 
-final calcSvc = Provider(CalcSvc.new);
+final calcCtrl = Provider(CalcCtrl.new);
 
-class CalcSvc {
+class CalcCtrl {
   final Ref ref;
 
-  CalcSvc(this.ref);
+  CalcCtrl(this.ref);
 
   final List<String> buttons = [
     "C",
@@ -130,28 +130,28 @@ class CalcSvc {
 
   void convert(String value) {
     // log('process convert');
-    double val = (double.tryParse(value) ?? 0) * ref.read(currExchangeRate);
+    double val = (double.tryParse(value) ?? 0) * ref.read(exchangeRateProvider);
     // log(value);
     // log(val.toString());
-    var pattern = ref.read(currExchangeBaseCode) == 'IDR' ? '#,##0.##' : '#,##0.00000';
+    var pattern = ref.read(baseCodeProvider) == 'IDR' ? '#,##0.##' : '#,##0.00000';
     exchangeOutput = removeTrailingZero(val).toCurrency(pattern: pattern).toString();
     // log(exchangeOutput);
     ref.read(exchangeValue.notifier).state = exchangeOutput == '0' ? '' : exchangeOutput;
   }
 
   void switchCurrency() {
-    var tmpCode = ref.read(currExchangeCode);
-    var tmpBaseCode = ref.read(currExchangeBaseCode);
-    ref.read(currExchangeCode.notifier).state = tmpBaseCode;
-    ref.read(currExchangeBaseCode.notifier).state = tmpCode;
+    var tmpCode = ref.read(exchangeCodeProvider);
+    var tmpBaseCode = ref.read(baseCodeProvider);
+    ref.read(exchangeCodeProvider.notifier).state = tmpBaseCode;
+    ref.read(baseCodeProvider.notifier).state = tmpCode;
 
-    var tmpBaseRate = ref.read(currExchangeBaseRate);
+    var tmpBaseRate = ref.read(baseRateProvider);
     if (tmpBaseCode == 'IDR') {
       // log('IDR => ${1 / tmpBaseRate}');
-      ref.read(currExchangeRate.notifier).state = 1 / tmpBaseRate;
+      ref.read(exchangeRateProvider.notifier).state = 1 / tmpBaseRate;
     } else {
       // log('IDR => ${1 * tmpBaseRate}');
-      ref.read(currExchangeRate.notifier).state = 1 * tmpBaseRate;
+      ref.read(exchangeRateProvider.notifier).state = 1 * tmpBaseRate;
     }
   }
 }

@@ -48,10 +48,10 @@ class DioLoggerInterceptor implements Interceptor {
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     final url = '${response.requestOptions.baseUrl}${response.requestOptions.path}';
     _logMessageAndClearStopwatch(response.statusCode, url, '⬅️ Received response');
-    if (response.data != null) {
-      final obj = const JsonEncoder.withIndent('  ').convert(response.data);
-      log('🌍 Data response:\n $obj', name: 'DIO');
-    }
+    // if (response.data != null) {
+    //   final obj = const JsonEncoder.withIndent('  ').convert(response.data);
+    //   log('🌍 Data response:\n $obj', name: 'DIO');
+    // }
     log('-------------------------', name: 'DIO');
     return handler.next(response);
   }
