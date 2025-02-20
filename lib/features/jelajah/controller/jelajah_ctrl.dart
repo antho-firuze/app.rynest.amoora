@@ -5,10 +5,12 @@ import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/models/latlong.dart';
 import 'package:amoora/common/services/maps_service.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
+import 'package:amoora/env/env.dart';
 import 'package:amoora/features/jelajah/model/place.dart';
-import 'package:amoora/features/jelajah/service/jelajah_service.dart';
 import 'package:amoora/features/jelajah/views/widgets/body_page.dart';
+import 'package:amoora/utils/download_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -19,11 +21,23 @@ final radiusCircleProvider = StateProvider.autoDispose<double>((ref) => 100);
 final markersProvider = StateProvider<Map<MarkerId, Marker>?>((ref) => null);
 final circlesProvider = StateProvider<Map<CircleId, Circle>?>((ref) => null);
 
-final fetchPlacesProvider =
-    FutureProvider<List<Place>>((ref) async => await ref.read(jelajahServiceProvider).fetchPlaces());
+final fetchPlacesProvider = FutureProvider<List<Place>?>((ref) async {
+  final response = await rootBundle.loadString('assets/json/places_repo.json');
+  List<dynamic>? jsonList = await jsonDecode(response);
 
-final getImageJelajahProvider = FutureProvider.family<String, String>(
-    (ref, filename) async => await ref.read(jelajahServiceProvider).downloadAndSafeByFilename(filename));
+  log('fetchPlacesProvider : $jsonList', name: 'JELAJAH-CTRL');
+  final result = jsonList?.map((e) => Place.fromJson(e)).toList();
+
+  return result;
+});
+
+final getImageJelajahProvider = FutureProvider.family<String, String>((ref, filename) async {
+  String baseUrl = Env.jelajahRepoUrl;
+  const dirpath = 'assets/amoora/jelajah';
+
+  var url = '$baseUrl/$dirpath/$filename';
+  return await ref.read(downloadUtilsProvider).downloadAndSaveImage(url, filename);
+});
 
 class JelajahCtrl {
   Ref ref;
@@ -59,7 +73,7 @@ class JelajahCtrl {
   }
 
   Future initPlaces() async {
-    _places = await ref.read(jelajahServiceProvider).fetchPlaces();
+    _places = ref.read(fetchPlacesProvider).value ?? [];
   }
 
   CameraPosition initCameraPosition() {

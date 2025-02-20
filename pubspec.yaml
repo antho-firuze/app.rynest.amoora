@@ -3,7 +3,7 @@ description: "Travel & Hajj Umrah Apps for PT. Amoora"
 
 publish_to: "none"
 
-version: 1.0.4+5
+version: 1.0.5+6
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
@@ -111,9 +111,9 @@ flutter:
     - assets/icons/currency/
     - assets/icons/menu/
     - assets/icons/quran/
+    - assets/json/
     - assets/images/
     - assets/images/quran/
-    - assets/images/sample/
     - assets/qibla/
     - assets/sound/
     - assets/quran-surah/

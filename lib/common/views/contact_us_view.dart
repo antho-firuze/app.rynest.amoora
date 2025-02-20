@@ -74,7 +74,6 @@ class ContactUsView extends StatelessWidget {
                                   ),
                                   builder: (context) {
                                     return MyUI(
-                                      isTransparent: true,
                                       child: ListView(
                                         shrinkWrap: true,
                                         children: [

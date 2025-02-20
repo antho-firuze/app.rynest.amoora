@@ -135,6 +135,40 @@ extension DateTimeExtension on DateTime {
     int offset = DateTime.now().timeZoneOffset.inHours;
     return add(Duration(hours: offset));
   }
+
+  /// The [weekday] may be 0 for Sunday, 1 for Monday, etc. up to 7 for Sunday.
+  DateTime mostRecentWeekday(DateTime date, int weekday) =>
+      DateTime(date.year, date.month, date.day - (date.weekday - weekday) % 7);
+
+  String weekdayName([int? weekday, String locale = 'id']) {
+    dynamic dayDataEn = {
+      "1": "Monday",
+      "2": "Tuesday",
+      "3": "Wednesday",
+      "4": "Thrusday",
+      "5": "Friday",
+      "6": "Saturday",
+      "7": "Sunday"
+    };
+    dynamic dayDataId = {
+      "1": "Senin",
+      "2": "Selasa",
+      "3": "Rabu",
+      "4": "Kamis",
+      "5": "Jum'at",
+      "6": "Sabtu",
+      "7": "Minggu"
+    };
+    if (weekday != null) {
+      if (locale == 'id') {
+        return dayDataId[weekday.toString()];
+      }
+      return dayDataEn[weekday.toString()];
+    }
+    return DateFormat.EEEE(locale).format(this);
+  }
+
+  String timeFormat({int? hour, String format = 'hh:mm a'}) => copyWith(hour: hour, minute: 0).custom(format);
 }
 
 extension TimeOfDayExtension on TimeOfDay {

@@ -1,6 +1,6 @@
 import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/controllers/permission_ctrl.dart';
-import 'package:amoora/common/exceptions/warning_exeption.dart';
+import 'package:amoora/common/exceptions/warning_layout.dart';
 import 'package:amoora/common/services/permission_service.dart';
 import 'package:amoora/common/widgets/custom_appbar.dart';
 import 'package:amoora/common/widgets/bottom_sheet/pill_stripe.dart';
@@ -37,7 +37,7 @@ class PrayerTimesView extends ConsumerWidget {
           appBar: AppBar(title: Text('Jadwal Waktu Sholat'.hardcoded)),
           body: ListView(
             children: [
-              WarningException(
+              WarningLayout(
                 title: PermissionString2.gpsDeviceTitle,
                 subTitle: PermissionString2.gpsDeviceSubTitle,
                 child: ElevatedButton(
@@ -57,7 +57,7 @@ class PrayerTimesView extends ConsumerWidget {
           appBar: AppBar(title: Text('Jadwal Waktu Sholat'.hardcoded)),
           body: ListView(
             children: [
-              WarningException(
+              WarningLayout(
                 title: PermissionString2.gpsPermissionTitle,
                 subTitle: PermissionString2.gpsPermissionSubTitle,
                 child: ElevatedButton(

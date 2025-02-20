@@ -1,4 +1,4 @@
-import 'package:amoora/common/exceptions/data_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/common/widgets/forms/field_list.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/utils/datetime_utils.dart';
@@ -15,7 +15,7 @@ class DetailHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final item = ref.watch(selectedProductProvider);
     if (item == null) {
-      return const DataFailed();
+      return DataExceptionLayout(type: ExeceptionType.dataEmpty);
     }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),

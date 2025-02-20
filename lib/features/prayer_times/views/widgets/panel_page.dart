@@ -3,7 +3,6 @@ import 'package:amoora/common/widgets/skelton.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_alert.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
-import 'package:amoora/features/prayer_times/model/prayer_times.dart';
 import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/orientation_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
@@ -42,23 +41,23 @@ class PanelPage extends ConsumerWidget {
                 crossAxisSpacing: 5,
                 children: [
                   PrayerCard(
-                    type: PrayerTimeType.fajr,
+                    prayerType: PrayerTimeType.fajr,
                     onTap: () => ref.read(prayerTimesAlertProvider).alertSubuh(),
                   ),
                   PrayerCard(
-                    type: PrayerTimeType.dhuhr,
+                    prayerType: PrayerTimeType.dhuhr,
                     onTap: () => ref.read(prayerTimesAlertProvider).alertDzuhur(),
                   ),
                   PrayerCard(
-                    type: PrayerTimeType.asr,
+                    prayerType: PrayerTimeType.asr,
                     onTap: () => ref.read(prayerTimesAlertProvider).alertAshar(),
                   ),
                   PrayerCard(
-                    type: PrayerTimeType.maghrib,
+                    prayerType: PrayerTimeType.maghrib,
                     onTap: () => ref.read(prayerTimesAlertProvider).alertMaghrib(),
                   ),
                   PrayerCard(
-                    type: PrayerTimeType.isha,
+                    prayerType: PrayerTimeType.isha,
                     onTap: () => ref.read(prayerTimesAlertProvider).alertIsya(),
                   ),
                 ],
@@ -74,43 +73,24 @@ class PanelPage extends ConsumerWidget {
 class PrayerCard extends ConsumerWidget {
   const PrayerCard({
     super.key,
-    required this.type,
+    required this.prayerType,
     this.onTap,
   });
 
-  final PrayerTimeType type;
+  final PrayerTimeType prayerType;
   final Function()? onTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final prayer = ref.watch(prayerTimesProvider);
-    final currTimePrayer = prayer?.currPrayerTime();
-    final prayerTimeStr = ref.read(prayerTimesCtrlProvider).getName(type);
-
-    bool isAllow = false;
-    String? time;
-    switch (type) {
-      case PrayerTimeType.isha:
-        time = prayer?.isha;
-        isAllow = ref.watch(alertIsyaProvider);
-        break;
-      case PrayerTimeType.fajr:
-        time = prayer?.fajr;
-        isAllow = ref.watch(alertSubuhProvider);
-        break;
-      case PrayerTimeType.dhuhr:
-        time = prayer?.dhuhr;
-        isAllow = ref.watch(alertDzuhurProvider);
-        break;
-      case PrayerTimeType.asr:
-        time = prayer?.asr;
-        isAllow = ref.watch(alertAsharProvider);
-        break;
-      case PrayerTimeType.maghrib:
-        time = prayer?.maghrib;
-        isAllow = ref.watch(alertMaghribProvider);
-        break;
-    }
+    final time = ref.read(prayerTimesCtrlProvider).getPrayerTimeByType(prayerType);
+    final currPrayer = ref.read(prayerTimesCtrlProvider).getCurrPrayerTime();
+    bool isAllow = switch (prayerType) {
+      PrayerTimeType.isha => ref.watch(alertIsyaProvider),
+      PrayerTimeType.fajr => ref.watch(alertSubuhProvider),
+      PrayerTimeType.dhuhr => ref.watch(alertDzuhurProvider),
+      PrayerTimeType.asr => ref.watch(alertAsharProvider),
+      PrayerTimeType.maghrib => ref.watch(alertMaghribProvider),
+    };
 
     IconData iconNotif = isAllow ? Icons.notifications_active_outlined : Icons.notifications_off_outlined;
     Color colorIcon = context.isDarkMode
@@ -121,7 +101,7 @@ class PrayerCard extends ConsumerWidget {
             ? oGold.withValues(alpha: .7)
             : Theme.of(context).iconTheme.color!.withValues(alpha: .2);
 
-    Color? color = time == currTimePrayer ? oGold : null;
+    Color? color = time == currPrayer ? oGold : null;
 
     return CustomCard(
       onTap: onTap,
@@ -138,7 +118,7 @@ class PrayerCard extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 12.height,
-                Text(prayerTimeStr).bold().clr(oWhite.whenDark(oWhite50)),
+                Text(prayerType.desc).bold().clr(oWhite.whenDark(oWhite50)),
                 5.height,
                 divider(
                   thick: 1.5,

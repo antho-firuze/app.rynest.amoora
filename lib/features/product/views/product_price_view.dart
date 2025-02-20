@@ -1,4 +1,4 @@
-import 'package:amoora/common/exceptions/data_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/common/widgets/custom_rich_text.dart';
 import 'package:amoora/common/widgets/forms/top_bottom.dart';
 import 'package:amoora/core/app_color.dart';
@@ -21,7 +21,7 @@ class ProductPriceView extends ConsumerWidget {
     final totalPrice = ref.watch(totalPriceUmroh);
     final item = ref.watch(selectedProductProvider);
     if (item == null) {
-      return const DataFailed();
+      return DataExceptionLayout(type: ExeceptionType.dataEmpty);
     }
     return MyUI(
       child: Scaffold(

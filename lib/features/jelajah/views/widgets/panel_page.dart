@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:amoora/common/exceptions/loading_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/common/widgets/skelton.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/jelajah/controller/jelajah_ctrl.dart';
@@ -50,6 +50,10 @@ class PanelPage extends ConsumerWidget {
                 ref.watch(fetchPlacesProvider).when(
                       skipLoadingOnRefresh: false,
                       data: (data) {
+                        if (data == null || data.isEmpty) {
+                          return DataExceptionLayout(type: ExeceptionType.dataEmpty);
+                        }
+
                         final places = data;
 
                         return StaggeredGrid.count(
@@ -72,7 +76,6 @@ class PanelPage extends ConsumerWidget {
                                         BorderRadius.only(topLeft: Radius.circular(18), topRight: Radius.circular(18)),
                                   ),
                                   builder: (context) => MyUI(
-                                    isTransparent: true,
                                     child: ListView(
                                       shrinkWrap: true,
                                       // mainAxisSize: MainAxisSize.min,
@@ -121,8 +124,10 @@ class PanelPage extends ConsumerWidget {
                                   children: [
                                     ref.watch(getImageJelajahProvider(place.image!)).when(
                                           skipLoadingOnRefresh: false,
-                                          error: (error, stackTrace) => LoadingFailed(
-                                              onTap: () => ref.refresh(getImageJelajahProvider(place.image!))),
+                                          error: (error, stackTrace) => DataExceptionLayout(
+                                            error: error,
+                                            onTap: () => ref.refresh(getImageJelajahProvider(place.image!)),
+                                          ),
                                           loading: () => const Center(child: CircularProgressIndicator()),
                                           data: (data) => Positioned.fill(
                                             child: Container(

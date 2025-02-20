@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:amoora/common/exceptions/data_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/common/widgets/button/custom_circle_button.dart';
 import 'package:amoora/common/widgets/forms/field_list.dart';
 import 'package:amoora/core/app_base.dart';
@@ -33,8 +33,9 @@ class PanelPage extends ConsumerWidget {
       return const Padding(
         padding: EdgeInsets.only(top: 35),
         child: Scaffold(
-          body: DataFailed(
-            message: "Tidak ada Jama'ah yang sedang online !",
+          body: DataExceptionLayout(
+            type: ExeceptionType.dataEmpty,
+            title: "Tidak ada Jama'ah yang sedang online !",
           ),
         ),
       );
@@ -121,7 +122,6 @@ class PanelPage extends ConsumerWidget {
                         useSafeArea: true,
                         shape: const BeveledRectangleBorder(),
                         builder: (context) => MyUI(
-                          isTransparent: true,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: ListView(

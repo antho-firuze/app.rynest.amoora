@@ -1,4 +1,4 @@
-import 'package:amoora/common/exceptions/data_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/common/widgets/forms/left_right.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
@@ -16,7 +16,7 @@ class ItineraryView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final item = ref.watch(selectedProductProvider);
     if (item == null || item.itineraries == null || item.itineraries!.isEmpty) {
-      return const DataFailed();
+      return DataExceptionLayout(type: ExeceptionType.dataEmpty);
     }
     return MyUI(
       child: Scaffold(
@@ -40,7 +40,8 @@ class ItineraryView extends ConsumerWidget {
                       Positioned(
                         right: 0,
                         bottom: 0,
-                        child: isDone ? Icon(Icons.done, color: oDarkGreen.withValues(alpha: .5), size: 70) : Container(),
+                        child:
+                            isDone ? Icon(Icons.done, color: oDarkGreen.withValues(alpha: .5), size: 70) : Container(),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(16),

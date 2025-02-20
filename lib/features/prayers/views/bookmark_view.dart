@@ -1,4 +1,4 @@
-import 'package:amoora/common/exceptions/data_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/prayers/controller/prayers_ctrl.dart';
 import 'package:amoora/features/prayers/views/prayers_detail_view.dart';
@@ -9,7 +9,6 @@ import 'package:amoora/utils/string_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:super_icons/super_icons.dart';
 
 class BookmarkView extends ConsumerWidget {
@@ -20,6 +19,7 @@ class BookmarkView extends ConsumerWidget {
     final bookmarks = ref.watch(bookmarksProvider);
 
     return MyUI(
+      showConnectivityInfo: false,
       child: Scaffold(
         appBar: AppBar(
           title: Text('Bookmark'),
@@ -32,7 +32,10 @@ class BookmarkView extends ConsumerWidget {
           ],
         ),
         body: bookmarks.isEmpty
-            ? DataFailed(onBack: () => context.pop())
+            ? Padding(
+                padding: const EdgeInsets.only(top: 0),
+                child: DataExceptionLayout(type: ExeceptionType.dataEmpty),
+              )
             : ListView.separated(
                 itemCount: bookmarks.length,
                 itemBuilder: (context, index) {

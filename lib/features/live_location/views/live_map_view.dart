@@ -1,6 +1,6 @@
 import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/controllers/permission_ctrl.dart';
-import 'package:amoora/common/exceptions/warning_exeption.dart';
+import 'package:amoora/common/exceptions/warning_layout.dart';
 import 'package:amoora/common/services/permission_service.dart';
 import 'package:amoora/common/widgets/button/more_button.dart';
 import 'package:amoora/common/widgets/custom_appbar.dart';
@@ -69,7 +69,7 @@ class _LiveMapViewState extends ConsumerState<LiveMapView> with WidgetsBindingOb
           appBar: AppBar(title: Text('Pantau Rombongan'.hardcoded)),
           body: ListView(
             children: [
-              WarningException(
+              WarningLayout(
                 title: PermissionString2.gpsDeviceTitle,
                 subTitle: PermissionString2.gpsDeviceSubTitle,
                 child: ElevatedButton(
@@ -89,7 +89,7 @@ class _LiveMapViewState extends ConsumerState<LiveMapView> with WidgetsBindingOb
           appBar: AppBar(title: Text('Pantau Rombongan'.hardcoded)),
           body: ListView(
             children: [
-              WarningException(
+              WarningLayout(
                 title: PermissionString2.gpsPermissionTitle,
                 subTitle: PermissionString2.gpsPermissionSubTitle,
                 child: ElevatedButton(
@@ -109,7 +109,7 @@ class _LiveMapViewState extends ConsumerState<LiveMapView> with WidgetsBindingOb
           appBar: AppBar(title: Text('Pantau Rombongan'.hardcoded)),
           body: ListView(
             children: [
-              WarningException(
+              WarningLayout(
                 title: 'Izinkan Aplikasi untuk berjalan di background !',
                 child: ElevatedButton(
                   onPressed: () async => await ref.read(liveLocationCtrlProvider).showBatterySettings(),
@@ -128,7 +128,7 @@ class _LiveMapViewState extends ConsumerState<LiveMapView> with WidgetsBindingOb
           appBar: AppBar(title: Text('Pantau Rombongan'.hardcoded)),
           body: ListView(
             children: [
-              WarningException(
+              WarningLayout(
                 title: 'Mohon aktifkan Auto Start !',
                 child: ElevatedButton(
                   onPressed: () async => await ref.read(liveLocationCtrlProvider).showAutoStart(),
@@ -210,7 +210,7 @@ class _LiveMapViewState extends ConsumerState<LiveMapView> with WidgetsBindingOb
                             ref.watch(refreshMapsProvider);
                             final radius = ref.read(liveMapsCtrlProvider).getRadiusCircle;
                             return MyUI(
-                              isTransparent: true,
+                              // isTransparent: true,
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -234,7 +234,6 @@ class _LiveMapViewState extends ConsumerState<LiveMapView> with WidgetsBindingOb
                                         context: context,
                                         shape: const BeveledRectangleBorder(),
                                         builder: (context) => MyUI(
-                                          isTransparent: true,
                                           child: SizedBox(
                                             width: double.infinity,
                                             child: Column(

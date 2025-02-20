@@ -76,7 +76,7 @@ class _DeviceCheckViewState extends ConsumerState<DeviceCheckView> with WidgetsB
           shrinkWrap: true,
           children: [
             GroupList(
-              header: ListTile(title: const Text("Services").bold()),
+              title: ListTile(title: const Text("Services").bold()),
               children: [
                 ListTile(
                   leading: const Icon(SuperIcons.mg_location_2_line),
@@ -95,7 +95,7 @@ class _DeviceCheckViewState extends ConsumerState<DeviceCheckView> with WidgetsB
               ],
             ),
             GroupList(
-              header: ListTile(title: const Text("Permissions").bold()),
+              title: ListTile(title: const Text("Permissions").bold()),
               children: [
                 ListTile(
                   leading: const Icon(SuperIcons.mg_location_2_line),

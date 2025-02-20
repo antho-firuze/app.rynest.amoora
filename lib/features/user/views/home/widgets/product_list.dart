@@ -1,4 +1,4 @@
-import 'package:amoora/common/exceptions/data_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/features/product/views/product_detail_view.dart';
 import 'package:amoora/features/product/views/widgets/card_vert_view.dart';
@@ -14,50 +14,66 @@ class ProductList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final products = ref.watch(fetchProductsProvider);
     return SizedBox(
       width: double.infinity,
       height: 340,
-      child: products.when(
-        skipLoadingOnRefresh: false,
-        error: (error, stackTrace) => DataFailed(onReload: () => ref.refresh(fetchProductsProvider)),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        data: (data) {
-          if (data.isEmpty) {
-            return DataFailed(onReload: () => ref.refresh(fetchProductsProvider));
-          }
-          return ListView.separated(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.only(left: 16, right: 16),
-            itemBuilder: (context, index) {
-              final product = ref.watch(fetchProductProvider(data[index]));
-              return product.when(
-                skipLoadingOnRefresh: false,
-                data: (data) {
-                  if (data == null) return const DataFailed();
-                  return SizedBox(
-                    width: 250,
-                    child: CardVertView(
-                      item: data,
-                      onTap: () {
-                        ref.read(selectedProductProvider.notifier).state = data;
-                        return context.goto(page: const ProductDetailView());
-                      },
+      child: ref.watch(fetchProductsProvider).when(
+            skipLoadingOnRefresh: false,
+            error: (error, stackTrace) => Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: DataExceptionLayout(
+                error: error,
+                onTap: () => ref.refresh(fetchProductsProvider),
+              ),
+            ),
+            loading: () => const Center(child: CircularProgressIndicator()),
+            data: (data) {
+              if (data.isEmpty) {
+                return DataExceptionLayout(
+                  type: ExeceptionType.dataEmpty,
+                  onTap: () => ref.refresh(fetchProductsProvider),
+                );
+              }
+
+              return ListView.separated(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.only(left: 16, right: 16),
+                itemBuilder: (context, index) {
+                  final product = ref.watch(fetchProductProvider(data[index]));
+                  return product.when(
+                    skipLoadingOnRefresh: false,
+                    data: (data) {
+                      if (data == null) {
+                        return DataExceptionLayout(
+                          type: ExeceptionType.dataEmpty,
+                          onTap: () => ref.refresh(fetchProductsProvider),
+                        );
+                      }
+
+                      return SizedBox(
+                        width: 250,
+                        child: CardVertView(
+                          item: data,
+                          onTap: () {
+                            ref.read(selectedProductProvider.notifier).state = data;
+                            return context.goto(page: const ProductDetailView());
+                          },
+                        ),
+                      );
+                    },
+                    error: (error, stackTrace) => DataExceptionLayout(
+                      error: error,
+                      onTap: () => ref.refresh(fetchProductProvider(data[index])),
                     ),
+                    loading: () => const Center(child: CircularProgressIndicator()),
                   );
                 },
-                error: (error, stackTrace) => DataFailed(
-                  onReload: () => ref.refresh(fetchProductProvider(data[index])),
-                ),
-                loading: () => const Center(child: CircularProgressIndicator()),
+                separatorBuilder: (context, index) => 10.width,
+                itemCount: data.length,
               );
             },
-            separatorBuilder: (context, index) => 10.width,
-            itemCount: data.length,
-          );
-        },
-      ),
+          ),
     );
   }
 }

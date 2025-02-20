@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:amoora/common/exceptions/image_failed.dart';
+import 'package:amoora/common/exceptions/image_failed_layout.dart';
 import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/common/widgets/custom_ink_well.dart';
 import 'package:amoora/common/widgets/custom_rating_star.dart';
@@ -174,7 +174,7 @@ class HeaderUI extends ConsumerWidget {
               );
             },
             error: (error, stackTrace) {
-              return ImageFailed(
+              return ImageFailedLayout(
                 onTap: () => ref.refresh(fetchImageProvider(Reqs(url: item.image, fileKey: filename))),
               );
             },

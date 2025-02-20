@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import 'package:amoora/common/controllers/package_info_ctrl.dart';
 import 'package:amoora/common/widgets/app_logo.dart';
 import 'package:amoora/common/widgets/skelton.dart';
+import 'package:amoora/common/widgets/version_info.dart';
 import 'package:amoora/core/app_asset.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/utils/my_ui.dart';
@@ -122,17 +122,14 @@ class _SplashViewState extends ConsumerState<SplashView> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(bottom: context.screenHeight * .05),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: ref.watch(fetchVersionProvider).when(
-                      loading: () => const Skelton(),
-                      error: (Object error, StackTrace stackTrace) => Container(),
-                      data: (String data) => Text('Version $data').tsTitleM(),
-                    ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: context.screenHeight * .05),
+                child: VersionInfo(),
               ),
             ),
+            Align(alignment: Alignment.bottomCenter, child: Skelton(radius: 0)),
           ],
         ),
       ),

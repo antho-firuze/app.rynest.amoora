@@ -1,4 +1,4 @@
-import 'package:amoora/common/exceptions/data_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/prayers/controller/prayers_ctrl.dart';
 import 'package:amoora/features/prayers/controller/prayers_experience.dart';
@@ -51,6 +51,7 @@ class PrayersDetailView extends ConsumerWidget {
       child: Stack(
         children: [
           MyUI(
+            showConnectivityInfo: false,
             child: Scaffold(
               appBar: AppBar(
                 title: Text('Panduan Haji & Umroh', overflow: TextOverflow.ellipsis),
@@ -88,7 +89,7 @@ class PrayersDetailView extends ConsumerWidget {
                 ],
               ),
               body: prayers.isEmpty
-                  ? DataFailed(onBack: () => context.pop())
+                  ? DataExceptionLayout(type: ExeceptionType.dataEmpty)
                   : NestedPageView.builder(
                       controller: PageController(initialPage: ref.read(prayerIndexProvider)),
                       onPageChanged: (value) {

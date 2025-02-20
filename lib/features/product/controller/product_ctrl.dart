@@ -7,13 +7,29 @@ import 'package:amoora/utils/datetime_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-final fetchProductsProvider =
-    FutureProvider.autoDispose<List<int>>((ref) async => await ref.read(productCtrlProvider).list());
-final fetchProductProvider =
-    FutureProvider.autoDispose.family<Product?, int>((ref, id) async => await ref.read(productCtrlProvider).byId(id));
+final fetchProductsProvider = FutureProvider<List<int>>((ref) async {
+  final reqs = Reqs(path: '/api/v1/product/list');
+  final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
+
+  log('fetchProductsProvider => ${state.value}', name: 'PRODUCT-CTRL');
+  List<dynamic> jsonList = state.value;
+  final result = jsonList.map((e) => e['id'] as int).toList();
+
+  return result;
+});
+
+final fetchProductProvider = FutureProvider.family<Product?, int>((ref, id) async {
+  final reqs = Reqs(path: '/api/v1/product/byId', data: {"id": id});
+  final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
+
+  log('fetchProductProvider => ${state.value}', name: 'PRODUCT-CTRL');
+  Map<String, dynamic> json = state.value;
+  final result = Product.fromJson(json);
+
+  return result;
+});
 
 final viewGridProvider = StateProvider<bool>((ref) => false);
-
 final selectedProductProvider = StateProvider<Product?>((ref) => null);
 final roomDoubleQty = StateProvider<int>((ref) => 0);
 final roomTripleQty = StateProvider<int>((ref) => 0);
@@ -23,51 +39,6 @@ final totalPriceUmroh = StateProvider<double>((ref) => 0);
 class ProductCtrl {
   Ref ref;
   ProductCtrl(this.ref);
-
-  Future<List<int>> list() async {
-    final reqs = Reqs(path: '/api/v1/product/list');
-    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
-
-    if (state.hasError) return [];
-
-    List<dynamic> listProduct = state.value;
-    log(':: state.value => ${state.value}', name: 'PRODUCT-CTRL');
-    if (listProduct.isEmpty) {
-      return [];
-    }
-
-    final result = listProduct.map((e) => e['id'] as int).toList();
-    log(':: result => $result', name: 'PRODUCT-CTRL');
-
-    return result;
-  }
-
-  Future<Product?> byId(int id) async {
-    final reqs = Reqs(path: '/api/v1/product/byId', data: {"id": id});
-    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
-
-    if (state.hasError) return null;
-
-    try {
-      // log("${jsonDecode(state.value)}", name: 'PRODUCT-CTRL');
-      Map<String, dynamic> dataJson = state.value;
-      // log("$dataJson", name: 'PRODUCT-CTRL');
-
-      final result = Product.fromJson(dataJson);
-      // log(':: result => $result', name: 'PRODUCT-CTRL');
-
-      return result;
-    } catch (e) {
-      log(e.toString(), name: 'PRODUCT-CTRL');
-      return null;
-    }
-  }
-
-  Future refreshDetail() async {
-    final product = ref.read(selectedProductProvider);
-    if (product?.id == null) return;
-    ref.read(selectedProductProvider.notifier).state = await byId(product!.id!);
-  }
 
   void calculate(String roomType, String calcType) {
     var item = ref.read(selectedProductProvider);

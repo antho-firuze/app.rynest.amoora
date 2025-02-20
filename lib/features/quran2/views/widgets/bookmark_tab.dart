@@ -44,9 +44,11 @@ class BookmarkTab extends ConsumerWidget {
           },
         ),
         GroupList(
-          header: Padding(
+          showDividerTop: true,
+          showDividerBottom: false,
+          title: Padding(
             padding: const EdgeInsets.only(left: 20, top: 20),
-            child: const Text('Bookmark').tsTitleL(),
+            child: Text('Bookmark').tsTitleL(),
           ),
         ),
         ...List.generate(

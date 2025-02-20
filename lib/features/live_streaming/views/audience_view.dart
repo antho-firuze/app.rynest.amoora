@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:amoora/common/exceptions/data_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/common/widgets/button/custom_circle_button.dart';
 import 'package:amoora/common/widgets/icon_text.dart';
 import 'package:amoora/core/app_base.dart';
@@ -75,7 +75,6 @@ class AudienceView extends ConsumerWidget {
                   await showModalBottomSheet(
                     context: context,
                     builder: (context) => MyUI(
-                      isTransparent: true,
                       child: ListView(
                         shrinkWrap: true,
                         children: [
@@ -209,7 +208,12 @@ class AudienceView extends ConsumerWidget {
                       if (data == null || data.data.isEmpty) {
                         return const Padding(
                           padding: EdgeInsets.only(top: 30),
-                          child: Center(child: DataFailed(message: 'Belum ada pembicara saat ini !')),
+                          child: Center(
+                            child: DataExceptionLayout(
+                              type: ExeceptionType.dataEmpty,
+                              title: 'Belum ada pembicara saat ini !',
+                            ),
+                          ),
                         );
                       }
 
@@ -219,7 +223,12 @@ class AudienceView extends ConsumerWidget {
                       if (onlineHost.isEmpty) {
                         return const Padding(
                           padding: EdgeInsets.only(top: 30),
-                          child: Center(child: DataFailed(message: 'Belum ada pembicara saat ini !')),
+                          child: Center(
+                            child: DataExceptionLayout(
+                              type: ExeceptionType.dataEmpty,
+                              title: 'Belum ada pembicara saat ini !',
+                            ),
+                          ),
                         );
                       }
 

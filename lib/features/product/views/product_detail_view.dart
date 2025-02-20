@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:amoora/common/exceptions/data_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/common/widgets/button/custom_button.dart';
 import 'package:amoora/common/widgets/cross_paint.dart';
@@ -30,7 +30,7 @@ class ProductDetailView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final item = ref.watch(selectedProductProvider);
     if (item?.id == null) {
-      return const DataFailed();
+      return DataExceptionLayout(type: ExeceptionType.dataEmpty);
     }
 
     final product = ref.watch(fetchProductProvider(item!.id!));
@@ -90,7 +90,7 @@ class ProductDetailView extends ConsumerWidget {
             // ),
             // ShareButton(),
           ],
-          onRefresh: () async => await ref.read(productCtrlProvider).refreshDetail(),
+          onRefresh: () async => await ref.refresh(fetchProductProvider(item.id!)),
           sliverList: product.when(
             data: (data) => SliverList.list(
               children: [
@@ -155,7 +155,7 @@ class ProductDetailView extends ConsumerWidget {
               ],
             ),
             error: (error, stackTrace) => SliverList.list(
-              children: const [DataFailed()],
+              children: [DataExceptionLayout(type: ExeceptionType.dataEmpty)],
             ),
             loading: () => SliverList.list(
               children: const [LinearProgressIndicator()],

@@ -1,4 +1,4 @@
-import 'package:amoora/common/exceptions/warning_exeption.dart';
+import 'package:amoora/common/exceptions/warning_layout.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/quran/controller/quran_asset_controller.dart';
 import 'package:amoora/features/quran/controller/quran_notifier.dart';
@@ -80,7 +80,7 @@ class HomeQuranView extends ConsumerWidget {
     if (quranAssetState == 'error') {
       return MyUI(
         child: Scaffold(
-          body: WarningException(
+          body: WarningLayout(
             title: ref.watch(quranAssetErrorProvider),
             child: ElevatedButton(
               onPressed: () async => await ref.read(quranAssetCtrlProvider).getFile(),
@@ -95,7 +95,7 @@ class HomeQuranView extends ConsumerWidget {
       return MyUI(
         child: Scaffold(
           appBar: AppBar(title: const Text('Baca Al-Quran')),
-          body: WarningException(
+          body: WarningLayout(
             title: "File Asset Al-Qur'an belum tersedia",
             child: ElevatedButton(
               onPressed: () async => await ref.read(quranAssetCtrlProvider).getFile(),

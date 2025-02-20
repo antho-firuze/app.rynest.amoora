@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:amoora/common/controllers/permission_ctrl.dart';
-import 'package:amoora/common/exceptions/data_failed.dart';
-import 'package:amoora/common/exceptions/warning_exeption.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
+import 'package:amoora/common/exceptions/warning_layout.dart';
 import 'package:amoora/common/widgets/button/custom_button.dart';
 import 'package:amoora/common/widgets/button/custom_circle_button.dart';
 import 'package:amoora/common/widgets/custom_input.dart';
@@ -48,7 +48,7 @@ class PresenterView extends ConsumerWidget {
             appBar: AppBar(title: Text('Siaran Live'.hardcoded)),
             body: ListView(
               children: [
-                WarningException(
+                WarningLayout(
                   title: PermissionString2.microphonePermissionTitle,
                   subTitle: PermissionString2.microphonePermissionSubTitle,
                   child: ElevatedButton(
@@ -81,7 +81,6 @@ class PresenterView extends ConsumerWidget {
                   await showModalBottomSheet(
                     context: context,
                     builder: (context) => MyUI(
-                      isTransparent: true,
                       child: ListView(
                         shrinkWrap: true,
                         children: [
@@ -256,9 +255,9 @@ class PresenterView extends ConsumerWidget {
                                     children: [
                                       Text('Pendengar Anda'.hardcoded).tsTitleL(),
                                       const Center(
-                                        child: DataFailed(
-                                          padding: EdgeInsets.only(bottom: 20),
-                                          message: 'Belum ada pendengar saat ini !',
+                                        child: DataExceptionLayout(
+                                          type: ExeceptionType.dataEmpty,
+                                          title: 'Belum ada pendengar saat ini !',
                                         ),
                                       ),
                                     ],
@@ -279,9 +278,9 @@ class PresenterView extends ConsumerWidget {
                                     children: [
                                       Text('Pendengar Anda'.hardcoded).tsTitleL(),
                                       const Center(
-                                        child: DataFailed(
-                                          padding: EdgeInsets.only(bottom: 20),
-                                          message: 'Belum ada pendengar saat ini !',
+                                        child: DataExceptionLayout(
+                                          type: ExeceptionType.dataEmpty,
+                                          title: 'Belum ada pendengar saat ini !',
                                         ),
                                       ),
                                     ],

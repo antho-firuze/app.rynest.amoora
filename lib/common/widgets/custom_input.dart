@@ -1,3 +1,4 @@
+import 'package:amoora/core/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:amoora/utils/ui_helper.dart';
@@ -25,6 +26,10 @@ class CustomInput extends StatefulWidget {
     this.validator,
     this.onChanged,
     this.showCaptionFromHint = true,
+    this.backgroundColor,
+    this.borderRadius = 8,
+    this.borderSide = const BorderSide(color: oGrey70),
+    this.autoLabel = true,
   });
 
   final String? initialValue;
@@ -47,6 +52,10 @@ class CustomInput extends StatefulWidget {
   final Function()? enterPressed;
   final List<TextInputFormatter>? formatter;
   final String? Function(String? val)? validator;
+  final Color? backgroundColor;
+  final double borderRadius;
+  final BorderSide borderSide;
+  final bool autoLabel;
 
   @override
   State<CustomInput> createState() => _CustomInputState();
@@ -95,19 +104,21 @@ class _CustomInputState extends State<CustomInput> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    var showClearBtn = InkWell(
-      onTap: () => controller.text = '',
-      child: (!isEmpty && !widget.readOnly && widget.enabled) ? Icon(Icons.clear) : Container(),
-    );
+    var showClearBtn = (!isEmpty && !widget.readOnly && widget.enabled)
+        ? InkWell(
+            onTap: () => controller.text = '',
+            child: Icon(Icons.clear),
+          )
+        : null;
 
-    var showPasswordVisibility = InkWell(
-      onTap: () => setState(() {
-        showPassword = !showPassword;
-      }),
-      child: widget.isPassword == true
-          ? SizedBox(width: 45, child: Icon(showPassword ? Icons.visibility : Icons.visibility_off))
-          : Container(),
-    );
+    var showPasswordVisibility = widget.isPassword == true
+        ? InkWell(
+            onTap: () => setState(() {
+              showPassword = !showPassword;
+            }),
+            child: Icon(showPassword ? Icons.visibility : Icons.visibility_off),
+          )
+        : null;
 
     return TextFormField(
       controller: controller,
@@ -134,28 +145,56 @@ class _CustomInputState extends State<CustomInput> with SingleTickerProviderStat
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
       decoration: InputDecoration(
-        // filled: true,
-        // fillColor: Colors.white,
-        labelText: labelText,
+        filled: widget.backgroundColor != null,
+        fillColor: widget.backgroundColor,
+        labelText: widget.autoLabel ? labelText : null,
         // labelStyle: tsBodyM(),
         hintText: widget.hintText,
         // hintStyle: tsBodyM(),
         helperText: widget.helperText,
         counterText: widget.maxLength == null ? '' : null,
         prefixIcon: widget.prefixIcon,
-        suffixIcon: Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            showClearBtn,
-            showPasswordVisibility,
-            widget.suffixIcon ?? Container(),
-          ],
+        suffixIcon: Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: Row(
+            spacing: 8,
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              if (showClearBtn != null) showClearBtn,
+              if (showPasswordVisibility != null) showPasswordVisibility,
+              if (widget.suffixIcon != null) widget.suffixIcon!,
+            ],
+          ),
         ),
-        suffixIconConstraints: const BoxConstraints(
-          maxHeight: 47,
-          minWidth: 37,
-          minHeight: 47,
+        // suffixIconConstraints: const BoxConstraints(
+        //   maxHeight: 47,
+        //   minWidth: 37,
+        //   minHeight: 47,
+        // ),
+        border: OutlineInputBorder(
+          borderSide: widget.borderSide,
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderSide: widget.borderSide,
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: widget.borderSide,
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: widget.borderSide,
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: widget.borderSide,
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: widget.borderSide,
+          borderRadius: BorderRadius.circular(widget.borderRadius),
         ),
       ),
     );

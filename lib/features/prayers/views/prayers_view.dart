@@ -38,6 +38,7 @@ class PrayersView extends ConsumerWidget {
         context.pop();
       },
       child: MyUI(
+        showConnectivityInfo: false,
         enabledSafeArea: false,
         child: Scaffold(
           body: OneUINestedScrollView(

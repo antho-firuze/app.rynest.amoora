@@ -1,4 +1,3 @@
-
 import 'package:amoora/common/widgets/forms/group_list.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/quran2/controller/quran_ctrl.dart';
@@ -18,13 +17,14 @@ class QuranSettingView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MyUI(
+      showConnectivityInfo: false,
       child: Scaffold(
         appBar: AppBar(title: const Text('Pengaturan')),
         body: ListView(
           shrinkWrap: true,
           children: [
             GroupList(
-              header: ListTile(title: const Text("Arabic").bold().clr(oGold300)),
+              title: ListTile(title: const Text("Arabic").bold().clr(oGold300)),
               children: [
                 ListTile(
                   title: const Text('Ukuran Font Arabic').bold(),
@@ -39,7 +39,7 @@ class QuranSettingView extends ConsumerWidget {
               ],
             ),
             GroupList(
-              header: ListTile(title: const Text("Bahasa Latin (Transliterasi)").bold().clr(oGold300)),
+              title: ListTile(title: const Text("Bahasa Latin (Transliterasi)").bold().clr(oGold300)),
               children: [
                 ListTile(
                   title: const Text('Tampilkan Bahasa Latin').bold(),
@@ -62,7 +62,7 @@ class QuranSettingView extends ConsumerWidget {
               ],
             ),
             GroupList(
-              header: ListTile(title: const Text("Terjemahan").bold().clr(oGold300)),
+              title: ListTile(title: const Text("Terjemahan").bold().clr(oGold300)),
               children: [
                 ListTile(
                   title: const Text('Tampilkan Terjemahan').bold(),
@@ -85,7 +85,7 @@ class QuranSettingView extends ConsumerWidget {
               ],
             ),
             GroupList(
-              header: ListTile(title: const Text("Umum").bold().clr(oGold300)),
+              title: ListTile(title: const Text("Umum").bold().clr(oGold300)),
               children: [
                 ListTile(
                   title: const Text('Tampilan Aplikasi').bold(),

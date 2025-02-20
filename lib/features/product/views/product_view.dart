@@ -1,5 +1,4 @@
-import 'package:amoora/common/exceptions/data_failed.dart';
-import 'package:amoora/common/exceptions/loading_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/features/product/views/product_detail_view.dart';
 import 'package:amoora/features/product/views/widgets/card_vert_view.dart';
@@ -24,8 +23,9 @@ class ProductView extends ConsumerWidget {
                 skipLoadingOnRefresh: false,
                 data: (data) {
                   if (data.isEmpty) {
-                    return DataFailed(
-                      onReload: () => ref.refresh(fetchProductsProvider),
+                    return DataExceptionLayout(
+                      type: ExeceptionType.dataEmpty,
+                      onTap: () => ref.refresh(fetchProductsProvider),
                     );
                   }
                   return ListView.separated(
@@ -39,8 +39,9 @@ class ProductView extends ConsumerWidget {
                             skipLoadingOnRefresh: false,
                             data: (data) {
                               if (data == null) {
-                                return DataFailed(
-                                  onReload: () => ref.refresh(fetchProductProvider(id)),
+                                return DataExceptionLayout(
+                                  type: ExeceptionType.dataEmpty,
+                                  onTap: () => ref.refresh(fetchProductProvider(id)),
                                 );
                               }
                               return CardVertView(
@@ -51,7 +52,8 @@ class ProductView extends ConsumerWidget {
                                 },
                               );
                             },
-                            error: (error, stackTrace) => LoadingFailed(
+                            error: (error, stackTrace) => DataExceptionLayout(
+                              error: error,
                               onTap: () => ref.refresh(fetchProductProvider(id)),
                             ),
                             loading: () => const Center(child: CircularProgressIndicator()),
@@ -59,7 +61,8 @@ class ProductView extends ConsumerWidget {
                     },
                   );
                 },
-                error: (error, stackTrace) => LoadingFailed(
+                error: (error, stackTrace) => DataExceptionLayout(
+                  error: error,
                   onTap: () => ref.refresh(fetchProductsProvider),
                 ),
                 loading: () => const Center(child: CircularProgressIndicator()),

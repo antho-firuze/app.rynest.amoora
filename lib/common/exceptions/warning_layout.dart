@@ -1,8 +1,8 @@
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 
-class WarningException extends StatelessWidget {
-  const WarningException({super.key, this.title, this.child, this.subTitle});
+class WarningLayout extends StatelessWidget {
+  const WarningLayout({super.key, this.title, this.child, this.subTitle});
 
   final String? title;
   final String? subTitle;

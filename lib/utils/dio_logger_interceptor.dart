@@ -33,14 +33,14 @@ class DioLoggerInterceptor implements Interceptor {
   void onError(DioException err, ErrorInterceptorHandler handler) {
     final url = '${err.requestOptions.uri}';
     _logMessageAndClearStopwatch(null, url, '❌ Received error');
-    log('❌ ${err.stackTrace}', name: 'DIO');
-    if (err.response?.data != null) {
-      log('❌ Response Error: ${err.response?.data}', name: 'DIO');
-      final errCode = err.response?.data['code'] == null ? '' : "[${err.response?.data['code']}]";
-      final errMessage = err.response?.data['message'];
-      final message = "$errCode $errMessage";
-      SnackBarService.show(message: message);
-    }
+    // log('❌ ${err.stackTrace}', name: 'DIO');
+    // if (err.response?.data != null) {
+    //   log('❌ Response Error: ${err.response?.data}', name: 'DIO');
+    //   final errCode = err.response?.data['code'] == null ? '' : "[${err.response?.data['code']}]";
+    //   final errMessage = err.response?.data['message'];
+    //   final message = "$errCode $errMessage";
+    //   SnackBarService.show(message: message);
+    // }
     return handler.next(err);
   }
 

@@ -12,8 +12,7 @@ final fetchCarouselProvider = FutureProvider.autoDispose<List<Carousel>>((ref) a
   final reqs = Reqs(path: '/api/v1/carousel/all');
   final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
-  if (state.hasError) return [];
-
+  log('fetchCarouselProvider | ${state.value}', name: 'CAROUSEL-CTRL');
   List<dynamic>? jsonList = state.value;
   if (jsonList == null || jsonList.isEmpty) return [];
 

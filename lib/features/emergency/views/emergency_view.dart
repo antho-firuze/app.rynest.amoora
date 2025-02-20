@@ -1,4 +1,4 @@
-import 'package:amoora/common/exceptions/loading_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/common/widgets/button/custom_circle_button.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/emergency/controller/emergency_ctrl.dart';
@@ -19,16 +19,20 @@ class EmergencyView extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(title: const Text('Emergency Call (SOS)')),
         body: RefreshIndicator(
-          onRefresh: () async => ref.refresh(emergenciesProvider),
+          onRefresh: () async => ref.refresh(fetchEmergenciesProvider),
           child: ListView(
-            shrinkWrap: true,
+            // shrinkWrap: true,
             children: [
               10.height,
-              ref.watch(emergenciesProvider).when(
+              ref.watch(fetchEmergenciesProvider).when(
                     skipLoadingOnRefresh: false,
-                    error: (error, stackTrace) => const LoadingFailed(),
+                    error: (error, stackTrace) => DataExceptionLayout(error: error),
                     loading: () => const Center(child: CircularProgressIndicator()),
                     data: (data) {
+                      if (data == null || data.isEmpty) {
+                        return DataExceptionLayout(type: ExeceptionType.dataEmpty);
+                      }
+
                       return ListView.separated(
                         shrinkWrap: true,
                         physics: const ClampingScrollPhysics(),
@@ -56,7 +60,6 @@ class EmergencyView extends ConsumerWidget {
                               ),
                               builder: (context) {
                                 return MyUI(
-                                  isTransparent: true,
                                   child: ListView(
                                     shrinkWrap: true,
                                     children: [

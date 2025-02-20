@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:amoora/common/exceptions/image_failed.dart';
-import 'package:amoora/common/exceptions/loading_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
+import 'package:amoora/common/exceptions/image_failed_layout.dart';
 import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
@@ -56,9 +56,10 @@ class DetailAirlines extends ConsumerWidget {
                                 data: (data) => Image.file(
                                   File(data),
                                   height: 40,
-                                  errorBuilder: (context, error, stackTrace) => const ImageFailed(),
+                                  errorBuilder: (context, error, stackTrace) => const ImageFailedLayout(),
                                 ),
-                                error: (error, stackTrace) => LoadingFailed(
+                                error: (error, stackTrace) => DataExceptionLayout(
+                                  error: error,
                                   onTap: () => ref.refresh(imageProvider),
                                 ),
                                 loading: () => const CircularProgressIndicator(),

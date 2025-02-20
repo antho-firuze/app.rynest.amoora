@@ -56,9 +56,10 @@ class BodyPage extends ConsumerWidget {
               Consumer(
                 builder: (context, ref, child) {
                   var hijri = ref.watch(hijriDateProvider);
-                  var hijriStr = " / ${hijri?.day} ${hijri?.month?.en} ${hijri?.year}";
+                  var hijriStr = " / ${hijri?.day} ${hijri?.month?.en} ${hijri?.year} H";
                   final dateStr = "${DateTime.now().yMMMd()}${hijri != null ? hijriStr : ''}";
-                  return Text(dateStr).tsTitleL().bold().clr(oGold).center();
+                  debugPrint('dateStr => $dateStr');
+                  return Text(dateStr).tsTitleL().family('glyphs').bold().clr(oGold).center();
                 },
               ),
               3.height,
@@ -137,7 +138,7 @@ class BodyPage extends ConsumerWidget {
               if (!context.isLandscape()) ...[
                 30.height,
                 Consumer(builder: (context, ref, child) {
-                  return ref.watch(remainingNextPrayerTimeProvider).when(
+                  return ref.watch(remainingNextPrayerTimeStreamProvider).when(
                         data: (data) => Column(
                           children: [
                             const Text('Remaining').tsHeadlineM().clr(oWhite50),
@@ -157,7 +158,7 @@ class BodyPage extends ConsumerWidget {
               if (context.isLandscape()) ...[
                 15.height,
                 Consumer(builder: (context, ref, child) {
-                  return ref.watch(remainingNextPrayerTimeProvider).when(
+                  return ref.watch(remainingNextPrayerTimeStreamProvider).when(
                         data: (data) => Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

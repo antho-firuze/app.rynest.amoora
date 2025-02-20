@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/controllers/network_ctrl.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
+import 'package:amoora/common/services/version_service.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/auth/model/jwt_token.dart';
 import 'package:amoora/features/live_location/controller/live_location_ctrl.dart';
@@ -25,6 +27,21 @@ class InitCtrl {
   final bool _showWalkThrough;
 
   void initializeApps() async {
+    // Check New Version
+    ref.read(isConnectedFutureProvider.future).then((value) async {
+      if (value == true) {
+        log('Check New Version => Executed !', name: 'INIT-CTRL');
+        bool result = await ref.read(versionServiceProvider).newVersionAvailable().onError((error, stackTrace) {
+          final errType = ref.read(exceptionProvider(error));
+          log('ERROR : ${errType.title}', name: 'INIT-CTRL');
+          return false;
+        });
+        if (result) return;
+      } else {
+        log('Check New Version => Not Executed !', name: 'INIT-CTRL');
+      }
+    });
+
     // Initialize Network
     ref.read(networkCtrlProvider).initialize();
 

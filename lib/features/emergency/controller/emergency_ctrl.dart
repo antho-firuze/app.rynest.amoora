@@ -1,25 +1,17 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:amoora/features/emergency/model/emergency.dart';
-import 'package:amoora/features/emergency/service/emergency_service.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final emergenciesProvider =
-    FutureProvider<List<Emergency>>((ref) async => await ref.read(emergencyCtrlProvider).fetchAll());
+final fetchEmergenciesProvider = FutureProvider<List<Emergency>?>((ref) async {
+  await Future.delayed(Duration(seconds: 1));
+  final response = await rootBundle.loadString('assets/json/emergency_call.json');
+  List<dynamic>? jsonList = await jsonDecode(response);
 
-class EmergencyCtrl {
-  Ref ref;
-  EmergencyCtrl(this.ref);
+  log('fetchEmergenciesProvider : $jsonList', name: 'EMERGENCY-CTRL');
+  final result = jsonList?.map((e) => Emergency.fromJson(e)).toList();
 
-  Future<List<Emergency>> fetchAll() async {
-    await Future.delayed(const Duration(milliseconds: 500));
-    List<Map<String, Object>> jsonList = ref.read(emergencyServiceProvider).fetchAll();
-    List<Emergency> emergencies = jsonList.map(Emergency.fromJson).toList();
-
-    emergencies.removeWhere((value) => value.enabled == false);
-    log(":: emergencies => ${emergencies.length}", name: 'EMERGENCY-CTRL');
-    return emergencies;
-  }
-}
-
-final emergencyCtrlProvider = Provider(EmergencyCtrl.new);
+  return result;
+});

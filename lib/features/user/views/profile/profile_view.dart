@@ -44,12 +44,13 @@ class ProfileView extends ConsumerWidget {
     final member = ref.watch(profileProvider);
 
     return MyUI(
-      isDark: true,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(AppAsset.imPattern),
-          repeat: ImageRepeat.repeat,
-          opacity: .2,
+      customBackground: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(AppAsset.imPattern),
+            repeat: ImageRepeat.repeat,
+            opacity: .2,
+          ),
         ),
       ),
       child: Scaffold(
@@ -212,7 +213,7 @@ class ProfileView extends ConsumerWidget {
                             if (member == null) {
                               return SnackBarService.show(message: 'Silahkan login terlebih dahulu !');
                             }
-      
+
                             await Navigator.of(context, rootNavigator: true).push(
                               CupertinoPageRoute(
                                 builder: (context) => const ProfileEditView(),

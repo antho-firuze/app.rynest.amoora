@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:amoora/common/exceptions/image_failed.dart';
-import 'package:amoora/common/exceptions/loading_failed.dart';
+import 'package:amoora/common/exceptions/data_exeception_layout.dart';
+import 'package:amoora/common/exceptions/image_failed_layout.dart';
 import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/common/widgets/custom_interactive_viewer.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/user/controller/carousel_controller.dart';
+import 'package:amoora/features/user/controller/carousel_ctrl.dart';
 import 'package:amoora/utils/download_utils.dart';
 import 'package:amoora/utils/orientation_utils.dart';
 import 'package:amoora/utils/page_utils.dart';
@@ -31,14 +31,15 @@ class CarouselPage extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: LoadingFailed(
+                  child: DataExceptionLayout(
                     onTap: () => ref.refresh(fetchCarouselProvider),
+                    foregroundColor: oWhite,
                   ),
                 ),
               ],
             ),
             data: (data) {
-              if (data.isEmpty) return ImageFailed(onTap: () => ref.refresh(fetchCarouselProvider));
+              if (data.isEmpty) return ImageFailedLayout(onTap: () => ref.refresh(fetchCarouselProvider));
 
               return SizedBox(
                 height: 250,
@@ -70,7 +71,7 @@ class CarouselPage extends ConsumerWidget {
                               borderRadius: BorderRadius.circular(20),
                               child: fetchImage.when(
                                 skipLoadingOnRefresh: false,
-                                error: (error, stackTrace) => ImageFailed(
+                                error: (error, stackTrace) => ImageFailedLayout(
                                   foregroundColor: oWhite70,
                                   onTap: () => ref.refresh(imageProvider),
                                 ),

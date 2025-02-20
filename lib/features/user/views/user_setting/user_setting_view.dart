@@ -1,8 +1,7 @@
-import 'package:amoora/common/controllers/package_info_ctrl.dart';
 import 'package:amoora/common/views/about_view.dart';
 import 'package:amoora/common/views/contact_us_view.dart';
 import 'package:amoora/common/widgets/forms/group_list.dart';
-import 'package:amoora/common/widgets/skelton.dart';
+import 'package:amoora/common/widgets/version_info.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/auth/views/pwd_change_view.dart';
 import 'package:amoora/features/user/views/profile/profile_edit_view.dart';
@@ -36,7 +35,7 @@ class UserSettingView extends ConsumerWidget {
               if (user != null) ...[
                 if (user.roleId == 1)
                   GroupList(
-                    header: ListTile(
+                    title: ListTile(
                       leading: const Icon(SuperIcons.mg_location_2_fill),
                       title: const Text('Pantau lokasi saya').bold(),
                       onTap: () async => showDialog(
@@ -46,14 +45,14 @@ class UserSettingView extends ConsumerWidget {
                     ),
                   ),
                 GroupList(
-                  header: ListTile(
+                  title: ListTile(
                     leading: const Icon(Icons.edit),
                     title: const Text('Rubah Data Akun').bold(),
                     onTap: () => context.goto(page: const ProfileEditView()),
                   ),
                 ),
                 GroupList(
-                  header: ListTile(
+                  title: ListTile(
                     leading: const Icon(Icons.password_outlined),
                     title: const Text('Rubah Kode Sandi').bold(),
                     onTap: () => context.goto(page: const PwdChangeView()),
@@ -97,7 +96,9 @@ class UserSettingView extends ConsumerWidget {
               ),
               if (ref.watch(authUserProvider) != null) ...[
                 GroupList(
-                  header: ListTile(
+                  showDividerTop: true,
+                  showDividerBottom: false,
+                  title: ListTile(
                     leading: const Icon(Icons.exit_to_app),
                     title: const Text('Keluar Akun').bold(),
                     onTap: () => ref.read(authCtrlProvider).signOut(),
@@ -105,11 +106,7 @@ class UserSettingView extends ConsumerWidget {
                 ),
               ],
               20.height,
-              ref.watch(fetchVersionProvider).when(
-                    loading: () => const Skelton(),
-                    error: (Object error, StackTrace stackTrace) => Container(),
-                    data: (String data) => Text('Versi $data').center(),
-                  ),
+              VersionInfo(),
             ],
           ),
         ),

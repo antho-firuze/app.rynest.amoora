@@ -1,6 +1,6 @@
 import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/controllers/permission_ctrl.dart';
-import 'package:amoora/common/exceptions/warning_exeption.dart';
+import 'package:amoora/common/exceptions/warning_layout.dart';
 import 'package:amoora/common/services/permission_service.dart';
 import 'package:amoora/core/app_string.dart';
 import 'package:amoora/features/qibla/controller/qibla_ctrl.dart';
@@ -25,7 +25,7 @@ class QiblaView extends ConsumerWidget {
           appBar: AppBar(title: Text('Qiblat'.hardcoded)),
           body: ListView(
             children: [
-              WarningException(
+              WarningLayout(
                 title: PermissionString2.gpsDeviceTitle,
                 subTitle: PermissionString2.gpsDeviceSubTitle,
                 child: ElevatedButton(
@@ -45,7 +45,7 @@ class QiblaView extends ConsumerWidget {
           appBar: AppBar(title: Text('Qiblat'.hardcoded)),
           body: ListView(
             children: [
-              WarningException(
+              WarningLayout(
                 title: PermissionString2.gpsPermissionTitle,
                 subTitle: PermissionString2.gpsPermissionSubTitle,
                 child: ElevatedButton(

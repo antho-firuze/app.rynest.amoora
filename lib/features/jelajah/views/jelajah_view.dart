@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/controllers/permission_ctrl.dart';
-import 'package:amoora/common/exceptions/warning_exeption.dart';
+import 'package:amoora/common/exceptions/warning_layout.dart';
 import 'package:amoora/common/services/permission_service.dart';
 import 'package:amoora/common/widgets/button/more_button.dart';
 import 'package:amoora/common/widgets/custom_appbar.dart';
@@ -46,7 +46,7 @@ class _JelajahViewState extends ConsumerState<JelajahView> {
           appBar: AppBar(title: Text('Jelajah'.hardcoded)),
           body: ListView(
             children: [
-              WarningException(
+              WarningLayout(
                 title: PermissionString2.gpsDeviceTitle,
                 subTitle: PermissionString2.gpsDeviceSubTitle,
                 child: ElevatedButton(
@@ -66,7 +66,7 @@ class _JelajahViewState extends ConsumerState<JelajahView> {
           appBar: AppBar(title: Text('Jelajah'.hardcoded)),
           body: ListView(
             children: [
-              WarningException(
+              WarningLayout(
                 title: PermissionString2.gpsPermissionTitle,
                 subTitle: PermissionString2.gpsPermissionSubTitle,
                 child: ElevatedButton(
@@ -158,7 +158,7 @@ class _JelajahViewState extends ConsumerState<JelajahView> {
                                     ref.watch(radiusCircleProvider);
                                     final radius = ref.read(jelajahCtrlProvider).getRadiusCircle;
                                     return MyUI(
-                                      isTransparent: true,
+                                      // isTransparent: true,
                                       child: ListView(
                                         shrinkWrap: true,
                                         // mainAxisSize: MainAxisSize.min,
@@ -194,7 +194,6 @@ class _JelajahViewState extends ConsumerState<JelajahView> {
                                                       topLeft: Radius.circular(18), topRight: Radius.circular(18)),
                                                 ),
                                                 builder: (context) => MyUI(
-                                                  isTransparent: true,
                                                   child: ListView(
                                                     shrinkWrap: true,
                                                     children: [

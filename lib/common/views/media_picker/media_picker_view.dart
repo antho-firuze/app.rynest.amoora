@@ -1,7 +1,7 @@
 import 'package:amoora/common/controllers/camera_ctrl.dart';
 import 'package:amoora/common/controllers/media_picker_ctrl.dart';
 import 'package:amoora/common/controllers/permission_ctrl.dart';
-import 'package:amoora/common/exceptions/warning_exeption.dart';
+import 'package:amoora/common/exceptions/warning_layout.dart';
 import 'package:amoora/common/views/media_picker/widget/camera_picker.dart';
 import 'package:amoora/common/views/media_picker/widget/gallery_picker.dart';
 import 'package:amoora/core/app_color.dart';
@@ -54,7 +54,7 @@ class _PickImageViewState extends ConsumerState<MediaPickerView> with SingleTick
           appBar: AppBar(title: Text('Pilih Gambar'.hardcoded)),
           body: ListView(
             children: [
-              WarningException(
+              WarningLayout(
                 title: 'Izinkan akses Galery & Camera !',
                 child: ElevatedButton(
                   onPressed: () async => await ref.read(cameraCtrlProvider).getPermission(),

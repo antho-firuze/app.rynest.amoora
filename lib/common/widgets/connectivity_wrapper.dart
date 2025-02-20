@@ -11,11 +11,13 @@ class ConnectivityWrapper extends ConsumerWidget {
     this.enabled = true,
     this.caption = 'Koneksi internet anda terganggu !',
     this.child,
+    this.bottomPadding = 0,
   });
 
   final bool enabled;
   final Widget? child;
   final String caption;
+  final double bottomPadding;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,28 +31,31 @@ class ConnectivityWrapper extends ConsumerWidget {
       body: Stack(
         children: [
           child ?? const SizedBox(),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              OverlayContainer(
-                isShowOverlay: isShowOverlay,
-                backgroundColor: oRed.withValues(alpha: .8),
-                child: SizedBox(
-                  height: 50,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.wifi_off,
-                        color: oWhite,
-                      ),
-                      10.width,
-                      Text(caption).clr(oWhite),
-                    ],
+          Padding(
+            padding: EdgeInsets.only(bottom: bottomPadding),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                OverlayContainer(
+                  isShowOverlay: isShowOverlay,
+                  backgroundColor: oRed.withValues(alpha: .8),
+                  child: SizedBox(
+                    height: 50,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.wifi_off,
+                          color: oWhite,
+                        ),
+                        10.width,
+                        Text(caption).clr(oWhite),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
