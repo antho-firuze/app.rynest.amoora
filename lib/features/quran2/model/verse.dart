@@ -6,7 +6,7 @@ part 'verse.freezed.dart';
 part 'verse.g.dart';
 
 @freezed
-class Verse with _$Verse {
+abstract class Verse with _$Verse {
 
   factory Verse({
     @Default(0) int id,

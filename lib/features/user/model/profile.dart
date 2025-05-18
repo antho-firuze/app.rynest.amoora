@@ -7,7 +7,7 @@ part 'profile.freezed.dart';
 part 'profile.g.dart';
 
 @freezed
-class Profile with _$Profile {
+abstract class Profile with _$Profile {
   factory Profile({
     @JsonKey(name: 'user_id') int? userId,
     @JsonKey(name: 'member_id') int? memberId,

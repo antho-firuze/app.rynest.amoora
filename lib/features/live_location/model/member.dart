@@ -7,8 +7,7 @@ part 'member.freezed.dart';
 part 'member.g.dart';
 
 @freezed
-class Member with _$Member {
-
+abstract class Member with _$Member {
   factory Member({
     @Default(0) int id,
     @Default(0.0) double lat,

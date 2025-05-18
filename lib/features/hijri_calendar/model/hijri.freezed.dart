@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,39 +10,58 @@ part of 'hijri.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Hijri _$HijriFromJson(Map<String, dynamic> json) {
-  return _Hijri.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Hijri {
-  String? get date => throw _privateConstructorUsedError;
-  String? get format => throw _privateConstructorUsedError;
-  HijriWeekday? get weekday => throw _privateConstructorUsedError;
+  String? get date;
+  String? get format;
+  HijriWeekday? get weekday;
   @JsonIntConverter()
-  int? get day => throw _privateConstructorUsedError;
+  int? get day;
   @JsonIntConverter()
-  int? get year => throw _privateConstructorUsedError;
-  HijriMonth? get month => throw _privateConstructorUsedError;
-
-  /// Serializes this Hijri to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  int? get year;
+  HijriMonth? get month;
 
   /// Create a copy of Hijri
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $HijriCopyWith<Hijri> get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $HijriCopyWith<Hijri> get copyWith =>
+      _$HijriCopyWithImpl<Hijri>(this as Hijri, _$identity);
+
+  /// Serializes this Hijri to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Hijri &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.format, format) || other.format == format) &&
+            (identical(other.weekday, weekday) || other.weekday == weekday) &&
+            (identical(other.day, day) || other.day == day) &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.month, month) || other.month == month));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, date, format, weekday, day, year, month);
+
+  @override
+  String toString() {
+    return 'Hijri(date: $date, format: $format, weekday: $weekday, day: $day, year: $year, month: $month)';
+  }
 }
 
 /// @nodoc
-abstract class $HijriCopyWith<$Res> {
-  factory $HijriCopyWith(Hijri value, $Res Function(Hijri) then) =
-      _$HijriCopyWithImpl<$Res, Hijri>;
+abstract mixin class $HijriCopyWith<$Res> {
+  factory $HijriCopyWith(Hijri value, $Res Function(Hijri) _then) =
+      _$HijriCopyWithImpl;
   @useResult
   $Res call(
       {String? date,
@@ -56,14 +76,11 @@ abstract class $HijriCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HijriCopyWithImpl<$Res, $Val extends Hijri>
-    implements $HijriCopyWith<$Res> {
-  _$HijriCopyWithImpl(this._value, this._then);
+class _$HijriCopyWithImpl<$Res> implements $HijriCopyWith<$Res> {
+  _$HijriCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Hijri _self;
+  final $Res Function(Hijri) _then;
 
   /// Create a copy of Hijri
   /// with the given fields replaced by the non-null parameter values.
@@ -77,32 +94,32 @@ class _$HijriCopyWithImpl<$Res, $Val extends Hijri>
     Object? year = freezed,
     Object? month = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       date: freezed == date
-          ? _value.date
+          ? _self.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
       format: freezed == format
-          ? _value.format
+          ? _self.format
           : format // ignore: cast_nullable_to_non_nullable
               as String?,
       weekday: freezed == weekday
-          ? _value.weekday
+          ? _self.weekday
           : weekday // ignore: cast_nullable_to_non_nullable
               as HijriWeekday?,
       day: freezed == day
-          ? _value.day
+          ? _self.day
           : day // ignore: cast_nullable_to_non_nullable
               as int?,
       year: freezed == year
-          ? _value.year
+          ? _self.year
           : year // ignore: cast_nullable_to_non_nullable
               as int?,
       month: freezed == month
-          ? _value.month
+          ? _self.month
           : month // ignore: cast_nullable_to_non_nullable
               as HijriMonth?,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of Hijri
@@ -110,12 +127,12 @@ class _$HijriCopyWithImpl<$Res, $Val extends Hijri>
   @override
   @pragma('vm:prefer-inline')
   $HijriWeekdayCopyWith<$Res>? get weekday {
-    if (_value.weekday == null) {
+    if (_self.weekday == null) {
       return null;
     }
 
-    return $HijriWeekdayCopyWith<$Res>(_value.weekday!, (value) {
-      return _then(_value.copyWith(weekday: value) as $Val);
+    return $HijriWeekdayCopyWith<$Res>(_self.weekday!, (value) {
+      return _then(_self.copyWith(weekday: value));
     });
   }
 
@@ -124,99 +141,27 @@ class _$HijriCopyWithImpl<$Res, $Val extends Hijri>
   @override
   @pragma('vm:prefer-inline')
   $HijriMonthCopyWith<$Res>? get month {
-    if (_value.month == null) {
+    if (_self.month == null) {
       return null;
     }
 
-    return $HijriMonthCopyWith<$Res>(_value.month!, (value) {
-      return _then(_value.copyWith(month: value) as $Val);
+    return $HijriMonthCopyWith<$Res>(_self.month!, (value) {
+      return _then(_self.copyWith(month: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$HijriImplCopyWith<$Res> implements $HijriCopyWith<$Res> {
-  factory _$$HijriImplCopyWith(
-          _$HijriImpl value, $Res Function(_$HijriImpl) then) =
-      __$$HijriImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? date,
-      String? format,
-      HijriWeekday? weekday,
-      @JsonIntConverter() int? day,
-      @JsonIntConverter() int? year,
-      HijriMonth? month});
-
-  @override
-  $HijriWeekdayCopyWith<$Res>? get weekday;
-  @override
-  $HijriMonthCopyWith<$Res>? get month;
-}
-
-/// @nodoc
-class __$$HijriImplCopyWithImpl<$Res>
-    extends _$HijriCopyWithImpl<$Res, _$HijriImpl>
-    implements _$$HijriImplCopyWith<$Res> {
-  __$$HijriImplCopyWithImpl(
-      _$HijriImpl _value, $Res Function(_$HijriImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Hijri
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? date = freezed,
-    Object? format = freezed,
-    Object? weekday = freezed,
-    Object? day = freezed,
-    Object? year = freezed,
-    Object? month = freezed,
-  }) {
-    return _then(_$HijriImpl(
-      date: freezed == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as String?,
-      format: freezed == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as String?,
-      weekday: freezed == weekday
-          ? _value.weekday
-          : weekday // ignore: cast_nullable_to_non_nullable
-              as HijriWeekday?,
-      day: freezed == day
-          ? _value.day
-          : day // ignore: cast_nullable_to_non_nullable
-              as int?,
-      year: freezed == year
-          ? _value.year
-          : year // ignore: cast_nullable_to_non_nullable
-              as int?,
-      month: freezed == month
-          ? _value.month
-          : month // ignore: cast_nullable_to_non_nullable
-              as HijriMonth?,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$HijriImpl implements _Hijri {
-  _$HijriImpl(
+class _Hijri implements Hijri {
+  _Hijri(
       {this.date,
       this.format,
       this.weekday,
       @JsonIntConverter() this.day,
       @JsonIntConverter() this.year,
       this.month});
-
-  factory _$HijriImpl.fromJson(Map<String, dynamic> json) =>
-      _$$HijriImplFromJson(json);
+  factory _Hijri.fromJson(Map<String, dynamic> json) => _$HijriFromJson(json);
 
   @override
   final String? date;
@@ -233,16 +178,26 @@ class _$HijriImpl implements _Hijri {
   @override
   final HijriMonth? month;
 
+  /// Create a copy of Hijri
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Hijri(date: $date, format: $format, weekday: $weekday, day: $day, year: $year, month: $month)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$HijriCopyWith<_Hijri> get copyWith =>
+      __$HijriCopyWithImpl<_Hijri>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$HijriToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HijriImpl &&
+            other is _Hijri &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.format, format) || other.format == format) &&
             (identical(other.weekday, weekday) || other.weekday == weekday) &&
@@ -256,178 +211,129 @@ class _$HijriImpl implements _Hijri {
   int get hashCode =>
       Object.hash(runtimeType, date, format, weekday, day, year, month);
 
-  /// Create a copy of Hijri
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$HijriImplCopyWith<_$HijriImpl> get copyWith =>
-      __$$HijriImplCopyWithImpl<_$HijriImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$HijriImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Hijri(date: $date, format: $format, weekday: $weekday, day: $day, year: $year, month: $month)';
   }
 }
 
-abstract class _Hijri implements Hijri {
-  factory _Hijri(
-      {final String? date,
-      final String? format,
-      final HijriWeekday? weekday,
-      @JsonIntConverter() final int? day,
-      @JsonIntConverter() final int? year,
-      final HijriMonth? month}) = _$HijriImpl;
+/// @nodoc
+abstract mixin class _$HijriCopyWith<$Res> implements $HijriCopyWith<$Res> {
+  factory _$HijriCopyWith(_Hijri value, $Res Function(_Hijri) _then) =
+      __$HijriCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String? date,
+      String? format,
+      HijriWeekday? weekday,
+      @JsonIntConverter() int? day,
+      @JsonIntConverter() int? year,
+      HijriMonth? month});
 
-  factory _Hijri.fromJson(Map<String, dynamic> json) = _$HijriImpl.fromJson;
+  @override
+  $HijriWeekdayCopyWith<$Res>? get weekday;
+  @override
+  $HijriMonthCopyWith<$Res>? get month;
+}
 
-  @override
-  String? get date;
-  @override
-  String? get format;
-  @override
-  HijriWeekday? get weekday;
-  @override
-  @JsonIntConverter()
-  int? get day;
-  @override
-  @JsonIntConverter()
-  int? get year;
-  @override
-  HijriMonth? get month;
+/// @nodoc
+class __$HijriCopyWithImpl<$Res> implements _$HijriCopyWith<$Res> {
+  __$HijriCopyWithImpl(this._self, this._then);
+
+  final _Hijri _self;
+  final $Res Function(_Hijri) _then;
 
   /// Create a copy of Hijri
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HijriImplCopyWith<_$HijriImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? date = freezed,
+    Object? format = freezed,
+    Object? weekday = freezed,
+    Object? day = freezed,
+    Object? year = freezed,
+    Object? month = freezed,
+  }) {
+    return _then(_Hijri(
+      date: freezed == date
+          ? _self.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      format: freezed == format
+          ? _self.format
+          : format // ignore: cast_nullable_to_non_nullable
+              as String?,
+      weekday: freezed == weekday
+          ? _self.weekday
+          : weekday // ignore: cast_nullable_to_non_nullable
+              as HijriWeekday?,
+      day: freezed == day
+          ? _self.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as int?,
+      year: freezed == year
+          ? _self.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int?,
+      month: freezed == month
+          ? _self.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as HijriMonth?,
+    ));
+  }
 
-HijriWeekday _$HijriWeekdayFromJson(Map<String, dynamic> json) {
-  return _HijriWeekday.fromJson(json);
+  /// Create a copy of Hijri
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $HijriWeekdayCopyWith<$Res>? get weekday {
+    if (_self.weekday == null) {
+      return null;
+    }
+
+    return $HijriWeekdayCopyWith<$Res>(_self.weekday!, (value) {
+      return _then(_self.copyWith(weekday: value));
+    });
+  }
+
+  /// Create a copy of Hijri
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $HijriMonthCopyWith<$Res>? get month {
+    if (_self.month == null) {
+      return null;
+    }
+
+    return $HijriMonthCopyWith<$Res>(_self.month!, (value) {
+      return _then(_self.copyWith(month: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$HijriWeekday {
-  String? get en => throw _privateConstructorUsedError;
-  String? get ar => throw _privateConstructorUsedError;
-
-  /// Serializes this HijriWeekday to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get en;
+  String? get ar;
 
   /// Create a copy of HijriWeekday
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $HijriWeekdayCopyWith<HijriWeekday> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$HijriWeekdayCopyWithImpl<HijriWeekday>(
+          this as HijriWeekday, _$identity);
 
-/// @nodoc
-abstract class $HijriWeekdayCopyWith<$Res> {
-  factory $HijriWeekdayCopyWith(
-          HijriWeekday value, $Res Function(HijriWeekday) then) =
-      _$HijriWeekdayCopyWithImpl<$Res, HijriWeekday>;
-  @useResult
-  $Res call({String? en, String? ar});
-}
-
-/// @nodoc
-class _$HijriWeekdayCopyWithImpl<$Res, $Val extends HijriWeekday>
-    implements $HijriWeekdayCopyWith<$Res> {
-  _$HijriWeekdayCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of HijriWeekday
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? en = freezed,
-    Object? ar = freezed,
-  }) {
-    return _then(_value.copyWith(
-      en: freezed == en
-          ? _value.en
-          : en // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ar: freezed == ar
-          ? _value.ar
-          : ar // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$HijriWeekdayImplCopyWith<$Res>
-    implements $HijriWeekdayCopyWith<$Res> {
-  factory _$$HijriWeekdayImplCopyWith(
-          _$HijriWeekdayImpl value, $Res Function(_$HijriWeekdayImpl) then) =
-      __$$HijriWeekdayImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? en, String? ar});
-}
-
-/// @nodoc
-class __$$HijriWeekdayImplCopyWithImpl<$Res>
-    extends _$HijriWeekdayCopyWithImpl<$Res, _$HijriWeekdayImpl>
-    implements _$$HijriWeekdayImplCopyWith<$Res> {
-  __$$HijriWeekdayImplCopyWithImpl(
-      _$HijriWeekdayImpl _value, $Res Function(_$HijriWeekdayImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of HijriWeekday
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? en = freezed,
-    Object? ar = freezed,
-  }) {
-    return _then(_$HijriWeekdayImpl(
-      en: freezed == en
-          ? _value.en
-          : en // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ar: freezed == ar
-          ? _value.ar
-          : ar // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$HijriWeekdayImpl implements _HijriWeekday {
-  _$HijriWeekdayImpl({this.en, this.ar});
-
-  factory _$HijriWeekdayImpl.fromJson(Map<String, dynamic> json) =>
-      _$$HijriWeekdayImplFromJson(json);
-
-  @override
-  final String? en;
-  @override
-  final String? ar;
-
-  @override
-  String toString() {
-    return 'HijriWeekday(en: $en, ar: $ar)';
-  }
+  /// Serializes this HijriWeekday to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HijriWeekdayImpl &&
+            other is HijriWeekday &&
             (identical(other.en, en) || other.en == en) &&
             (identical(other.ar, ar) || other.ar == ar));
   }
@@ -436,146 +342,43 @@ class _$HijriWeekdayImpl implements _HijriWeekday {
   @override
   int get hashCode => Object.hash(runtimeType, en, ar);
 
-  /// Create a copy of HijriWeekday
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$HijriWeekdayImplCopyWith<_$HijriWeekdayImpl> get copyWith =>
-      __$$HijriWeekdayImplCopyWithImpl<_$HijriWeekdayImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$HijriWeekdayImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _HijriWeekday implements HijriWeekday {
-  factory _HijriWeekday({final String? en, final String? ar}) =
-      _$HijriWeekdayImpl;
-
-  factory _HijriWeekday.fromJson(Map<String, dynamic> json) =
-      _$HijriWeekdayImpl.fromJson;
-
-  @override
-  String? get en;
-  @override
-  String? get ar;
-
-  /// Create a copy of HijriWeekday
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HijriWeekdayImplCopyWith<_$HijriWeekdayImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-HijriMonth _$HijriMonthFromJson(Map<String, dynamic> json) {
-  return _HijriMonth.fromJson(json);
-}
-
-/// @nodoc
-mixin _$HijriMonth {
-  int? get number => throw _privateConstructorUsedError;
-  String? get en => throw _privateConstructorUsedError;
-  String? get ar => throw _privateConstructorUsedError;
-
-  /// Serializes this HijriMonth to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of HijriMonth
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $HijriMonthCopyWith<HijriMonth> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $HijriMonthCopyWith<$Res> {
-  factory $HijriMonthCopyWith(
-          HijriMonth value, $Res Function(HijriMonth) then) =
-      _$HijriMonthCopyWithImpl<$Res, HijriMonth>;
-  @useResult
-  $Res call({int? number, String? en, String? ar});
-}
-
-/// @nodoc
-class _$HijriMonthCopyWithImpl<$Res, $Val extends HijriMonth>
-    implements $HijriMonthCopyWith<$Res> {
-  _$HijriMonthCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of HijriMonth
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? number = freezed,
-    Object? en = freezed,
-    Object? ar = freezed,
-  }) {
-    return _then(_value.copyWith(
-      number: freezed == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int?,
-      en: freezed == en
-          ? _value.en
-          : en // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ar: freezed == ar
-          ? _value.ar
-          : ar // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  String toString() {
+    return 'HijriWeekday(en: $en, ar: $ar)';
   }
 }
 
 /// @nodoc
-abstract class _$$HijriMonthImplCopyWith<$Res>
-    implements $HijriMonthCopyWith<$Res> {
-  factory _$$HijriMonthImplCopyWith(
-          _$HijriMonthImpl value, $Res Function(_$HijriMonthImpl) then) =
-      __$$HijriMonthImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $HijriWeekdayCopyWith<$Res> {
+  factory $HijriWeekdayCopyWith(
+          HijriWeekday value, $Res Function(HijriWeekday) _then) =
+      _$HijriWeekdayCopyWithImpl;
   @useResult
-  $Res call({int? number, String? en, String? ar});
+  $Res call({String? en, String? ar});
 }
 
 /// @nodoc
-class __$$HijriMonthImplCopyWithImpl<$Res>
-    extends _$HijriMonthCopyWithImpl<$Res, _$HijriMonthImpl>
-    implements _$$HijriMonthImplCopyWith<$Res> {
-  __$$HijriMonthImplCopyWithImpl(
-      _$HijriMonthImpl _value, $Res Function(_$HijriMonthImpl) _then)
-      : super(_value, _then);
+class _$HijriWeekdayCopyWithImpl<$Res> implements $HijriWeekdayCopyWith<$Res> {
+  _$HijriWeekdayCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of HijriMonth
+  final HijriWeekday _self;
+  final $Res Function(HijriWeekday) _then;
+
+  /// Create a copy of HijriWeekday
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? number = freezed,
     Object? en = freezed,
     Object? ar = freezed,
   }) {
-    return _then(_$HijriMonthImpl(
-      number: freezed == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int?,
+    return _then(_self.copyWith(
       en: freezed == en
-          ? _value.en
+          ? _self.en
           : en // ignore: cast_nullable_to_non_nullable
               as String?,
       ar: freezed == ar
-          ? _value.ar
+          ? _self.ar
           : ar // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
@@ -584,29 +387,111 @@ class __$$HijriMonthImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$HijriMonthImpl implements _HijriMonth {
-  _$HijriMonthImpl({this.number, this.en, this.ar});
+class _HijriWeekday implements HijriWeekday {
+  _HijriWeekday({this.en, this.ar});
+  factory _HijriWeekday.fromJson(Map<String, dynamic> json) =>
+      _$HijriWeekdayFromJson(json);
 
-  factory _$HijriMonthImpl.fromJson(Map<String, dynamic> json) =>
-      _$$HijriMonthImplFromJson(json);
-
-  @override
-  final int? number;
   @override
   final String? en;
   @override
   final String? ar;
 
+  /// Create a copy of HijriWeekday
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'HijriMonth(number: $number, en: $en, ar: $ar)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$HijriWeekdayCopyWith<_HijriWeekday> get copyWith =>
+      __$HijriWeekdayCopyWithImpl<_HijriWeekday>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$HijriWeekdayToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HijriMonthImpl &&
+            other is _HijriWeekday &&
+            (identical(other.en, en) || other.en == en) &&
+            (identical(other.ar, ar) || other.ar == ar));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, en, ar);
+
+  @override
+  String toString() {
+    return 'HijriWeekday(en: $en, ar: $ar)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$HijriWeekdayCopyWith<$Res>
+    implements $HijriWeekdayCopyWith<$Res> {
+  factory _$HijriWeekdayCopyWith(
+          _HijriWeekday value, $Res Function(_HijriWeekday) _then) =
+      __$HijriWeekdayCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String? en, String? ar});
+}
+
+/// @nodoc
+class __$HijriWeekdayCopyWithImpl<$Res>
+    implements _$HijriWeekdayCopyWith<$Res> {
+  __$HijriWeekdayCopyWithImpl(this._self, this._then);
+
+  final _HijriWeekday _self;
+  final $Res Function(_HijriWeekday) _then;
+
+  /// Create a copy of HijriWeekday
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? en = freezed,
+    Object? ar = freezed,
+  }) {
+    return _then(_HijriWeekday(
+      en: freezed == en
+          ? _self.en
+          : en // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ar: freezed == ar
+          ? _self.ar
+          : ar // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$HijriMonth {
+  int? get number;
+  String? get en;
+  String? get ar;
+
+  /// Create a copy of HijriMonth
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $HijriMonthCopyWith<HijriMonth> get copyWith =>
+      _$HijriMonthCopyWithImpl<HijriMonth>(this as HijriMonth, _$identity);
+
+  /// Serializes this HijriMonth to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is HijriMonth &&
             (identical(other.number, number) || other.number == number) &&
             (identical(other.en, en) || other.en == en) &&
             (identical(other.ar, ar) || other.ar == ar));
@@ -616,40 +501,145 @@ class _$HijriMonthImpl implements _HijriMonth {
   @override
   int get hashCode => Object.hash(runtimeType, number, en, ar);
 
-  /// Create a copy of HijriMonth
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$HijriMonthImplCopyWith<_$HijriMonthImpl> get copyWith =>
-      __$$HijriMonthImplCopyWithImpl<_$HijriMonthImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$HijriMonthImplToJson(
-      this,
-    );
+  String toString() {
+    return 'HijriMonth(number: $number, en: $en, ar: $ar)';
   }
 }
 
-abstract class _HijriMonth implements HijriMonth {
-  factory _HijriMonth({final int? number, final String? en, final String? ar}) =
-      _$HijriMonthImpl;
+/// @nodoc
+abstract mixin class $HijriMonthCopyWith<$Res> {
+  factory $HijriMonthCopyWith(
+          HijriMonth value, $Res Function(HijriMonth) _then) =
+      _$HijriMonthCopyWithImpl;
+  @useResult
+  $Res call({int? number, String? en, String? ar});
+}
 
-  factory _HijriMonth.fromJson(Map<String, dynamic> json) =
-      _$HijriMonthImpl.fromJson;
+/// @nodoc
+class _$HijriMonthCopyWithImpl<$Res> implements $HijriMonthCopyWith<$Res> {
+  _$HijriMonthCopyWithImpl(this._self, this._then);
+
+  final HijriMonth _self;
+  final $Res Function(HijriMonth) _then;
+
+  /// Create a copy of HijriMonth
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? number = freezed,
+    Object? en = freezed,
+    Object? ar = freezed,
+  }) {
+    return _then(_self.copyWith(
+      number: freezed == number
+          ? _self.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int?,
+      en: freezed == en
+          ? _self.en
+          : en // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ar: freezed == ar
+          ? _self.ar
+          : ar // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _HijriMonth implements HijriMonth {
+  _HijriMonth({this.number, this.en, this.ar});
+  factory _HijriMonth.fromJson(Map<String, dynamic> json) =>
+      _$HijriMonthFromJson(json);
 
   @override
-  int? get number;
+  final int? number;
   @override
-  String? get en;
+  final String? en;
   @override
-  String? get ar;
+  final String? ar;
 
   /// Create a copy of HijriMonth
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HijriMonthImplCopyWith<_$HijriMonthImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$HijriMonthCopyWith<_HijriMonth> get copyWith =>
+      __$HijriMonthCopyWithImpl<_HijriMonth>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$HijriMonthToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _HijriMonth &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.en, en) || other.en == en) &&
+            (identical(other.ar, ar) || other.ar == ar));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, number, en, ar);
+
+  @override
+  String toString() {
+    return 'HijriMonth(number: $number, en: $en, ar: $ar)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$HijriMonthCopyWith<$Res>
+    implements $HijriMonthCopyWith<$Res> {
+  factory _$HijriMonthCopyWith(
+          _HijriMonth value, $Res Function(_HijriMonth) _then) =
+      __$HijriMonthCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int? number, String? en, String? ar});
+}
+
+/// @nodoc
+class __$HijriMonthCopyWithImpl<$Res> implements _$HijriMonthCopyWith<$Res> {
+  __$HijriMonthCopyWithImpl(this._self, this._then);
+
+  final _HijriMonth _self;
+  final $Res Function(_HijriMonth) _then;
+
+  /// Create a copy of HijriMonth
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? number = freezed,
+    Object? en = freezed,
+    Object? ar = freezed,
+  }) {
+    return _then(_HijriMonth(
+      number: freezed == number
+          ? _self.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int?,
+      en: freezed == en
+          ? _self.en
+          : en // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ar: freezed == ar
+          ? _self.ar
+          : ar // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+// dart format on

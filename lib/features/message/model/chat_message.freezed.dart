@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,160 +10,31 @@ part of 'chat_message.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ChatMessage _$ChatMessageFromJson(Map<String, dynamic> json) {
-  return _ChatMessage.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ChatMessage {
-  String? get id => throw _privateConstructorUsedError;
-  String? get message => throw _privateConstructorUsedError;
-  DateTime? get time => throw _privateConstructorUsedError;
-  bool get isSentByMe => throw _privateConstructorUsedError;
-
-  /// Serializes this ChatMessage to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get id;
+  String? get message;
+  DateTime? get time;
+  bool get isSentByMe;
 
   /// Create a copy of ChatMessage
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ChatMessageCopyWith<ChatMessage> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$ChatMessageCopyWithImpl<ChatMessage>(this as ChatMessage, _$identity);
 
-/// @nodoc
-abstract class $ChatMessageCopyWith<$Res> {
-  factory $ChatMessageCopyWith(
-          ChatMessage value, $Res Function(ChatMessage) then) =
-      _$ChatMessageCopyWithImpl<$Res, ChatMessage>;
-  @useResult
-  $Res call({String? id, String? message, DateTime? time, bool isSentByMe});
-}
-
-/// @nodoc
-class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
-    implements $ChatMessageCopyWith<$Res> {
-  _$ChatMessageCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ChatMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? message = freezed,
-    Object? time = freezed,
-    Object? isSentByMe = null,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      time: freezed == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      isSentByMe: null == isSentByMe
-          ? _value.isSentByMe
-          : isSentByMe // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$ChatMessageImplCopyWith<$Res>
-    implements $ChatMessageCopyWith<$Res> {
-  factory _$$ChatMessageImplCopyWith(
-          _$ChatMessageImpl value, $Res Function(_$ChatMessageImpl) then) =
-      __$$ChatMessageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? id, String? message, DateTime? time, bool isSentByMe});
-}
-
-/// @nodoc
-class __$$ChatMessageImplCopyWithImpl<$Res>
-    extends _$ChatMessageCopyWithImpl<$Res, _$ChatMessageImpl>
-    implements _$$ChatMessageImplCopyWith<$Res> {
-  __$$ChatMessageImplCopyWithImpl(
-      _$ChatMessageImpl _value, $Res Function(_$ChatMessageImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ChatMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? message = freezed,
-    Object? time = freezed,
-    Object? isSentByMe = null,
-  }) {
-    return _then(_$ChatMessageImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      time: freezed == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      isSentByMe: null == isSentByMe
-          ? _value.isSentByMe
-          : isSentByMe // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$ChatMessageImpl implements _ChatMessage {
-  _$ChatMessageImpl({this.id, this.message, this.time, this.isSentByMe = true});
-
-  factory _$ChatMessageImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ChatMessageImplFromJson(json);
-
-  @override
-  final String? id;
-  @override
-  final String? message;
-  @override
-  final DateTime? time;
-  @override
-  @JsonKey()
-  final bool isSentByMe;
-
-  @override
-  String toString() {
-    return 'ChatMessage(id: $id, message: $message, time: $time, isSentByMe: $isSentByMe)';
-  }
+  /// Serializes this ChatMessage to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChatMessageImpl &&
+            other is ChatMessage &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.time, time) || other.time == time) &&
@@ -174,45 +46,160 @@ class _$ChatMessageImpl implements _ChatMessage {
   @override
   int get hashCode => Object.hash(runtimeType, id, message, time, isSentByMe);
 
-  /// Create a copy of ChatMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ChatMessageImplCopyWith<_$ChatMessageImpl> get copyWith =>
-      __$$ChatMessageImplCopyWithImpl<_$ChatMessageImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ChatMessageImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ChatMessage(id: $id, message: $message, time: $time, isSentByMe: $isSentByMe)';
   }
 }
 
-abstract class _ChatMessage implements ChatMessage {
-  factory _ChatMessage(
-      {final String? id,
-      final String? message,
-      final DateTime? time,
-      final bool isSentByMe}) = _$ChatMessageImpl;
+/// @nodoc
+abstract mixin class $ChatMessageCopyWith<$Res> {
+  factory $ChatMessageCopyWith(
+          ChatMessage value, $Res Function(ChatMessage) _then) =
+      _$ChatMessageCopyWithImpl;
+  @useResult
+  $Res call({String? id, String? message, DateTime? time, bool isSentByMe});
+}
 
-  factory _ChatMessage.fromJson(Map<String, dynamic> json) =
-      _$ChatMessageImpl.fromJson;
+/// @nodoc
+class _$ChatMessageCopyWithImpl<$Res> implements $ChatMessageCopyWith<$Res> {
+  _$ChatMessageCopyWithImpl(this._self, this._then);
+
+  final ChatMessage _self;
+  final $Res Function(ChatMessage) _then;
+
+  /// Create a copy of ChatMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? message = freezed,
+    Object? time = freezed,
+    Object? isSentByMe = null,
+  }) {
+    return _then(_self.copyWith(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      message: freezed == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: freezed == time
+          ? _self.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      isSentByMe: null == isSentByMe
+          ? _self.isSentByMe
+          : isSentByMe // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _ChatMessage implements ChatMessage {
+  _ChatMessage({this.id, this.message, this.time, this.isSentByMe = true});
+  factory _ChatMessage.fromJson(Map<String, dynamic> json) =>
+      _$ChatMessageFromJson(json);
 
   @override
-  String? get id;
+  final String? id;
   @override
-  String? get message;
+  final String? message;
   @override
-  DateTime? get time;
+  final DateTime? time;
   @override
-  bool get isSentByMe;
+  @JsonKey()
+  final bool isSentByMe;
 
   /// Create a copy of ChatMessage
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ChatMessageImplCopyWith<_$ChatMessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$ChatMessageCopyWith<_ChatMessage> get copyWith =>
+      __$ChatMessageCopyWithImpl<_ChatMessage>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ChatMessageToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ChatMessage &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.time, time) || other.time == time) &&
+            (identical(other.isSentByMe, isSentByMe) ||
+                other.isSentByMe == isSentByMe));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, message, time, isSentByMe);
+
+  @override
+  String toString() {
+    return 'ChatMessage(id: $id, message: $message, time: $time, isSentByMe: $isSentByMe)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$ChatMessageCopyWith<$Res>
+    implements $ChatMessageCopyWith<$Res> {
+  factory _$ChatMessageCopyWith(
+          _ChatMessage value, $Res Function(_ChatMessage) _then) =
+      __$ChatMessageCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String? id, String? message, DateTime? time, bool isSentByMe});
+}
+
+/// @nodoc
+class __$ChatMessageCopyWithImpl<$Res> implements _$ChatMessageCopyWith<$Res> {
+  __$ChatMessageCopyWithImpl(this._self, this._then);
+
+  final _ChatMessage _self;
+  final $Res Function(_ChatMessage) _then;
+
+  /// Create a copy of ChatMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = freezed,
+    Object? message = freezed,
+    Object? time = freezed,
+    Object? isSentByMe = null,
+  }) {
+    return _then(_ChatMessage(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      message: freezed == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: freezed == time
+          ? _self.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      isSentByMe: null == isSentByMe
+          ? _self.isSentByMe
+          : isSentByMe // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+// dart format on

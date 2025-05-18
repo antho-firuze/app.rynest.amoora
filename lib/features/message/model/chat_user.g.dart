@@ -6,8 +6,7 @@ part of 'chat_user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ChatUserImpl _$$ChatUserImplFromJson(Map<String, dynamic> json) =>
-    _$ChatUserImpl(
+_ChatUser _$ChatUserFromJson(Map<String, dynamic> json) => _ChatUser(
       id: json['id'] as String?,
       name: json['name'] as String?,
       imageUrl: json['imageUrl'] as String?,
@@ -17,8 +16,7 @@ _$ChatUserImpl _$$ChatUserImplFromJson(Map<String, dynamic> json) =>
       isOnline: json['isOnline'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$ChatUserImplToJson(_$ChatUserImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ChatUserToJson(_ChatUser instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'imageUrl': instance.imageUrl,

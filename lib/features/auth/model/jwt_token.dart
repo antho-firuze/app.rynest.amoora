@@ -7,7 +7,8 @@ part 'jwt_token.freezed.dart';
 part 'jwt_token.g.dart';
 
 @freezed
-class JwtToken with _$JwtToken {
+abstract class JwtToken with _$JwtToken {
+
   factory JwtToken({
     // @JsonKey(name: 'token_type') @Default('Bearer') String type,
     // @JsonKey(name: 'expires_in') @Default(0) int expiresIn,

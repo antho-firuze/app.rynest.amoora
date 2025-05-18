@@ -6,7 +6,7 @@ part of 'quran.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$QuranImpl _$$QuranImplFromJson(Map<String, dynamic> json) => _$QuranImpl(
+_Quran _$QuranFromJson(Map<String, dynamic> json) => _Quran(
       page: (json['page'] as num?)?.toInt() ?? 1,
       markPage: (json['markPage'] as List<dynamic>?)
               ?.map((e) => (e as num).toInt())
@@ -24,8 +24,7 @@ _$QuranImpl _$$QuranImplFromJson(Map<String, dynamic> json) => _$QuranImpl(
       lang: json['lang'] as String?,
     );
 
-Map<String, dynamic> _$$QuranImplToJson(_$QuranImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$QuranToJson(_Quran instance) => <String, dynamic>{
       'page': instance.page,
       'markPage': instance.markPage,
       'surahNumber': instance.surahNumber,

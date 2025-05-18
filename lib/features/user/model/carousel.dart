@@ -6,8 +6,7 @@ part 'carousel.freezed.dart';
 part 'carousel.g.dart';
 
 @freezed
-class Carousel with _$Carousel {
-
+abstract class Carousel with _$Carousel {
   factory Carousel({
     @Default(0) int id,
     @JsonKey(name: 'url') @Default('') String linkUrl,

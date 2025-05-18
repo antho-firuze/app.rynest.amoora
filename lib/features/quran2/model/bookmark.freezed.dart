@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,234 +10,35 @@ part of 'bookmark.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Bookmark _$BookmarkFromJson(Map<String, dynamic> json) {
-  return _Bookmark.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Bookmark {
-  String? get id => throw _privateConstructorUsedError;
-  int? get chapterId => throw _privateConstructorUsedError;
-  int? get verseId => throw _privateConstructorUsedError;
-  int? get verseNum => throw _privateConstructorUsedError;
-  int? get juzNum => throw _privateConstructorUsedError;
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  String? get note => throw _privateConstructorUsedError;
-  String? get folder => throw _privateConstructorUsedError;
-
-  /// Serializes this Bookmark to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get id;
+  int? get chapterId;
+  int? get verseId;
+  int? get verseNum;
+  int? get juzNum;
+  DateTime? get createdAt;
+  String? get note;
+  String? get folder;
 
   /// Create a copy of Bookmark
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $BookmarkCopyWith<Bookmark> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$BookmarkCopyWithImpl<Bookmark>(this as Bookmark, _$identity);
 
-/// @nodoc
-abstract class $BookmarkCopyWith<$Res> {
-  factory $BookmarkCopyWith(Bookmark value, $Res Function(Bookmark) then) =
-      _$BookmarkCopyWithImpl<$Res, Bookmark>;
-  @useResult
-  $Res call(
-      {String? id,
-      int? chapterId,
-      int? verseId,
-      int? verseNum,
-      int? juzNum,
-      DateTime? createdAt,
-      String? note,
-      String? folder});
-}
-
-/// @nodoc
-class _$BookmarkCopyWithImpl<$Res, $Val extends Bookmark>
-    implements $BookmarkCopyWith<$Res> {
-  _$BookmarkCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Bookmark
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? chapterId = freezed,
-    Object? verseId = freezed,
-    Object? verseNum = freezed,
-    Object? juzNum = freezed,
-    Object? createdAt = freezed,
-    Object? note = freezed,
-    Object? folder = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      chapterId: freezed == chapterId
-          ? _value.chapterId
-          : chapterId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      verseId: freezed == verseId
-          ? _value.verseId
-          : verseId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      verseNum: freezed == verseNum
-          ? _value.verseNum
-          : verseNum // ignore: cast_nullable_to_non_nullable
-              as int?,
-      juzNum: freezed == juzNum
-          ? _value.juzNum
-          : juzNum // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      note: freezed == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String?,
-      folder: freezed == folder
-          ? _value.folder
-          : folder // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$BookmarkImplCopyWith<$Res>
-    implements $BookmarkCopyWith<$Res> {
-  factory _$$BookmarkImplCopyWith(
-          _$BookmarkImpl value, $Res Function(_$BookmarkImpl) then) =
-      __$$BookmarkImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? id,
-      int? chapterId,
-      int? verseId,
-      int? verseNum,
-      int? juzNum,
-      DateTime? createdAt,
-      String? note,
-      String? folder});
-}
-
-/// @nodoc
-class __$$BookmarkImplCopyWithImpl<$Res>
-    extends _$BookmarkCopyWithImpl<$Res, _$BookmarkImpl>
-    implements _$$BookmarkImplCopyWith<$Res> {
-  __$$BookmarkImplCopyWithImpl(
-      _$BookmarkImpl _value, $Res Function(_$BookmarkImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Bookmark
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? chapterId = freezed,
-    Object? verseId = freezed,
-    Object? verseNum = freezed,
-    Object? juzNum = freezed,
-    Object? createdAt = freezed,
-    Object? note = freezed,
-    Object? folder = freezed,
-  }) {
-    return _then(_$BookmarkImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      chapterId: freezed == chapterId
-          ? _value.chapterId
-          : chapterId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      verseId: freezed == verseId
-          ? _value.verseId
-          : verseId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      verseNum: freezed == verseNum
-          ? _value.verseNum
-          : verseNum // ignore: cast_nullable_to_non_nullable
-              as int?,
-      juzNum: freezed == juzNum
-          ? _value.juzNum
-          : juzNum // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      note: freezed == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String?,
-      folder: freezed == folder
-          ? _value.folder
-          : folder // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$BookmarkImpl implements _Bookmark {
-  _$BookmarkImpl(
-      {this.id,
-      this.chapterId,
-      this.verseId,
-      this.verseNum,
-      this.juzNum,
-      this.createdAt,
-      this.note,
-      this.folder});
-
-  factory _$BookmarkImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BookmarkImplFromJson(json);
-
-  @override
-  final String? id;
-  @override
-  final int? chapterId;
-  @override
-  final int? verseId;
-  @override
-  final int? verseNum;
-  @override
-  final int? juzNum;
-  @override
-  final DateTime? createdAt;
-  @override
-  final String? note;
-  @override
-  final String? folder;
-
-  @override
-  String toString() {
-    return 'Bookmark(id: $id, chapterId: $chapterId, verseId: $verseId, verseNum: $verseNum, juzNum: $juzNum, createdAt: $createdAt, note: $note, folder: $folder)';
-  }
+  /// Serializes this Bookmark to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BookmarkImpl &&
+            other is Bookmark &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.chapterId, chapterId) ||
                 other.chapterId == chapterId) &&
@@ -255,57 +57,236 @@ class _$BookmarkImpl implements _Bookmark {
   int get hashCode => Object.hash(runtimeType, id, chapterId, verseId, verseNum,
       juzNum, createdAt, note, folder);
 
-  /// Create a copy of Bookmark
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$BookmarkImplCopyWith<_$BookmarkImpl> get copyWith =>
-      __$$BookmarkImplCopyWithImpl<_$BookmarkImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BookmarkImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Bookmark(id: $id, chapterId: $chapterId, verseId: $verseId, verseNum: $verseNum, juzNum: $juzNum, createdAt: $createdAt, note: $note, folder: $folder)';
   }
 }
 
-abstract class _Bookmark implements Bookmark {
-  factory _Bookmark(
-      {final String? id,
-      final int? chapterId,
-      final int? verseId,
-      final int? verseNum,
-      final int? juzNum,
-      final DateTime? createdAt,
-      final String? note,
-      final String? folder}) = _$BookmarkImpl;
+/// @nodoc
+abstract mixin class $BookmarkCopyWith<$Res> {
+  factory $BookmarkCopyWith(Bookmark value, $Res Function(Bookmark) _then) =
+      _$BookmarkCopyWithImpl;
+  @useResult
+  $Res call(
+      {String? id,
+      int? chapterId,
+      int? verseId,
+      int? verseNum,
+      int? juzNum,
+      DateTime? createdAt,
+      String? note,
+      String? folder});
+}
 
-  factory _Bookmark.fromJson(Map<String, dynamic> json) =
-      _$BookmarkImpl.fromJson;
+/// @nodoc
+class _$BookmarkCopyWithImpl<$Res> implements $BookmarkCopyWith<$Res> {
+  _$BookmarkCopyWithImpl(this._self, this._then);
+
+  final Bookmark _self;
+  final $Res Function(Bookmark) _then;
+
+  /// Create a copy of Bookmark
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? chapterId = freezed,
+    Object? verseId = freezed,
+    Object? verseNum = freezed,
+    Object? juzNum = freezed,
+    Object? createdAt = freezed,
+    Object? note = freezed,
+    Object? folder = freezed,
+  }) {
+    return _then(_self.copyWith(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      chapterId: freezed == chapterId
+          ? _self.chapterId
+          : chapterId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      verseId: freezed == verseId
+          ? _self.verseId
+          : verseId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      verseNum: freezed == verseNum
+          ? _self.verseNum
+          : verseNum // ignore: cast_nullable_to_non_nullable
+              as int?,
+      juzNum: freezed == juzNum
+          ? _self.juzNum
+          : juzNum // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      note: freezed == note
+          ? _self.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      folder: freezed == folder
+          ? _self.folder
+          : folder // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _Bookmark implements Bookmark {
+  _Bookmark(
+      {this.id,
+      this.chapterId,
+      this.verseId,
+      this.verseNum,
+      this.juzNum,
+      this.createdAt,
+      this.note,
+      this.folder});
+  factory _Bookmark.fromJson(Map<String, dynamic> json) =>
+      _$BookmarkFromJson(json);
 
   @override
-  String? get id;
+  final String? id;
   @override
-  int? get chapterId;
+  final int? chapterId;
   @override
-  int? get verseId;
+  final int? verseId;
   @override
-  int? get verseNum;
+  final int? verseNum;
   @override
-  int? get juzNum;
+  final int? juzNum;
   @override
-  DateTime? get createdAt;
+  final DateTime? createdAt;
   @override
-  String? get note;
+  final String? note;
   @override
-  String? get folder;
+  final String? folder;
 
   /// Create a copy of Bookmark
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BookmarkImplCopyWith<_$BookmarkImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$BookmarkCopyWith<_Bookmark> get copyWith =>
+      __$BookmarkCopyWithImpl<_Bookmark>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$BookmarkToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Bookmark &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.chapterId, chapterId) ||
+                other.chapterId == chapterId) &&
+            (identical(other.verseId, verseId) || other.verseId == verseId) &&
+            (identical(other.verseNum, verseNum) ||
+                other.verseNum == verseNum) &&
+            (identical(other.juzNum, juzNum) || other.juzNum == juzNum) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.folder, folder) || other.folder == folder));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, chapterId, verseId, verseNum,
+      juzNum, createdAt, note, folder);
+
+  @override
+  String toString() {
+    return 'Bookmark(id: $id, chapterId: $chapterId, verseId: $verseId, verseNum: $verseNum, juzNum: $juzNum, createdAt: $createdAt, note: $note, folder: $folder)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$BookmarkCopyWith<$Res>
+    implements $BookmarkCopyWith<$Res> {
+  factory _$BookmarkCopyWith(_Bookmark value, $Res Function(_Bookmark) _then) =
+      __$BookmarkCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String? id,
+      int? chapterId,
+      int? verseId,
+      int? verseNum,
+      int? juzNum,
+      DateTime? createdAt,
+      String? note,
+      String? folder});
+}
+
+/// @nodoc
+class __$BookmarkCopyWithImpl<$Res> implements _$BookmarkCopyWith<$Res> {
+  __$BookmarkCopyWithImpl(this._self, this._then);
+
+  final _Bookmark _self;
+  final $Res Function(_Bookmark) _then;
+
+  /// Create a copy of Bookmark
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = freezed,
+    Object? chapterId = freezed,
+    Object? verseId = freezed,
+    Object? verseNum = freezed,
+    Object? juzNum = freezed,
+    Object? createdAt = freezed,
+    Object? note = freezed,
+    Object? folder = freezed,
+  }) {
+    return _then(_Bookmark(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      chapterId: freezed == chapterId
+          ? _self.chapterId
+          : chapterId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      verseId: freezed == verseId
+          ? _self.verseId
+          : verseId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      verseNum: freezed == verseNum
+          ? _self.verseNum
+          : verseNum // ignore: cast_nullable_to_non_nullable
+              as int?,
+      juzNum: freezed == juzNum
+          ? _self.juzNum
+          : juzNum // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      note: freezed == note
+          ? _self.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      folder: freezed == folder
+          ? _self.folder
+          : folder // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+// dart format on

@@ -6,8 +6,7 @@ part of 'bookmark.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BookmarkImpl _$$BookmarkImplFromJson(Map<String, dynamic> json) =>
-    _$BookmarkImpl(
+_Bookmark _$BookmarkFromJson(Map<String, dynamic> json) => _Bookmark(
       id: json['id'] as String?,
       chapterId: (json['chapterId'] as num?)?.toInt(),
       verseId: (json['verseId'] as num?)?.toInt(),
@@ -20,8 +19,7 @@ _$BookmarkImpl _$$BookmarkImplFromJson(Map<String, dynamic> json) =>
       folder: json['folder'] as String?,
     );
 
-Map<String, dynamic> _$$BookmarkImplToJson(_$BookmarkImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$BookmarkToJson(_Bookmark instance) => <String, dynamic>{
       'id': instance.id,
       'chapterId': instance.chapterId,
       'verseId': instance.verseId,

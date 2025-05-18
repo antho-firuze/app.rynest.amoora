@@ -49,7 +49,7 @@ class _DeviceCheckViewState extends ConsumerState<DeviceCheckView> with WidgetsB
   }
 
   void checkServiceAndPermission() async {
-    ref.read(liveLocationCtrlProvider).checkIsBatteryOptimizationDisabled();
+    // ref.read(liveLocationCtrlProvider).checkIsBatteryOptimizationDisabled();
     ref.read(allowAlertProvider.notifier).state =
         await ref.read(permissionServiceProvider).checkNotificationPermission();
 
@@ -85,13 +85,13 @@ class _DeviceCheckViewState extends ConsumerState<DeviceCheckView> with WidgetsB
                   trailing: Icon(loc ? SuperIcons.bx_check : SuperIcons.cl_warning_line, color: loc ? oGreen : oRed),
                   onTap: loc ? null : () async => await ref.read(permissionServiceProvider).openLocationSettings(),
                 ),
-                ListTile(
-                  leading: const Icon(SuperIcons.cl_battery_outline_alerted),
-                  title: const Text('Battery Optimization').bold(),
-                  subtitle: Text(batt ? PermissionString.batteryOptzExclude : PermissionString.batteryOptzInclude),
-                  trailing: Icon(batt ? SuperIcons.bx_check : SuperIcons.cl_warning_line, color: batt ? oGreen : oRed),
-                  onTap: () async => await ref.read(liveLocationCtrlProvider).showBatterySettings(),
-                ),
+                // ListTile(
+                //   leading: const Icon(SuperIcons.cl_battery_outline_alerted),
+                //   title: const Text('Battery Optimization').bold(),
+                //   subtitle: Text(batt ? PermissionString.batteryOptzExclude : PermissionString.batteryOptzInclude),
+                //   trailing: Icon(batt ? SuperIcons.bx_check : SuperIcons.cl_warning_line, color: batt ? oGreen : oRed),
+                //   onTap: () async => await ref.read(liveLocationCtrlProvider).showBatterySettings(),
+                // ),
               ],
             ),
             GroupList(

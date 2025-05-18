@@ -6,8 +6,7 @@ part of 'chapter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ChapterImpl _$$ChapterImplFromJson(Map<String, dynamic> json) =>
-    _$ChapterImpl(
+_Chapter _$ChapterFromJson(Map<String, dynamic> json) => _Chapter(
       id: (json['id'] as num?)?.toInt() ?? 0,
       name: json['name_simple'] as String? ?? '',
       versesCount: (json['verses_count'] as num?)?.toInt() ?? 0,
@@ -23,8 +22,7 @@ _$ChapterImpl _$$ChapterImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$ChapterImplToJson(_$ChapterImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ChapterToJson(_Chapter instance) => <String, dynamic>{
       'id': instance.id,
       'name_simple': instance.name,
       'verses_count': instance.versesCount,

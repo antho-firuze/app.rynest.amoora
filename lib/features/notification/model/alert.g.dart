@@ -6,7 +6,7 @@ part of 'alert.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AlertImpl _$$AlertImplFromJson(Map<String, dynamic> json) => _$AlertImpl(
+_Alert _$AlertFromJson(Map<String, dynamic> json) => _Alert(
       id: (json['id'] as num?)?.toInt() ?? 0,
       userId: (json['user_id'] as num?)?.toInt() ?? 0,
       title: json['title'] as String?,
@@ -25,8 +25,7 @@ _$AlertImpl _$$AlertImplFromJson(Map<String, dynamic> json) => _$AlertImpl(
       pinnedDuration: (json['pinned_duration'] as num?)?.toInt() ?? 86400,
     );
 
-Map<String, dynamic> _$$AlertImplToJson(_$AlertImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AlertToJson(_Alert instance) => <String, dynamic>{
       'id': instance.id,
       'user_id': instance.userId,
       'title': instance.title,

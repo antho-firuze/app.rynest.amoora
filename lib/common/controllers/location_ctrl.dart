@@ -110,7 +110,6 @@ class LocationCtrl {
       await AlertService.confirm(
         title: 'Informasi',
         body: 'GPS pada perangkat anda tidak aktif !',
-        showOk: true,
         okCaption: 'Buka Settings',
         onOk: () async {
           isGpsEnable = await ref.read(permissionServiceProvider).checkGpsEnabled();
@@ -120,8 +119,8 @@ class LocationCtrl {
         },
         showYes: false,
         yesCaption: 'Buka Peta',
-        onYes: () => SnackBarService.show(message: 'Peta belum di fungsikan !'),
         noCaption: 'Tutup',
+        onYes: () => SnackBarService.show(message: 'Peta belum di fungsikan !'),
       );
     }
 

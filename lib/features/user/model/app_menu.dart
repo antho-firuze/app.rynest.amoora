@@ -6,7 +6,7 @@ part 'app_menu.freezed.dart';
 part 'app_menu.g.dart';
 
 @freezed
-class AppMenu with _$AppMenu {
+abstract class AppMenu with _$AppMenu {
   factory AppMenu({
     @JsonKey(name: 'code') @Default('') String code,
     @JsonKey(name: 'name') @Default('') String title,

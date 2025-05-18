@@ -1,5 +1,4 @@
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:math_expressions/math_expressions.dart';
 
 extension StringExtension on String {
   double toDouble() => double.parse(replaceAll(RegExp(r'[.]'), '').replaceAll(RegExp(r'[,]'), '.'));

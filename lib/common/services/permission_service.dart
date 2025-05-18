@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:disable_battery_optimization/disable_battery_optimization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -39,34 +38,34 @@ class PermissionService {
     return result == PermissionStatus.granted;
   }
 
-  Future<bool> checkIsBatteryOptimizationDisabled() async {
-    if (Platform.isAndroid) {
-      return await DisableBatteryOptimization.isBatteryOptimizationDisabled ?? false;
-    } else {
-      return true;
-    }
-  }
+  // Future<bool> checkIsBatteryOptimizationDisabled() async {
+  //   if (Platform.isAndroid) {
+  //     return await DisableBatteryOptimization.isBatteryOptimizationDisabled ?? false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
 
-  Future<bool> checkIsAutoStartEnabled() async {
-    if (Platform.isAndroid) {
-      return await DisableBatteryOptimization.isAutoStartEnabled ?? false;
-    } else {
-      return true;
-    }
-  }
+  // Future<bool> checkIsAutoStartEnabled() async {
+  //   if (Platform.isAndroid) {
+  //     return await DisableBatteryOptimization.isAutoStartEnabled ?? false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
 
-  Future<void> showBatterySetting() async {
-    if (Platform.isAndroid) {
-      await DisableBatteryOptimization.showDisableBatteryOptimizationSettings();
-    }
-  }
+  // Future<void> showBatterySetting() async {
+  //   if (Platform.isAndroid) {
+  //     await DisableBatteryOptimization.showDisableBatteryOptimizationSettings();
+  //   }
+  // }
 
-  Future<void> showAutoStart() async {
-    if (Platform.isAndroid) {
-      await DisableBatteryOptimization.showEnableAutoStartSettings(
-          'Enable Auto Start', 'Follow the steps and enable the auto start of this app');
-    }
-  }
+  // Future<void> showAutoStart() async {
+  //   if (Platform.isAndroid) {
+  //     await DisableBatteryOptimization.showEnableAutoStartSettings(
+  //         'Enable Auto Start', 'Follow the steps and enable the auto start of this app');
+  //   }
+  // }
 
   Future<bool> checkMicrophonePermission() async {
     var result = await Permission.microphone.isGranted;

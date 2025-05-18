@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,103 +10,63 @@ part of 'place.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Place _$PlaceFromJson(Map<String, dynamic> json) {
-  return _Place.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Place {
-  String? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  double get lat => throw _privateConstructorUsedError;
-  double get lng => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
-
-  /// Serializes this Place to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get id;
+  String? get name;
+  double get lat;
+  double get lng;
+  String? get image;
 
   /// Create a copy of Place
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PlaceCopyWith<Place> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PlaceCopyWith<$Res> {
-  factory $PlaceCopyWith(Place value, $Res Function(Place) then) =
-      _$PlaceCopyWithImpl<$Res, Place>;
-  @useResult
-  $Res call({String? id, String? name, double lat, double lng, String? image});
-}
-
-/// @nodoc
-class _$PlaceCopyWithImpl<$Res, $Val extends Place>
-    implements $PlaceCopyWith<$Res> {
-  _$PlaceCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Place
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PlaceCopyWith<Place> get copyWith =>
+      _$PlaceCopyWithImpl<Place>(this as Place, _$identity);
+
+  /// Serializes this Place to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? lat = null,
-    Object? lng = null,
-    Object? image = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lat: null == lat
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      lng: null == lng
-          ? _value.lng
-          : lng // ignore: cast_nullable_to_non_nullable
-              as double,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Place &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.lat, lat) || other.lat == lat) &&
+            (identical(other.lng, lng) || other.lng == lng) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, lat, lng, image);
+
+  @override
+  String toString() {
+    return 'Place(id: $id, name: $name, lat: $lat, lng: $lng, image: $image)';
   }
 }
 
 /// @nodoc
-abstract class _$$PlaceImplCopyWith<$Res> implements $PlaceCopyWith<$Res> {
-  factory _$$PlaceImplCopyWith(
-          _$PlaceImpl value, $Res Function(_$PlaceImpl) then) =
-      __$$PlaceImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PlaceCopyWith<$Res> {
+  factory $PlaceCopyWith(Place value, $Res Function(Place) _then) =
+      _$PlaceCopyWithImpl;
   @useResult
   $Res call({String? id, String? name, double lat, double lng, String? image});
 }
 
 /// @nodoc
-class __$$PlaceImplCopyWithImpl<$Res>
-    extends _$PlaceCopyWithImpl<$Res, _$PlaceImpl>
-    implements _$$PlaceImplCopyWith<$Res> {
-  __$$PlaceImplCopyWithImpl(
-      _$PlaceImpl _value, $Res Function(_$PlaceImpl) _then)
-      : super(_value, _then);
+class _$PlaceCopyWithImpl<$Res> implements $PlaceCopyWith<$Res> {
+  _$PlaceCopyWithImpl(this._self, this._then);
+
+  final Place _self;
+  final $Res Function(Place) _then;
 
   /// Create a copy of Place
   /// with the given fields replaced by the non-null parameter values.
@@ -118,25 +79,25 @@ class __$$PlaceImplCopyWithImpl<$Res>
     Object? lng = null,
     Object? image = freezed,
   }) {
-    return _then(_$PlaceImpl(
+    return _then(_self.copyWith(
       id: freezed == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
       name: freezed == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
       lat: null == lat
-          ? _value.lat
+          ? _self.lat
           : lat // ignore: cast_nullable_to_non_nullable
               as double,
       lng: null == lng
-          ? _value.lng
+          ? _self.lng
           : lng // ignore: cast_nullable_to_non_nullable
               as double,
       image: freezed == image
-          ? _value.image
+          ? _self.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
@@ -145,11 +106,9 @@ class __$$PlaceImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PlaceImpl implements _Place {
-  _$PlaceImpl({this.id, this.name, this.lat = 0.0, this.lng = 0.0, this.image});
-
-  factory _$PlaceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PlaceImplFromJson(json);
+class _Place implements Place {
+  _Place({this.id, this.name, this.lat = 0.0, this.lng = 0.0, this.image});
+  factory _Place.fromJson(Map<String, dynamic> json) => _$PlaceFromJson(json);
 
   @override
   final String? id;
@@ -164,16 +123,26 @@ class _$PlaceImpl implements _Place {
   @override
   final String? image;
 
+  /// Create a copy of Place
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Place(id: $id, name: $name, lat: $lat, lng: $lng, image: $image)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PlaceCopyWith<_Place> get copyWith =>
+      __$PlaceCopyWithImpl<_Place>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PlaceToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PlaceImpl &&
+            other is _Place &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.lat, lat) || other.lat == lat) &&
@@ -185,120 +154,112 @@ class _$PlaceImpl implements _Place {
   @override
   int get hashCode => Object.hash(runtimeType, id, name, lat, lng, image);
 
-  /// Create a copy of Place
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$PlaceImplCopyWith<_$PlaceImpl> get copyWith =>
-      __$$PlaceImplCopyWithImpl<_$PlaceImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PlaceImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Place(id: $id, name: $name, lat: $lat, lng: $lng, image: $image)';
   }
 }
 
-abstract class _Place implements Place {
-  factory _Place(
-      {final String? id,
-      final String? name,
-      final double lat,
-      final double lng,
-      final String? image}) = _$PlaceImpl;
+/// @nodoc
+abstract mixin class _$PlaceCopyWith<$Res> implements $PlaceCopyWith<$Res> {
+  factory _$PlaceCopyWith(_Place value, $Res Function(_Place) _then) =
+      __$PlaceCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String? id, String? name, double lat, double lng, String? image});
+}
 
-  factory _Place.fromJson(Map<String, dynamic> json) = _$PlaceImpl.fromJson;
+/// @nodoc
+class __$PlaceCopyWithImpl<$Res> implements _$PlaceCopyWith<$Res> {
+  __$PlaceCopyWithImpl(this._self, this._then);
 
-  @override
-  String? get id;
-  @override
-  String? get name;
-  @override
-  double get lat;
-  @override
-  double get lng;
-  @override
-  String? get image;
+  final _Place _self;
+  final $Res Function(_Place) _then;
 
   /// Create a copy of Place
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PlaceImplCopyWith<_$PlaceImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Places _$PlacesFromJson(Map<String, dynamic> json) {
-  return _Places.fromJson(json);
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? lat = null,
+    Object? lng = null,
+    Object? image = freezed,
+  }) {
+    return _then(_Place(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lat: null == lat
+          ? _self.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      lng: null == lng
+          ? _self.lng
+          : lng // ignore: cast_nullable_to_non_nullable
+              as double,
+      image: freezed == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$Places {
   @JsonKey(name: "data")
-  List<Place>? get places => throw _privateConstructorUsedError;
-
-  /// Serializes this Places to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  List<Place>? get places;
 
   /// Create a copy of Places
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PlacesCopyWith<Places> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PlacesCopyWith<$Res> {
-  factory $PlacesCopyWith(Places value, $Res Function(Places) then) =
-      _$PlacesCopyWithImpl<$Res, Places>;
-  @useResult
-  $Res call({@JsonKey(name: "data") List<Place>? places});
-}
-
-/// @nodoc
-class _$PlacesCopyWithImpl<$Res, $Val extends Places>
-    implements $PlacesCopyWith<$Res> {
-  _$PlacesCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Places
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PlacesCopyWith<Places> get copyWith =>
+      _$PlacesCopyWithImpl<Places>(this as Places, _$identity);
+
+  /// Serializes this Places to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? places = freezed,
-  }) {
-    return _then(_value.copyWith(
-      places: freezed == places
-          ? _value.places
-          : places // ignore: cast_nullable_to_non_nullable
-              as List<Place>?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Places &&
+            const DeepCollectionEquality().equals(other.places, places));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(places));
+
+  @override
+  String toString() {
+    return 'Places(places: $places)';
   }
 }
 
 /// @nodoc
-abstract class _$$PlacesImplCopyWith<$Res> implements $PlacesCopyWith<$Res> {
-  factory _$$PlacesImplCopyWith(
-          _$PlacesImpl value, $Res Function(_$PlacesImpl) then) =
-      __$$PlacesImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PlacesCopyWith<$Res> {
+  factory $PlacesCopyWith(Places value, $Res Function(Places) _then) =
+      _$PlacesCopyWithImpl;
   @useResult
   $Res call({@JsonKey(name: "data") List<Place>? places});
 }
 
 /// @nodoc
-class __$$PlacesImplCopyWithImpl<$Res>
-    extends _$PlacesCopyWithImpl<$Res, _$PlacesImpl>
-    implements _$$PlacesImplCopyWith<$Res> {
-  __$$PlacesImplCopyWithImpl(
-      _$PlacesImpl _value, $Res Function(_$PlacesImpl) _then)
-      : super(_value, _then);
+class _$PlacesCopyWithImpl<$Res> implements $PlacesCopyWith<$Res> {
+  _$PlacesCopyWithImpl(this._self, this._then);
+
+  final Places _self;
+  final $Res Function(Places) _then;
 
   /// Create a copy of Places
   /// with the given fields replaced by the non-null parameter values.
@@ -307,9 +268,9 @@ class __$$PlacesImplCopyWithImpl<$Res>
   $Res call({
     Object? places = freezed,
   }) {
-    return _then(_$PlacesImpl(
+    return _then(_self.copyWith(
       places: freezed == places
-          ? _value._places
+          ? _self.places
           : places // ignore: cast_nullable_to_non_nullable
               as List<Place>?,
     ));
@@ -318,12 +279,10 @@ class __$$PlacesImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PlacesImpl implements _Places {
-  _$PlacesImpl({@JsonKey(name: "data") final List<Place>? places})
+class _Places implements Places {
+  _Places({@JsonKey(name: "data") final List<Place>? places})
       : _places = places;
-
-  factory _$PlacesImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PlacesImplFromJson(json);
+  factory _Places.fromJson(Map<String, dynamic> json) => _$PlacesFromJson(json);
 
   final List<Place>? _places;
   @override
@@ -336,16 +295,26 @@ class _$PlacesImpl implements _Places {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Places(places: $places)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PlacesCopyWith<_Places> get copyWith =>
+      __$PlacesCopyWithImpl<_Places>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PlacesToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PlacesImpl &&
+            other is _Places &&
             const DeepCollectionEquality().equals(other._places, _places));
   }
 
@@ -354,36 +323,42 @@ class _$PlacesImpl implements _Places {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_places));
 
-  /// Create a copy of Places
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$PlacesImplCopyWith<_$PlacesImpl> get copyWith =>
-      __$$PlacesImplCopyWithImpl<_$PlacesImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PlacesImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Places(places: $places)';
   }
 }
 
-abstract class _Places implements Places {
-  factory _Places({@JsonKey(name: "data") final List<Place>? places}) =
-      _$PlacesImpl;
-
-  factory _Places.fromJson(Map<String, dynamic> json) = _$PlacesImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$PlacesCopyWith<$Res> implements $PlacesCopyWith<$Res> {
+  factory _$PlacesCopyWith(_Places value, $Res Function(_Places) _then) =
+      __$PlacesCopyWithImpl;
   @override
-  @JsonKey(name: "data")
-  List<Place>? get places;
+  @useResult
+  $Res call({@JsonKey(name: "data") List<Place>? places});
+}
+
+/// @nodoc
+class __$PlacesCopyWithImpl<$Res> implements _$PlacesCopyWith<$Res> {
+  __$PlacesCopyWithImpl(this._self, this._then);
+
+  final _Places _self;
+  final $Res Function(_Places) _then;
 
   /// Create a copy of Places
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PlacesImplCopyWith<_$PlacesImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? places = freezed,
+  }) {
+    return _then(_Places(
+      places: freezed == places
+          ? _self._places
+          : places // ignore: cast_nullable_to_non_nullable
+              as List<Place>?,
+    ));
+  }
 }
+
+// dart format on

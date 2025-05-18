@@ -6,7 +6,7 @@ part of 'travel.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UmrohImpl _$$UmrohImplFromJson(Map<String, dynamic> json) => _$UmrohImpl(
+_Umroh _$UmrohFromJson(Map<String, dynamic> json) => _Umroh(
       id: json['id'] as String?,
       title: json['title'] as String?,
       icon: json['icon'] as String?,
@@ -64,8 +64,7 @@ _$UmrohImpl _$$UmrohImplFromJson(Map<String, dynamic> json) => _$UmrohImpl(
       isFavorite: json['is_favorite'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$UmrohImplToJson(_$UmrohImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$UmrohToJson(_Umroh instance) => <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'icon': instance.icon,
@@ -97,19 +96,17 @@ Map<String, dynamic> _$$UmrohImplToJson(_$UmrohImpl instance) =>
       'is_favorite': instance.isFavorite,
     };
 
-_$TravelsImpl _$$TravelsImplFromJson(Map<String, dynamic> json) =>
-    _$TravelsImpl(
+_Travels _$TravelsFromJson(Map<String, dynamic> json) => _Travels(
       travels: (json['data'] as List<dynamic>?)
           ?.map((e) => Travel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$TravelsImplToJson(_$TravelsImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$TravelsToJson(_Travels instance) => <String, dynamic>{
       'data': instance.travels,
     };
 
-_$HotelImpl _$$HotelImplFromJson(Map<String, dynamic> json) => _$HotelImpl(
+_Hotel _$HotelFromJson(Map<String, dynamic> json) => _Hotel(
       image: json['image'] as String?,
       name: json['name'] as String?,
       desc: json['desc'] as String?,
@@ -125,8 +122,7 @@ _$HotelImpl _$$HotelImplFromJson(Map<String, dynamic> json) => _$HotelImpl(
           : DateTime.parse(json['check_out'] as String),
     );
 
-Map<String, dynamic> _$$HotelImplToJson(_$HotelImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$HotelToJson(_Hotel instance) => <String, dynamic>{
       'image': instance.image,
       'name': instance.name,
       'desc': instance.desc,
@@ -138,8 +134,7 @@ Map<String, dynamic> _$$HotelImplToJson(_$HotelImpl instance) =>
       'check_out': instance.checkOut?.toIso8601String(),
     };
 
-_$FlightsImpl _$$FlightsImplFromJson(Map<String, dynamic> json) =>
-    _$FlightsImpl(
+_Flights _$FlightsFromJson(Map<String, dynamic> json) => _Flights(
       name: json['name'] as String?,
       code: json['code'] as String?,
       flightCode: json['flight_code'] as String?,
@@ -153,8 +148,7 @@ _$FlightsImpl _$$FlightsImplFromJson(Map<String, dynamic> json) =>
       arrivalPlace: json['arrival_place'] as String?,
     );
 
-Map<String, dynamic> _$$FlightsImplToJson(_$FlightsImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$FlightsToJson(_Flights instance) => <String, dynamic>{
       'name': instance.name,
       'code': instance.code,
       'flight_code': instance.flightCode,
@@ -164,8 +158,8 @@ Map<String, dynamic> _$$FlightsImplToJson(_$FlightsImpl instance) =>
       'arrival_place': instance.arrivalPlace,
     };
 
-_$TransportationImpl _$$TransportationImplFromJson(Map<String, dynamic> json) =>
-    _$TransportationImpl(
+_Transportation _$TransportationFromJson(Map<String, dynamic> json) =>
+    _Transportation(
       image: json['image'] as String?,
       name: json['name'] as String?,
       desc: json['desc'] as String?,
@@ -173,8 +167,7 @@ _$TransportationImpl _$$TransportationImplFromJson(Map<String, dynamic> json) =>
       lng: (json['lng'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$TransportationImplToJson(
-        _$TransportationImpl instance) =>
+Map<String, dynamic> _$TransportationToJson(_Transportation instance) =>
     <String, dynamic>{
       'image': instance.image,
       'name': instance.name,
@@ -183,15 +176,14 @@ Map<String, dynamic> _$$TransportationImplToJson(
       'lng': instance.lng,
     };
 
-_$ItineraryImpl _$$ItineraryImplFromJson(Map<String, dynamic> json) =>
-    _$ItineraryImpl(
+_Itinerary _$ItineraryFromJson(Map<String, dynamic> json) => _Itinerary(
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
       place: json['place'] as String?,
       desc: json['desc'] as String?,
     );
 
-Map<String, dynamic> _$$ItineraryImplToJson(_$ItineraryImpl instance) =>
+Map<String, dynamic> _$ItineraryToJson(_Itinerary instance) =>
     <String, dynamic>{
       'date': instance.date?.toIso8601String(),
       'place': instance.place,

@@ -6,8 +6,7 @@ part of 'presenter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PresenterImpl _$$PresenterImplFromJson(Map<String, dynamic> json) =>
-    _$PresenterImpl(
+_Presenter _$PresenterFromJson(Map<String, dynamic> json) => _Presenter(
       id: (json['id'] as num?)?.toInt() ?? 0,
       createdAt: json['created_at'] == null
           ? null
@@ -23,7 +22,7 @@ _$PresenterImpl _$$PresenterImplFromJson(Map<String, dynamic> json) =>
       state: json['state'] as String? ?? 'active',
     );
 
-Map<String, dynamic> _$$PresenterImplToJson(_$PresenterImpl instance) =>
+Map<String, dynamic> _$PresenterToJson(_Presenter instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created_at': instance.createdAt?.toIso8601String(),

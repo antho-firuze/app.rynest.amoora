@@ -6,7 +6,7 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 @freezed
-class User with _$User {
+abstract class User with _$User {
   factory User({
     int? id,
     @JsonKey(name: 'role_id') int? roleId,

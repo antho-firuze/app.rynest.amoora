@@ -1,12 +1,13 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:amoora/common/services/dialog_service.dart';
 import 'package:amoora/common/widgets/button/custom_button.dart';
 import 'package:amoora/common/widgets/custom_panel.dart';
-import 'package:amoora/common/widgets/custom_rich_text.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/utils/datetime_utils.dart';
+import 'package:amoora/utils/router.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -20,12 +21,16 @@ class VersionService {
   final Ref ref;
   VersionService(this.ref);
 
+  final _kLogName = 'VERSION-SERVICE';
+
   Future<bool> newVersionAvailable({
     String? iOSId,
     String? androidId,
     String? iOSAppStoreCountry,
     String? forceAppVersion,
   }) async {
+    log('Check new version ?', name: _kLogName);
+
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     VersionInfo? versionInfo;
     if (Platform.isIOS) {
@@ -47,8 +52,15 @@ class VersionService {
 
     // SHOW DIALOG
     if (versionInfo != null && versionInfo.canUpdate == true) {
-      _showDialog(packageInfo: packageInfo, versionInfo: versionInfo);
+      log("New Apps available [ver.${versionInfo.storeVersion}]!", name: _kLogName);
+      if (Platform.isIOS) {
+        _showDialogIos(packageInfo: packageInfo, versionInfo: versionInfo);
+      } else {
+        _showDialogAndroid(packageInfo: packageInfo, versionInfo: versionInfo);
+      }
       return true;
+    } else {
+      log("Your Apps is uptodate !", name: _kLogName);
     }
     return false;
   }
@@ -254,7 +266,7 @@ class VersionService {
   }
 
   // Dialog Promt
-  void _showDialog({
+  void _showDialogIos({
     required PackageInfo packageInfo,
     required VersionInfo versionInfo,
   }) {
@@ -280,16 +292,132 @@ class VersionService {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          CustomRichText(
-            text: TextSpan(
-              text: 'A new version of ',
-              style: tsBodyL(),
+          10.height,
+          Text('A new version is available!. Please update with the latest version.').tsBodyL(),
+          10.height,
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: ClipRRect(borderRadius: BorderRadius.circular(8), child: Image.asset('assets/icons/app-icon.png')),
+            title: Text('${versionInfo.title}').tsTitleM().bold(),
+            subtitle: Row(
               children: [
-                TextSpan(text: '${versionInfo.title}', style: tsBodyL().bold()),
-                TextSpan(text: ' is available!. Please update with the latest version.', style: tsBodyL()),
+                if (versionInfo.rating != null)
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('${versionInfo.rating}').tsBodyL(),
+                      5.width,
+                      Icon(Icons.star, size: 15, color: oGrey70),
+                    ],
+                  ),
+                if (versionInfo.download != null) ...[
+                  20.width,
+                  Row(
+                    children: [
+                      Text('${versionInfo.download}').tsBodyL(),
+                      5.width,
+                      Icon(Icons.arrow_downward, size: 15, color: oGrey70),
+                    ],
+                  ),
+                ],
+                if (versionInfo.size != null) ...[
+                  20.width,
+                  Row(
+                    children: [
+                      Text('${versionInfo.size}').tsBodyL(),
+                      5.width,
+                      Icon(Icons.download, size: 15, color: oGrey70),
+                    ],
+                  ),
+                ],
               ],
             ),
           ),
+          10.height,
+          Text('New Version :').tsBodyL().bold(),
+          Text(versionInfo.storeVersion),
+          CustomPanel(
+            title: Text("What's new :").tsBodyL().bold(),
+            subtitle: versionInfo.releaseDate != null
+                ? Text('Last updated ${versionInfo.releaseDate?.custom('MMM dd, yyyy')}')
+                : null,
+            content: Text('${versionInfo.releaseNotes}'),
+          ),
+        ],
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: CustomButton(
+            flat: true,
+            onPressed: () async {
+              if (await canLaunchUrl(Uri.parse(versionInfo.appStoreLink))) {
+                await launchUrl(Uri.parse(versionInfo.appStoreLink));
+              } else {
+                throw Exception('Could not launch appStoreLink');
+              }
+            },
+            child: Text('Learn more'),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: CustomButton(
+            child: Text('Update'),
+            onPressed: () async {
+              // Navigator.of(rootNavigatorKey.currentContext!).pop();
+              // await newVersionAvailable(forceAppVersion: '2.0.4');
+              if (await canLaunchUrl(Uri.parse(versionInfo.appStoreLink))) {
+                await launchUrl(Uri.parse(versionInfo.appStoreLink));
+              } else {
+                throw Exception('Could not launch appStoreLink');
+              }
+            },
+          ),
+        ),
+        20.height,
+      ],
+      onPressed: print,
+    ).show();
+  }
+
+  void _showDialogAndroid({
+    required PackageInfo packageInfo,
+    required VersionInfo versionInfo,
+  }) {
+    final icon = Platform.isIOS ? Icon(SuperIcons.mg_appstore_line) : Icon(SuperIcons.bs_google_play);
+    // debugPrint(packageInfo.toString());
+    debugPrint("storeVersion : ${versionInfo.storeVersion}");
+    debugPrint("localVersion: ${versionInfo.localVersion}");
+    debugPrint("appStoreLink : ${versionInfo.appStoreLink}");
+    debugPrint("releaseNotes : ${versionInfo.releaseNotes}");
+
+    debugPrint("image : ${versionInfo.image}");
+    debugPrint("title : ${versionInfo.title}");
+    debugPrint("releaseDate : ${versionInfo.releaseDate?.custom('MMM dd, yyyy')}");
+    debugPrint("rating : ${versionInfo.rating}");
+    debugPrint("download : ${versionInfo.download}");
+    debugPrint("size : ${versionInfo.size}");
+
+    DialogService(
+      dismissable: false,
+      leading: icon,
+      title: Text('Update available'),
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text('A new version is available!. Please update with the latest version.').tsBodyL(),
+          // CustomRichText(
+          //   text: TextSpan(
+          //     text: 'A new version of ',
+          //     style: tsBodyL(),
+          //     children: [
+          //       TextSpan(text: '${versionInfo.title}', style: tsBodyL().bold()),
+          //       TextSpan(text: ' is available!. Please update with the latest version.', style: tsBodyL()),
+          //     ],
+          //   ),
+          // ),
           10.height,
           if (Platform.isAndroid)
             ListTile(
@@ -358,13 +486,13 @@ class VersionService {
         CustomButton(
           child: Text('Update'),
           onPressed: () async {
-            // Navigator.of(rootNavigatorKey.currentContext!).pop();
-            // await newVersionAvailable(forceAppVersion: '2.0.4');
-            if (await canLaunchUrl(Uri.parse(versionInfo.appStoreLink))) {
-              await launchUrl(Uri.parse(versionInfo.appStoreLink));
-            } else {
-              throw Exception('Could not launch appStoreLink');
-            }
+            Navigator.of(rootNavigatorKey.currentContext!).pop();
+            await newVersionAvailable(forceAppVersion: '2.0.4');
+            // if (await canLaunchUrl(Uri.parse(versionInfo.appStoreLink))) {
+            //   await launchUrl(Uri.parse(versionInfo.appStoreLink));
+            // } else {
+            //   throw Exception('Could not launch appStoreLink');
+            // }
           },
         ),
       ],

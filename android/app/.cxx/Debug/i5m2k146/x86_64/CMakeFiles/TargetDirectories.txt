@@ -1,0 +1,2 @@
+/Users/rynestnetline/development/app.rynest.amoora/android/app/.cxx/Debug/i5m2k146/x86_64/CMakeFiles/edit_cache.dir
+/Users/rynestnetline/development/app.rynest.amoora/android/app/.cxx/Debug/i5m2k146/x86_64/CMakeFiles/rebuild_cache.dir

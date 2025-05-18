@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,110 +10,64 @@ part of 'app_menu.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AppMenu _$AppMenuFromJson(Map<String, dynamic> json) {
-  return _AppMenu.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AppMenu {
   @JsonKey(name: 'code')
-  String get code => throw _privateConstructorUsedError;
+  String get code;
   @JsonKey(name: 'name')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @JsonKey(name: 'desc')
-  String? get tooltip => throw _privateConstructorUsedError;
+  String? get tooltip;
   @JsonKey(name: 'is_default')
-  bool get isDefault => throw _privateConstructorUsedError;
+  bool get isDefault;
   @JsonKey(name: 'is_show')
-  bool get isShow => throw _privateConstructorUsedError;
+  bool get isShow;
   @JsonKey(name: 'is_favorite')
-  bool get isFavorite => throw _privateConstructorUsedError;
-
-  /// Serializes this AppMenu to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  bool get isFavorite;
 
   /// Create a copy of AppMenu
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AppMenuCopyWith<AppMenu> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AppMenuCopyWith<$Res> {
-  factory $AppMenuCopyWith(AppMenu value, $Res Function(AppMenu) then) =
-      _$AppMenuCopyWithImpl<$Res, AppMenu>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'code') String code,
-      @JsonKey(name: 'name') String title,
-      @JsonKey(name: 'desc') String? tooltip,
-      @JsonKey(name: 'is_default') bool isDefault,
-      @JsonKey(name: 'is_show') bool isShow,
-      @JsonKey(name: 'is_favorite') bool isFavorite});
-}
-
-/// @nodoc
-class _$AppMenuCopyWithImpl<$Res, $Val extends AppMenu>
-    implements $AppMenuCopyWith<$Res> {
-  _$AppMenuCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AppMenu
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $AppMenuCopyWith<AppMenu> get copyWith =>
+      _$AppMenuCopyWithImpl<AppMenu>(this as AppMenu, _$identity);
+
+  /// Serializes this AppMenu to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? code = null,
-    Object? title = null,
-    Object? tooltip = freezed,
-    Object? isDefault = null,
-    Object? isShow = null,
-    Object? isFavorite = null,
-  }) {
-    return _then(_value.copyWith(
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      tooltip: freezed == tooltip
-          ? _value.tooltip
-          : tooltip // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isDefault: null == isDefault
-          ? _value.isDefault
-          : isDefault // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isShow: null == isShow
-          ? _value.isShow
-          : isShow // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isFavorite: null == isFavorite
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AppMenu &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.tooltip, tooltip) || other.tooltip == tooltip) &&
+            (identical(other.isDefault, isDefault) ||
+                other.isDefault == isDefault) &&
+            (identical(other.isShow, isShow) || other.isShow == isShow) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, code, title, tooltip, isDefault, isShow, isFavorite);
+
+  @override
+  String toString() {
+    return 'AppMenu(code: $code, title: $title, tooltip: $tooltip, isDefault: $isDefault, isShow: $isShow, isFavorite: $isFavorite)';
   }
 }
 
 /// @nodoc
-abstract class _$$AppMenuImplCopyWith<$Res> implements $AppMenuCopyWith<$Res> {
-  factory _$$AppMenuImplCopyWith(
-          _$AppMenuImpl value, $Res Function(_$AppMenuImpl) then) =
-      __$$AppMenuImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AppMenuCopyWith<$Res> {
+  factory $AppMenuCopyWith(AppMenu value, $Res Function(AppMenu) _then) =
+      _$AppMenuCopyWithImpl;
   @useResult
   $Res call(
       {@JsonKey(name: 'code') String code,
@@ -124,12 +79,11 @@ abstract class _$$AppMenuImplCopyWith<$Res> implements $AppMenuCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$AppMenuImplCopyWithImpl<$Res>
-    extends _$AppMenuCopyWithImpl<$Res, _$AppMenuImpl>
-    implements _$$AppMenuImplCopyWith<$Res> {
-  __$$AppMenuImplCopyWithImpl(
-      _$AppMenuImpl _value, $Res Function(_$AppMenuImpl) _then)
-      : super(_value, _then);
+class _$AppMenuCopyWithImpl<$Res> implements $AppMenuCopyWith<$Res> {
+  _$AppMenuCopyWithImpl(this._self, this._then);
+
+  final AppMenu _self;
+  final $Res Function(AppMenu) _then;
 
   /// Create a copy of AppMenu
   /// with the given fields replaced by the non-null parameter values.
@@ -143,29 +97,29 @@ class __$$AppMenuImplCopyWithImpl<$Res>
     Object? isShow = null,
     Object? isFavorite = null,
   }) {
-    return _then(_$AppMenuImpl(
+    return _then(_self.copyWith(
       code: null == code
-          ? _value.code
+          ? _self.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
-          ? _value.title
+          ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
       tooltip: freezed == tooltip
-          ? _value.tooltip
+          ? _self.tooltip
           : tooltip // ignore: cast_nullable_to_non_nullable
               as String?,
       isDefault: null == isDefault
-          ? _value.isDefault
+          ? _self.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
               as bool,
       isShow: null == isShow
-          ? _value.isShow
+          ? _self.isShow
           : isShow // ignore: cast_nullable_to_non_nullable
               as bool,
       isFavorite: null == isFavorite
-          ? _value.isFavorite
+          ? _self.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
@@ -174,17 +128,16 @@ class __$$AppMenuImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AppMenuImpl implements _AppMenu {
-  _$AppMenuImpl(
+class _AppMenu implements AppMenu {
+  _AppMenu(
       {@JsonKey(name: 'code') this.code = '',
       @JsonKey(name: 'name') this.title = '',
       @JsonKey(name: 'desc') this.tooltip,
       @JsonKey(name: 'is_default') this.isDefault = false,
       @JsonKey(name: 'is_show') this.isShow = true,
       @JsonKey(name: 'is_favorite') this.isFavorite = false});
-
-  factory _$AppMenuImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AppMenuImplFromJson(json);
+  factory _AppMenu.fromJson(Map<String, dynamic> json) =>
+      _$AppMenuFromJson(json);
 
   @override
   @JsonKey(name: 'code')
@@ -205,16 +158,26 @@ class _$AppMenuImpl implements _AppMenu {
   @JsonKey(name: 'is_favorite')
   final bool isFavorite;
 
+  /// Create a copy of AppMenu
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AppMenu(code: $code, title: $title, tooltip: $tooltip, isDefault: $isDefault, isShow: $isShow, isFavorite: $isFavorite)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AppMenuCopyWith<_AppMenu> get copyWith =>
+      __$AppMenuCopyWithImpl<_AppMenu>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AppMenuToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppMenuImpl &&
+            other is _AppMenu &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.tooltip, tooltip) || other.tooltip == tooltip) &&
@@ -230,56 +193,73 @@ class _$AppMenuImpl implements _AppMenu {
   int get hashCode => Object.hash(
       runtimeType, code, title, tooltip, isDefault, isShow, isFavorite);
 
-  /// Create a copy of AppMenu
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AppMenuImplCopyWith<_$AppMenuImpl> get copyWith =>
-      __$$AppMenuImplCopyWithImpl<_$AppMenuImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AppMenuImplToJson(
-      this,
-    );
+  String toString() {
+    return 'AppMenu(code: $code, title: $title, tooltip: $tooltip, isDefault: $isDefault, isShow: $isShow, isFavorite: $isFavorite)';
   }
 }
 
-abstract class _AppMenu implements AppMenu {
-  factory _AppMenu(
-      {@JsonKey(name: 'code') final String code,
-      @JsonKey(name: 'name') final String title,
-      @JsonKey(name: 'desc') final String? tooltip,
-      @JsonKey(name: 'is_default') final bool isDefault,
-      @JsonKey(name: 'is_show') final bool isShow,
-      @JsonKey(name: 'is_favorite') final bool isFavorite}) = _$AppMenuImpl;
+/// @nodoc
+abstract mixin class _$AppMenuCopyWith<$Res> implements $AppMenuCopyWith<$Res> {
+  factory _$AppMenuCopyWith(_AppMenu value, $Res Function(_AppMenu) _then) =
+      __$AppMenuCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'code') String code,
+      @JsonKey(name: 'name') String title,
+      @JsonKey(name: 'desc') String? tooltip,
+      @JsonKey(name: 'is_default') bool isDefault,
+      @JsonKey(name: 'is_show') bool isShow,
+      @JsonKey(name: 'is_favorite') bool isFavorite});
+}
 
-  factory _AppMenu.fromJson(Map<String, dynamic> json) = _$AppMenuImpl.fromJson;
+/// @nodoc
+class __$AppMenuCopyWithImpl<$Res> implements _$AppMenuCopyWith<$Res> {
+  __$AppMenuCopyWithImpl(this._self, this._then);
 
-  @override
-  @JsonKey(name: 'code')
-  String get code;
-  @override
-  @JsonKey(name: 'name')
-  String get title;
-  @override
-  @JsonKey(name: 'desc')
-  String? get tooltip;
-  @override
-  @JsonKey(name: 'is_default')
-  bool get isDefault;
-  @override
-  @JsonKey(name: 'is_show')
-  bool get isShow;
-  @override
-  @JsonKey(name: 'is_favorite')
-  bool get isFavorite;
+  final _AppMenu _self;
+  final $Res Function(_AppMenu) _then;
 
   /// Create a copy of AppMenu
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AppMenuImplCopyWith<_$AppMenuImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? code = null,
+    Object? title = null,
+    Object? tooltip = freezed,
+    Object? isDefault = null,
+    Object? isShow = null,
+    Object? isFavorite = null,
+  }) {
+    return _then(_AppMenu(
+      code: null == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      tooltip: freezed == tooltip
+          ? _self.tooltip
+          : tooltip // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isDefault: null == isDefault
+          ? _self.isDefault
+          : isDefault // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isShow: null == isShow
+          ? _self.isShow
+          : isShow // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFavorite: null == isFavorite
+          ? _self.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
+
+// dart format on

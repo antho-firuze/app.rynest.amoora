@@ -6,8 +6,7 @@ part 'airline.freezed.dart';
 part 'airline.g.dart';
 
 @freezed
-class Airline with _$Airline {
-
+abstract class Airline with _$Airline {
   factory Airline({
     int? id,
     @JsonKey(name: 'airline_id') int? airlineId,

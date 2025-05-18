@@ -7,7 +7,7 @@ part 'prayer_times.freezed.dart';
 part 'prayer_times.g.dart';
 
 @freezed
-class PrayerTimes with _$PrayerTimes {
+abstract class PrayerTimes with _$PrayerTimes {
   factory PrayerTimes({
     @JsonKey(name: 'Fajr') String? fajr,
     @JsonKey(name: 'Sunrise') String? sunrise,
@@ -26,7 +26,7 @@ class PrayerTimes with _$PrayerTimes {
 }
 
 @freezed
-class PrayerMethod with _$PrayerMethod {
+abstract class PrayerMethod with _$PrayerMethod {
   factory PrayerMethod({
     int? id,
     String? name,

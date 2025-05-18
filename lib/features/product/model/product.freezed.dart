@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,202 +10,124 @@ part of 'product.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Product _$ProductFromJson(Map<String, dynamic> json) {
-  return _Product.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Product {
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @JsonKey(name: 'duration')
-  int get duration => throw _privateConstructorUsedError;
+  int get duration;
   @JsonKey(name: 'departure_date')
-  DateTime? get departureDate => throw _privateConstructorUsedError;
+  DateTime? get departureDate;
   @JsonKey(name: 'quota')
-  int get quota => throw _privateConstructorUsedError;
+  int get quota;
   @JsonKey(name: 'including')
-  String get included => throw _privateConstructorUsedError;
+  String get included;
   @JsonKey(name: 'not_included')
-  String get notIncluded => throw _privateConstructorUsedError;
+  String get notIncluded;
   @JsonKey(name: 'terms_and_condition')
-  String? get termsConditions => throw _privateConstructorUsedError;
+  String? get termsConditions;
   @JsonKey(name: 'price_downpayment_rupiah')
-  double get downPayment => throw _privateConstructorUsedError;
+  double get downPayment;
   @JsonKey(name: 'price_total_double_rupiah')
-  double get doublePrice => throw _privateConstructorUsedError;
+  double get doublePrice;
   @JsonKey(name: 'price_total_triple_rupiah')
-  double get triplePrice => throw _privateConstructorUsedError;
+  double get triplePrice;
   @JsonKey(name: 'price_total_quad_rupiah')
-  double get quadPrice => throw _privateConstructorUsedError;
+  double get quadPrice;
   @JsonKey(name: 'image')
-  String get image => throw _privateConstructorUsedError;
+  String get image;
   @JsonKey(name: 'product_category_id')
-  int get categoryId => throw _privateConstructorUsedError;
+  int get categoryId;
   @JsonKey(name: 'product_category_name')
-  String get categoryName => throw _privateConstructorUsedError;
-  List<Hotel>? get hotels => throw _privateConstructorUsedError;
-  List<Airline>? get airlines => throw _privateConstructorUsedError;
-  List<Itinerary>? get itineraries => throw _privateConstructorUsedError;
-
-  /// Serializes this Product to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get categoryName;
+  List<Hotel>? get hotels;
+  List<Airline>? get airlines;
+  List<Itinerary>? get itineraries;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ProductCopyWith<$Res> {
-  factory $ProductCopyWith(Product value, $Res Function(Product) then) =
-      _$ProductCopyWithImpl<$Res, Product>;
-  @useResult
-  $Res call(
-      {int? id,
-      @JsonKey(name: 'name') String name,
-      @JsonKey(name: 'duration') int duration,
-      @JsonKey(name: 'departure_date') DateTime? departureDate,
-      @JsonKey(name: 'quota') int quota,
-      @JsonKey(name: 'including') String included,
-      @JsonKey(name: 'not_included') String notIncluded,
-      @JsonKey(name: 'terms_and_condition') String? termsConditions,
-      @JsonKey(name: 'price_downpayment_rupiah') double downPayment,
-      @JsonKey(name: 'price_total_double_rupiah') double doublePrice,
-      @JsonKey(name: 'price_total_triple_rupiah') double triplePrice,
-      @JsonKey(name: 'price_total_quad_rupiah') double quadPrice,
-      @JsonKey(name: 'image') String image,
-      @JsonKey(name: 'product_category_id') int categoryId,
-      @JsonKey(name: 'product_category_name') String categoryName,
-      List<Hotel>? hotels,
-      List<Airline>? airlines,
-      List<Itinerary>? itineraries});
-}
-
-/// @nodoc
-class _$ProductCopyWithImpl<$Res, $Val extends Product>
-    implements $ProductCopyWith<$Res> {
-  _$ProductCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $ProductCopyWith<Product> get copyWith =>
+      _$ProductCopyWithImpl<Product>(this as Product, _$identity);
+
+  /// Serializes this Product to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = freezed,
-    Object? name = null,
-    Object? duration = null,
-    Object? departureDate = freezed,
-    Object? quota = null,
-    Object? included = null,
-    Object? notIncluded = null,
-    Object? termsConditions = freezed,
-    Object? downPayment = null,
-    Object? doublePrice = null,
-    Object? triplePrice = null,
-    Object? quadPrice = null,
-    Object? image = null,
-    Object? categoryId = null,
-    Object? categoryName = null,
-    Object? hotels = freezed,
-    Object? airlines = freezed,
-    Object? itineraries = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      duration: null == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as int,
-      departureDate: freezed == departureDate
-          ? _value.departureDate
-          : departureDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      quota: null == quota
-          ? _value.quota
-          : quota // ignore: cast_nullable_to_non_nullable
-              as int,
-      included: null == included
-          ? _value.included
-          : included // ignore: cast_nullable_to_non_nullable
-              as String,
-      notIncluded: null == notIncluded
-          ? _value.notIncluded
-          : notIncluded // ignore: cast_nullable_to_non_nullable
-              as String,
-      termsConditions: freezed == termsConditions
-          ? _value.termsConditions
-          : termsConditions // ignore: cast_nullable_to_non_nullable
-              as String?,
-      downPayment: null == downPayment
-          ? _value.downPayment
-          : downPayment // ignore: cast_nullable_to_non_nullable
-              as double,
-      doublePrice: null == doublePrice
-          ? _value.doublePrice
-          : doublePrice // ignore: cast_nullable_to_non_nullable
-              as double,
-      triplePrice: null == triplePrice
-          ? _value.triplePrice
-          : triplePrice // ignore: cast_nullable_to_non_nullable
-              as double,
-      quadPrice: null == quadPrice
-          ? _value.quadPrice
-          : quadPrice // ignore: cast_nullable_to_non_nullable
-              as double,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int,
-      categoryName: null == categoryName
-          ? _value.categoryName
-          : categoryName // ignore: cast_nullable_to_non_nullable
-              as String,
-      hotels: freezed == hotels
-          ? _value.hotels
-          : hotels // ignore: cast_nullable_to_non_nullable
-              as List<Hotel>?,
-      airlines: freezed == airlines
-          ? _value.airlines
-          : airlines // ignore: cast_nullable_to_non_nullable
-              as List<Airline>?,
-      itineraries: freezed == itineraries
-          ? _value.itineraries
-          : itineraries // ignore: cast_nullable_to_non_nullable
-              as List<Itinerary>?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Product &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.departureDate, departureDate) ||
+                other.departureDate == departureDate) &&
+            (identical(other.quota, quota) || other.quota == quota) &&
+            (identical(other.included, included) ||
+                other.included == included) &&
+            (identical(other.notIncluded, notIncluded) ||
+                other.notIncluded == notIncluded) &&
+            (identical(other.termsConditions, termsConditions) ||
+                other.termsConditions == termsConditions) &&
+            (identical(other.downPayment, downPayment) ||
+                other.downPayment == downPayment) &&
+            (identical(other.doublePrice, doublePrice) ||
+                other.doublePrice == doublePrice) &&
+            (identical(other.triplePrice, triplePrice) ||
+                other.triplePrice == triplePrice) &&
+            (identical(other.quadPrice, quadPrice) ||
+                other.quadPrice == quadPrice) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
+            (identical(other.categoryName, categoryName) ||
+                other.categoryName == categoryName) &&
+            const DeepCollectionEquality().equals(other.hotels, hotels) &&
+            const DeepCollectionEquality().equals(other.airlines, airlines) &&
+            const DeepCollectionEquality()
+                .equals(other.itineraries, itineraries));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      duration,
+      departureDate,
+      quota,
+      included,
+      notIncluded,
+      termsConditions,
+      downPayment,
+      doublePrice,
+      triplePrice,
+      quadPrice,
+      image,
+      categoryId,
+      categoryName,
+      const DeepCollectionEquality().hash(hotels),
+      const DeepCollectionEquality().hash(airlines),
+      const DeepCollectionEquality().hash(itineraries));
+
+  @override
+  String toString() {
+    return 'Product(id: $id, name: $name, duration: $duration, departureDate: $departureDate, quota: $quota, included: $included, notIncluded: $notIncluded, termsConditions: $termsConditions, downPayment: $downPayment, doublePrice: $doublePrice, triplePrice: $triplePrice, quadPrice: $quadPrice, image: $image, categoryId: $categoryId, categoryName: $categoryName, hotels: $hotels, airlines: $airlines, itineraries: $itineraries)';
   }
 }
 
 /// @nodoc
-abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
-  factory _$$ProductImplCopyWith(
-          _$ProductImpl value, $Res Function(_$ProductImpl) then) =
-      __$$ProductImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ProductCopyWith<$Res> {
+  factory $ProductCopyWith(Product value, $Res Function(Product) _then) =
+      _$ProductCopyWithImpl;
   @useResult
   $Res call(
       {int? id,
@@ -228,12 +151,11 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ProductImplCopyWithImpl<$Res>
-    extends _$ProductCopyWithImpl<$Res, _$ProductImpl>
-    implements _$$ProductImplCopyWith<$Res> {
-  __$$ProductImplCopyWithImpl(
-      _$ProductImpl _value, $Res Function(_$ProductImpl) _then)
-      : super(_value, _then);
+class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
+  _$ProductCopyWithImpl(this._self, this._then);
+
+  final Product _self;
+  final $Res Function(Product) _then;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -259,77 +181,77 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? airlines = freezed,
     Object? itineraries = freezed,
   }) {
-    return _then(_$ProductImpl(
+    return _then(_self.copyWith(
       id: freezed == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       duration: null == duration
-          ? _value.duration
+          ? _self.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
       departureDate: freezed == departureDate
-          ? _value.departureDate
+          ? _self.departureDate
           : departureDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       quota: null == quota
-          ? _value.quota
+          ? _self.quota
           : quota // ignore: cast_nullable_to_non_nullable
               as int,
       included: null == included
-          ? _value.included
+          ? _self.included
           : included // ignore: cast_nullable_to_non_nullable
               as String,
       notIncluded: null == notIncluded
-          ? _value.notIncluded
+          ? _self.notIncluded
           : notIncluded // ignore: cast_nullable_to_non_nullable
               as String,
       termsConditions: freezed == termsConditions
-          ? _value.termsConditions
+          ? _self.termsConditions
           : termsConditions // ignore: cast_nullable_to_non_nullable
               as String?,
       downPayment: null == downPayment
-          ? _value.downPayment
+          ? _self.downPayment
           : downPayment // ignore: cast_nullable_to_non_nullable
               as double,
       doublePrice: null == doublePrice
-          ? _value.doublePrice
+          ? _self.doublePrice
           : doublePrice // ignore: cast_nullable_to_non_nullable
               as double,
       triplePrice: null == triplePrice
-          ? _value.triplePrice
+          ? _self.triplePrice
           : triplePrice // ignore: cast_nullable_to_non_nullable
               as double,
       quadPrice: null == quadPrice
-          ? _value.quadPrice
+          ? _self.quadPrice
           : quadPrice // ignore: cast_nullable_to_non_nullable
               as double,
       image: null == image
-          ? _value.image
+          ? _self.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
       categoryId: null == categoryId
-          ? _value.categoryId
+          ? _self.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
       categoryName: null == categoryName
-          ? _value.categoryName
+          ? _self.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String,
       hotels: freezed == hotels
-          ? _value._hotels
+          ? _self.hotels
           : hotels // ignore: cast_nullable_to_non_nullable
               as List<Hotel>?,
       airlines: freezed == airlines
-          ? _value._airlines
+          ? _self.airlines
           : airlines // ignore: cast_nullable_to_non_nullable
               as List<Airline>?,
       itineraries: freezed == itineraries
-          ? _value._itineraries
+          ? _self.itineraries
           : itineraries // ignore: cast_nullable_to_non_nullable
               as List<Itinerary>?,
     ));
@@ -338,8 +260,8 @@ class __$$ProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProductImpl implements _Product {
-  _$ProductImpl(
+class _Product implements Product {
+  _Product(
       {this.id,
       @JsonKey(name: 'name') this.name = '',
       @JsonKey(name: 'duration') this.duration = 9,
@@ -361,9 +283,8 @@ class _$ProductImpl implements _Product {
       : _hotels = hotels,
         _airlines = airlines,
         _itineraries = itineraries;
-
-  factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductImplFromJson(json);
+  factory _Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
 
   @override
   final int? id;
@@ -439,16 +360,26 @@ class _$ProductImpl implements _Product {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Product(id: $id, name: $name, duration: $duration, departureDate: $departureDate, quota: $quota, included: $included, notIncluded: $notIncluded, termsConditions: $termsConditions, downPayment: $downPayment, doublePrice: $doublePrice, triplePrice: $triplePrice, quadPrice: $quadPrice, image: $image, categoryId: $categoryId, categoryName: $categoryName, hotels: $hotels, airlines: $airlines, itineraries: $itineraries)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ProductCopyWith<_Product> get copyWith =>
+      __$ProductCopyWithImpl<_Product>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ProductToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductImpl &&
+            other is _Product &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.duration, duration) ||
@@ -504,100 +435,145 @@ class _$ProductImpl implements _Product {
       const DeepCollectionEquality().hash(_airlines),
       const DeepCollectionEquality().hash(_itineraries));
 
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
-      __$$ProductImplCopyWithImpl<_$ProductImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ProductImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Product(id: $id, name: $name, duration: $duration, departureDate: $departureDate, quota: $quota, included: $included, notIncluded: $notIncluded, termsConditions: $termsConditions, downPayment: $downPayment, doublePrice: $doublePrice, triplePrice: $triplePrice, quadPrice: $quadPrice, image: $image, categoryId: $categoryId, categoryName: $categoryName, hotels: $hotels, airlines: $airlines, itineraries: $itineraries)';
   }
 }
 
-abstract class _Product implements Product {
-  factory _Product(
-      {final int? id,
-      @JsonKey(name: 'name') final String name,
-      @JsonKey(name: 'duration') final int duration,
-      @JsonKey(name: 'departure_date') final DateTime? departureDate,
-      @JsonKey(name: 'quota') final int quota,
-      @JsonKey(name: 'including') final String included,
-      @JsonKey(name: 'not_included') final String notIncluded,
-      @JsonKey(name: 'terms_and_condition') final String? termsConditions,
-      @JsonKey(name: 'price_downpayment_rupiah') final double downPayment,
-      @JsonKey(name: 'price_total_double_rupiah') final double doublePrice,
-      @JsonKey(name: 'price_total_triple_rupiah') final double triplePrice,
-      @JsonKey(name: 'price_total_quad_rupiah') final double quadPrice,
-      @JsonKey(name: 'image') final String image,
-      @JsonKey(name: 'product_category_id') final int categoryId,
-      @JsonKey(name: 'product_category_name') final String categoryName,
-      final List<Hotel>? hotels,
-      final List<Airline>? airlines,
-      final List<Itinerary>? itineraries}) = _$ProductImpl;
+/// @nodoc
+abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
+  factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) =
+      __$ProductCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int? id,
+      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'duration') int duration,
+      @JsonKey(name: 'departure_date') DateTime? departureDate,
+      @JsonKey(name: 'quota') int quota,
+      @JsonKey(name: 'including') String included,
+      @JsonKey(name: 'not_included') String notIncluded,
+      @JsonKey(name: 'terms_and_condition') String? termsConditions,
+      @JsonKey(name: 'price_downpayment_rupiah') double downPayment,
+      @JsonKey(name: 'price_total_double_rupiah') double doublePrice,
+      @JsonKey(name: 'price_total_triple_rupiah') double triplePrice,
+      @JsonKey(name: 'price_total_quad_rupiah') double quadPrice,
+      @JsonKey(name: 'image') String image,
+      @JsonKey(name: 'product_category_id') int categoryId,
+      @JsonKey(name: 'product_category_name') String categoryName,
+      List<Hotel>? hotels,
+      List<Airline>? airlines,
+      List<Itinerary>? itineraries});
+}
 
-  factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
+/// @nodoc
+class __$ProductCopyWithImpl<$Res> implements _$ProductCopyWith<$Res> {
+  __$ProductCopyWithImpl(this._self, this._then);
 
-  @override
-  int? get id;
-  @override
-  @JsonKey(name: 'name')
-  String get name;
-  @override
-  @JsonKey(name: 'duration')
-  int get duration;
-  @override
-  @JsonKey(name: 'departure_date')
-  DateTime? get departureDate;
-  @override
-  @JsonKey(name: 'quota')
-  int get quota;
-  @override
-  @JsonKey(name: 'including')
-  String get included;
-  @override
-  @JsonKey(name: 'not_included')
-  String get notIncluded;
-  @override
-  @JsonKey(name: 'terms_and_condition')
-  String? get termsConditions;
-  @override
-  @JsonKey(name: 'price_downpayment_rupiah')
-  double get downPayment;
-  @override
-  @JsonKey(name: 'price_total_double_rupiah')
-  double get doublePrice;
-  @override
-  @JsonKey(name: 'price_total_triple_rupiah')
-  double get triplePrice;
-  @override
-  @JsonKey(name: 'price_total_quad_rupiah')
-  double get quadPrice;
-  @override
-  @JsonKey(name: 'image')
-  String get image;
-  @override
-  @JsonKey(name: 'product_category_id')
-  int get categoryId;
-  @override
-  @JsonKey(name: 'product_category_name')
-  String get categoryName;
-  @override
-  List<Hotel>? get hotels;
-  @override
-  List<Airline>? get airlines;
-  @override
-  List<Itinerary>? get itineraries;
+  final _Product _self;
+  final $Res Function(_Product) _then;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = freezed,
+    Object? name = null,
+    Object? duration = null,
+    Object? departureDate = freezed,
+    Object? quota = null,
+    Object? included = null,
+    Object? notIncluded = null,
+    Object? termsConditions = freezed,
+    Object? downPayment = null,
+    Object? doublePrice = null,
+    Object? triplePrice = null,
+    Object? quadPrice = null,
+    Object? image = null,
+    Object? categoryId = null,
+    Object? categoryName = null,
+    Object? hotels = freezed,
+    Object? airlines = freezed,
+    Object? itineraries = freezed,
+  }) {
+    return _then(_Product(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      duration: null == duration
+          ? _self.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as int,
+      departureDate: freezed == departureDate
+          ? _self.departureDate
+          : departureDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      quota: null == quota
+          ? _self.quota
+          : quota // ignore: cast_nullable_to_non_nullable
+              as int,
+      included: null == included
+          ? _self.included
+          : included // ignore: cast_nullable_to_non_nullable
+              as String,
+      notIncluded: null == notIncluded
+          ? _self.notIncluded
+          : notIncluded // ignore: cast_nullable_to_non_nullable
+              as String,
+      termsConditions: freezed == termsConditions
+          ? _self.termsConditions
+          : termsConditions // ignore: cast_nullable_to_non_nullable
+              as String?,
+      downPayment: null == downPayment
+          ? _self.downPayment
+          : downPayment // ignore: cast_nullable_to_non_nullable
+              as double,
+      doublePrice: null == doublePrice
+          ? _self.doublePrice
+          : doublePrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      triplePrice: null == triplePrice
+          ? _self.triplePrice
+          : triplePrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      quadPrice: null == quadPrice
+          ? _self.quadPrice
+          : quadPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      image: null == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryId: null == categoryId
+          ? _self.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      categoryName: null == categoryName
+          ? _self.categoryName
+          : categoryName // ignore: cast_nullable_to_non_nullable
+              as String,
+      hotels: freezed == hotels
+          ? _self._hotels
+          : hotels // ignore: cast_nullable_to_non_nullable
+              as List<Hotel>?,
+      airlines: freezed == airlines
+          ? _self._airlines
+          : airlines // ignore: cast_nullable_to_non_nullable
+              as List<Airline>?,
+      itineraries: freezed == itineraries
+          ? _self._itineraries
+          : itineraries // ignore: cast_nullable_to_non_nullable
+              as List<Itinerary>?,
+    ));
+  }
 }
+
+// dart format on

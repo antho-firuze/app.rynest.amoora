@@ -6,8 +6,7 @@ part 'emergency.freezed.dart';
 part 'emergency.g.dart';
 
 @freezed
-class Emergency with _$Emergency {
-
+abstract class Emergency with _$Emergency {
   factory Emergency({
     String? title,
     String? phone,

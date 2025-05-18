@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/controllers/network_ctrl.dart';
-import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/common/services/version_service.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/auth/model/jwt_token.dart';
@@ -24,21 +23,22 @@ class InitCtrl {
 
   InitCtrl(this.ref) : _showWalkThrough = ref.read(sharedPrefProvider).getBool('SHOW_WALKTHROUGH') ?? true;
 
+  final _kLogName = 'INIT-CTRL';
+
   final bool _showWalkThrough;
 
   void initializeApps() async {
     // Check New Version
     ref.read(isConnectedFutureProvider.future).then((value) async {
       if (value == true) {
-        log('Check New Version => Executed !', name: 'INIT-CTRL');
         bool result = await ref.read(versionServiceProvider).newVersionAvailable().onError((error, stackTrace) {
-          final errType = ref.read(exceptionProvider(error));
-          log('ERROR : ${errType.title}', name: 'INIT-CTRL');
+          // final errType = ref.read(exceptionProvider(error));
+          // log('ERROR : ${errType.title}', name: 'INIT-CTRL');
           return false;
         });
         if (result) return;
       } else {
-        log('Check New Version => Not Executed !', name: 'INIT-CTRL');
+        log('Check new version not executed !', name: _kLogName);
       }
     });
 
@@ -47,6 +47,9 @@ class InitCtrl {
 
     // Initialize Location/GPS
     await ref.read(locationCtrlProvider).initialize();
+
+    // Initialize Notifications
+    ref.read(notificationCtrlProvider).initialize();
 
     // Check User login & token
     ref.read(authCtrlProvider).initialize();
@@ -62,9 +65,6 @@ class InitCtrl {
 
     // Initialize Prayers Time Alert
     ref.read(prayerTimesAlertProvider).initialize();
-
-    // Initialize Notifications
-    ref.read(notificationCtrlProvider).initialize();
 
     // Initialized Prayers
     ref.read(prayersCtrlProvider).initialize();
@@ -84,23 +84,33 @@ class InitCtrl {
     ref.read(liveLocationCtrlProvider).initialize();
 
     // Check Is Token Expired
-    if (ref.read(authTokenProvider) != null) {
-      log("initialize => check token ?", name: "INITIALIZE-CTRL");
-      if (ref.read(authTokenProvider)!.hasExpired()) {
-        log("initialize => token has expired", name: "INITIALIZE-CTRL");
-        await ref.read(authCtrlProvider).signOut(silence: true);
+    log("Check token ?", name: _kLogName);
+    var token = ref.read(authTokenProvider);
+    if (token != null) {
+      if (token.hasExpired()) {
+        log("Token has expired", name: _kLogName);
+        log("Request refresh token", name: _kLogName);
+        token = await ref.read(authCtrlProvider).refreshToken();
+        if (token == null) {
+          log("Refresh token has expired too, need re-sign in again", name: _kLogName);
+          await ref.read(authCtrlProvider).signOut(silence: true);
+        } else {
+          log("New token : $token", name: _kLogName);
+        }
       } else {
-        log("initialize => token still valid", name: "INITIALIZE-CTRL");
+        log("Token still valid", name: _kLogName);
       }
     } else {
-      log("initialize => token is null", name: "INITIALIZE-CTRL");
+      log("Token is null, need sign in", name: _kLogName);
       await ref.read(authCtrlProvider).signOut(silence: true);
     }
 
     // Goto Next Route
     if (_showWalkThrough) {
+      log("Goto => /walkthrough");
       ref.read(goRouterProvider).go('/walkthrough');
     } else {
+      log("Goto => /home");
       ref.read(goRouterProvider).go('/home');
     }
   }

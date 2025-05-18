@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,99 +10,61 @@ part of 'juz.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Juz _$JuzFromJson(Map<String, dynamic> json) {
-  return _Juz.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Juz {
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @JsonKey(name: 'first_verse_id')
-  int get firstVerseId => throw _privateConstructorUsedError;
+  int get firstVerseId;
   @JsonKey(name: 'last_verse_id')
-  int get lastVerseId => throw _privateConstructorUsedError;
+  int get lastVerseId;
   @JsonKey(name: 'verses_count')
-  int get versesCount => throw _privateConstructorUsedError;
+  int get versesCount;
   @JsonKey(name: 'verse_mapping')
-  Map<String, String> get versesMapping => throw _privateConstructorUsedError;
-
-  /// Serializes this Juz to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, String> get versesMapping;
 
   /// Create a copy of Juz
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $JuzCopyWith<Juz> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $JuzCopyWith<$Res> {
-  factory $JuzCopyWith(Juz value, $Res Function(Juz) then) =
-      _$JuzCopyWithImpl<$Res, Juz>;
-  @useResult
-  $Res call(
-      {int id,
-      @JsonKey(name: 'first_verse_id') int firstVerseId,
-      @JsonKey(name: 'last_verse_id') int lastVerseId,
-      @JsonKey(name: 'verses_count') int versesCount,
-      @JsonKey(name: 'verse_mapping') Map<String, String> versesMapping});
-}
-
-/// @nodoc
-class _$JuzCopyWithImpl<$Res, $Val extends Juz> implements $JuzCopyWith<$Res> {
-  _$JuzCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Juz
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $JuzCopyWith<Juz> get copyWith =>
+      _$JuzCopyWithImpl<Juz>(this as Juz, _$identity);
+
+  /// Serializes this Juz to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? firstVerseId = null,
-    Object? lastVerseId = null,
-    Object? versesCount = null,
-    Object? versesMapping = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      firstVerseId: null == firstVerseId
-          ? _value.firstVerseId
-          : firstVerseId // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastVerseId: null == lastVerseId
-          ? _value.lastVerseId
-          : lastVerseId // ignore: cast_nullable_to_non_nullable
-              as int,
-      versesCount: null == versesCount
-          ? _value.versesCount
-          : versesCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      versesMapping: null == versesMapping
-          ? _value.versesMapping
-          : versesMapping // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Juz &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.firstVerseId, firstVerseId) ||
+                other.firstVerseId == firstVerseId) &&
+            (identical(other.lastVerseId, lastVerseId) ||
+                other.lastVerseId == lastVerseId) &&
+            (identical(other.versesCount, versesCount) ||
+                other.versesCount == versesCount) &&
+            const DeepCollectionEquality()
+                .equals(other.versesMapping, versesMapping));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, firstVerseId, lastVerseId,
+      versesCount, const DeepCollectionEquality().hash(versesMapping));
+
+  @override
+  String toString() {
+    return 'Juz(id: $id, firstVerseId: $firstVerseId, lastVerseId: $lastVerseId, versesCount: $versesCount, versesMapping: $versesMapping)';
   }
 }
 
 /// @nodoc
-abstract class _$$JuzImplCopyWith<$Res> implements $JuzCopyWith<$Res> {
-  factory _$$JuzImplCopyWith(_$JuzImpl value, $Res Function(_$JuzImpl) then) =
-      __$$JuzImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $JuzCopyWith<$Res> {
+  factory $JuzCopyWith(Juz value, $Res Function(Juz) _then) = _$JuzCopyWithImpl;
   @useResult
   $Res call(
       {int id,
@@ -112,10 +75,11 @@ abstract class _$$JuzImplCopyWith<$Res> implements $JuzCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$JuzImplCopyWithImpl<$Res> extends _$JuzCopyWithImpl<$Res, _$JuzImpl>
-    implements _$$JuzImplCopyWith<$Res> {
-  __$$JuzImplCopyWithImpl(_$JuzImpl _value, $Res Function(_$JuzImpl) _then)
-      : super(_value, _then);
+class _$JuzCopyWithImpl<$Res> implements $JuzCopyWith<$Res> {
+  _$JuzCopyWithImpl(this._self, this._then);
+
+  final Juz _self;
+  final $Res Function(Juz) _then;
 
   /// Create a copy of Juz
   /// with the given fields replaced by the non-null parameter values.
@@ -128,25 +92,25 @@ class __$$JuzImplCopyWithImpl<$Res> extends _$JuzCopyWithImpl<$Res, _$JuzImpl>
     Object? versesCount = null,
     Object? versesMapping = null,
   }) {
-    return _then(_$JuzImpl(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
       firstVerseId: null == firstVerseId
-          ? _value.firstVerseId
+          ? _self.firstVerseId
           : firstVerseId // ignore: cast_nullable_to_non_nullable
               as int,
       lastVerseId: null == lastVerseId
-          ? _value.lastVerseId
+          ? _self.lastVerseId
           : lastVerseId // ignore: cast_nullable_to_non_nullable
               as int,
       versesCount: null == versesCount
-          ? _value.versesCount
+          ? _self.versesCount
           : versesCount // ignore: cast_nullable_to_non_nullable
               as int,
       versesMapping: null == versesMapping
-          ? _value._versesMapping
+          ? _self.versesMapping
           : versesMapping // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
     ));
@@ -155,8 +119,8 @@ class __$$JuzImplCopyWithImpl<$Res> extends _$JuzCopyWithImpl<$Res, _$JuzImpl>
 
 /// @nodoc
 @JsonSerializable()
-class _$JuzImpl implements _Juz {
-  _$JuzImpl(
+class _Juz implements Juz {
+  _Juz(
       {this.id = 0,
       @JsonKey(name: 'first_verse_id') this.firstVerseId = 0,
       @JsonKey(name: 'last_verse_id') this.lastVerseId = 0,
@@ -164,9 +128,7 @@ class _$JuzImpl implements _Juz {
       @JsonKey(name: 'verse_mapping')
       final Map<String, String> versesMapping = const {}})
       : _versesMapping = versesMapping;
-
-  factory _$JuzImpl.fromJson(Map<String, dynamic> json) =>
-      _$$JuzImplFromJson(json);
+  factory _Juz.fromJson(Map<String, dynamic> json) => _$JuzFromJson(json);
 
   @override
   @JsonKey()
@@ -189,16 +151,26 @@ class _$JuzImpl implements _Juz {
     return EqualUnmodifiableMapView(_versesMapping);
   }
 
+  /// Create a copy of Juz
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Juz(id: $id, firstVerseId: $firstVerseId, lastVerseId: $lastVerseId, versesCount: $versesCount, versesMapping: $versesMapping)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$JuzCopyWith<_Juz> get copyWith =>
+      __$JuzCopyWithImpl<_Juz>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$JuzToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$JuzImpl &&
+            other is _Juz &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.firstVerseId, firstVerseId) ||
                 other.firstVerseId == firstVerseId) &&
@@ -215,52 +187,67 @@ class _$JuzImpl implements _Juz {
   int get hashCode => Object.hash(runtimeType, id, firstVerseId, lastVerseId,
       versesCount, const DeepCollectionEquality().hash(_versesMapping));
 
-  /// Create a copy of Juz
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$JuzImplCopyWith<_$JuzImpl> get copyWith =>
-      __$$JuzImplCopyWithImpl<_$JuzImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$JuzImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Juz(id: $id, firstVerseId: $firstVerseId, lastVerseId: $lastVerseId, versesCount: $versesCount, versesMapping: $versesMapping)';
   }
 }
 
-abstract class _Juz implements Juz {
-  factory _Juz(
-      {final int id,
-      @JsonKey(name: 'first_verse_id') final int firstVerseId,
-      @JsonKey(name: 'last_verse_id') final int lastVerseId,
-      @JsonKey(name: 'verses_count') final int versesCount,
-      @JsonKey(name: 'verse_mapping')
-      final Map<String, String> versesMapping}) = _$JuzImpl;
+/// @nodoc
+abstract mixin class _$JuzCopyWith<$Res> implements $JuzCopyWith<$Res> {
+  factory _$JuzCopyWith(_Juz value, $Res Function(_Juz) _then) =
+      __$JuzCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      @JsonKey(name: 'first_verse_id') int firstVerseId,
+      @JsonKey(name: 'last_verse_id') int lastVerseId,
+      @JsonKey(name: 'verses_count') int versesCount,
+      @JsonKey(name: 'verse_mapping') Map<String, String> versesMapping});
+}
 
-  factory _Juz.fromJson(Map<String, dynamic> json) = _$JuzImpl.fromJson;
+/// @nodoc
+class __$JuzCopyWithImpl<$Res> implements _$JuzCopyWith<$Res> {
+  __$JuzCopyWithImpl(this._self, this._then);
 
-  @override
-  int get id;
-  @override
-  @JsonKey(name: 'first_verse_id')
-  int get firstVerseId;
-  @override
-  @JsonKey(name: 'last_verse_id')
-  int get lastVerseId;
-  @override
-  @JsonKey(name: 'verses_count')
-  int get versesCount;
-  @override
-  @JsonKey(name: 'verse_mapping')
-  Map<String, String> get versesMapping;
+  final _Juz _self;
+  final $Res Function(_Juz) _then;
 
   /// Create a copy of Juz
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$JuzImplCopyWith<_$JuzImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? firstVerseId = null,
+    Object? lastVerseId = null,
+    Object? versesCount = null,
+    Object? versesMapping = null,
+  }) {
+    return _then(_Juz(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      firstVerseId: null == firstVerseId
+          ? _self.firstVerseId
+          : firstVerseId // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastVerseId: null == lastVerseId
+          ? _self.lastVerseId
+          : lastVerseId // ignore: cast_nullable_to_non_nullable
+              as int,
+      versesCount: null == versesCount
+          ? _self.versesCount
+          : versesCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      versesMapping: null == versesMapping
+          ? _self._versesMapping
+          : versesMapping // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+    ));
+  }
 }
+
+// dart format on

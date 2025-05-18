@@ -6,8 +6,7 @@ part of 'profile.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
-    _$ProfileImpl(
+_Profile _$ProfileFromJson(Map<String, dynamic> json) => _Profile(
       userId: (json['user_id'] as num?)?.toInt(),
       memberId: (json['member_id'] as num?)?.toInt(),
       identifier: json['identifier'] as String? ?? '',
@@ -26,8 +25,7 @@ _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
       passportNo: json['passport_no'] as String?,
     );
 
-Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ProfileToJson(_Profile instance) => <String, dynamic>{
       'user_id': instance.userId,
       'member_id': instance.memberId,
       'identifier': instance.identifier,

@@ -6,8 +6,7 @@ part of 'airline.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AirlineImpl _$$AirlineImplFromJson(Map<String, dynamic> json) =>
-    _$AirlineImpl(
+_Airline _$AirlineFromJson(Map<String, dynamic> json) => _Airline(
       id: (json['id'] as num?)?.toInt(),
       airlineId: (json['airline_id'] as num?)?.toInt(),
       name: json['name'] as String? ?? '',
@@ -21,8 +20,7 @@ _$AirlineImpl _$$AirlineImplFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['check_out'] as String),
     );
 
-Map<String, dynamic> _$$AirlineImplToJson(_$AirlineImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AirlineToJson(_Airline instance) => <String, dynamic>{
       'id': instance.id,
       'airline_id': instance.airlineId,
       'name': instance.name,

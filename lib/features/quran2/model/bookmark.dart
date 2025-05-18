@@ -4,8 +4,7 @@ part 'bookmark.freezed.dart';
 part 'bookmark.g.dart';
 
 @freezed
-class Bookmark with _$Bookmark {
-
+abstract class Bookmark with _$Bookmark {
   factory Bookmark({
     String? id,
     int? chapterId,

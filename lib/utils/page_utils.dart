@@ -18,6 +18,8 @@ class PageUtils {
       await Navigator.of(rootNavigatorKey.currentContext!, rootNavigator: true).push(CupertinoPageRoute(
         builder: (context) => page,
       ));
+
+  void popz() => Navigator.of(rootNavigatorKey.currentContext!).pop();
 }
 
 final pageUtilsProvider = Provider(PageUtils.new);

@@ -1,5 +1,7 @@
+import 'package:amoora/common/services/notification_service.dart';
+import 'package:amoora/common/services/talker_service.dart';
+import 'package:amoora/common/services/timezone_service.dart';
 import 'package:amoora/core/app_theme.dart';
-import 'package:amoora/features/notification/service/notification_plugin.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
 import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/maps_utils.dart';
@@ -8,25 +10,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:amoora/utils/router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
   await configureLocalTimeZone();
-  await initializedNotificationPlugin();
+  await initializeFlutterLocalNotifications();
   await initializeMapImplementation();
-  // await Supabase.initialize(url: Env.supabaseUrl, anonKey: Env.supabaseApiKey);
-  // SystemUIOverlay.defaultColorOverlay;
 
   final pref = await SharedPreferences.getInstance();
+  final talker = TalkerFlutter.init();
 
   runApp(
     ProviderScope(
       overrides: [
         sharedPrefProvider.overrideWithValue(pref),
+        talkerProvider.overrideWithValue(talker),
       ],
       child: const MyApp(),
     ),

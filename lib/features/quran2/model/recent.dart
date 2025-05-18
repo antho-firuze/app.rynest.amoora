@@ -4,7 +4,7 @@ part 'recent.freezed.dart';
 part 'recent.g.dart';
 
 @freezed
-class Recent with _$Recent {
+abstract class Recent with _$Recent {
 
   factory Recent({
     String? id,

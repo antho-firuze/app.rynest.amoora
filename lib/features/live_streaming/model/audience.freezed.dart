@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,44 +10,77 @@ part of 'audience.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Audience _$AudienceFromJson(Map<String, dynamic> json) {
-  return _Audience.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Audience {
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @JsonKey(name: 'presenter_id')
-  int get presenterId => throw _privateConstructorUsedError;
+  int get presenterId;
   @JsonKey(name: 'user_id')
-  int get userId => throw _privateConstructorUsedError;
+  int get userId;
   @JsonKey(name: 'created_at')
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  Profile? get profile => throw _privateConstructorUsedError;
-  DateTime? get heartbeat => throw _privateConstructorUsedError;
-  Map<String, dynamic>? get offer => throw _privateConstructorUsedError;
-  Map<String, dynamic>? get answer => throw _privateConstructorUsedError;
-  String get state => throw _privateConstructorUsedError;
-
-  /// Serializes this Audience to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
+  Profile? get profile;
+  DateTime? get heartbeat;
+  Map<String, dynamic>? get offer;
+  Map<String, dynamic>? get answer;
+  String get state;
 
   /// Create a copy of Audience
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $AudienceCopyWith<Audience> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$AudienceCopyWithImpl<Audience>(this as Audience, _$identity);
+
+  /// Serializes this Audience to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Audience &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.presenterId, presenterId) ||
+                other.presenterId == presenterId) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.profile, profile) || other.profile == profile) &&
+            (identical(other.heartbeat, heartbeat) ||
+                other.heartbeat == heartbeat) &&
+            const DeepCollectionEquality().equals(other.offer, offer) &&
+            const DeepCollectionEquality().equals(other.answer, answer) &&
+            (identical(other.state, state) || other.state == state));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      presenterId,
+      userId,
+      createdAt,
+      profile,
+      heartbeat,
+      const DeepCollectionEquality().hash(offer),
+      const DeepCollectionEquality().hash(answer),
+      state);
+
+  @override
+  String toString() {
+    return 'Audience(id: $id, presenterId: $presenterId, userId: $userId, createdAt: $createdAt, profile: $profile, heartbeat: $heartbeat, offer: $offer, answer: $answer, state: $state)';
+  }
 }
 
 /// @nodoc
-abstract class $AudienceCopyWith<$Res> {
-  factory $AudienceCopyWith(Audience value, $Res Function(Audience) then) =
-      _$AudienceCopyWithImpl<$Res, Audience>;
+abstract mixin class $AudienceCopyWith<$Res> {
+  factory $AudienceCopyWith(Audience value, $Res Function(Audience) _then) =
+      _$AudienceCopyWithImpl;
   @useResult
   $Res call(
       {int id,
@@ -63,14 +97,11 @@ abstract class $AudienceCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AudienceCopyWithImpl<$Res, $Val extends Audience>
-    implements $AudienceCopyWith<$Res> {
-  _$AudienceCopyWithImpl(this._value, this._then);
+class _$AudienceCopyWithImpl<$Res> implements $AudienceCopyWith<$Res> {
+  _$AudienceCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Audience _self;
+  final $Res Function(Audience) _then;
 
   /// Create a copy of Audience
   /// with the given fields replaced by the non-null parameter values.
@@ -87,44 +118,44 @@ class _$AudienceCopyWithImpl<$Res, $Val extends Audience>
     Object? answer = freezed,
     Object? state = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
       presenterId: null == presenterId
-          ? _value.presenterId
+          ? _self.presenterId
           : presenterId // ignore: cast_nullable_to_non_nullable
               as int,
       userId: null == userId
-          ? _value.userId
+          ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int,
       createdAt: freezed == createdAt
-          ? _value.createdAt
+          ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       profile: freezed == profile
-          ? _value.profile
+          ? _self.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as Profile?,
       heartbeat: freezed == heartbeat
-          ? _value.heartbeat
+          ? _self.heartbeat
           : heartbeat // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       offer: freezed == offer
-          ? _value.offer
+          ? _self.offer
           : offer // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
       answer: freezed == answer
-          ? _value.answer
+          ? _self.answer
           : answer // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
       state: null == state
-          ? _value.state
+          ? _self.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of Audience
@@ -132,107 +163,20 @@ class _$AudienceCopyWithImpl<$Res, $Val extends Audience>
   @override
   @pragma('vm:prefer-inline')
   $ProfileCopyWith<$Res>? get profile {
-    if (_value.profile == null) {
+    if (_self.profile == null) {
       return null;
     }
 
-    return $ProfileCopyWith<$Res>(_value.profile!, (value) {
-      return _then(_value.copyWith(profile: value) as $Val);
+    return $ProfileCopyWith<$Res>(_self.profile!, (value) {
+      return _then(_self.copyWith(profile: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$AudienceImplCopyWith<$Res>
-    implements $AudienceCopyWith<$Res> {
-  factory _$$AudienceImplCopyWith(
-          _$AudienceImpl value, $Res Function(_$AudienceImpl) then) =
-      __$$AudienceImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int id,
-      @JsonKey(name: 'presenter_id') int presenterId,
-      @JsonKey(name: 'user_id') int userId,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      Profile? profile,
-      DateTime? heartbeat,
-      Map<String, dynamic>? offer,
-      Map<String, dynamic>? answer,
-      String state});
-
-  @override
-  $ProfileCopyWith<$Res>? get profile;
-}
-
-/// @nodoc
-class __$$AudienceImplCopyWithImpl<$Res>
-    extends _$AudienceCopyWithImpl<$Res, _$AudienceImpl>
-    implements _$$AudienceImplCopyWith<$Res> {
-  __$$AudienceImplCopyWithImpl(
-      _$AudienceImpl _value, $Res Function(_$AudienceImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Audience
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? presenterId = null,
-    Object? userId = null,
-    Object? createdAt = freezed,
-    Object? profile = freezed,
-    Object? heartbeat = freezed,
-    Object? offer = freezed,
-    Object? answer = freezed,
-    Object? state = null,
-  }) {
-    return _then(_$AudienceImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      presenterId: null == presenterId
-          ? _value.presenterId
-          : presenterId // ignore: cast_nullable_to_non_nullable
-              as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      profile: freezed == profile
-          ? _value.profile
-          : profile // ignore: cast_nullable_to_non_nullable
-              as Profile?,
-      heartbeat: freezed == heartbeat
-          ? _value.heartbeat
-          : heartbeat // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      offer: freezed == offer
-          ? _value._offer
-          : offer // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      answer: freezed == answer
-          ? _value._answer
-          : answer // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      state: null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$AudienceImpl implements _Audience {
-  _$AudienceImpl(
+class _Audience implements Audience {
+  _Audience(
       {this.id = 0,
       @JsonKey(name: 'presenter_id') this.presenterId = 0,
       @JsonKey(name: 'user_id') this.userId = 0,
@@ -244,9 +188,8 @@ class _$AudienceImpl implements _Audience {
       this.state = 'join'})
       : _offer = offer,
         _answer = answer;
-
-  factory _$AudienceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AudienceImplFromJson(json);
+  factory _Audience.fromJson(Map<String, dynamic> json) =>
+      _$AudienceFromJson(json);
 
   @override
   @JsonKey()
@@ -288,16 +231,26 @@ class _$AudienceImpl implements _Audience {
   @JsonKey()
   final String state;
 
+  /// Create a copy of Audience
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Audience(id: $id, presenterId: $presenterId, userId: $userId, createdAt: $createdAt, profile: $profile, heartbeat: $heartbeat, offer: $offer, answer: $answer, state: $state)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AudienceCopyWith<_Audience> get copyWith =>
+      __$AudienceCopyWithImpl<_Audience>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AudienceToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AudienceImpl &&
+            other is _Audience &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.presenterId, presenterId) ||
                 other.presenterId == presenterId) &&
@@ -326,63 +279,109 @@ class _$AudienceImpl implements _Audience {
       const DeepCollectionEquality().hash(_answer),
       state);
 
-  /// Create a copy of Audience
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AudienceImplCopyWith<_$AudienceImpl> get copyWith =>
-      __$$AudienceImplCopyWithImpl<_$AudienceImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AudienceImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Audience(id: $id, presenterId: $presenterId, userId: $userId, createdAt: $createdAt, profile: $profile, heartbeat: $heartbeat, offer: $offer, answer: $answer, state: $state)';
   }
 }
 
-abstract class _Audience implements Audience {
-  factory _Audience(
-      {final int id,
-      @JsonKey(name: 'presenter_id') final int presenterId,
-      @JsonKey(name: 'user_id') final int userId,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      final Profile? profile,
-      final DateTime? heartbeat,
-      final Map<String, dynamic>? offer,
-      final Map<String, dynamic>? answer,
-      final String state}) = _$AudienceImpl;
+/// @nodoc
+abstract mixin class _$AudienceCopyWith<$Res>
+    implements $AudienceCopyWith<$Res> {
+  factory _$AudienceCopyWith(_Audience value, $Res Function(_Audience) _then) =
+      __$AudienceCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      @JsonKey(name: 'presenter_id') int presenterId,
+      @JsonKey(name: 'user_id') int userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      Profile? profile,
+      DateTime? heartbeat,
+      Map<String, dynamic>? offer,
+      Map<String, dynamic>? answer,
+      String state});
 
-  factory _Audience.fromJson(Map<String, dynamic> json) =
-      _$AudienceImpl.fromJson;
+  @override
+  $ProfileCopyWith<$Res>? get profile;
+}
 
-  @override
-  int get id;
-  @override
-  @JsonKey(name: 'presenter_id')
-  int get presenterId;
-  @override
-  @JsonKey(name: 'user_id')
-  int get userId;
-  @override
-  @JsonKey(name: 'created_at')
-  DateTime? get createdAt;
-  @override
-  Profile? get profile;
-  @override
-  DateTime? get heartbeat;
-  @override
-  Map<String, dynamic>? get offer;
-  @override
-  Map<String, dynamic>? get answer;
-  @override
-  String get state;
+/// @nodoc
+class __$AudienceCopyWithImpl<$Res> implements _$AudienceCopyWith<$Res> {
+  __$AudienceCopyWithImpl(this._self, this._then);
+
+  final _Audience _self;
+  final $Res Function(_Audience) _then;
 
   /// Create a copy of Audience
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AudienceImplCopyWith<_$AudienceImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? presenterId = null,
+    Object? userId = null,
+    Object? createdAt = freezed,
+    Object? profile = freezed,
+    Object? heartbeat = freezed,
+    Object? offer = freezed,
+    Object? answer = freezed,
+    Object? state = null,
+  }) {
+    return _then(_Audience(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      presenterId: null == presenterId
+          ? _self.presenterId
+          : presenterId // ignore: cast_nullable_to_non_nullable
+              as int,
+      userId: null == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      profile: freezed == profile
+          ? _self.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as Profile?,
+      heartbeat: freezed == heartbeat
+          ? _self.heartbeat
+          : heartbeat // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      offer: freezed == offer
+          ? _self._offer
+          : offer // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      answer: freezed == answer
+          ? _self._answer
+          : answer // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      state: null == state
+          ? _self.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  /// Create a copy of Audience
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProfileCopyWith<$Res>? get profile {
+    if (_self.profile == null) {
+      return null;
+    }
+
+    return $ProfileCopyWith<$Res>(_self.profile!, (value) {
+      return _then(_self.copyWith(profile: value));
+    });
+  }
 }
+
+// dart format on

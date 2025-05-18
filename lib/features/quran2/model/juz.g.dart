@@ -6,7 +6,7 @@ part of 'juz.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$JuzImpl _$$JuzImplFromJson(Map<String, dynamic> json) => _$JuzImpl(
+_Juz _$JuzFromJson(Map<String, dynamic> json) => _Juz(
       id: (json['id'] as num?)?.toInt() ?? 0,
       firstVerseId: (json['first_verse_id'] as num?)?.toInt() ?? 0,
       lastVerseId: (json['last_verse_id'] as num?)?.toInt() ?? 0,
@@ -17,7 +17,7 @@ _$JuzImpl _$$JuzImplFromJson(Map<String, dynamic> json) => _$JuzImpl(
           const {},
     );
 
-Map<String, dynamic> _$$JuzImplToJson(_$JuzImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$JuzToJson(_Juz instance) => <String, dynamic>{
       'id': instance.id,
       'first_verse_id': instance.firstVerseId,
       'last_verse_id': instance.lastVerseId,

@@ -7,24 +7,27 @@ import 'package:dio/dio.dart';
 class DioLoggerInterceptor implements Interceptor {
   final stopwatches = <String, Stopwatch>{};
 
+  final _kLogName = 'DIO-LOGGER';
+  final showLog = true;
+
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     final url = '${options.baseUrl}${options.path}';
     stopwatches[url] = Stopwatch()..start();
-    log('🌍 Making request: $url', name: 'DIO');
+    if (showLog) log('🌍 Making request: $url', name: _kLogName);
     if (options.data != null) {
-      log('🌍 Data request:', name: 'DIO');
+      if (showLog) log('🌍 Data request:', name: _kLogName);
       if (options.data is FormData) {
-        log("FormData : ${options.data}", name: 'DIO');
+        if (showLog) log("FormData : ${options.data}", name: _kLogName);
       } else {
         final obj = const JsonEncoder.withIndent('  ').convert(options.data);
-        log("Json : $obj", name: 'DIO');
+        if (showLog) log("Json : $obj", name: _kLogName);
       }
     }
     if (options.queryParameters.isNotEmpty) {
       final params = const JsonEncoder.withIndent(' ').convert(options.queryParameters);
-      log('🌍 Params request:', name: 'DIO');
-      log(params, name: 'DIO');
+      if (showLog) log('🌍 Params request:', name: _kLogName);
+      if (showLog) log(params, name: _kLogName);
     }
     return handler.next(options);
   }
@@ -33,9 +36,9 @@ class DioLoggerInterceptor implements Interceptor {
   void onError(DioException err, ErrorInterceptorHandler handler) {
     final url = '${err.requestOptions.uri}';
     _logMessageAndClearStopwatch(null, url, '❌ Received error');
-    // log('❌ ${err.stackTrace}', name: 'DIO');
+    // if (showLog) log('❌ ${err.stackTrace}', name: _kLogName);
     // if (err.response?.data != null) {
-    //   log('❌ Response Error: ${err.response?.data}', name: 'DIO');
+    //   if (showLog) log('❌ Response Error: ${err.response?.data}', name: _kLogName);
     //   final errCode = err.response?.data['code'] == null ? '' : "[${err.response?.data['code']}]";
     //   final errMessage = err.response?.data['message'];
     //   final message = "$errCode $errMessage";
@@ -50,9 +53,9 @@ class DioLoggerInterceptor implements Interceptor {
     _logMessageAndClearStopwatch(response.statusCode, url, '⬅️ Received response');
     // if (response.data != null) {
     //   final obj = const JsonEncoder.withIndent('  ').convert(response.data);
-    //   log('🌍 Data response:\n $obj', name: 'DIO');
+    //   if (showLog) log('🌍 Data response:\n $obj', name: _kLogName);
     // }
-    log('-------------------------', name: 'DIO');
+    if (showLog) log('-------------------------', name: _kLogName);
     return handler.next(response);
   }
 
@@ -62,23 +65,23 @@ class DioLoggerInterceptor implements Interceptor {
       stopwatch.stop();
       _logResponse(statusCode, stopwatch.elapsedMilliseconds, url, message);
       if (stopwatch.elapsed > const Duration(seconds: 7)) {
-        log('❌ Connection Timed Out', name: 'DIO');
+        if (showLog) log('❌ Connection Timed Out', name: _kLogName);
         SnackBarService.show(message: '❌ Seems that the server is busy, please try again later !');
       }
       stopwatches.remove(url);
     } else {
-      log(message, name: 'DIO');
+      if (showLog) log(message, name: _kLogName);
     }
   }
 
   void _logResponse(int? statusCode, int milliseconds, String url, String message) {
     final emoji =
         switch (statusCode) { != null && >= 200 && < 300 => '✅', != null && >= 300 && < 400 => '🟠', _ => '❌' };
-    log(message, name: 'DIO');
+    if (showLog) log(message, name: _kLogName);
     if (statusCode != null) {
-      log('$emoji $statusCode $emoji | ${milliseconds}ms | $url', name: 'DIO');
+      if (showLog) log('$emoji $statusCode $emoji | ${milliseconds}ms | $url', name: _kLogName);
     } else {
-      log('$emoji | ${milliseconds}ms | $url', name: 'DIO');
+      if (showLog) log('$emoji | ${milliseconds}ms | $url', name: _kLogName);
     }
   }
 }

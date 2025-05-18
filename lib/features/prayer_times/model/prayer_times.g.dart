@@ -6,8 +6,7 @@ part of 'prayer_times.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PrayerTimesImpl _$$PrayerTimesImplFromJson(Map<String, dynamic> json) =>
-    _$PrayerTimesImpl(
+_PrayerTimes _$PrayerTimesFromJson(Map<String, dynamic> json) => _PrayerTimes(
       fajr: json['Fajr'] as String?,
       sunrise: json['Sunrise'] as String?,
       dhuhr: json['Dhuhr'] as String?,
@@ -21,7 +20,7 @@ _$PrayerTimesImpl _$$PrayerTimesImplFromJson(Map<String, dynamic> json) =>
       lastthird: json['Lastthird'] as String?,
     );
 
-Map<String, dynamic> _$$PrayerTimesImplToJson(_$PrayerTimesImpl instance) =>
+Map<String, dynamic> _$PrayerTimesToJson(_PrayerTimes instance) =>
     <String, dynamic>{
       'Fajr': instance.fajr,
       'Sunrise': instance.sunrise,
@@ -36,13 +35,13 @@ Map<String, dynamic> _$$PrayerTimesImplToJson(_$PrayerTimesImpl instance) =>
       'Lastthird': instance.lastthird,
     };
 
-_$PrayerMethodImpl _$$PrayerMethodImplFromJson(Map<String, dynamic> json) =>
-    _$PrayerMethodImpl(
+_PrayerMethod _$PrayerMethodFromJson(Map<String, dynamic> json) =>
+    _PrayerMethod(
       id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$$PrayerMethodImplToJson(_$PrayerMethodImpl instance) =>
+Map<String, dynamic> _$PrayerMethodToJson(_PrayerMethod instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

@@ -7,8 +7,7 @@ part 'chapter.freezed.dart';
 part 'chapter.g.dart';
 
 @freezed
-class Chapter with _$Chapter {
-
+abstract class Chapter with _$Chapter {
   factory Chapter({
     @Default(0) int id,
     @JsonKey(name: 'name_simple') @Default('') String name,

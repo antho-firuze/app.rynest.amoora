@@ -39,7 +39,7 @@ class PrayersDetailView extends ConsumerWidget {
     }
     WakelockPlus.enable();
 
-    print('Build Prayers Detail');
+    debugPrint('Build Prayers Detail');
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {

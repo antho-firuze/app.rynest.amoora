@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,146 +10,87 @@ part of 'quran.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Quran _$QuranFromJson(Map<String, dynamic> json) {
-  return _Quran.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Quran {
-  int get page => throw _privateConstructorUsedError;
-  List<int> get markPage => throw _privateConstructorUsedError;
-  int? get surahNumber => throw _privateConstructorUsedError;
-  String? get surahName => throw _privateConstructorUsedError;
-  int? get juz => throw _privateConstructorUsedError;
-  int? get hizb => throw _privateConstructorUsedError;
-  int? get hizbQuarter => throw _privateConstructorUsedError;
-  bool? get isRightPage => throw _privateConstructorUsedError;
-  String? get hizbText => throw _privateConstructorUsedError;
-  String? get surahData => throw _privateConstructorUsedError;
-  bool get isMarkPage => throw _privateConstructorUsedError;
-  String? get lang => throw _privateConstructorUsedError;
-
-  /// Serializes this Quran to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  int get page;
+  List<int> get markPage;
+  int? get surahNumber;
+  String? get surahName;
+  int? get juz;
+  int? get hizb;
+  int? get hizbQuarter;
+  bool? get isRightPage;
+  String? get hizbText;
+  String? get surahData;
+  bool get isMarkPage;
+  String? get lang;
 
   /// Create a copy of Quran
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $QuranCopyWith<Quran> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $QuranCopyWith<$Res> {
-  factory $QuranCopyWith(Quran value, $Res Function(Quran) then) =
-      _$QuranCopyWithImpl<$Res, Quran>;
-  @useResult
-  $Res call(
-      {int page,
-      List<int> markPage,
-      int? surahNumber,
-      String? surahName,
-      int? juz,
-      int? hizb,
-      int? hizbQuarter,
-      bool? isRightPage,
-      String? hizbText,
-      String? surahData,
-      bool isMarkPage,
-      String? lang});
-}
-
-/// @nodoc
-class _$QuranCopyWithImpl<$Res, $Val extends Quran>
-    implements $QuranCopyWith<$Res> {
-  _$QuranCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Quran
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $QuranCopyWith<Quran> get copyWith =>
+      _$QuranCopyWithImpl<Quran>(this as Quran, _$identity);
+
+  /// Serializes this Quran to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? page = null,
-    Object? markPage = null,
-    Object? surahNumber = freezed,
-    Object? surahName = freezed,
-    Object? juz = freezed,
-    Object? hizb = freezed,
-    Object? hizbQuarter = freezed,
-    Object? isRightPage = freezed,
-    Object? hizbText = freezed,
-    Object? surahData = freezed,
-    Object? isMarkPage = null,
-    Object? lang = freezed,
-  }) {
-    return _then(_value.copyWith(
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      markPage: null == markPage
-          ? _value.markPage
-          : markPage // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      surahNumber: freezed == surahNumber
-          ? _value.surahNumber
-          : surahNumber // ignore: cast_nullable_to_non_nullable
-              as int?,
-      surahName: freezed == surahName
-          ? _value.surahName
-          : surahName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      juz: freezed == juz
-          ? _value.juz
-          : juz // ignore: cast_nullable_to_non_nullable
-              as int?,
-      hizb: freezed == hizb
-          ? _value.hizb
-          : hizb // ignore: cast_nullable_to_non_nullable
-              as int?,
-      hizbQuarter: freezed == hizbQuarter
-          ? _value.hizbQuarter
-          : hizbQuarter // ignore: cast_nullable_to_non_nullable
-              as int?,
-      isRightPage: freezed == isRightPage
-          ? _value.isRightPage
-          : isRightPage // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      hizbText: freezed == hizbText
-          ? _value.hizbText
-          : hizbText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      surahData: freezed == surahData
-          ? _value.surahData
-          : surahData // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isMarkPage: null == isMarkPage
-          ? _value.isMarkPage
-          : isMarkPage // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lang: freezed == lang
-          ? _value.lang
-          : lang // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Quran &&
+            (identical(other.page, page) || other.page == page) &&
+            const DeepCollectionEquality().equals(other.markPage, markPage) &&
+            (identical(other.surahNumber, surahNumber) ||
+                other.surahNumber == surahNumber) &&
+            (identical(other.surahName, surahName) ||
+                other.surahName == surahName) &&
+            (identical(other.juz, juz) || other.juz == juz) &&
+            (identical(other.hizb, hizb) || other.hizb == hizb) &&
+            (identical(other.hizbQuarter, hizbQuarter) ||
+                other.hizbQuarter == hizbQuarter) &&
+            (identical(other.isRightPage, isRightPage) ||
+                other.isRightPage == isRightPage) &&
+            (identical(other.hizbText, hizbText) ||
+                other.hizbText == hizbText) &&
+            (identical(other.surahData, surahData) ||
+                other.surahData == surahData) &&
+            (identical(other.isMarkPage, isMarkPage) ||
+                other.isMarkPage == isMarkPage) &&
+            (identical(other.lang, lang) || other.lang == lang));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      page,
+      const DeepCollectionEquality().hash(markPage),
+      surahNumber,
+      surahName,
+      juz,
+      hizb,
+      hizbQuarter,
+      isRightPage,
+      hizbText,
+      surahData,
+      isMarkPage,
+      lang);
+
+  @override
+  String toString() {
+    return 'Quran(page: $page, markPage: $markPage, surahNumber: $surahNumber, surahName: $surahName, juz: $juz, hizb: $hizb, hizbQuarter: $hizbQuarter, isRightPage: $isRightPage, hizbText: $hizbText, surahData: $surahData, isMarkPage: $isMarkPage, lang: $lang)';
   }
 }
 
 /// @nodoc
-abstract class _$$QuranImplCopyWith<$Res> implements $QuranCopyWith<$Res> {
-  factory _$$QuranImplCopyWith(
-          _$QuranImpl value, $Res Function(_$QuranImpl) then) =
-      __$$QuranImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $QuranCopyWith<$Res> {
+  factory $QuranCopyWith(Quran value, $Res Function(Quran) _then) =
+      _$QuranCopyWithImpl;
   @useResult
   $Res call(
       {int page,
@@ -166,12 +108,11 @@ abstract class _$$QuranImplCopyWith<$Res> implements $QuranCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$QuranImplCopyWithImpl<$Res>
-    extends _$QuranCopyWithImpl<$Res, _$QuranImpl>
-    implements _$$QuranImplCopyWith<$Res> {
-  __$$QuranImplCopyWithImpl(
-      _$QuranImpl _value, $Res Function(_$QuranImpl) _then)
-      : super(_value, _then);
+class _$QuranCopyWithImpl<$Res> implements $QuranCopyWith<$Res> {
+  _$QuranCopyWithImpl(this._self, this._then);
+
+  final Quran _self;
+  final $Res Function(Quran) _then;
 
   /// Create a copy of Quran
   /// with the given fields replaced by the non-null parameter values.
@@ -191,53 +132,53 @@ class __$$QuranImplCopyWithImpl<$Res>
     Object? isMarkPage = null,
     Object? lang = freezed,
   }) {
-    return _then(_$QuranImpl(
+    return _then(_self.copyWith(
       page: null == page
-          ? _value.page
+          ? _self.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
       markPage: null == markPage
-          ? _value._markPage
+          ? _self.markPage
           : markPage // ignore: cast_nullable_to_non_nullable
               as List<int>,
       surahNumber: freezed == surahNumber
-          ? _value.surahNumber
+          ? _self.surahNumber
           : surahNumber // ignore: cast_nullable_to_non_nullable
               as int?,
       surahName: freezed == surahName
-          ? _value.surahName
+          ? _self.surahName
           : surahName // ignore: cast_nullable_to_non_nullable
               as String?,
       juz: freezed == juz
-          ? _value.juz
+          ? _self.juz
           : juz // ignore: cast_nullable_to_non_nullable
               as int?,
       hizb: freezed == hizb
-          ? _value.hizb
+          ? _self.hizb
           : hizb // ignore: cast_nullable_to_non_nullable
               as int?,
       hizbQuarter: freezed == hizbQuarter
-          ? _value.hizbQuarter
+          ? _self.hizbQuarter
           : hizbQuarter // ignore: cast_nullable_to_non_nullable
               as int?,
       isRightPage: freezed == isRightPage
-          ? _value.isRightPage
+          ? _self.isRightPage
           : isRightPage // ignore: cast_nullable_to_non_nullable
               as bool?,
       hizbText: freezed == hizbText
-          ? _value.hizbText
+          ? _self.hizbText
           : hizbText // ignore: cast_nullable_to_non_nullable
               as String?,
       surahData: freezed == surahData
-          ? _value.surahData
+          ? _self.surahData
           : surahData // ignore: cast_nullable_to_non_nullable
               as String?,
       isMarkPage: null == isMarkPage
-          ? _value.isMarkPage
+          ? _self.isMarkPage
           : isMarkPage // ignore: cast_nullable_to_non_nullable
               as bool,
       lang: freezed == lang
-          ? _value.lang
+          ? _self.lang
           : lang // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
@@ -246,8 +187,8 @@ class __$$QuranImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$QuranImpl implements _Quran {
-  _$QuranImpl(
+class _Quran implements Quran {
+  _Quran(
       {this.page = 1,
       final List<int> markPage = const [],
       this.surahNumber,
@@ -261,9 +202,7 @@ class _$QuranImpl implements _Quran {
       this.isMarkPage = false,
       this.lang})
       : _markPage = markPage;
-
-  factory _$QuranImpl.fromJson(Map<String, dynamic> json) =>
-      _$$QuranImplFromJson(json);
+  factory _Quran.fromJson(Map<String, dynamic> json) => _$QuranFromJson(json);
 
   @override
   @JsonKey()
@@ -299,16 +238,26 @@ class _$QuranImpl implements _Quran {
   @override
   final String? lang;
 
+  /// Create a copy of Quran
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Quran(page: $page, markPage: $markPage, surahNumber: $surahNumber, surahName: $surahName, juz: $juz, hizb: $hizb, hizbQuarter: $hizbQuarter, isRightPage: $isRightPage, hizbText: $hizbText, surahData: $surahData, isMarkPage: $isMarkPage, lang: $lang)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$QuranCopyWith<_Quran> get copyWith =>
+      __$QuranCopyWithImpl<_Quran>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$QuranToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$QuranImpl &&
+            other is _Quran &&
             (identical(other.page, page) || other.page == page) &&
             const DeepCollectionEquality().equals(other._markPage, _markPage) &&
             (identical(other.surahNumber, surahNumber) ||
@@ -347,68 +296,109 @@ class _$QuranImpl implements _Quran {
       isMarkPage,
       lang);
 
-  /// Create a copy of Quran
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$QuranImplCopyWith<_$QuranImpl> get copyWith =>
-      __$$QuranImplCopyWithImpl<_$QuranImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$QuranImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Quran(page: $page, markPage: $markPage, surahNumber: $surahNumber, surahName: $surahName, juz: $juz, hizb: $hizb, hizbQuarter: $hizbQuarter, isRightPage: $isRightPage, hizbText: $hizbText, surahData: $surahData, isMarkPage: $isMarkPage, lang: $lang)';
   }
 }
 
-abstract class _Quran implements Quran {
-  factory _Quran(
-      {final int page,
-      final List<int> markPage,
-      final int? surahNumber,
-      final String? surahName,
-      final int? juz,
-      final int? hizb,
-      final int? hizbQuarter,
-      final bool? isRightPage,
-      final String? hizbText,
-      final String? surahData,
-      final bool isMarkPage,
-      final String? lang}) = _$QuranImpl;
+/// @nodoc
+abstract mixin class _$QuranCopyWith<$Res> implements $QuranCopyWith<$Res> {
+  factory _$QuranCopyWith(_Quran value, $Res Function(_Quran) _then) =
+      __$QuranCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int page,
+      List<int> markPage,
+      int? surahNumber,
+      String? surahName,
+      int? juz,
+      int? hizb,
+      int? hizbQuarter,
+      bool? isRightPage,
+      String? hizbText,
+      String? surahData,
+      bool isMarkPage,
+      String? lang});
+}
 
-  factory _Quran.fromJson(Map<String, dynamic> json) = _$QuranImpl.fromJson;
+/// @nodoc
+class __$QuranCopyWithImpl<$Res> implements _$QuranCopyWith<$Res> {
+  __$QuranCopyWithImpl(this._self, this._then);
 
-  @override
-  int get page;
-  @override
-  List<int> get markPage;
-  @override
-  int? get surahNumber;
-  @override
-  String? get surahName;
-  @override
-  int? get juz;
-  @override
-  int? get hizb;
-  @override
-  int? get hizbQuarter;
-  @override
-  bool? get isRightPage;
-  @override
-  String? get hizbText;
-  @override
-  String? get surahData;
-  @override
-  bool get isMarkPage;
-  @override
-  String? get lang;
+  final _Quran _self;
+  final $Res Function(_Quran) _then;
 
   /// Create a copy of Quran
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$QuranImplCopyWith<_$QuranImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? page = null,
+    Object? markPage = null,
+    Object? surahNumber = freezed,
+    Object? surahName = freezed,
+    Object? juz = freezed,
+    Object? hizb = freezed,
+    Object? hizbQuarter = freezed,
+    Object? isRightPage = freezed,
+    Object? hizbText = freezed,
+    Object? surahData = freezed,
+    Object? isMarkPage = null,
+    Object? lang = freezed,
+  }) {
+    return _then(_Quran(
+      page: null == page
+          ? _self.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      markPage: null == markPage
+          ? _self._markPage
+          : markPage // ignore: cast_nullable_to_non_nullable
+              as List<int>,
+      surahNumber: freezed == surahNumber
+          ? _self.surahNumber
+          : surahNumber // ignore: cast_nullable_to_non_nullable
+              as int?,
+      surahName: freezed == surahName
+          ? _self.surahName
+          : surahName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      juz: freezed == juz
+          ? _self.juz
+          : juz // ignore: cast_nullable_to_non_nullable
+              as int?,
+      hizb: freezed == hizb
+          ? _self.hizb
+          : hizb // ignore: cast_nullable_to_non_nullable
+              as int?,
+      hizbQuarter: freezed == hizbQuarter
+          ? _self.hizbQuarter
+          : hizbQuarter // ignore: cast_nullable_to_non_nullable
+              as int?,
+      isRightPage: freezed == isRightPage
+          ? _self.isRightPage
+          : isRightPage // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hizbText: freezed == hizbText
+          ? _self.hizbText
+          : hizbText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      surahData: freezed == surahData
+          ? _self.surahData
+          : surahData // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isMarkPage: null == isMarkPage
+          ? _self.isMarkPage
+          : isMarkPage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      lang: freezed == lang
+          ? _self.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
+
+// dart format on

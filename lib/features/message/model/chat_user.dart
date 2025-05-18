@@ -4,7 +4,7 @@ part 'chat_user.freezed.dart';
 part 'chat_user.g.dart';
 
 @freezed
-class ChatUser with _$ChatUser {
+abstract class ChatUser with _$ChatUser {
   factory ChatUser({
     String? id,
     String? name,

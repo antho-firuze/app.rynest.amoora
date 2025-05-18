@@ -10,6 +10,9 @@ class DioAuthInterceptor implements Interceptor {
   final Ref ref;
   DioAuthInterceptor(this.ref);
 
+  final _kLogName = 'DIO-AUTH';
+  final showLog = false;
+
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     return handler.next(err);
@@ -18,14 +21,14 @@ class DioAuthInterceptor implements Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     JwtToken? token = ref.read(authTokenProvider);
+    if (showLog) log("token : $token", name: _kLogName);
     if (token != null) {
-      log("check the token", name: "DIO");
       if (token.refreshToken != null && token.hasExpired()) {
-        log("token has expired", name: "DIO");
+        if (showLog) log("token has expired", name: _kLogName);
         token = await ref.read(authCtrlProvider).refreshToken();
       }
-      
-      log("token : ${token?.accessToken}", name: "DIO");
+
+      if (showLog) log("new token : ${token?.accessToken}", name: _kLogName);
 
       options.headers.putIfAbsent(HttpHeaders.authorizationHeader, () => "Bearer ${token?.accessToken}");
     }

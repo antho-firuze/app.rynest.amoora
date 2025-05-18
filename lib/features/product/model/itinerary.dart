@@ -6,8 +6,7 @@ part 'itinerary.freezed.dart';
 part 'itinerary.g.dart';
 
 @freezed
-class Itinerary with _$Itinerary {
-
+abstract class Itinerary with _$Itinerary {
   factory Itinerary({
     int? id,
     @JsonKey(name: 'title') @Default('') String title,

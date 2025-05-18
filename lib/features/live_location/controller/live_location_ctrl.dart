@@ -13,8 +13,8 @@ class LiveLocationCtrl {
 
   void initialize() async {
     log('Initialize Live Location !');
-    await checkIsBatteryOptimizationDisabled();
-    await checkIsAutoStartEnabled();
+    // await checkIsBatteryOptimizationDisabled();
+    // await checkIsAutoStartEnabled();
 
     // PUSH STREAM for jamaah
     // send gps position for muthowwif monitoring
@@ -47,21 +47,21 @@ class LiveLocationCtrl {
     });
   }
 
-  Future checkIsBatteryOptimizationDisabled() async {
-    final result = await ref.read(permissionServiceProvider).checkIsBatteryOptimizationDisabled();
-    log('checkIsBatteryOptimizationDisabled => $result', name: 'LIVELOCATION-CTRL');
-    ref.read(isBatteryOptzDisabledProvider.notifier).state = result;
-  }
+  // Future checkIsBatteryOptimizationDisabled() async {
+  //   final result = await ref.read(permissionServiceProvider).checkIsBatteryOptimizationDisabled();
+  //   log('checkIsBatteryOptimizationDisabled => $result', name: 'LIVELOCATION-CTRL');
+  //   ref.read(isBatteryOptzDisabledProvider.notifier).state = result;
+  // }
 
-  Future checkIsAutoStartEnabled() async {
-    final result = await ref.read(permissionServiceProvider).checkIsAutoStartEnabled();
-    log('checkIsAutoStartEnabled => $result', name: 'LIVELOCATION-CTRL');
-    ref.read(isAutoStartEnabledProvider.notifier).state = result;
-  }
+  // Future checkIsAutoStartEnabled() async {
+  //   final result = await ref.read(permissionServiceProvider).checkIsAutoStartEnabled();
+  //   log('checkIsAutoStartEnabled => $result', name: 'LIVELOCATION-CTRL');
+  //   ref.read(isAutoStartEnabledProvider.notifier).state = result;
+  // }
 
-  Future showBatterySettings() async => await ref.read(permissionServiceProvider).showBatterySetting();
+  // Future showBatterySettings() async => await ref.read(permissionServiceProvider).showBatterySetting();
 
-  Future showAutoStart() async => await ref.read(permissionServiceProvider).showAutoStart();
+  // Future showAutoStart() async => await ref.read(permissionServiceProvider).showAutoStart();
 }
 
 final liveLocationCtrlProvider = Provider(LiveLocationCtrl.new);

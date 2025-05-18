@@ -6,7 +6,7 @@ part of 'member.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MemberImpl _$$MemberImplFromJson(Map<String, dynamic> json) => _$MemberImpl(
+_Member _$MemberFromJson(Map<String, dynamic> json) => _Member(
       id: (json['id'] as num?)?.toInt() ?? 0,
       lat: (json['lat'] as num?)?.toDouble() ?? 0.0,
       lng: (json['lng'] as num?)?.toDouble() ?? 0.0,
@@ -22,8 +22,7 @@ _$MemberImpl _$$MemberImplFromJson(Map<String, dynamic> json) => _$MemberImpl(
       isOutOfRange: json['isOutOfRange'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$MemberImplToJson(_$MemberImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$MemberToJson(_Member instance) => <String, dynamic>{
       'id': instance.id,
       'lat': instance.lat,
       'lng': instance.lng,

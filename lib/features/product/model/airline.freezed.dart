@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,117 +10,66 @@ part of 'airline.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Airline _$AirlineFromJson(Map<String, dynamic> json) {
-  return _Airline.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Airline {
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @JsonKey(name: 'airline_id')
-  int? get airlineId => throw _privateConstructorUsedError;
+  int? get airlineId;
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @JsonKey(name: 'code')
-  String get code => throw _privateConstructorUsedError;
+  String get code;
   @JsonKey(name: 'image')
-  String get image => throw _privateConstructorUsedError;
+  String get image;
   @JsonKey(name: 'check_in')
-  DateTime? get checkIn => throw _privateConstructorUsedError;
+  DateTime? get checkIn;
   @JsonKey(name: 'check_out')
-  DateTime? get checkOut => throw _privateConstructorUsedError;
-
-  /// Serializes this Airline to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  DateTime? get checkOut;
 
   /// Create a copy of Airline
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AirlineCopyWith<Airline> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AirlineCopyWith<$Res> {
-  factory $AirlineCopyWith(Airline value, $Res Function(Airline) then) =
-      _$AirlineCopyWithImpl<$Res, Airline>;
-  @useResult
-  $Res call(
-      {int? id,
-      @JsonKey(name: 'airline_id') int? airlineId,
-      @JsonKey(name: 'name') String name,
-      @JsonKey(name: 'code') String code,
-      @JsonKey(name: 'image') String image,
-      @JsonKey(name: 'check_in') DateTime? checkIn,
-      @JsonKey(name: 'check_out') DateTime? checkOut});
-}
-
-/// @nodoc
-class _$AirlineCopyWithImpl<$Res, $Val extends Airline>
-    implements $AirlineCopyWith<$Res> {
-  _$AirlineCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Airline
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $AirlineCopyWith<Airline> get copyWith =>
+      _$AirlineCopyWithImpl<Airline>(this as Airline, _$identity);
+
+  /// Serializes this Airline to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = freezed,
-    Object? airlineId = freezed,
-    Object? name = null,
-    Object? code = null,
-    Object? image = null,
-    Object? checkIn = freezed,
-    Object? checkOut = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      airlineId: freezed == airlineId
-          ? _value.airlineId
-          : airlineId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      checkIn: freezed == checkIn
-          ? _value.checkIn
-          : checkIn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      checkOut: freezed == checkOut
-          ? _value.checkOut
-          : checkOut // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Airline &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.airlineId, airlineId) ||
+                other.airlineId == airlineId) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.checkIn, checkIn) || other.checkIn == checkIn) &&
+            (identical(other.checkOut, checkOut) ||
+                other.checkOut == checkOut));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, id, airlineId, name, code, image, checkIn, checkOut);
+
+  @override
+  String toString() {
+    return 'Airline(id: $id, airlineId: $airlineId, name: $name, code: $code, image: $image, checkIn: $checkIn, checkOut: $checkOut)';
   }
 }
 
 /// @nodoc
-abstract class _$$AirlineImplCopyWith<$Res> implements $AirlineCopyWith<$Res> {
-  factory _$$AirlineImplCopyWith(
-          _$AirlineImpl value, $Res Function(_$AirlineImpl) then) =
-      __$$AirlineImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AirlineCopyWith<$Res> {
+  factory $AirlineCopyWith(Airline value, $Res Function(Airline) _then) =
+      _$AirlineCopyWithImpl;
   @useResult
   $Res call(
       {int? id,
@@ -132,12 +82,11 @@ abstract class _$$AirlineImplCopyWith<$Res> implements $AirlineCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$AirlineImplCopyWithImpl<$Res>
-    extends _$AirlineCopyWithImpl<$Res, _$AirlineImpl>
-    implements _$$AirlineImplCopyWith<$Res> {
-  __$$AirlineImplCopyWithImpl(
-      _$AirlineImpl _value, $Res Function(_$AirlineImpl) _then)
-      : super(_value, _then);
+class _$AirlineCopyWithImpl<$Res> implements $AirlineCopyWith<$Res> {
+  _$AirlineCopyWithImpl(this._self, this._then);
+
+  final Airline _self;
+  final $Res Function(Airline) _then;
 
   /// Create a copy of Airline
   /// with the given fields replaced by the non-null parameter values.
@@ -152,33 +101,33 @@ class __$$AirlineImplCopyWithImpl<$Res>
     Object? checkIn = freezed,
     Object? checkOut = freezed,
   }) {
-    return _then(_$AirlineImpl(
+    return _then(_self.copyWith(
       id: freezed == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
       airlineId: freezed == airlineId
-          ? _value.airlineId
+          ? _self.airlineId
           : airlineId // ignore: cast_nullable_to_non_nullable
               as int?,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       code: null == code
-          ? _value.code
+          ? _self.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
       image: null == image
-          ? _value.image
+          ? _self.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
       checkIn: freezed == checkIn
-          ? _value.checkIn
+          ? _self.checkIn
           : checkIn // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       checkOut: freezed == checkOut
-          ? _value.checkOut
+          ? _self.checkOut
           : checkOut // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ));
@@ -187,8 +136,8 @@ class __$$AirlineImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AirlineImpl implements _Airline {
-  _$AirlineImpl(
+class _Airline implements Airline {
+  _Airline(
       {this.id,
       @JsonKey(name: 'airline_id') this.airlineId,
       @JsonKey(name: 'name') this.name = '',
@@ -196,9 +145,8 @@ class _$AirlineImpl implements _Airline {
       @JsonKey(name: 'image') this.image = '',
       @JsonKey(name: 'check_in') this.checkIn,
       @JsonKey(name: 'check_out') this.checkOut});
-
-  factory _$AirlineImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AirlineImplFromJson(json);
+  factory _Airline.fromJson(Map<String, dynamic> json) =>
+      _$AirlineFromJson(json);
 
   @override
   final int? id;
@@ -221,16 +169,26 @@ class _$AirlineImpl implements _Airline {
   @JsonKey(name: 'check_out')
   final DateTime? checkOut;
 
+  /// Create a copy of Airline
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Airline(id: $id, airlineId: $airlineId, name: $name, code: $code, image: $image, checkIn: $checkIn, checkOut: $checkOut)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AirlineCopyWith<_Airline> get copyWith =>
+      __$AirlineCopyWithImpl<_Airline>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AirlineToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AirlineImpl &&
+            other is _Airline &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.airlineId, airlineId) ||
                 other.airlineId == airlineId) &&
@@ -247,59 +205,79 @@ class _$AirlineImpl implements _Airline {
   int get hashCode => Object.hash(
       runtimeType, id, airlineId, name, code, image, checkIn, checkOut);
 
-  /// Create a copy of Airline
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AirlineImplCopyWith<_$AirlineImpl> get copyWith =>
-      __$$AirlineImplCopyWithImpl<_$AirlineImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AirlineImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Airline(id: $id, airlineId: $airlineId, name: $name, code: $code, image: $image, checkIn: $checkIn, checkOut: $checkOut)';
   }
 }
 
-abstract class _Airline implements Airline {
-  factory _Airline(
-      {final int? id,
-      @JsonKey(name: 'airline_id') final int? airlineId,
-      @JsonKey(name: 'name') final String name,
-      @JsonKey(name: 'code') final String code,
-      @JsonKey(name: 'image') final String image,
-      @JsonKey(name: 'check_in') final DateTime? checkIn,
-      @JsonKey(name: 'check_out') final DateTime? checkOut}) = _$AirlineImpl;
+/// @nodoc
+abstract mixin class _$AirlineCopyWith<$Res> implements $AirlineCopyWith<$Res> {
+  factory _$AirlineCopyWith(_Airline value, $Res Function(_Airline) _then) =
+      __$AirlineCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int? id,
+      @JsonKey(name: 'airline_id') int? airlineId,
+      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'code') String code,
+      @JsonKey(name: 'image') String image,
+      @JsonKey(name: 'check_in') DateTime? checkIn,
+      @JsonKey(name: 'check_out') DateTime? checkOut});
+}
 
-  factory _Airline.fromJson(Map<String, dynamic> json) = _$AirlineImpl.fromJson;
+/// @nodoc
+class __$AirlineCopyWithImpl<$Res> implements _$AirlineCopyWith<$Res> {
+  __$AirlineCopyWithImpl(this._self, this._then);
 
-  @override
-  int? get id;
-  @override
-  @JsonKey(name: 'airline_id')
-  int? get airlineId;
-  @override
-  @JsonKey(name: 'name')
-  String get name;
-  @override
-  @JsonKey(name: 'code')
-  String get code;
-  @override
-  @JsonKey(name: 'image')
-  String get image;
-  @override
-  @JsonKey(name: 'check_in')
-  DateTime? get checkIn;
-  @override
-  @JsonKey(name: 'check_out')
-  DateTime? get checkOut;
+  final _Airline _self;
+  final $Res Function(_Airline) _then;
 
   /// Create a copy of Airline
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AirlineImplCopyWith<_$AirlineImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = freezed,
+    Object? airlineId = freezed,
+    Object? name = null,
+    Object? code = null,
+    Object? image = null,
+    Object? checkIn = freezed,
+    Object? checkOut = freezed,
+  }) {
+    return _then(_Airline(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      airlineId: freezed == airlineId
+          ? _self.airlineId
+          : airlineId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: null == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      checkIn: freezed == checkIn
+          ? _self.checkIn
+          : checkIn // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      checkOut: freezed == checkOut
+          ? _self.checkOut
+          : checkOut // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
 }
+
+// dart format on

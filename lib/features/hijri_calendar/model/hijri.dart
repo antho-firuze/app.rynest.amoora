@@ -5,7 +5,7 @@ part 'hijri.freezed.dart';
 part 'hijri.g.dart';
 
 @freezed
-class Hijri with _$Hijri {
+abstract class Hijri with _$Hijri {
   factory Hijri({
     String? date,
     String? format,
@@ -19,7 +19,7 @@ class Hijri with _$Hijri {
 }
 
 @freezed
-class HijriWeekday with _$HijriWeekday {
+abstract class HijriWeekday with _$HijriWeekday {
   factory HijriWeekday({
     String? en,
     String? ar,
@@ -29,7 +29,7 @@ class HijriWeekday with _$HijriWeekday {
 }
 
 @freezed
-class HijriMonth with _$HijriMonth {
+abstract class HijriMonth with _$HijriMonth {
   factory HijriMonth({
     int? number,
     String? en,

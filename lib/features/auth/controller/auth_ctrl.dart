@@ -7,7 +7,6 @@ import 'package:amoora/common/services/api_service.dart';
 import 'package:amoora/core/app_config.dart';
 import 'package:amoora/features/auth/model/jwt_token.dart';
 import 'package:amoora/features/auth/model/user.dart';
-import 'package:amoora/features/auth/service/auth_service.dart';
 import 'package:amoora/features/auth/views/code_verify_view.dart';
 import 'package:amoora/features/auth/views/signin_view.dart';
 import 'package:amoora/features/user/controller/profile_ctrl.dart';
@@ -46,7 +45,7 @@ class AuthCtrl {
   final _userKey = 'COOKIE_USER';
   final _rememberKey = 'COOKIE_REMEMBER';
 
-  void  initialize() {
+  void initialize() {
     log('Initialize User & Token !');
 
     loadUser();
@@ -88,7 +87,10 @@ class AuthCtrl {
 
   Future<JwtToken?> refreshToken() async {
     final reqs = Reqs(path: '/api/v1/auth/refresh_token', data: {});
-    final state = await AsyncValue.guard(() async => await ref.read(authServiceProvider).refreshToken(reqs: reqs));
+    final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).refreshToken(
+          reqs: reqs,
+          refreshToken: ref.read(authTokenProvider)?.refreshToken,
+        ));
 
     if (state.hasError) return null;
 

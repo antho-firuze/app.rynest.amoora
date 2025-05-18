@@ -6,7 +6,7 @@ part of 'hotel.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$HotelImpl _$$HotelImplFromJson(Map<String, dynamic> json) => _$HotelImpl(
+_Hotel _$HotelFromJson(Map<String, dynamic> json) => _Hotel(
       id: (json['id'] as num?)?.toInt(),
       hotelId: (json['hotel_id'] as num?)?.toInt(),
       name: json['name'] as String? ?? '',
@@ -23,8 +23,7 @@ _$HotelImpl _$$HotelImplFromJson(Map<String, dynamic> json) => _$HotelImpl(
           : DateTime.parse(json['check_out'] as String),
     );
 
-Map<String, dynamic> _$$HotelImplToJson(_$HotelImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$HotelToJson(_Hotel instance) => <String, dynamic>{
       'id': instance.id,
       'hotel_id': instance.hotelId,
       'name': instance.name,

@@ -6,8 +6,7 @@ part of 'audience.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AudienceImpl _$$AudienceImplFromJson(Map<String, dynamic> json) =>
-    _$AudienceImpl(
+_Audience _$AudienceFromJson(Map<String, dynamic> json) => _Audience(
       id: (json['id'] as num?)?.toInt() ?? 0,
       presenterId: (json['presenter_id'] as num?)?.toInt() ?? 0,
       userId: (json['user_id'] as num?)?.toInt() ?? 0,
@@ -25,8 +24,7 @@ _$AudienceImpl _$$AudienceImplFromJson(Map<String, dynamic> json) =>
       state: json['state'] as String? ?? 'join',
     );
 
-Map<String, dynamic> _$$AudienceImplToJson(_$AudienceImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AudienceToJson(_Audience instance) => <String, dynamic>{
       'id': instance.id,
       'presenter_id': instance.presenterId,
       'user_id': instance.userId,

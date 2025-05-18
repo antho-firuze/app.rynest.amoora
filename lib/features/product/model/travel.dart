@@ -6,7 +6,7 @@ part 'travel.freezed.dart';
 part 'travel.g.dart';
 
 @freezed
-class Travel with _$Travel {
+abstract class Travel with _$Travel {
   factory Travel({
     String? id,
     String? title,
@@ -43,8 +43,7 @@ class Travel with _$Travel {
 }
 
 @freezed
-class Travels with _$Travels {
-
+abstract class Travels with _$Travels {
   factory Travels({
     @JsonKey(name: "data") List<Travel>? travels
   }) = _Travels;
@@ -53,8 +52,7 @@ class Travels with _$Travels {
 }
 
 @freezed
-class Hotel with _$Hotel {
-
+abstract class Hotel with _$Hotel {
   factory Hotel({
     String? image,
     String? name,
@@ -71,8 +69,7 @@ class Hotel with _$Hotel {
 }
 
 @freezed
-class Flights with _$Flights {
-
+abstract class Flights with _$Flights {
   factory Flights({
     String? name,
     String? code,
@@ -87,8 +84,7 @@ class Flights with _$Flights {
 }
 
 @freezed
-class Transportation with _$Transportation {
-
+abstract class Transportation with _$Transportation {
   factory Transportation({
     String? image,
     String? name,
@@ -101,8 +97,7 @@ class Transportation with _$Transportation {
 }
 
 @freezed
-class Itinerary with _$Itinerary {
-
+abstract class Itinerary with _$Itinerary {
   factory Itinerary({
     DateTime? date,
     String? place,

@@ -54,8 +54,8 @@ class _LiveMapViewState extends ConsumerState<LiveMapView> with WidgetsBindingOb
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         // Check Permission Location
         // await ref.read(liveLocationCtrlProvider).onResumed();
-        await ref.read(liveLocationCtrlProvider).checkIsBatteryOptimizationDisabled();
-        await ref.read(liveLocationCtrlProvider).checkIsAutoStartEnabled();
+        // await ref.read(liveLocationCtrlProvider).checkIsBatteryOptimizationDisabled();
+        // await ref.read(liveLocationCtrlProvider).checkIsAutoStartEnabled();
       });
     }
     super.didChangeAppLifecycleState(state);
@@ -103,43 +103,43 @@ class _LiveMapViewState extends ConsumerState<LiveMapView> with WidgetsBindingOb
       );
     }
 
-    if (!ref.watch(isBatteryOptzDisabledProvider)) {
-      return MyUI(
-        child: Scaffold(
-          appBar: AppBar(title: Text('Pantau Rombongan'.hardcoded)),
-          body: ListView(
-            children: [
-              WarningLayout(
-                title: 'Izinkan Aplikasi untuk berjalan di background !',
-                child: ElevatedButton(
-                  onPressed: () async => await ref.read(liveLocationCtrlProvider).showBatterySettings(),
-                  child: Text('Izinkan'.hardcoded),
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
+    // if (!ref.watch(isBatteryOptzDisabledProvider)) {
+    //   return MyUI(
+    //     child: Scaffold(
+    //       appBar: AppBar(title: Text('Pantau Rombongan'.hardcoded)),
+    //       body: ListView(
+    //         children: [
+    //           WarningLayout(
+    //             title: 'Izinkan Aplikasi untuk berjalan di background !',
+    //             child: ElevatedButton(
+    //               onPressed: () async => await ref.read(liveLocationCtrlProvider).showBatterySettings(),
+    //               child: Text('Izinkan'.hardcoded),
+    //             ),
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   );
+    // }
 
-    if (!ref.watch(isAutoStartEnabledProvider)) {
-      return MyUI(
-        child: Scaffold(
-          appBar: AppBar(title: Text('Pantau Rombongan'.hardcoded)),
-          body: ListView(
-            children: [
-              WarningLayout(
-                title: 'Mohon aktifkan Auto Start !',
-                child: ElevatedButton(
-                  onPressed: () async => await ref.read(liveLocationCtrlProvider).showAutoStart(),
-                  child: Text('Buka Settings'.hardcoded),
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
+    // if (!ref.watch(isAutoStartEnabledProvider)) {
+    //   return MyUI(
+    //     child: Scaffold(
+    //       appBar: AppBar(title: Text('Pantau Rombongan'.hardcoded)),
+    //       body: ListView(
+    //         children: [
+    //           WarningLayout(
+    //             title: 'Mohon aktifkan Auto Start !',
+    //             child: ElevatedButton(
+    //               onPressed: () async => await ref.read(liveLocationCtrlProvider).showAutoStart(),
+    //               child: Text('Buka Settings'.hardcoded),
+    //             ),
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   );
+    // }
 
     Future.delayed(
       const Duration(seconds: 2),

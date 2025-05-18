@@ -6,7 +6,7 @@ part of 'reqs.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ReqsImpl _$$ReqsImplFromJson(Map<String, dynamic> json) => _$ReqsImpl(
+_Reqs _$ReqsFromJson(Map<String, dynamic> json) => _Reqs(
       url: json['url'] as String?,
       path: json['path'] as String?,
       queryParameters: json['queryParameters'] as Map<String, dynamic>?,
@@ -15,8 +15,7 @@ _$ReqsImpl _$$ReqsImplFromJson(Map<String, dynamic> json) => _$ReqsImpl(
       fileKey: json['fileKey'] as String? ?? 'userfile',
     );
 
-Map<String, dynamic> _$$ReqsImplToJson(_$ReqsImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ReqsToJson(_Reqs instance) => <String, dynamic>{
       'url': instance.url,
       'path': instance.path,
       'queryParameters': instance.queryParameters,

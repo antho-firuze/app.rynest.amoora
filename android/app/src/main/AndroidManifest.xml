@@ -51,6 +51,7 @@
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true"
         android:allowBackup="false"
+        android:enableOnBackInvokedCallback="true"
         android:requestLegacyExternalStorage="true">
 
         <activity
@@ -87,7 +88,11 @@
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyB7-KkvmsnYU5PGFVqbSSYf1e0oGFDaP_s" />
-                
+
+        <meta-data
+                android:name="io.flutter.embedding.android.EnableImpeller"
+                android:value="false" />
+
         <!-- If you want your foreground service to be stopped if
              your app is stopped, set android:stopWithTask to true.
              See https://developer.android.com/reference/android/R.attr#stopWithTask -->

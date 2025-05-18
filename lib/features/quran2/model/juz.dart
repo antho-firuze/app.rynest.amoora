@@ -6,8 +6,7 @@ part 'juz.freezed.dart';
 part 'juz.g.dart';
 
 @freezed
-class Juz with _$Juz {
-
+abstract class Juz with _$Juz {
   factory Juz({
     @Default(0) int id,
     @JsonKey(name: 'first_verse_id') @Default(0) int firstVerseId,

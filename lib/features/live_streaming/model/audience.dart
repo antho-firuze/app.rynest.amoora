@@ -7,8 +7,7 @@ part 'audience.freezed.dart';
 part 'audience.g.dart';
 
 @freezed
-class Audience with _$Audience {
-
+abstract class Audience with _$Audience {
   factory Audience({
     @Default(0) int id,
     @JsonKey(name: 'presenter_id') @Default(0) int presenterId,

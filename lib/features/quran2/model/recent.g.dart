@@ -6,7 +6,7 @@ part of 'recent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RecentImpl _$$RecentImplFromJson(Map<String, dynamic> json) => _$RecentImpl(
+_Recent _$RecentFromJson(Map<String, dynamic> json) => _Recent(
       id: json['id'] as String?,
       chapterId: (json['chapterId'] as num?)?.toInt(),
       verseId: (json['verseId'] as num?)?.toInt(),
@@ -17,8 +17,7 @@ _$RecentImpl _$$RecentImplFromJson(Map<String, dynamic> json) => _$RecentImpl(
           : DateTime.parse(json['createdAt'] as String),
     );
 
-Map<String, dynamic> _$$RecentImplToJson(_$RecentImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$RecentToJson(_Recent instance) => <String, dynamic>{
       'id': instance.id,
       'chapterId': instance.chapterId,
       'verseId': instance.verseId,

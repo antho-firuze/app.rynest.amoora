@@ -365,7 +365,6 @@ class PresenterView extends ConsumerWidget {
                                                     FieldList(
                                                       caption: const Text('Alamat Email'),
                                                       value: Text(audience.profile!.email).right().bold(),
-                                                      width: context.screenWidthRatio(.6, .6),
                                                     ),
                                                     20.height,
                                                     FieldList(

@@ -4,8 +4,7 @@ part 'quran.freezed.dart';
 part 'quran.g.dart';
 
 @freezed
-class Quran with _$Quran {
-
+abstract class Quran with _$Quran {
   factory Quran({
     @Default(1) int page,
     @Default([]) List<int> markPage,

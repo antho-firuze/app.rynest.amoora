@@ -4,7 +4,8 @@ part 'latlong.freezed.dart';
 part 'latlong.g.dart';
 
 @freezed
-class LatLong with _$LatLong {
+abstract class LatLong with _$LatLong {
+  
   factory LatLong(
     double lat,
     double lng,

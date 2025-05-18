@@ -6,8 +6,7 @@ part 'prayer.freezed.dart';
 part 'prayer.g.dart';
 
 @freezed
-class Prayer with _$Prayer {
-
+abstract class Prayer with _$Prayer {
   factory Prayer({
     @JsonKey(name: "title") String? title,
     @JsonKey(name: "subtitle") String? subTitle,

@@ -5,6 +5,8 @@ part 'env.g.dart';
 @Envied(path: '.env')
 abstract class Env {
   // FOR MAIN APPS
+  @EnviedField(varName: 'ENV_CONFIG', obfuscate: true)
+  static String envConfig = _Env.envConfig;
   @EnviedField(varName: 'LIVE_API_URL', obfuscate: true)
   static String liveApiUrl = _Env.liveApiUrl;
   @EnviedField(varName: 'LOCAL_API_URL', obfuscate: true)
@@ -19,6 +21,14 @@ abstract class Env {
   static String jelajahRepoUrl = _Env.jelajahRepoUrl;
   @EnviedField(varName: 'PRAYER_TIME_REPO_URL', obfuscate: true)
   static String prayerTimeRepoUrl = _Env.prayerTimeRepoUrl;
+
+  // PUSHER SERVER CONFIG
+  @EnviedField(varName: 'PUSHER_URL', obfuscate: true)
+  static String pusherUrl = _Env.pusherUrl;
+  @EnviedField(varName: 'PUSHER_KEY', obfuscate: true)
+  static String pusherKey = _Env.pusherKey;
+  @EnviedField(varName: 'PUSHER_AUTH_URL', obfuscate: true)
+  static String pusherAuthUrl = _Env.pusherAuthUrl;
 
   // WIREDASH
   @EnviedField(varName: 'WIREDASH_PID', obfuscate: false)

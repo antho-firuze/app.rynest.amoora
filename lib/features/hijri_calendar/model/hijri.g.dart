@@ -6,7 +6,7 @@ part of 'hijri.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$HijriImpl _$$HijriImplFromJson(Map<String, dynamic> json) => _$HijriImpl(
+_Hijri _$HijriFromJson(Map<String, dynamic> json) => _Hijri(
       date: json['date'] as String?,
       format: json['format'] as String?,
       weekday: json['weekday'] == null
@@ -19,8 +19,7 @@ _$HijriImpl _$$HijriImplFromJson(Map<String, dynamic> json) => _$HijriImpl(
           : HijriMonth.fromJson(json['month'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$HijriImplToJson(_$HijriImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$HijriToJson(_Hijri instance) => <String, dynamic>{
       'date': instance.date,
       'format': instance.format,
       'weekday': instance.weekday,
@@ -37,26 +36,25 @@ Json? _$JsonConverterToJson<Json, Value>(
 ) =>
     value == null ? null : toJson(value);
 
-_$HijriWeekdayImpl _$$HijriWeekdayImplFromJson(Map<String, dynamic> json) =>
-    _$HijriWeekdayImpl(
+_HijriWeekday _$HijriWeekdayFromJson(Map<String, dynamic> json) =>
+    _HijriWeekday(
       en: json['en'] as String?,
       ar: json['ar'] as String?,
     );
 
-Map<String, dynamic> _$$HijriWeekdayImplToJson(_$HijriWeekdayImpl instance) =>
+Map<String, dynamic> _$HijriWeekdayToJson(_HijriWeekday instance) =>
     <String, dynamic>{
       'en': instance.en,
       'ar': instance.ar,
     };
 
-_$HijriMonthImpl _$$HijriMonthImplFromJson(Map<String, dynamic> json) =>
-    _$HijriMonthImpl(
+_HijriMonth _$HijriMonthFromJson(Map<String, dynamic> json) => _HijriMonth(
       number: (json['number'] as num?)?.toInt(),
       en: json['en'] as String?,
       ar: json['ar'] as String?,
     );
 
-Map<String, dynamic> _$$HijriMonthImplToJson(_$HijriMonthImpl instance) =>
+Map<String, dynamic> _$HijriMonthToJson(_HijriMonth instance) =>
     <String, dynamic>{
       'number': instance.number,
       'en': instance.en,

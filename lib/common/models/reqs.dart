@@ -4,8 +4,8 @@ part 'reqs.freezed.dart';
 part 'reqs.g.dart';
 
 @freezed
-class Reqs with _$Reqs {
-
+abstract class Reqs with _$Reqs {
+  
   factory Reqs({
     String? url,
     String? path,

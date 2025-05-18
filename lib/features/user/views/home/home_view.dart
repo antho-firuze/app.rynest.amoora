@@ -1,8 +1,10 @@
 import 'dart:developer';
 
 import 'package:amoora/common/controllers/location_ctrl.dart';
+import 'package:amoora/common/services/permission_service.dart';
 import 'package:amoora/common/widgets/clipper/smile_clipper.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
+import 'package:amoora/features/notification/controller/notification_ctrl.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/features/product/views/product_view.dart';
@@ -37,6 +39,14 @@ class _HomeViewState extends ConsumerState<HomeView> with WidgetsBindingObserver
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!ref.read(allowNotificationProvider)) {
+        final result = await ref.read(permissionServiceProvider).requestNotificationPermission();
+        if (result == true) {
+          debugPrint('yes');
+        }
+      }
+    });
     super.initState();
   }
 

@@ -7,7 +7,7 @@ part 'alert.freezed.dart';
 part 'alert.g.dart';
 
 @freezed
-class Alert with _$Alert {
+abstract class Alert with _$Alert {
   factory Alert({
     @Default(0) int id,
     @JsonKey(name: 'user_id') @Default(0) int userId,

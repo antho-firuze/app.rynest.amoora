@@ -6,8 +6,7 @@ part of 'itinerary.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ItineraryImpl _$$ItineraryImplFromJson(Map<String, dynamic> json) =>
-    _$ItineraryImpl(
+_Itinerary _$ItineraryFromJson(Map<String, dynamic> json) => _Itinerary(
       id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String? ?? '',
       subTitle: json['sub_title'] as String? ?? '',
@@ -17,7 +16,7 @@ _$ItineraryImpl _$$ItineraryImplFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['activity_date'] as String),
     );
 
-Map<String, dynamic> _$$ItineraryImplToJson(_$ItineraryImpl instance) =>
+Map<String, dynamic> _$ItineraryToJson(_Itinerary instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

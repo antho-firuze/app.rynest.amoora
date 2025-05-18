@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,103 +10,60 @@ part of 'itinerary.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Itinerary _$ItineraryFromJson(Map<String, dynamic> json) {
-  return _Itinerary.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Itinerary {
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @JsonKey(name: 'sub_title')
-  String get subTitle => throw _privateConstructorUsedError;
+  String get subTitle;
   @JsonKey(name: 'detail_itinerary')
-  String get desc => throw _privateConstructorUsedError;
+  String get desc;
   @JsonKey(name: 'activity_date')
-  DateTime? get activityDate => throw _privateConstructorUsedError;
-
-  /// Serializes this Itinerary to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  DateTime? get activityDate;
 
   /// Create a copy of Itinerary
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ItineraryCopyWith<Itinerary> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ItineraryCopyWith<$Res> {
-  factory $ItineraryCopyWith(Itinerary value, $Res Function(Itinerary) then) =
-      _$ItineraryCopyWithImpl<$Res, Itinerary>;
-  @useResult
-  $Res call(
-      {int? id,
-      @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'sub_title') String subTitle,
-      @JsonKey(name: 'detail_itinerary') String desc,
-      @JsonKey(name: 'activity_date') DateTime? activityDate});
-}
-
-/// @nodoc
-class _$ItineraryCopyWithImpl<$Res, $Val extends Itinerary>
-    implements $ItineraryCopyWith<$Res> {
-  _$ItineraryCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Itinerary
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $ItineraryCopyWith<Itinerary> get copyWith =>
+      _$ItineraryCopyWithImpl<Itinerary>(this as Itinerary, _$identity);
+
+  /// Serializes this Itinerary to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = freezed,
-    Object? title = null,
-    Object? subTitle = null,
-    Object? desc = null,
-    Object? activityDate = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      subTitle: null == subTitle
-          ? _value.subTitle
-          : subTitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      desc: null == desc
-          ? _value.desc
-          : desc // ignore: cast_nullable_to_non_nullable
-              as String,
-      activityDate: freezed == activityDate
-          ? _value.activityDate
-          : activityDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Itinerary &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.subTitle, subTitle) ||
+                other.subTitle == subTitle) &&
+            (identical(other.desc, desc) || other.desc == desc) &&
+            (identical(other.activityDate, activityDate) ||
+                other.activityDate == activityDate));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, title, subTitle, desc, activityDate);
+
+  @override
+  String toString() {
+    return 'Itinerary(id: $id, title: $title, subTitle: $subTitle, desc: $desc, activityDate: $activityDate)';
   }
 }
 
 /// @nodoc
-abstract class _$$ItineraryImplCopyWith<$Res>
-    implements $ItineraryCopyWith<$Res> {
-  factory _$$ItineraryImplCopyWith(
-          _$ItineraryImpl value, $Res Function(_$ItineraryImpl) then) =
-      __$$ItineraryImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ItineraryCopyWith<$Res> {
+  factory $ItineraryCopyWith(Itinerary value, $Res Function(Itinerary) _then) =
+      _$ItineraryCopyWithImpl;
   @useResult
   $Res call(
       {int? id,
@@ -116,12 +74,11 @@ abstract class _$$ItineraryImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ItineraryImplCopyWithImpl<$Res>
-    extends _$ItineraryCopyWithImpl<$Res, _$ItineraryImpl>
-    implements _$$ItineraryImplCopyWith<$Res> {
-  __$$ItineraryImplCopyWithImpl(
-      _$ItineraryImpl _value, $Res Function(_$ItineraryImpl) _then)
-      : super(_value, _then);
+class _$ItineraryCopyWithImpl<$Res> implements $ItineraryCopyWith<$Res> {
+  _$ItineraryCopyWithImpl(this._self, this._then);
+
+  final Itinerary _self;
+  final $Res Function(Itinerary) _then;
 
   /// Create a copy of Itinerary
   /// with the given fields replaced by the non-null parameter values.
@@ -134,25 +91,25 @@ class __$$ItineraryImplCopyWithImpl<$Res>
     Object? desc = null,
     Object? activityDate = freezed,
   }) {
-    return _then(_$ItineraryImpl(
+    return _then(_self.copyWith(
       id: freezed == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
       title: null == title
-          ? _value.title
+          ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
       subTitle: null == subTitle
-          ? _value.subTitle
+          ? _self.subTitle
           : subTitle // ignore: cast_nullable_to_non_nullable
               as String,
       desc: null == desc
-          ? _value.desc
+          ? _self.desc
           : desc // ignore: cast_nullable_to_non_nullable
               as String,
       activityDate: freezed == activityDate
-          ? _value.activityDate
+          ? _self.activityDate
           : activityDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ));
@@ -161,16 +118,15 @@ class __$$ItineraryImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ItineraryImpl implements _Itinerary {
-  _$ItineraryImpl(
+class _Itinerary implements Itinerary {
+  _Itinerary(
       {this.id,
       @JsonKey(name: 'title') this.title = '',
       @JsonKey(name: 'sub_title') this.subTitle = '',
       @JsonKey(name: 'detail_itinerary') this.desc = '',
       @JsonKey(name: 'activity_date') this.activityDate});
-
-  factory _$ItineraryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ItineraryImplFromJson(json);
+  factory _Itinerary.fromJson(Map<String, dynamic> json) =>
+      _$ItineraryFromJson(json);
 
   @override
   final int? id;
@@ -187,16 +143,26 @@ class _$ItineraryImpl implements _Itinerary {
   @JsonKey(name: 'activity_date')
   final DateTime? activityDate;
 
+  /// Create a copy of Itinerary
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Itinerary(id: $id, title: $title, subTitle: $subTitle, desc: $desc, activityDate: $activityDate)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ItineraryCopyWith<_Itinerary> get copyWith =>
+      __$ItineraryCopyWithImpl<_Itinerary>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ItineraryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ItineraryImpl &&
+            other is _Itinerary &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.subTitle, subTitle) ||
@@ -211,53 +177,69 @@ class _$ItineraryImpl implements _Itinerary {
   int get hashCode =>
       Object.hash(runtimeType, id, title, subTitle, desc, activityDate);
 
-  /// Create a copy of Itinerary
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ItineraryImplCopyWith<_$ItineraryImpl> get copyWith =>
-      __$$ItineraryImplCopyWithImpl<_$ItineraryImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ItineraryImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Itinerary(id: $id, title: $title, subTitle: $subTitle, desc: $desc, activityDate: $activityDate)';
   }
 }
 
-abstract class _Itinerary implements Itinerary {
-  factory _Itinerary(
-          {final int? id,
-          @JsonKey(name: 'title') final String title,
-          @JsonKey(name: 'sub_title') final String subTitle,
-          @JsonKey(name: 'detail_itinerary') final String desc,
-          @JsonKey(name: 'activity_date') final DateTime? activityDate}) =
-      _$ItineraryImpl;
+/// @nodoc
+abstract mixin class _$ItineraryCopyWith<$Res>
+    implements $ItineraryCopyWith<$Res> {
+  factory _$ItineraryCopyWith(
+          _Itinerary value, $Res Function(_Itinerary) _then) =
+      __$ItineraryCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int? id,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'sub_title') String subTitle,
+      @JsonKey(name: 'detail_itinerary') String desc,
+      @JsonKey(name: 'activity_date') DateTime? activityDate});
+}
 
-  factory _Itinerary.fromJson(Map<String, dynamic> json) =
-      _$ItineraryImpl.fromJson;
+/// @nodoc
+class __$ItineraryCopyWithImpl<$Res> implements _$ItineraryCopyWith<$Res> {
+  __$ItineraryCopyWithImpl(this._self, this._then);
 
-  @override
-  int? get id;
-  @override
-  @JsonKey(name: 'title')
-  String get title;
-  @override
-  @JsonKey(name: 'sub_title')
-  String get subTitle;
-  @override
-  @JsonKey(name: 'detail_itinerary')
-  String get desc;
-  @override
-  @JsonKey(name: 'activity_date')
-  DateTime? get activityDate;
+  final _Itinerary _self;
+  final $Res Function(_Itinerary) _then;
 
   /// Create a copy of Itinerary
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ItineraryImplCopyWith<_$ItineraryImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = freezed,
+    Object? title = null,
+    Object? subTitle = null,
+    Object? desc = null,
+    Object? activityDate = freezed,
+  }) {
+    return _then(_Itinerary(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      subTitle: null == subTitle
+          ? _self.subTitle
+          : subTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      desc: null == desc
+          ? _self.desc
+          : desc // ignore: cast_nullable_to_non_nullable
+              as String,
+      activityDate: freezed == activityDate
+          ? _self.activityDate
+          : activityDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
 }
+
+// dart format on

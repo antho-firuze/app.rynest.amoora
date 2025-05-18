@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,132 +10,82 @@ part of 'chapter.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Chapter _$ChapterFromJson(Map<String, dynamic> json) {
-  return _Chapter.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Chapter {
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @JsonKey(name: 'name_simple')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @JsonKey(name: 'verses_count')
-  int get versesCount => throw _privateConstructorUsedError;
+  int get versesCount;
   @JsonKey(name: 'bismillah_pre')
-  bool get bismillahPre => throw _privateConstructorUsedError;
+  bool get bismillahPre;
   @JsonKey(name: 'revelation_place')
-  String get revelationPlace => throw _privateConstructorUsedError;
+  String get revelationPlace;
   @JsonKey(name: 'revelation_order')
-  int get revelationOrder => throw _privateConstructorUsedError;
-  List<int>? get pages => throw _privateConstructorUsedError;
+  int get revelationOrder;
+  List<int>? get pages;
   @JsonKey(name: 'translated_name')
-  Map<String, dynamic>? get translatedName =>
-      throw _privateConstructorUsedError;
-  List<Verse>? get verses => throw _privateConstructorUsedError;
-
-  /// Serializes this Chapter to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get translatedName;
+  List<Verse>? get verses;
 
   /// Create a copy of Chapter
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ChapterCopyWith<Chapter> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ChapterCopyWith<$Res> {
-  factory $ChapterCopyWith(Chapter value, $Res Function(Chapter) then) =
-      _$ChapterCopyWithImpl<$Res, Chapter>;
-  @useResult
-  $Res call(
-      {int id,
-      @JsonKey(name: 'name_simple') String name,
-      @JsonKey(name: 'verses_count') int versesCount,
-      @JsonKey(name: 'bismillah_pre') bool bismillahPre,
-      @JsonKey(name: 'revelation_place') String revelationPlace,
-      @JsonKey(name: 'revelation_order') int revelationOrder,
-      List<int>? pages,
-      @JsonKey(name: 'translated_name') Map<String, dynamic>? translatedName,
-      List<Verse>? verses});
-}
-
-/// @nodoc
-class _$ChapterCopyWithImpl<$Res, $Val extends Chapter>
-    implements $ChapterCopyWith<$Res> {
-  _$ChapterCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Chapter
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $ChapterCopyWith<Chapter> get copyWith =>
+      _$ChapterCopyWithImpl<Chapter>(this as Chapter, _$identity);
+
+  /// Serializes this Chapter to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? versesCount = null,
-    Object? bismillahPre = null,
-    Object? revelationPlace = null,
-    Object? revelationOrder = null,
-    Object? pages = freezed,
-    Object? translatedName = freezed,
-    Object? verses = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      versesCount: null == versesCount
-          ? _value.versesCount
-          : versesCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      bismillahPre: null == bismillahPre
-          ? _value.bismillahPre
-          : bismillahPre // ignore: cast_nullable_to_non_nullable
-              as bool,
-      revelationPlace: null == revelationPlace
-          ? _value.revelationPlace
-          : revelationPlace // ignore: cast_nullable_to_non_nullable
-              as String,
-      revelationOrder: null == revelationOrder
-          ? _value.revelationOrder
-          : revelationOrder // ignore: cast_nullable_to_non_nullable
-              as int,
-      pages: freezed == pages
-          ? _value.pages
-          : pages // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
-      translatedName: freezed == translatedName
-          ? _value.translatedName
-          : translatedName // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      verses: freezed == verses
-          ? _value.verses
-          : verses // ignore: cast_nullable_to_non_nullable
-              as List<Verse>?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Chapter &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.versesCount, versesCount) ||
+                other.versesCount == versesCount) &&
+            (identical(other.bismillahPre, bismillahPre) ||
+                other.bismillahPre == bismillahPre) &&
+            (identical(other.revelationPlace, revelationPlace) ||
+                other.revelationPlace == revelationPlace) &&
+            (identical(other.revelationOrder, revelationOrder) ||
+                other.revelationOrder == revelationOrder) &&
+            const DeepCollectionEquality().equals(other.pages, pages) &&
+            const DeepCollectionEquality()
+                .equals(other.translatedName, translatedName) &&
+            const DeepCollectionEquality().equals(other.verses, verses));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      versesCount,
+      bismillahPre,
+      revelationPlace,
+      revelationOrder,
+      const DeepCollectionEquality().hash(pages),
+      const DeepCollectionEquality().hash(translatedName),
+      const DeepCollectionEquality().hash(verses));
+
+  @override
+  String toString() {
+    return 'Chapter(id: $id, name: $name, versesCount: $versesCount, bismillahPre: $bismillahPre, revelationPlace: $revelationPlace, revelationOrder: $revelationOrder, pages: $pages, translatedName: $translatedName, verses: $verses)';
   }
 }
 
 /// @nodoc
-abstract class _$$ChapterImplCopyWith<$Res> implements $ChapterCopyWith<$Res> {
-  factory _$$ChapterImplCopyWith(
-          _$ChapterImpl value, $Res Function(_$ChapterImpl) then) =
-      __$$ChapterImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ChapterCopyWith<$Res> {
+  factory $ChapterCopyWith(Chapter value, $Res Function(Chapter) _then) =
+      _$ChapterCopyWithImpl;
   @useResult
   $Res call(
       {int id,
@@ -149,12 +100,11 @@ abstract class _$$ChapterImplCopyWith<$Res> implements $ChapterCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ChapterImplCopyWithImpl<$Res>
-    extends _$ChapterCopyWithImpl<$Res, _$ChapterImpl>
-    implements _$$ChapterImplCopyWith<$Res> {
-  __$$ChapterImplCopyWithImpl(
-      _$ChapterImpl _value, $Res Function(_$ChapterImpl) _then)
-      : super(_value, _then);
+class _$ChapterCopyWithImpl<$Res> implements $ChapterCopyWith<$Res> {
+  _$ChapterCopyWithImpl(this._self, this._then);
+
+  final Chapter _self;
+  final $Res Function(Chapter) _then;
 
   /// Create a copy of Chapter
   /// with the given fields replaced by the non-null parameter values.
@@ -171,41 +121,41 @@ class __$$ChapterImplCopyWithImpl<$Res>
     Object? translatedName = freezed,
     Object? verses = freezed,
   }) {
-    return _then(_$ChapterImpl(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       versesCount: null == versesCount
-          ? _value.versesCount
+          ? _self.versesCount
           : versesCount // ignore: cast_nullable_to_non_nullable
               as int,
       bismillahPre: null == bismillahPre
-          ? _value.bismillahPre
+          ? _self.bismillahPre
           : bismillahPre // ignore: cast_nullable_to_non_nullable
               as bool,
       revelationPlace: null == revelationPlace
-          ? _value.revelationPlace
+          ? _self.revelationPlace
           : revelationPlace // ignore: cast_nullable_to_non_nullable
               as String,
       revelationOrder: null == revelationOrder
-          ? _value.revelationOrder
+          ? _self.revelationOrder
           : revelationOrder // ignore: cast_nullable_to_non_nullable
               as int,
       pages: freezed == pages
-          ? _value._pages
+          ? _self.pages
           : pages // ignore: cast_nullable_to_non_nullable
               as List<int>?,
       translatedName: freezed == translatedName
-          ? _value._translatedName
+          ? _self.translatedName
           : translatedName // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
       verses: freezed == verses
-          ? _value._verses
+          ? _self.verses
           : verses // ignore: cast_nullable_to_non_nullable
               as List<Verse>?,
     ));
@@ -214,8 +164,8 @@ class __$$ChapterImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ChapterImpl implements _Chapter {
-  _$ChapterImpl(
+class _Chapter implements Chapter {
+  _Chapter(
       {this.id = 0,
       @JsonKey(name: 'name_simple') this.name = '',
       @JsonKey(name: 'verses_count') this.versesCount = 0,
@@ -229,9 +179,8 @@ class _$ChapterImpl implements _Chapter {
       : _pages = pages,
         _translatedName = translatedName,
         _verses = verses;
-
-  factory _$ChapterImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ChapterImplFromJson(json);
+  factory _Chapter.fromJson(Map<String, dynamic> json) =>
+      _$ChapterFromJson(json);
 
   @override
   @JsonKey()
@@ -282,16 +231,26 @@ class _$ChapterImpl implements _Chapter {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of Chapter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Chapter(id: $id, name: $name, versesCount: $versesCount, bismillahPre: $bismillahPre, revelationPlace: $revelationPlace, revelationOrder: $revelationOrder, pages: $pages, translatedName: $translatedName, verses: $verses)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ChapterCopyWith<_Chapter> get copyWith =>
+      __$ChapterCopyWithImpl<_Chapter>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ChapterToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChapterImpl &&
+            other is _Chapter &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.versesCount, versesCount) ||
@@ -322,66 +281,91 @@ class _$ChapterImpl implements _Chapter {
       const DeepCollectionEquality().hash(_translatedName),
       const DeepCollectionEquality().hash(_verses));
 
-  /// Create a copy of Chapter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ChapterImplCopyWith<_$ChapterImpl> get copyWith =>
-      __$$ChapterImplCopyWithImpl<_$ChapterImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ChapterImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Chapter(id: $id, name: $name, versesCount: $versesCount, bismillahPre: $bismillahPre, revelationPlace: $revelationPlace, revelationOrder: $revelationOrder, pages: $pages, translatedName: $translatedName, verses: $verses)';
   }
 }
 
-abstract class _Chapter implements Chapter {
-  factory _Chapter(
-      {final int id,
-      @JsonKey(name: 'name_simple') final String name,
-      @JsonKey(name: 'verses_count') final int versesCount,
-      @JsonKey(name: 'bismillah_pre') final bool bismillahPre,
-      @JsonKey(name: 'revelation_place') final String revelationPlace,
-      @JsonKey(name: 'revelation_order') final int revelationOrder,
-      final List<int>? pages,
-      @JsonKey(name: 'translated_name')
-      final Map<String, dynamic>? translatedName,
-      final List<Verse>? verses}) = _$ChapterImpl;
+/// @nodoc
+abstract mixin class _$ChapterCopyWith<$Res> implements $ChapterCopyWith<$Res> {
+  factory _$ChapterCopyWith(_Chapter value, $Res Function(_Chapter) _then) =
+      __$ChapterCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      @JsonKey(name: 'name_simple') String name,
+      @JsonKey(name: 'verses_count') int versesCount,
+      @JsonKey(name: 'bismillah_pre') bool bismillahPre,
+      @JsonKey(name: 'revelation_place') String revelationPlace,
+      @JsonKey(name: 'revelation_order') int revelationOrder,
+      List<int>? pages,
+      @JsonKey(name: 'translated_name') Map<String, dynamic>? translatedName,
+      List<Verse>? verses});
+}
 
-  factory _Chapter.fromJson(Map<String, dynamic> json) = _$ChapterImpl.fromJson;
+/// @nodoc
+class __$ChapterCopyWithImpl<$Res> implements _$ChapterCopyWith<$Res> {
+  __$ChapterCopyWithImpl(this._self, this._then);
 
-  @override
-  int get id;
-  @override
-  @JsonKey(name: 'name_simple')
-  String get name;
-  @override
-  @JsonKey(name: 'verses_count')
-  int get versesCount;
-  @override
-  @JsonKey(name: 'bismillah_pre')
-  bool get bismillahPre;
-  @override
-  @JsonKey(name: 'revelation_place')
-  String get revelationPlace;
-  @override
-  @JsonKey(name: 'revelation_order')
-  int get revelationOrder;
-  @override
-  List<int>? get pages;
-  @override
-  @JsonKey(name: 'translated_name')
-  Map<String, dynamic>? get translatedName;
-  @override
-  List<Verse>? get verses;
+  final _Chapter _self;
+  final $Res Function(_Chapter) _then;
 
   /// Create a copy of Chapter
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ChapterImplCopyWith<_$ChapterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? versesCount = null,
+    Object? bismillahPre = null,
+    Object? revelationPlace = null,
+    Object? revelationOrder = null,
+    Object? pages = freezed,
+    Object? translatedName = freezed,
+    Object? verses = freezed,
+  }) {
+    return _then(_Chapter(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      versesCount: null == versesCount
+          ? _self.versesCount
+          : versesCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      bismillahPre: null == bismillahPre
+          ? _self.bismillahPre
+          : bismillahPre // ignore: cast_nullable_to_non_nullable
+              as bool,
+      revelationPlace: null == revelationPlace
+          ? _self.revelationPlace
+          : revelationPlace // ignore: cast_nullable_to_non_nullable
+              as String,
+      revelationOrder: null == revelationOrder
+          ? _self.revelationOrder
+          : revelationOrder // ignore: cast_nullable_to_non_nullable
+              as int,
+      pages: freezed == pages
+          ? _self._pages
+          : pages // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      translatedName: freezed == translatedName
+          ? _self._translatedName
+          : translatedName // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      verses: freezed == verses
+          ? _self._verses
+          : verses // ignore: cast_nullable_to_non_nullable
+              as List<Verse>?,
+    ));
+  }
 }
+
+// dart format on

@@ -58,7 +58,7 @@ class InfoExchange extends ConsumerWidget {
                         );
                       },
                       error: (error, stackTrace) {
-                        print(error.toString());
+                        debugPrint(error.toString());
                         return Container();
                       },
                       loading: () => CircularProgressIndicator.adaptive(),

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 
 class AlertService {
-  static Future<void> show({
+  static Future show({
     required String body,
     String title = 'Informasi',
     String? noCaption,
@@ -16,7 +16,7 @@ class AlertService {
     bool showOk = false,
     bool showYes = false,
   }) async {
-    showCupertinoModalPopup(
+    return await showCupertinoModalPopup(
       context: rootNavigatorKey.currentContext!,
       builder: (context) => CupertinoAlertDialog(
         title: Text(title),
@@ -27,7 +27,7 @@ class AlertService {
               isDefaultAction: true,
               isDestructiveAction: true,
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(true);
                 if (onOk != null) onOk();
               },
               child: Text(okCaption ?? "Ok".hardcoded),
@@ -37,7 +37,7 @@ class AlertService {
               isDefaultAction: true,
               isDestructiveAction: true,
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(true);
                 if (onYes != null) onYes();
               },
               child: Text(yesCaption ?? "Ya".hardcoded),
@@ -45,7 +45,7 @@ class AlertService {
           if (showNo)
             CupertinoDialogAction(
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(false);
                 if (onNo != null) onNo();
               },
               child: Text(noCaption ?? "Tidak".hardcoded),
@@ -65,21 +65,21 @@ class AlertService {
     VoidCallback? onOk,
     VoidCallback? onYes,
     bool showNo = true,
-    bool showOk = false,
     bool showYes = true,
+    bool showOk = false,
   }) async {
     await AlertService.show(
       title: title,
       body: body,
+      yesCaption: yesCaption,
       noCaption: noCaption,
       okCaption: okCaption,
-      yesCaption: yesCaption,
+      onYes: onYes,
       onNo: onNo,
       onOk: onOk,
-      onYes: onYes,
+      showYes: showYes,
       showNo: showNo,
       showOk: showOk,
-      showYes: showYes,
     );
   }
 

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,41 +10,62 @@ part of 'presenter.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Presenter _$PresenterFromJson(Map<String, dynamic> json) {
-  return _Presenter.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Presenter {
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @JsonKey(name: 'created_at')
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  String get label => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
+  String get label;
   @JsonKey(name: 'user_id')
-  int get userId => throw _privateConstructorUsedError;
-  Profile? get profile => throw _privateConstructorUsedError;
-  DateTime? get heartbeat => throw _privateConstructorUsedError;
-  String get state => throw _privateConstructorUsedError;
-
-  /// Serializes this Presenter to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  int get userId;
+  Profile? get profile;
+  DateTime? get heartbeat;
+  String get state;
 
   /// Create a copy of Presenter
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PresenterCopyWith<Presenter> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$PresenterCopyWithImpl<Presenter>(this as Presenter, _$identity);
+
+  /// Serializes this Presenter to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Presenter &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.profile, profile) || other.profile == profile) &&
+            (identical(other.heartbeat, heartbeat) ||
+                other.heartbeat == heartbeat) &&
+            (identical(other.state, state) || other.state == state));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, id, createdAt, label, userId, profile, heartbeat, state);
+
+  @override
+  String toString() {
+    return 'Presenter(id: $id, createdAt: $createdAt, label: $label, userId: $userId, profile: $profile, heartbeat: $heartbeat, state: $state)';
+  }
 }
 
 /// @nodoc
-abstract class $PresenterCopyWith<$Res> {
-  factory $PresenterCopyWith(Presenter value, $Res Function(Presenter) then) =
-      _$PresenterCopyWithImpl<$Res, Presenter>;
+abstract mixin class $PresenterCopyWith<$Res> {
+  factory $PresenterCopyWith(Presenter value, $Res Function(Presenter) _then) =
+      _$PresenterCopyWithImpl;
   @useResult
   $Res call(
       {int id,
@@ -58,14 +80,11 @@ abstract class $PresenterCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PresenterCopyWithImpl<$Res, $Val extends Presenter>
-    implements $PresenterCopyWith<$Res> {
-  _$PresenterCopyWithImpl(this._value, this._then);
+class _$PresenterCopyWithImpl<$Res> implements $PresenterCopyWith<$Res> {
+  _$PresenterCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Presenter _self;
+  final $Res Function(Presenter) _then;
 
   /// Create a copy of Presenter
   /// with the given fields replaced by the non-null parameter values.
@@ -80,36 +99,36 @@ class _$PresenterCopyWithImpl<$Res, $Val extends Presenter>
     Object? heartbeat = freezed,
     Object? state = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
       createdAt: freezed == createdAt
-          ? _value.createdAt
+          ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       label: null == label
-          ? _value.label
+          ? _self.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
-          ? _value.userId
+          ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int,
       profile: freezed == profile
-          ? _value.profile
+          ? _self.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as Profile?,
       heartbeat: freezed == heartbeat
-          ? _value.heartbeat
+          ? _self.heartbeat
           : heartbeat // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       state: null == state
-          ? _value.state
+          ? _self.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of Presenter
@@ -117,95 +136,20 @@ class _$PresenterCopyWithImpl<$Res, $Val extends Presenter>
   @override
   @pragma('vm:prefer-inline')
   $ProfileCopyWith<$Res>? get profile {
-    if (_value.profile == null) {
+    if (_self.profile == null) {
       return null;
     }
 
-    return $ProfileCopyWith<$Res>(_value.profile!, (value) {
-      return _then(_value.copyWith(profile: value) as $Val);
+    return $ProfileCopyWith<$Res>(_self.profile!, (value) {
+      return _then(_self.copyWith(profile: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$PresenterImplCopyWith<$Res>
-    implements $PresenterCopyWith<$Res> {
-  factory _$$PresenterImplCopyWith(
-          _$PresenterImpl value, $Res Function(_$PresenterImpl) then) =
-      __$$PresenterImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int id,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      String label,
-      @JsonKey(name: 'user_id') int userId,
-      Profile? profile,
-      DateTime? heartbeat,
-      String state});
-
-  @override
-  $ProfileCopyWith<$Res>? get profile;
-}
-
-/// @nodoc
-class __$$PresenterImplCopyWithImpl<$Res>
-    extends _$PresenterCopyWithImpl<$Res, _$PresenterImpl>
-    implements _$$PresenterImplCopyWith<$Res> {
-  __$$PresenterImplCopyWithImpl(
-      _$PresenterImpl _value, $Res Function(_$PresenterImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Presenter
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? createdAt = freezed,
-    Object? label = null,
-    Object? userId = null,
-    Object? profile = freezed,
-    Object? heartbeat = freezed,
-    Object? state = null,
-  }) {
-    return _then(_$PresenterImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      label: null == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      profile: freezed == profile
-          ? _value.profile
-          : profile // ignore: cast_nullable_to_non_nullable
-              as Profile?,
-      heartbeat: freezed == heartbeat
-          ? _value.heartbeat
-          : heartbeat // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      state: null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$PresenterImpl implements _Presenter {
-  _$PresenterImpl(
+class _Presenter implements Presenter {
+  _Presenter(
       {this.id = 0,
       @JsonKey(name: 'created_at') this.createdAt,
       this.label = '',
@@ -213,9 +157,8 @@ class _$PresenterImpl implements _Presenter {
       this.profile,
       this.heartbeat,
       this.state = 'active'});
-
-  factory _$PresenterImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PresenterImplFromJson(json);
+  factory _Presenter.fromJson(Map<String, dynamic> json) =>
+      _$PresenterFromJson(json);
 
   @override
   @JsonKey()
@@ -237,16 +180,26 @@ class _$PresenterImpl implements _Presenter {
   @JsonKey()
   final String state;
 
+  /// Create a copy of Presenter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Presenter(id: $id, createdAt: $createdAt, label: $label, userId: $userId, profile: $profile, heartbeat: $heartbeat, state: $state)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PresenterCopyWith<_Presenter> get copyWith =>
+      __$PresenterCopyWithImpl<_Presenter>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PresenterToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PresenterImpl &&
+            other is _Presenter &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -263,56 +216,98 @@ class _$PresenterImpl implements _Presenter {
   int get hashCode => Object.hash(
       runtimeType, id, createdAt, label, userId, profile, heartbeat, state);
 
-  /// Create a copy of Presenter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$PresenterImplCopyWith<_$PresenterImpl> get copyWith =>
-      __$$PresenterImplCopyWithImpl<_$PresenterImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PresenterImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Presenter(id: $id, createdAt: $createdAt, label: $label, userId: $userId, profile: $profile, heartbeat: $heartbeat, state: $state)';
   }
 }
 
-abstract class _Presenter implements Presenter {
-  factory _Presenter(
-      {final int id,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      final String label,
-      @JsonKey(name: 'user_id') final int userId,
-      final Profile? profile,
-      final DateTime? heartbeat,
-      final String state}) = _$PresenterImpl;
+/// @nodoc
+abstract mixin class _$PresenterCopyWith<$Res>
+    implements $PresenterCopyWith<$Res> {
+  factory _$PresenterCopyWith(
+          _Presenter value, $Res Function(_Presenter) _then) =
+      __$PresenterCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      String label,
+      @JsonKey(name: 'user_id') int userId,
+      Profile? profile,
+      DateTime? heartbeat,
+      String state});
 
-  factory _Presenter.fromJson(Map<String, dynamic> json) =
-      _$PresenterImpl.fromJson;
+  @override
+  $ProfileCopyWith<$Res>? get profile;
+}
 
-  @override
-  int get id;
-  @override
-  @JsonKey(name: 'created_at')
-  DateTime? get createdAt;
-  @override
-  String get label;
-  @override
-  @JsonKey(name: 'user_id')
-  int get userId;
-  @override
-  Profile? get profile;
-  @override
-  DateTime? get heartbeat;
-  @override
-  String get state;
+/// @nodoc
+class __$PresenterCopyWithImpl<$Res> implements _$PresenterCopyWith<$Res> {
+  __$PresenterCopyWithImpl(this._self, this._then);
+
+  final _Presenter _self;
+  final $Res Function(_Presenter) _then;
 
   /// Create a copy of Presenter
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PresenterImplCopyWith<_$PresenterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? createdAt = freezed,
+    Object? label = null,
+    Object? userId = null,
+    Object? profile = freezed,
+    Object? heartbeat = freezed,
+    Object? state = null,
+  }) {
+    return _then(_Presenter(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      label: null == label
+          ? _self.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      profile: freezed == profile
+          ? _self.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as Profile?,
+      heartbeat: freezed == heartbeat
+          ? _self.heartbeat
+          : heartbeat // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      state: null == state
+          ? _self.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  /// Create a copy of Presenter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProfileCopyWith<$Res>? get profile {
+    if (_self.profile == null) {
+      return null;
+    }
+
+    return $ProfileCopyWith<$Res>(_self.profile!, (value) {
+      return _then(_self.copyWith(profile: value));
+    });
+  }
 }
+
+// dart format on

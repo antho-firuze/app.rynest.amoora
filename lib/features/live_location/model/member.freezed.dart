@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,41 +10,66 @@ part of 'member.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Member _$MemberFromJson(Map<String, dynamic> json) {
-  return _Member.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Member {
-  int get id => throw _privateConstructorUsedError;
-  double get lat => throw _privateConstructorUsedError;
-  double get lng => throw _privateConstructorUsedError;
-  String get label => throw _privateConstructorUsedError;
+  int get id;
+  double get lat;
+  double get lng;
+  String get label;
   @JsonKey(name: 'user_id')
-  int get userId => throw _privateConstructorUsedError;
-  Profile? get profile => throw _privateConstructorUsedError;
-  DateTime? get heartbeat => throw _privateConstructorUsedError;
-  double get distance => throw _privateConstructorUsedError;
-  bool get isOutOfRange => throw _privateConstructorUsedError;
-
-  /// Serializes this Member to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  int get userId;
+  Profile? get profile;
+  DateTime? get heartbeat;
+  double get distance;
+  bool get isOutOfRange;
 
   /// Create a copy of Member
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MemberCopyWith<Member> get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $MemberCopyWith<Member> get copyWith =>
+      _$MemberCopyWithImpl<Member>(this as Member, _$identity);
+
+  /// Serializes this Member to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Member &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.lat, lat) || other.lat == lat) &&
+            (identical(other.lng, lng) || other.lng == lng) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.profile, profile) || other.profile == profile) &&
+            (identical(other.heartbeat, heartbeat) ||
+                other.heartbeat == heartbeat) &&
+            (identical(other.distance, distance) ||
+                other.distance == distance) &&
+            (identical(other.isOutOfRange, isOutOfRange) ||
+                other.isOutOfRange == isOutOfRange));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, lat, lng, label, userId,
+      profile, heartbeat, distance, isOutOfRange);
+
+  @override
+  String toString() {
+    return 'Member(id: $id, lat: $lat, lng: $lng, label: $label, userId: $userId, profile: $profile, heartbeat: $heartbeat, distance: $distance, isOutOfRange: $isOutOfRange)';
+  }
 }
 
 /// @nodoc
-abstract class $MemberCopyWith<$Res> {
-  factory $MemberCopyWith(Member value, $Res Function(Member) then) =
-      _$MemberCopyWithImpl<$Res, Member>;
+abstract mixin class $MemberCopyWith<$Res> {
+  factory $MemberCopyWith(Member value, $Res Function(Member) _then) =
+      _$MemberCopyWithImpl;
   @useResult
   $Res call(
       {int id,
@@ -60,14 +86,11 @@ abstract class $MemberCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MemberCopyWithImpl<$Res, $Val extends Member>
-    implements $MemberCopyWith<$Res> {
-  _$MemberCopyWithImpl(this._value, this._then);
+class _$MemberCopyWithImpl<$Res> implements $MemberCopyWith<$Res> {
+  _$MemberCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Member _self;
+  final $Res Function(Member) _then;
 
   /// Create a copy of Member
   /// with the given fields replaced by the non-null parameter values.
@@ -84,44 +107,44 @@ class _$MemberCopyWithImpl<$Res, $Val extends Member>
     Object? distance = null,
     Object? isOutOfRange = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
       lat: null == lat
-          ? _value.lat
+          ? _self.lat
           : lat // ignore: cast_nullable_to_non_nullable
               as double,
       lng: null == lng
-          ? _value.lng
+          ? _self.lng
           : lng // ignore: cast_nullable_to_non_nullable
               as double,
       label: null == label
-          ? _value.label
+          ? _self.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
-          ? _value.userId
+          ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int,
       profile: freezed == profile
-          ? _value.profile
+          ? _self.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as Profile?,
       heartbeat: freezed == heartbeat
-          ? _value.heartbeat
+          ? _self.heartbeat
           : heartbeat // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       distance: null == distance
-          ? _value.distance
+          ? _self.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as double,
       isOutOfRange: null == isOutOfRange
-          ? _value.isOutOfRange
+          ? _self.isOutOfRange
           : isOutOfRange // ignore: cast_nullable_to_non_nullable
               as bool,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of Member
@@ -129,106 +152,20 @@ class _$MemberCopyWithImpl<$Res, $Val extends Member>
   @override
   @pragma('vm:prefer-inline')
   $ProfileCopyWith<$Res>? get profile {
-    if (_value.profile == null) {
+    if (_self.profile == null) {
       return null;
     }
 
-    return $ProfileCopyWith<$Res>(_value.profile!, (value) {
-      return _then(_value.copyWith(profile: value) as $Val);
+    return $ProfileCopyWith<$Res>(_self.profile!, (value) {
+      return _then(_self.copyWith(profile: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$MemberImplCopyWith<$Res> implements $MemberCopyWith<$Res> {
-  factory _$$MemberImplCopyWith(
-          _$MemberImpl value, $Res Function(_$MemberImpl) then) =
-      __$$MemberImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int id,
-      double lat,
-      double lng,
-      String label,
-      @JsonKey(name: 'user_id') int userId,
-      Profile? profile,
-      DateTime? heartbeat,
-      double distance,
-      bool isOutOfRange});
-
-  @override
-  $ProfileCopyWith<$Res>? get profile;
-}
-
-/// @nodoc
-class __$$MemberImplCopyWithImpl<$Res>
-    extends _$MemberCopyWithImpl<$Res, _$MemberImpl>
-    implements _$$MemberImplCopyWith<$Res> {
-  __$$MemberImplCopyWithImpl(
-      _$MemberImpl _value, $Res Function(_$MemberImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Member
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? lat = null,
-    Object? lng = null,
-    Object? label = null,
-    Object? userId = null,
-    Object? profile = freezed,
-    Object? heartbeat = freezed,
-    Object? distance = null,
-    Object? isOutOfRange = null,
-  }) {
-    return _then(_$MemberImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      lat: null == lat
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      lng: null == lng
-          ? _value.lng
-          : lng // ignore: cast_nullable_to_non_nullable
-              as double,
-      label: null == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      profile: freezed == profile
-          ? _value.profile
-          : profile // ignore: cast_nullable_to_non_nullable
-              as Profile?,
-      heartbeat: freezed == heartbeat
-          ? _value.heartbeat
-          : heartbeat // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      distance: null == distance
-          ? _value.distance
-          : distance // ignore: cast_nullable_to_non_nullable
-              as double,
-      isOutOfRange: null == isOutOfRange
-          ? _value.isOutOfRange
-          : isOutOfRange // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$MemberImpl implements _Member {
-  _$MemberImpl(
+class _Member implements Member {
+  _Member(
       {this.id = 0,
       this.lat = 0.0,
       this.lng = 0.0,
@@ -238,9 +175,7 @@ class _$MemberImpl implements _Member {
       this.heartbeat,
       this.distance = 0.0,
       this.isOutOfRange = false});
-
-  factory _$MemberImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MemberImplFromJson(json);
+  factory _Member.fromJson(Map<String, dynamic> json) => _$MemberFromJson(json);
 
   @override
   @JsonKey()
@@ -268,16 +203,26 @@ class _$MemberImpl implements _Member {
   @JsonKey()
   final bool isOutOfRange;
 
+  /// Create a copy of Member
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Member(id: $id, lat: $lat, lng: $lng, label: $label, userId: $userId, profile: $profile, heartbeat: $heartbeat, distance: $distance, isOutOfRange: $isOutOfRange)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MemberCopyWith<_Member> get copyWith =>
+      __$MemberCopyWithImpl<_Member>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MemberToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MemberImpl &&
+            other is _Member &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng) &&
@@ -297,60 +242,108 @@ class _$MemberImpl implements _Member {
   int get hashCode => Object.hash(runtimeType, id, lat, lng, label, userId,
       profile, heartbeat, distance, isOutOfRange);
 
-  /// Create a copy of Member
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MemberImplCopyWith<_$MemberImpl> get copyWith =>
-      __$$MemberImplCopyWithImpl<_$MemberImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MemberImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Member(id: $id, lat: $lat, lng: $lng, label: $label, userId: $userId, profile: $profile, heartbeat: $heartbeat, distance: $distance, isOutOfRange: $isOutOfRange)';
   }
 }
 
-abstract class _Member implements Member {
-  factory _Member(
-      {final int id,
-      final double lat,
-      final double lng,
-      final String label,
-      @JsonKey(name: 'user_id') final int userId,
-      final Profile? profile,
-      final DateTime? heartbeat,
-      final double distance,
-      final bool isOutOfRange}) = _$MemberImpl;
+/// @nodoc
+abstract mixin class _$MemberCopyWith<$Res> implements $MemberCopyWith<$Res> {
+  factory _$MemberCopyWith(_Member value, $Res Function(_Member) _then) =
+      __$MemberCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      double lat,
+      double lng,
+      String label,
+      @JsonKey(name: 'user_id') int userId,
+      Profile? profile,
+      DateTime? heartbeat,
+      double distance,
+      bool isOutOfRange});
 
-  factory _Member.fromJson(Map<String, dynamic> json) = _$MemberImpl.fromJson;
+  @override
+  $ProfileCopyWith<$Res>? get profile;
+}
 
-  @override
-  int get id;
-  @override
-  double get lat;
-  @override
-  double get lng;
-  @override
-  String get label;
-  @override
-  @JsonKey(name: 'user_id')
-  int get userId;
-  @override
-  Profile? get profile;
-  @override
-  DateTime? get heartbeat;
-  @override
-  double get distance;
-  @override
-  bool get isOutOfRange;
+/// @nodoc
+class __$MemberCopyWithImpl<$Res> implements _$MemberCopyWith<$Res> {
+  __$MemberCopyWithImpl(this._self, this._then);
+
+  final _Member _self;
+  final $Res Function(_Member) _then;
 
   /// Create a copy of Member
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MemberImplCopyWith<_$MemberImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? lat = null,
+    Object? lng = null,
+    Object? label = null,
+    Object? userId = null,
+    Object? profile = freezed,
+    Object? heartbeat = freezed,
+    Object? distance = null,
+    Object? isOutOfRange = null,
+  }) {
+    return _then(_Member(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      lat: null == lat
+          ? _self.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      lng: null == lng
+          ? _self.lng
+          : lng // ignore: cast_nullable_to_non_nullable
+              as double,
+      label: null == label
+          ? _self.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      profile: freezed == profile
+          ? _self.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as Profile?,
+      heartbeat: freezed == heartbeat
+          ? _self.heartbeat
+          : heartbeat // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      distance: null == distance
+          ? _self.distance
+          : distance // ignore: cast_nullable_to_non_nullable
+              as double,
+      isOutOfRange: null == isOutOfRange
+          ? _self.isOutOfRange
+          : isOutOfRange // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+
+  /// Create a copy of Member
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProfileCopyWith<$Res>? get profile {
+    if (_self.profile == null) {
+      return null;
+    }
+
+    return $ProfileCopyWith<$Res>(_self.profile!, (value) {
+      return _then(_self.copyWith(profile: value));
+    });
+  }
 }
+
+// dart format on

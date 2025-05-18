@@ -6,15 +6,14 @@ part of 'emergency.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EmergencyImpl _$$EmergencyImplFromJson(Map<String, dynamic> json) =>
-    _$EmergencyImpl(
+_Emergency _$EmergencyFromJson(Map<String, dynamic> json) => _Emergency(
       title: json['title'] as String?,
       phone: json['phone'] as String?,
       whatsapp: json['whatsapp'] as String?,
       enabled: json['enabled'] as bool? ?? true,
     );
 
-Map<String, dynamic> _$$EmergencyImplToJson(_$EmergencyImpl instance) =>
+Map<String, dynamic> _$EmergencyToJson(_Emergency instance) =>
     <String, dynamic>{
       'title': instance.title,
       'phone': instance.phone,

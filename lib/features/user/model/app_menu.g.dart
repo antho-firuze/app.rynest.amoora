@@ -6,8 +6,7 @@ part of 'app_menu.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AppMenuImpl _$$AppMenuImplFromJson(Map<String, dynamic> json) =>
-    _$AppMenuImpl(
+_AppMenu _$AppMenuFromJson(Map<String, dynamic> json) => _AppMenu(
       code: json['code'] as String? ?? '',
       title: json['name'] as String? ?? '',
       tooltip: json['desc'] as String?,
@@ -16,8 +15,7 @@ _$AppMenuImpl _$$AppMenuImplFromJson(Map<String, dynamic> json) =>
       isFavorite: json['is_favorite'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$AppMenuImplToJson(_$AppMenuImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AppMenuToJson(_AppMenu instance) => <String, dynamic>{
       'code': instance.code,
       'name': instance.title,
       'desc': instance.tooltip,

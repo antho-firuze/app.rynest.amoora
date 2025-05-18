@@ -1,0 +1,1 @@
+/Users/rynestnetline/development/app.rynest.amoora/build/app/intermediates/cxx/Debug/i5m2k146/obj/arm64-v8a

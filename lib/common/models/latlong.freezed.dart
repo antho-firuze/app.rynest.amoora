@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,130 +10,29 @@ part of 'latlong.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-LatLong _$LatLongFromJson(Map<String, dynamic> json) {
-  return _LatLong.fromJson(json);
-}
 
 /// @nodoc
 mixin _$LatLong {
-  double get lat => throw _privateConstructorUsedError;
-  double get lng => throw _privateConstructorUsedError;
-
-  /// Serializes this LatLong to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  double get lat;
+  double get lng;
 
   /// Create a copy of LatLong
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $LatLongCopyWith<LatLong> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $LatLongCopyWith<$Res> {
-  factory $LatLongCopyWith(LatLong value, $Res Function(LatLong) then) =
-      _$LatLongCopyWithImpl<$Res, LatLong>;
-  @useResult
-  $Res call({double lat, double lng});
-}
-
-/// @nodoc
-class _$LatLongCopyWithImpl<$Res, $Val extends LatLong>
-    implements $LatLongCopyWith<$Res> {
-  _$LatLongCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of LatLong
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? lat = null,
-    Object? lng = null,
-  }) {
-    return _then(_value.copyWith(
-      lat: null == lat
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      lng: null == lng
-          ? _value.lng
-          : lng // ignore: cast_nullable_to_non_nullable
-              as double,
-    ) as $Val);
-  }
-}
+  $LatLongCopyWith<LatLong> get copyWith =>
+      _$LatLongCopyWithImpl<LatLong>(this as LatLong, _$identity);
 
-/// @nodoc
-abstract class _$$LatLongImplCopyWith<$Res> implements $LatLongCopyWith<$Res> {
-  factory _$$LatLongImplCopyWith(
-          _$LatLongImpl value, $Res Function(_$LatLongImpl) then) =
-      __$$LatLongImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({double lat, double lng});
-}
-
-/// @nodoc
-class __$$LatLongImplCopyWithImpl<$Res>
-    extends _$LatLongCopyWithImpl<$Res, _$LatLongImpl>
-    implements _$$LatLongImplCopyWith<$Res> {
-  __$$LatLongImplCopyWithImpl(
-      _$LatLongImpl _value, $Res Function(_$LatLongImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of LatLong
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? lat = null,
-    Object? lng = null,
-  }) {
-    return _then(_$LatLongImpl(
-      null == lat
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      null == lng
-          ? _value.lng
-          : lng // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$LatLongImpl implements _LatLong {
-  _$LatLongImpl(this.lat, this.lng);
-
-  factory _$LatLongImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LatLongImplFromJson(json);
-
-  @override
-  final double lat;
-  @override
-  final double lng;
-
-  @override
-  String toString() {
-    return 'LatLong(lat: $lat, lng: $lng)';
-  }
+  /// Serializes this LatLong to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LatLongImpl &&
+            other is LatLong &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng));
   }
@@ -141,36 +41,129 @@ class _$LatLongImpl implements _LatLong {
   @override
   int get hashCode => Object.hash(runtimeType, lat, lng);
 
-  /// Create a copy of LatLong
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$LatLongImplCopyWith<_$LatLongImpl> get copyWith =>
-      __$$LatLongImplCopyWithImpl<_$LatLongImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LatLongImplToJson(
-      this,
-    );
+  String toString() {
+    return 'LatLong(lat: $lat, lng: $lng)';
   }
 }
 
-abstract class _LatLong implements LatLong {
-  factory _LatLong(final double lat, final double lng) = _$LatLongImpl;
+/// @nodoc
+abstract mixin class $LatLongCopyWith<$Res> {
+  factory $LatLongCopyWith(LatLong value, $Res Function(LatLong) _then) =
+      _$LatLongCopyWithImpl;
+  @useResult
+  $Res call({double lat, double lng});
+}
 
-  factory _LatLong.fromJson(Map<String, dynamic> json) = _$LatLongImpl.fromJson;
+/// @nodoc
+class _$LatLongCopyWithImpl<$Res> implements $LatLongCopyWith<$Res> {
+  _$LatLongCopyWithImpl(this._self, this._then);
+
+  final LatLong _self;
+  final $Res Function(LatLong) _then;
+
+  /// Create a copy of LatLong
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? lat = null,
+    Object? lng = null,
+  }) {
+    return _then(_self.copyWith(
+      lat: null == lat
+          ? _self.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      lng: null == lng
+          ? _self.lng
+          : lng // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _LatLong implements LatLong {
+  _LatLong(this.lat, this.lng);
+  factory _LatLong.fromJson(Map<String, dynamic> json) =>
+      _$LatLongFromJson(json);
 
   @override
-  double get lat;
+  final double lat;
   @override
-  double get lng;
+  final double lng;
 
   /// Create a copy of LatLong
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LatLongImplCopyWith<_$LatLongImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$LatLongCopyWith<_LatLong> get copyWith =>
+      __$LatLongCopyWithImpl<_LatLong>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$LatLongToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _LatLong &&
+            (identical(other.lat, lat) || other.lat == lat) &&
+            (identical(other.lng, lng) || other.lng == lng));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, lat, lng);
+
+  @override
+  String toString() {
+    return 'LatLong(lat: $lat, lng: $lng)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$LatLongCopyWith<$Res> implements $LatLongCopyWith<$Res> {
+  factory _$LatLongCopyWith(_LatLong value, $Res Function(_LatLong) _then) =
+      __$LatLongCopyWithImpl;
+  @override
+  @useResult
+  $Res call({double lat, double lng});
+}
+
+/// @nodoc
+class __$LatLongCopyWithImpl<$Res> implements _$LatLongCopyWith<$Res> {
+  __$LatLongCopyWithImpl(this._self, this._then);
+
+  final _LatLong _self;
+  final $Res Function(_LatLong) _then;
+
+  /// Create a copy of LatLong
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? lat = null,
+    Object? lng = null,
+  }) {
+    return _then(_LatLong(
+      null == lat
+          ? _self.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      null == lng
+          ? _self.lng
+          : lng // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+// dart format on

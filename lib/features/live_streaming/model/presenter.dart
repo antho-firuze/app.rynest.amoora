@@ -7,8 +7,7 @@ part 'presenter.freezed.dart';
 part 'presenter.g.dart';
 
 @freezed
-class Presenter with _$Presenter {
-
+abstract class Presenter with _$Presenter {
   factory Presenter({
     @Default(0) int id,
     @JsonKey(name: 'created_at') DateTime? createdAt,
