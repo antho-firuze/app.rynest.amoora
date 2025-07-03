@@ -7,7 +7,6 @@ import 'package:amoora/common/widgets/forms/group_list.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/core/app_string.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
-import 'package:amoora/features/live_location/controller/live_location_ctrl.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';

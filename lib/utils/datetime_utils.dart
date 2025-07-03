@@ -106,8 +106,8 @@ extension DateTimeExtension on DateTime {
   /// 'EEEE, d MMM yyyy'       -> Selasa, 7 Okt 1996
   /// 'HH:mm'                  -> 17:08
   /// 'HH:mm:ss'               -> 17:08:01
-  /// 'HH:mm a'                -> 05:08 PM
-  /// 'HH:mm:ss a'             -> 05:08:01 PM
+  /// 'hh:mm a'                -> 05:08 PM
+  /// 'hh:mm:ss a'             -> 05:08:01 PM
   /// ```
   String custom(String pattern, [String locale = 'id']) => DateFormat(pattern, locale).format(this);
 
@@ -210,12 +210,13 @@ extension DateTimeConversion on int {
 
 extension StringConversionDateTime on String {
   DateTime toTime() {
-    var items = split(':');
+    final items = split(':');
     if (items.isNotEmpty) {
-      return DateTime.now().copyWith(
-        hour: int.parse(items[0]),
-        minute: int.parse(items[1]),
-      );
+      final hour = int.tryParse(items[0]);
+      final minute = int.tryParse(items[1]);
+      final second = items.length > 2 ? int.tryParse(items[2]) : 0;
+
+      return DateTime.now().copyWith(hour: hour, minute: minute, second: second);
     }
     return DateTime.now();
   }

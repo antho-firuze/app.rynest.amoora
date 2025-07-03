@@ -3,6 +3,7 @@ import 'package:amoora/common/widgets/skelton.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_alert.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
+import 'package:amoora/utils/datetime_utils.dart';
 import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/orientation_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
@@ -101,7 +102,7 @@ class PrayerCard extends ConsumerWidget {
             ? oGold.withValues(alpha: .7)
             : Theme.of(context).iconTheme.color!.withValues(alpha: .2);
 
-    Color? color = time == currPrayer ? oGold : null;
+    Color? color = time == currPrayer ? oGold.whenDark(oGold300) : null;
 
     return CustomCard(
       onTap: onTap,
@@ -127,7 +128,7 @@ class PrayerCard extends ConsumerWidget {
                 ),
                 ref.watch(fetchPrayerTimesProvider).when(
                       skipLoadingOnRefresh: false,
-                      data: (data) => Text(time ?? '-:-').bold().clr(oWhite.whenDark(oWhite50)),
+                      data: (data) => Text(time?.hm() ?? '-:-').bold().clr(oWhite.whenDark(oWhite50)),
                       error: (error, stackTrace) => Container(),
                       loading: () => Skelton(),
                     ),

@@ -1,6 +1,6 @@
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/live_location/controller/live_maps_ctrl.dart';
-import 'package:amoora/features/live_streaming/controller/signaling_ctrl.dart';
+import 'package:amoora/features/live_streaming/controller/streaming_ctrl.dart';
 import 'package:amoora/features/user/controller/menu_ctrl.dart';
 import 'package:amoora/features/user/views/home/widgets/menu_button.dart';
 import 'package:amoora/utils/ui_helper.dart';
@@ -15,8 +15,6 @@ class MenuList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(authUserProvider);
-    final onlineHost = ref.watch(onlineHostProvider);
-    final presenter = ref.watch(presenterProvider);
     final onlineMember = ref.watch(onlineMemberProvider);
     final appMenus = ref.read(menuCtrlProvider).getHomeAppMenus();
 
@@ -28,18 +26,10 @@ class MenuList extends ConsumerWidget {
       itemCount: appMenus.length,
       itemBuilder: (context, index) {
         final item = appMenus[index];
-        if (item.code == 'listener') {
+        if (item.code == 'streaming') {
           return MenuButton(
             item: item,
-            count: onlineHost.length,
-            iconPath: ref.read(menuCtrlProvider).getIconPath(item.code),
-            onTap: () async => await ref.read(menuCtrlProvider).goto(item.code),
-          );
-        }
-        if (item.code == 'presenter') {
-          return MenuButton(
-            item: item,
-            count: presenter == null ? 0 : 1,
+            count: ref.watch(streamerCountProvider),
             iconPath: ref.read(menuCtrlProvider).getIconPath(item.code),
             onTap: () async => await ref.read(menuCtrlProvider).goto(item.code),
           );

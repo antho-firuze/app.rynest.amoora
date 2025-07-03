@@ -15,7 +15,7 @@ class AgendaView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyUI(
-      enabledSafeArea: false,
+      safeAreaTop: false,
       child: Scaffold(
         body: OneUINestedScrollView(
           foregroundColor: oWhite,

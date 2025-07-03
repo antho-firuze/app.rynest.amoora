@@ -11,6 +11,8 @@ import 'package:amoora/utils/router.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final _kLogName = 'PROFILE-CTRL';
+
 final profileProvider = StateProvider<Profile?>((ref) => null);
 
 class ProfileCtrl {
@@ -33,12 +35,12 @@ class ProfileCtrl {
 
   Future<void> fetchProfile() async {
     if (ref.read(authUserProvider) == null) {
-      log("fetchProfile => authUserProvider = null", name: 'PROFILE-CTRL');
+      log("fetchProfile => authUserProvider = null", name: _kLogName);
       saveProfile(null);
       return;
     }
 
-    final reqs = Reqs(path: '/api/v1/user/profile');
+    final reqs = Reqs(path: '/api/v1/member/profile');
     final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     final profile = Profile.fromJson(state.value);
@@ -48,7 +50,7 @@ class ProfileCtrl {
 
   Future uploadPhoto(File file) async {
     final reqs = Reqs(
-      path: '/api/v1/user/upload_photo',
+      path: '/api/v1/member/upload_photo',
       filePath: file.path,
       fileKey: 'avatar',
     );
@@ -61,7 +63,7 @@ class ProfileCtrl {
 
   Future updateProfile(Map<String, dynamic> data) async {
     final reqs = Reqs(
-      path: '/api/v1/user/update_profile',
+      path: '/api/v1/member/update_profile',
       data: data,
     );
     final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
@@ -73,12 +75,12 @@ class ProfileCtrl {
   }
 
   void updateCurrProfileLocal(Map<String, dynamic> data) {
-    log('updateCurrProfileLocal => ${data.toString()}', name: 'PROFILE-CTRL');
+    log('updateCurrProfileLocal => ${data.toString()}', name: _kLogName);
     final field = data.keys.first;
     final json = ref.read(profileProvider)?.toJson();
     json![field] = data[field];
 
-    log('$field => ${data[field]}', name: 'PROFILE-CTRL');
+    log('$field => ${data[field]}', name: _kLogName);
 
     final profile = Profile.fromJson(json);
 
@@ -108,12 +110,12 @@ class ProfileCtrl {
   //     // ref.read(camerasProvider.notifier).state = await availableCameras();
   //     // await ref.read(goRouterProvider).push('/camera');
   //     File? file = await ref.read(goRouterProvider).push('/pick_image');
-  //     log('Result File => ${file?.path}', name: 'PROFILE-CTRL');
+  //     log('Result File => ${file?.path}', name: _kLogName);
   //     if (file == null) return;
 
   //     await uploadPhoto(file);
   //   } catch (e) {
-  //     log(e.toString(), name: 'PROFILE-CTRL');
+  //     log(e.toString(), name: _kLogName);
   //   }
   // }
 }

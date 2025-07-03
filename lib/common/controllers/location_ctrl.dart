@@ -5,20 +5,45 @@ import 'package:amoora/common/models/latlong.dart';
 import 'package:amoora/common/services/location_service.dart';
 import 'package:amoora/common/services/alert_service.dart';
 import 'package:amoora/common/services/permission_service.dart';
-import 'package:amoora/common/services/snackbar_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart';
 
 final latLongProvider = StateProvider<LatLong?>((ref) => null);
-final locationProvider = StateProvider<String>((ref) => '');
 final placemarkProvider = StateProvider<Placemark?>((ref) => null);
+// Depok, Jawa Barat, Indonesia
+final locationProvider = StateProvider<String>((ref) => '');
 
-final fetchLocationProvider = FutureProvider<LatLong?>((ref) async {
-  final latLng = await ref.read(locationCtrlProvider).fetchPosition();
-  
-  await ref.read(locationCtrlProvider).fetchPlacemark();
+// Future Provider, using for animate loading effect
+final fetchPlacemarkProvider = FutureProvider<Placemark?>((ref) async {
+  if (!ref.read(isGpsEnableProvider)) throw 'GPS tidak aktif !';
+  if (!ref.read(allowGpsProvider)) throw 'Akses lokasi/GPS gagal !';
 
-  return latLng;
+  final latLong = ref.read(latLongProvider);
+  if (latLong == null) throw 'Lokasi tidak dikenal !';
+
+  final placemark = await ref.read(locationCtrlProvider).fetchPlacemark(latLong);
+  return placemark;
+});
+
+// Future Provider, using for animate loading effect
+// Depok, Jawa Barat, Indonesia
+final fetchLocationProvider = FutureProvider<String>((ref) async {
+  if (!ref.read(isGpsEnableProvider)) throw 'GPS tidak aktif !';
+  if (!ref.read(allowGpsProvider)) throw 'Akses lokasi/GPS gagal !';
+
+  final latLong = ref.read(latLongProvider);
+  if (latLong == null) throw 'Lokasi tidak dikenal !';
+
+  final placemark = await ref.read(locationCtrlProvider).fetchPlacemark(latLong);
+  final placemarkStr = [
+    placemark?.subAdministrativeArea,
+    placemark?.administrativeArea,
+    placemark?.country,
+  ].join(', ');
+
+  ref.read(locationProvider.notifier).state = placemarkStr;
+
+  return placemarkStr;
 });
 
 class LocationCtrl {
@@ -34,15 +59,14 @@ class LocationCtrl {
     await checkGpsPermission();
 
     if (ref.read(isGpsEnableProvider) && ref.read(allowGpsProvider)) {
-      await fetchPosition();
-      await fetchPlacemark();
+      ref.read(latLongProvider.notifier).state = await fetchPosition();
     }
 
     // LISTEN GPS Status
     ref.listen(isGpsEnableProvider, (previous, next) async {
       if (next) {
         if (ref.read(allowGpsProvider)) {
-          await fetchPosition();
+          ref.read(latLongProvider.notifier).state = await fetchPosition();
         }
       }
     });
@@ -51,7 +75,7 @@ class LocationCtrl {
     ref.listen(allowGpsProvider, (previous, next) async {
       if (next) {
         if (ref.read(isGpsEnableProvider)) {
-          await fetchPosition();
+          ref.read(latLongProvider.notifier).state = await fetchPosition();
         }
       }
     });
@@ -59,7 +83,9 @@ class LocationCtrl {
     // LISTEN Position
     ref.listen(latLongProvider, (previous, next) async {
       if (next != null && next != previous) {
-        await fetchPlacemark();
+        ref.read(placemarkProvider.notifier).state = await fetchPlacemark(next);
+        ref.refresh(fetchPlacemarkProvider);
+        ref.refresh(fetchLocationProvider);
       }
     });
   }
@@ -77,29 +103,10 @@ class LocationCtrl {
     }
   }
 
-  Future<LatLong> fetchPosition() async {
-    final latLng = await ref.read(locationServiceProvider).fetchCurrentCoordinate();
+  Future<LatLong> fetchPosition() async => await ref.read(locationServiceProvider).fetchCurrentCoordinate();
 
-    ref.read(latLongProvider.notifier).state = latLng;
-
-    return latLng;
-  }
-
-  Future<Placemark?> fetchPlacemark() async {
-    LatLong? latLong = ref.read(latLongProvider);
-    Placemark? placemark;
-    if (latLong != null) {
-      placemark = await ref.read(locationServiceProvider).fetchPlacemark(latLong);
-
-      ref.read(placemarkProvider.notifier).state = placemark;
-      ref.read(locationProvider.notifier).state = [
-        placemark?.subAdministrativeArea,
-        placemark?.administrativeArea,
-        placemark?.country,
-      ].join(', ');
-    }
-    return placemark;
-  }
+  Future<Placemark?> fetchPlacemark(LatLong latLong) async =>
+      await ref.read(locationServiceProvider).fetchPlacemark(latLong);
 
   Future<void> refresh() async {
     bool isGpsEnable = await ref.read(permissionServiceProvider).checkGpsEnabled();
@@ -110,17 +117,14 @@ class LocationCtrl {
       await AlertService.confirm(
         title: 'Informasi',
         body: 'GPS pada perangkat anda tidak aktif !',
-        okCaption: 'Buka Settings',
-        onOk: () async {
+        yesCaption: 'Buka Settings',
+        onYes: () async {
           isGpsEnable = await ref.read(permissionServiceProvider).checkGpsEnabled();
           if (!isGpsEnable) {
             await ref.read(permissionServiceProvider).openLocationSettings();
           }
         },
-        showYes: false,
-        yesCaption: 'Buka Peta',
         noCaption: 'Tutup',
-        onYes: () => SnackBarService.show(message: 'Peta belum di fungsikan !'),
       );
     }
 
@@ -129,8 +133,7 @@ class LocationCtrl {
     }
 
     if (isGpsEnable && isGpsAllowed) {
-      await fetchPosition();
-      await fetchPlacemark();
+      ref.read(latLongProvider.notifier).state = await fetchPosition();
     }
 
     ref.read(isGpsEnableProvider.notifier).state = isGpsEnable;

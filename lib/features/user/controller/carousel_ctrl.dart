@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/common/services/api_service.dart';
@@ -10,14 +9,12 @@ final homeCarouselController = CustomCarouselController();
 
 final fetchCarouselProvider = FutureProvider.autoDispose<List<Carousel>>((ref) async {
   final reqs = Reqs(path: '/api/v1/carousel/all');
-  final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
+  final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).fetch(reqs: reqs));
 
-  log('fetchCarouselProvider | ${state.value}', name: 'CAROUSEL-CTRL');
   List<dynamic>? jsonList = state.value;
   if (jsonList == null || jsonList.isEmpty) return [];
 
   final result = jsonList.map((e) => Carousel.fromJson(e)).toList();
-  log('fetchCarouselProvider | $result', name: 'carousel_controller');
 
   return result;
 });

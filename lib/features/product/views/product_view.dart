@@ -35,13 +35,13 @@ class ProductView extends ConsumerWidget {
                     itemCount: data.length,
                     itemBuilder: (context, index) {
                       final id = data[index];
-                      return ref.watch(fetchProductProvider(id)).when(
+                      return ref.watch(fetchProductByIdProvider(id)).when(
                             skipLoadingOnRefresh: false,
                             data: (data) {
                               if (data == null) {
                                 return DataExceptionLayout(
                                   type: ExeceptionType.dataEmpty,
-                                  onTap: () => ref.refresh(fetchProductProvider(id)),
+                                  onTap: () => ref.refresh(fetchProductByIdProvider(id)),
                                 );
                               }
                               return CardVertView(
@@ -54,7 +54,7 @@ class ProductView extends ConsumerWidget {
                             },
                             error: (error, stackTrace) => DataExceptionLayout(
                               error: error,
-                              onTap: () => ref.refresh(fetchProductProvider(id)),
+                              onTap: () => ref.refresh(fetchProductByIdProvider(id)),
                             ),
                             loading: () => const Center(child: CircularProgressIndicator()),
                           );

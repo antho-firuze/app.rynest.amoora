@@ -7,20 +7,15 @@ abstract class Env {
   // FOR MAIN APPS
   @EnviedField(varName: 'ENV_CONFIG', obfuscate: true)
   static String envConfig = _Env.envConfig;
-  @EnviedField(varName: 'LIVE_API_URL', obfuscate: true)
-  static String liveApiUrl = _Env.liveApiUrl;
-  @EnviedField(varName: 'LOCAL_API_URL', obfuscate: true)
-  static String localApiUrl = _Env.localApiUrl;
-  @EnviedField(varName: 'LIVE_SSE_URL', obfuscate: true)
-  static String liveSseUrl = _Env.liveSseUrl;
-  @EnviedField(varName: 'LOCAL_SSE_URL', obfuscate: true)
-  static String localSseUrl = _Env.localSseUrl;
-  @EnviedField(varName: 'QURAN_REPO_URL', obfuscate: true)
-  static String quranRepoUrl = _Env.quranRepoUrl;
-  @EnviedField(varName: 'JELAJAH_REPO_URL', obfuscate: true)
-  static String jelajahRepoUrl = _Env.jelajahRepoUrl;
-  @EnviedField(varName: 'PRAYER_TIME_REPO_URL', obfuscate: true)
-  static String prayerTimeRepoUrl = _Env.prayerTimeRepoUrl;
+
+  @EnviedField(varName: 'API_URL', obfuscate: true)
+  static String apiUrl = _Env.apiUrl;
+  @EnviedField(varName: 'SSE_URL', obfuscate: true)
+  static String sseUrl = _Env.sseUrl;
+  @EnviedField(varName: 'DEV_API_URL', obfuscate: true)
+  static String devApiUrl = _Env.devApiUrl;
+  @EnviedField(varName: 'DEV_SSE_URL', obfuscate: true)
+  static String devSseUrl = _Env.devSseUrl;
 
   // PUSHER SERVER CONFIG
   @EnviedField(varName: 'PUSHER_URL', obfuscate: true)
@@ -29,6 +24,19 @@ abstract class Env {
   static String pusherKey = _Env.pusherKey;
   @EnviedField(varName: 'PUSHER_AUTH_URL', obfuscate: true)
   static String pusherAuthUrl = _Env.pusherAuthUrl;
+  @EnviedField(varName: 'DEV_PUSHER_URL', obfuscate: true)
+  static String devPusherUrl = _Env.devPusherUrl;
+  @EnviedField(varName: 'DEV_PUSHER_KEY', obfuscate: true)
+  static String devPusherKey = _Env.devPusherKey;
+  @EnviedField(varName: 'DEV_PUSHER_AUTH_URL', obfuscate: true)
+  static String devPusherAuthUrl = _Env.devPusherAuthUrl;
+
+  @EnviedField(varName: 'QURAN_REPO_URL', obfuscate: true)
+  static String quranRepoUrl = _Env.quranRepoUrl;
+  @EnviedField(varName: 'JELAJAH_REPO_URL', obfuscate: true)
+  static String jelajahRepoUrl = _Env.jelajahRepoUrl;
+  @EnviedField(varName: 'PRAYER_TIME_REPO_URL', obfuscate: true)
+  static String prayerTimeRepoUrl = _Env.prayerTimeRepoUrl;
 
   // WIREDASH
   @EnviedField(varName: 'WIREDASH_PID', obfuscate: false)

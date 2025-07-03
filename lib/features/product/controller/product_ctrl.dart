@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/common/services/api_service.dart';
@@ -9,20 +8,20 @@ import 'package:url_launcher/url_launcher.dart';
 
 final fetchProductsProvider = FutureProvider<List<int>>((ref) async {
   final reqs = Reqs(path: '/api/v1/product/list');
-  final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
+  final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).fetch(reqs: reqs));
 
-  log('fetchProductsProvider => ${state.value}', name: 'PRODUCT-CTRL');
+  // log('fetchProductsProvider => ${state.value}', name: 'PRODUCT-CTRL');
   List<dynamic> jsonList = state.value;
   final result = jsonList.map((e) => e['id'] as int).toList();
 
   return result;
 });
 
-final fetchProductProvider = FutureProvider.family<Product?, int>((ref, id) async {
+final fetchProductByIdProvider = FutureProvider.family<Product?, int>((ref, id) async {
   final reqs = Reqs(path: '/api/v1/product/byId', data: {"id": id});
-  final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
+  final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).fetch(reqs: reqs));
 
-  log('fetchProductProvider => ${state.value}', name: 'PRODUCT-CTRL');
+  // log('fetchProductProvider => ${state.value}', name: 'PRODUCT-CTRL');
   Map<String, dynamic> json = state.value;
   final result = Product.fromJson(json);
 

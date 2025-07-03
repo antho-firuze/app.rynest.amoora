@@ -26,14 +26,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/utils/ui_helper.dart';
 
-// decoration: const BoxDecoration(
-//   image: DecorationImage(
-//     image: AssetImage(AppAsset.imPattern),
-//     repeat: ImageRepeat.repeat,
-//     opacity: .2,
-//   ),
-// ),
-
 class ProfileView extends ConsumerWidget {
   const ProfileView({super.key});
 
@@ -200,12 +192,12 @@ class ProfileView extends ConsumerWidget {
                           child: member == null
                               ? Image.asset('assets/images/background_2.png', fit: BoxFit.cover)
                               : member.photo.isEmpty
-                                  ? Image.asset('assets/images/sample/avatar.png', fit: BoxFit.cover)
+                                  ? Image.asset('assets/images/avatar.png', fit: BoxFit.cover)
                                   : Image.network(
-                                      '${AppBase.prodUrl}${member.photo}?id=${uuid.v4()}',
+                                      '${AppBase.apiUrl}${member.photo}?id=${uuid.v4()}',
                                       fit: BoxFit.cover,
                                       errorBuilder: (context, error, stackTrace) => Image.asset(
-                                        'assets/images/sample/avatar.png',
+                                        'assets/images/avatar.png',
                                         fit: BoxFit.cover,
                                       ),
                                     ),

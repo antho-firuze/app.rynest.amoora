@@ -23,7 +23,7 @@ class InfoText extends StatelessWidget {
         if (svgIcon != null) ...[
           SvgPicture.asset(
             svgIcon!,
-            color: color,
+            colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
           ),
           5.width,
         ],

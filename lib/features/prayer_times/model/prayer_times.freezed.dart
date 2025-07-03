@@ -16,27 +16,38 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PrayerTimes {
   @JsonKey(name: 'Fajr')
-  String? get fajr;
+  @JsonTimeConverter()
+  DateTime? get fajr;
   @JsonKey(name: 'Sunrise')
-  String? get sunrise;
+  @JsonTimeConverter()
+  DateTime? get sunrise;
   @JsonKey(name: 'Dhuhr')
-  String? get dhuhr;
+  @JsonTimeConverter()
+  DateTime? get dhuhr;
   @JsonKey(name: 'Asr')
-  String? get asr;
+  @JsonTimeConverter()
+  DateTime? get asr;
   @JsonKey(name: 'Sunset')
-  String? get sunset;
+  @JsonTimeConverter()
+  DateTime? get sunset;
   @JsonKey(name: 'Maghrib')
-  String? get maghrib;
+  @JsonTimeConverter()
+  DateTime? get maghrib;
   @JsonKey(name: 'Isha')
-  String? get isha;
+  @JsonTimeConverter()
+  DateTime? get isha;
   @JsonKey(name: 'Imsak')
-  String? get imsak;
+  @JsonTimeConverter()
+  DateTime? get imsak;
   @JsonKey(name: 'Midnight')
-  String? get midnight;
+  @JsonTimeConverter()
+  DateTime? get midnight;
   @JsonKey(name: 'Firstthird')
-  String? get firstthird;
+  @JsonTimeConverter()
+  DateTime? get firstthird;
   @JsonKey(name: 'Lastthird')
-  String? get lastthird;
+  @JsonTimeConverter()
+  DateTime? get lastthird;
 
   /// Create a copy of PrayerTimes
   /// with the given fields replaced by the non-null parameter values.
@@ -87,17 +98,17 @@ abstract mixin class $PrayerTimesCopyWith<$Res> {
       _$PrayerTimesCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: 'Fajr') String? fajr,
-      @JsonKey(name: 'Sunrise') String? sunrise,
-      @JsonKey(name: 'Dhuhr') String? dhuhr,
-      @JsonKey(name: 'Asr') String? asr,
-      @JsonKey(name: 'Sunset') String? sunset,
-      @JsonKey(name: 'Maghrib') String? maghrib,
-      @JsonKey(name: 'Isha') String? isha,
-      @JsonKey(name: 'Imsak') String? imsak,
-      @JsonKey(name: 'Midnight') String? midnight,
-      @JsonKey(name: 'Firstthird') String? firstthird,
-      @JsonKey(name: 'Lastthird') String? lastthird});
+      {@JsonKey(name: 'Fajr') @JsonTimeConverter() DateTime? fajr,
+      @JsonKey(name: 'Sunrise') @JsonTimeConverter() DateTime? sunrise,
+      @JsonKey(name: 'Dhuhr') @JsonTimeConverter() DateTime? dhuhr,
+      @JsonKey(name: 'Asr') @JsonTimeConverter() DateTime? asr,
+      @JsonKey(name: 'Sunset') @JsonTimeConverter() DateTime? sunset,
+      @JsonKey(name: 'Maghrib') @JsonTimeConverter() DateTime? maghrib,
+      @JsonKey(name: 'Isha') @JsonTimeConverter() DateTime? isha,
+      @JsonKey(name: 'Imsak') @JsonTimeConverter() DateTime? imsak,
+      @JsonKey(name: 'Midnight') @JsonTimeConverter() DateTime? midnight,
+      @JsonKey(name: 'Firstthird') @JsonTimeConverter() DateTime? firstthird,
+      @JsonKey(name: 'Lastthird') @JsonTimeConverter() DateTime? lastthird});
 }
 
 /// @nodoc
@@ -128,47 +139,47 @@ class _$PrayerTimesCopyWithImpl<$Res> implements $PrayerTimesCopyWith<$Res> {
       fajr: freezed == fajr
           ? _self.fajr
           : fajr // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       sunrise: freezed == sunrise
           ? _self.sunrise
           : sunrise // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       dhuhr: freezed == dhuhr
           ? _self.dhuhr
           : dhuhr // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       asr: freezed == asr
           ? _self.asr
           : asr // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       sunset: freezed == sunset
           ? _self.sunset
           : sunset // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       maghrib: freezed == maghrib
           ? _self.maghrib
           : maghrib // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       isha: freezed == isha
           ? _self.isha
           : isha // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       imsak: freezed == imsak
           ? _self.imsak
           : imsak // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       midnight: freezed == midnight
           ? _self.midnight
           : midnight // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       firstthird: freezed == firstthird
           ? _self.firstthird
           : firstthird // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       lastthird: freezed == lastthird
           ? _self.lastthird
           : lastthird // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
     ));
   }
 }
@@ -177,53 +188,64 @@ class _$PrayerTimesCopyWithImpl<$Res> implements $PrayerTimesCopyWith<$Res> {
 @JsonSerializable()
 class _PrayerTimes implements PrayerTimes {
   _PrayerTimes(
-      {@JsonKey(name: 'Fajr') this.fajr,
-      @JsonKey(name: 'Sunrise') this.sunrise,
-      @JsonKey(name: 'Dhuhr') this.dhuhr,
-      @JsonKey(name: 'Asr') this.asr,
-      @JsonKey(name: 'Sunset') this.sunset,
-      @JsonKey(name: 'Maghrib') this.maghrib,
-      @JsonKey(name: 'Isha') this.isha,
-      @JsonKey(name: 'Imsak') this.imsak,
-      @JsonKey(name: 'Midnight') this.midnight,
-      @JsonKey(name: 'Firstthird') this.firstthird,
-      @JsonKey(name: 'Lastthird') this.lastthird});
+      {@JsonKey(name: 'Fajr') @JsonTimeConverter() this.fajr,
+      @JsonKey(name: 'Sunrise') @JsonTimeConverter() this.sunrise,
+      @JsonKey(name: 'Dhuhr') @JsonTimeConverter() this.dhuhr,
+      @JsonKey(name: 'Asr') @JsonTimeConverter() this.asr,
+      @JsonKey(name: 'Sunset') @JsonTimeConverter() this.sunset,
+      @JsonKey(name: 'Maghrib') @JsonTimeConverter() this.maghrib,
+      @JsonKey(name: 'Isha') @JsonTimeConverter() this.isha,
+      @JsonKey(name: 'Imsak') @JsonTimeConverter() this.imsak,
+      @JsonKey(name: 'Midnight') @JsonTimeConverter() this.midnight,
+      @JsonKey(name: 'Firstthird') @JsonTimeConverter() this.firstthird,
+      @JsonKey(name: 'Lastthird') @JsonTimeConverter() this.lastthird});
   factory _PrayerTimes.fromJson(Map<String, dynamic> json) =>
       _$PrayerTimesFromJson(json);
 
   @override
   @JsonKey(name: 'Fajr')
-  final String? fajr;
+  @JsonTimeConverter()
+  final DateTime? fajr;
   @override
   @JsonKey(name: 'Sunrise')
-  final String? sunrise;
+  @JsonTimeConverter()
+  final DateTime? sunrise;
   @override
   @JsonKey(name: 'Dhuhr')
-  final String? dhuhr;
+  @JsonTimeConverter()
+  final DateTime? dhuhr;
   @override
   @JsonKey(name: 'Asr')
-  final String? asr;
+  @JsonTimeConverter()
+  final DateTime? asr;
   @override
   @JsonKey(name: 'Sunset')
-  final String? sunset;
+  @JsonTimeConverter()
+  final DateTime? sunset;
   @override
   @JsonKey(name: 'Maghrib')
-  final String? maghrib;
+  @JsonTimeConverter()
+  final DateTime? maghrib;
   @override
   @JsonKey(name: 'Isha')
-  final String? isha;
+  @JsonTimeConverter()
+  final DateTime? isha;
   @override
   @JsonKey(name: 'Imsak')
-  final String? imsak;
+  @JsonTimeConverter()
+  final DateTime? imsak;
   @override
   @JsonKey(name: 'Midnight')
-  final String? midnight;
+  @JsonTimeConverter()
+  final DateTime? midnight;
   @override
   @JsonKey(name: 'Firstthird')
-  final String? firstthird;
+  @JsonTimeConverter()
+  final DateTime? firstthird;
   @override
   @JsonKey(name: 'Lastthird')
-  final String? lastthird;
+  @JsonTimeConverter()
+  final DateTime? lastthird;
 
   /// Create a copy of PrayerTimes
   /// with the given fields replaced by the non-null parameter values.
@@ -281,17 +303,17 @@ abstract mixin class _$PrayerTimesCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'Fajr') String? fajr,
-      @JsonKey(name: 'Sunrise') String? sunrise,
-      @JsonKey(name: 'Dhuhr') String? dhuhr,
-      @JsonKey(name: 'Asr') String? asr,
-      @JsonKey(name: 'Sunset') String? sunset,
-      @JsonKey(name: 'Maghrib') String? maghrib,
-      @JsonKey(name: 'Isha') String? isha,
-      @JsonKey(name: 'Imsak') String? imsak,
-      @JsonKey(name: 'Midnight') String? midnight,
-      @JsonKey(name: 'Firstthird') String? firstthird,
-      @JsonKey(name: 'Lastthird') String? lastthird});
+      {@JsonKey(name: 'Fajr') @JsonTimeConverter() DateTime? fajr,
+      @JsonKey(name: 'Sunrise') @JsonTimeConverter() DateTime? sunrise,
+      @JsonKey(name: 'Dhuhr') @JsonTimeConverter() DateTime? dhuhr,
+      @JsonKey(name: 'Asr') @JsonTimeConverter() DateTime? asr,
+      @JsonKey(name: 'Sunset') @JsonTimeConverter() DateTime? sunset,
+      @JsonKey(name: 'Maghrib') @JsonTimeConverter() DateTime? maghrib,
+      @JsonKey(name: 'Isha') @JsonTimeConverter() DateTime? isha,
+      @JsonKey(name: 'Imsak') @JsonTimeConverter() DateTime? imsak,
+      @JsonKey(name: 'Midnight') @JsonTimeConverter() DateTime? midnight,
+      @JsonKey(name: 'Firstthird') @JsonTimeConverter() DateTime? firstthird,
+      @JsonKey(name: 'Lastthird') @JsonTimeConverter() DateTime? lastthird});
 }
 
 /// @nodoc
@@ -322,47 +344,47 @@ class __$PrayerTimesCopyWithImpl<$Res> implements _$PrayerTimesCopyWith<$Res> {
       fajr: freezed == fajr
           ? _self.fajr
           : fajr // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       sunrise: freezed == sunrise
           ? _self.sunrise
           : sunrise // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       dhuhr: freezed == dhuhr
           ? _self.dhuhr
           : dhuhr // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       asr: freezed == asr
           ? _self.asr
           : asr // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       sunset: freezed == sunset
           ? _self.sunset
           : sunset // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       maghrib: freezed == maghrib
           ? _self.maghrib
           : maghrib // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       isha: freezed == isha
           ? _self.isha
           : isha // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       imsak: freezed == imsak
           ? _self.imsak
           : imsak // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       midnight: freezed == midnight
           ? _self.midnight
           : midnight // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       firstthird: freezed == firstthird
           ? _self.firstthird
           : firstthird // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       lastthird: freezed == lastthird
           ? _self.lastthird
           : lastthird // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
     ));
   }
 }

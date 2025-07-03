@@ -79,12 +79,12 @@ class PanelPage extends ConsumerWidget {
                         onTap: () => showDialog(
                           context: context,
                           builder: (context) => CircleAvatar(
-                            // backgroundImage: NetworkImage('${AppBase.prodUrl}${participant.profile!.photo}'),
+                            // backgroundImage: NetworkImage('${AppBase.apiUrl}${participant.profile!.photo}'),
                             child: Center(
                               child: CustomCircleButton(
                                 padding: EdgeInsets.zero,
                                 child: Image.network(
-                                  '${AppBase.prodUrl}${member.profile!.photo}',
+                                  '${AppBase.apiUrl}${member.profile!.photo}',
                                   fit: BoxFit.cover,
                                   errorBuilder: (context, error, stackTrace) => Image.asset(
                                     'assets/images/sample/avatar.png',
@@ -96,10 +96,10 @@ class PanelPage extends ConsumerWidget {
                           ),
                         ),
                         child: CircleAvatar(
-                          // backgroundImage: NetworkImage('${AppBase.prodUrl}${participant.profile!.photo}'),
+                          // backgroundImage: NetworkImage('${AppBase.apiUrl}${participant.profile!.photo}'),
                           child: CustomCircleButton(
                             child: Image.network(
-                              '${AppBase.prodUrl}${member.profile!.photo}',
+                              '${AppBase.apiUrl}${member.profile!.photo}',
                               fit: BoxFit.cover,
                               errorBuilder: (context, error, stackTrace) => Image.asset(
                                 'assets/images/sample/avatar.png',
@@ -132,7 +132,7 @@ class PanelPage extends ConsumerWidget {
                                     size: 150,
                                     padding: EdgeInsets.zero,
                                     child: Image.network(
-                                      '${AppBase.prodUrl}${member.profile!.photo}',
+                                      '${AppBase.apiUrl}${member.profile!.photo}',
                                       fit: BoxFit.cover,
                                       errorBuilder: (context, error, stackTrace) => Image.asset(
                                         'assets/images/sample/avatar.png',

@@ -33,10 +33,10 @@ class ProductDetailView extends ConsumerWidget {
       return DataExceptionLayout(type: ExeceptionType.dataEmpty);
     }
 
-    final product = ref.watch(fetchProductProvider(item!.id!));
+    final product = ref.watch(fetchProductByIdProvider(item!.id!));
     final fetchImage = ref.watch(fetchImageProvider(Reqs(url: item.image, fileKey: "${item.id}_${item.categoryName}")));
     return MyUI(
-      enabledSafeArea: false,
+      safeAreaTop: false,
       child: Scaffold(
         body: OneUINestedScrollView(
           foregroundColor: oWhite,
@@ -90,7 +90,7 @@ class ProductDetailView extends ConsumerWidget {
             // ),
             // ShareButton(),
           ],
-          onRefresh: () async => await ref.refresh(fetchProductProvider(item.id!)),
+          onRefresh: () async => await ref.refresh(fetchProductByIdProvider(item.id!)),
           sliverList: product.when(
             data: (data) => SliverList.list(
               children: [

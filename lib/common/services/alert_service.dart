@@ -25,20 +25,20 @@ class AlertService {
           if (showOk)
             CupertinoDialogAction(
               isDefaultAction: true,
-              isDestructiveAction: true,
+              // isDestructiveAction: true,
               onPressed: () {
                 Navigator.of(context).pop(true);
-                if (onOk != null) onOk();
+                onOk?.call();
               },
               child: Text(okCaption ?? "Ok".hardcoded),
             ),
           if (showYes)
             CupertinoDialogAction(
               isDefaultAction: true,
-              isDestructiveAction: true,
+              // isDestructiveAction: true,
               onPressed: () {
                 Navigator.of(context).pop(true);
-                if (onYes != null) onYes();
+                onYes?.call();
               },
               child: Text(yesCaption ?? "Ya".hardcoded),
             ),
@@ -46,7 +46,7 @@ class AlertService {
             CupertinoDialogAction(
               onPressed: () {
                 Navigator.of(context).pop(false);
-                if (onNo != null) onNo();
+                onNo?.call();
               },
               child: Text(noCaption ?? "Tidak".hardcoded),
             ),
@@ -55,31 +55,24 @@ class AlertService {
     );
   }
 
-  static Future<void> confirm({
+  static Future<bool?> confirm({
     required String body,
     String title = 'Konfirmasi',
-    String? noCaption,
-    String? okCaption,
     String? yesCaption,
-    VoidCallback? onNo,
-    VoidCallback? onOk,
+    String? noCaption,
     VoidCallback? onYes,
-    bool showNo = true,
-    bool showYes = true,
-    bool showOk = false,
+    VoidCallback? onNo,
   }) async {
-    await AlertService.show(
+    return await AlertService.show(
       title: title,
       body: body,
       yesCaption: yesCaption,
       noCaption: noCaption,
-      okCaption: okCaption,
       onYes: onYes,
       onNo: onNo,
-      onOk: onOk,
-      showYes: showYes,
-      showNo: showNo,
-      showOk: showOk,
+      showYes: true,
+      showNo: true,
+      showOk: false,
     );
   }
 

@@ -84,8 +84,8 @@ class JelajahCtrl {
   }
 
   void gotoMyLocation() async {
-    await ref.read(locationCtrlProvider).fetchPosition();
-    _myPos = ref.read(latLongProvider);
+    final latLong = await ref.read(locationCtrlProvider).fetchPosition();
+    _myPos = latLong;
     await mapController!.animateCamera(CameraUpdate.newLatLngZoom(LatLng(_myPos!.lat, _myPos!.lng), 17));
   }
 

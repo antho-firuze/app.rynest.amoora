@@ -1,3 +1,4 @@
+import 'package:amoora/utils/datetime_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 class JsonIntConverter implements JsonConverter<int, dynamic> {
@@ -62,6 +63,22 @@ class JsonDateTimeConverter implements JsonConverter<DateTime?, dynamic> {
           ? json.isEmpty
               ? null
               : DateTime.parse(json)
+          : json;
+
+  @override
+  String? toJson(DateTime? object) => object?.toString();
+}
+
+class JsonTimeConverter implements JsonConverter<DateTime?, dynamic> {
+  const JsonTimeConverter();
+
+  @override
+  DateTime? fromJson(dynamic json) => json == null
+      ? null
+      : json is String
+          ? json.isEmpty
+              ? null
+              : json.toTime()
           : json;
 
   @override

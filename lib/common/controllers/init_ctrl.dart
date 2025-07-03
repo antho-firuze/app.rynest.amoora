@@ -1,12 +1,15 @@
 import 'dart:developer';
 
+import 'package:amoora/common/controllers/developer_ctrl.dart';
 import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/controllers/network_ctrl.dart';
+import 'package:amoora/common/controllers/pusher_ctrl.dart';
+import 'package:amoora/common/services/device_service.dart';
 import 'package:amoora/common/services/version_service.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/auth/model/jwt_token.dart';
 import 'package:amoora/features/live_location/controller/live_location_ctrl.dart';
-import 'package:amoora/features/live_streaming/controller/broadcast_ctrl.dart';
+import 'package:amoora/features/live_streaming/controller/streaming_ctrl.dart';
 import 'package:amoora/features/notification/controller/notification_ctrl.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_alert.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
@@ -48,8 +51,8 @@ class InitCtrl {
     // Initialize Location/GPS
     await ref.read(locationCtrlProvider).initialize();
 
-    // Initialize Notifications
-    ref.read(notificationCtrlProvider).initialize();
+    // Get Device Info
+    ref.read(deviceServiceProvider).getDeviceInfo();
 
     // Check User login & token
     ref.read(authCtrlProvider).initialize();
@@ -73,15 +76,22 @@ class InitCtrl {
     // ref.read(quranCtrlProvider).initialize();
     ref.read(quranCtrlProvider).initialize();
 
-    // Initialize Broadcast
-    // for presenter  => broadcast audio streaming
-    // for audience   => received/listen audio streaming (from presenter)
-    ref.read(broadcastCtrlProvider).initialize();
+    // Initialize Pusher
+    ref.read(pusherCtrlProvider).initialize();
+
+    // Initialize Streaming
+    ref.read(streamingCtrlProvider).initialize();
 
     // Initialize Live Location
     // for muthowwif  => monitoring jamaah
     // for jamaah     => push coordinate
     ref.read(liveLocationCtrlProvider).initialize();
+
+    // Initialize Notifications
+    ref.read(notificationCtrlProvider).initialize();
+
+    // Initialize Developer Mode
+    ref.read(developerCtrlProvider).initialize();
 
     // Check Is Token Expired
     log("Check token ?", name: _kLogName);

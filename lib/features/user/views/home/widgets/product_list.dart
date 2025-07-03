@@ -40,7 +40,7 @@ class ProductList extends ConsumerWidget {
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.only(left: 16, right: 16),
                 itemBuilder: (context, index) {
-                  final product = ref.watch(fetchProductProvider(data[index]));
+                  final product = ref.watch(fetchProductByIdProvider(data[index]));
                   return product.when(
                     skipLoadingOnRefresh: false,
                     data: (data) {
@@ -64,7 +64,7 @@ class ProductList extends ConsumerWidget {
                     },
                     error: (error, stackTrace) => DataExceptionLayout(
                       error: error,
-                      onTap: () => ref.refresh(fetchProductProvider(data[index])),
+                      onTap: () => ref.refresh(fetchProductByIdProvider(data[index])),
                     ),
                     loading: () => const Center(child: CircularProgressIndicator()),
                   );

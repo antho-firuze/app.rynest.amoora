@@ -1,4 +1,4 @@
-import 'package:amoora/utils/dio_service.dart';
+import 'package:amoora/common/services/loading_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,22 +8,22 @@ class DioBusyInterceptor implements Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    ref.read(busyProvider.notifier).state = false;
-    // LoadingService.dissmiss();
+    // ref.read(busyProvider.notifier).state = false;
+    LoadingService.dissmiss();
     return handler.next(err);
   }
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    ref.read(busyProvider.notifier).state = true;
-    // LoadingService.show();
+    // ref.read(busyProvider.notifier).state = true;
+    LoadingService.show();
     return handler.next(options);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    ref.read(busyProvider.notifier).state = false;
-    // LoadingService.dissmiss();
+    // ref.read(busyProvider.notifier).state = false;
+    LoadingService.dissmiss();
     return handler.next(response);
   }
 }

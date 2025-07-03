@@ -10,6 +10,7 @@ class ImageFailedLayout extends StatelessWidget {
     this.title = 'Image Not Available',
     this.reload = 'Reload',
     this.foregroundColor,
+    this.showCross = true,
     this.child,
     this.onTap,
   });
@@ -17,40 +18,58 @@ class ImageFailedLayout extends StatelessWidget {
   final String title;
   final String reload;
   final Color? foregroundColor;
+  final bool showCross;
   final Widget? child;
   final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: CrossPaint(color: foregroundColor ?? oBlack50.withValues(alpha: .3)),
-      child: Center(
-          child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                35.height,
-                child ?? Text(title).center().clr(foregroundColor),
-                GestureDetector(
-                  onTap: onTap,
-                  child: Opacity(
-                    opacity: .3,
-                    child: Column(
-                      children: [
-                        Icon(SuperIcons.is_refresh_2_bold, size: 35, color: foregroundColor),
-                        Text(reload).size(10).clr(oBlack),
-                      ],
-                    ),
+    if (showCross) {
+      return CustomPaint(
+        painter: CrossPaint(color: foregroundColor ?? oBlack50.withValues(alpha: .3)),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 10,
+            children: [
+              child ?? Text(title).center().clr(foregroundColor),
+              GestureDetector(
+                onTap: onTap,
+                child: Opacity(
+                  opacity: .3,
+                  child: Column(
+                    children: [
+                      Icon(SuperIcons.is_refresh_2_bold, size: 35, color: foregroundColor),
+                      Text(reload).size(10).clr(foregroundColor),
+                    ],
                   ),
                 ),
-              ],
+              ),
+            ],
+          ),
+        ),
+      );
+    } else {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        spacing: 10,
+        children: [
+          child ?? Text(title).center().clr(foregroundColor),
+          GestureDetector(
+            onTap: onTap,
+            child: Opacity(
+              opacity: .3,
+              child: Column(
+                spacing: 5,
+                children: [
+                  Icon(SuperIcons.is_refresh_2_bold, size: 35, color: foregroundColor),
+                  Text(reload).size(10).clr(foregroundColor),
+                ],
+              ),
             ),
           ),
         ],
-      )),
-    );
+      );
+    }
   }
 }

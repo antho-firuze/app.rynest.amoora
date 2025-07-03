@@ -1,9 +1,8 @@
-import 'package:amoora/common/controllers/location_ctrl.dart';
-import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/common/widgets/skelton.dart';
 import 'package:amoora/core/app_color.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
 import 'package:amoora/features/prayer_times/views/prayer_times_view.dart';
+import 'package:amoora/utils/datetime_utils.dart';
 import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/page_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
@@ -11,14 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:marquee/marquee.dart';
 
-class InfoPrayerTimes extends StatelessWidget {
+class InfoPrayerTimes extends ConsumerWidget {
   const InfoPrayerTimes({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    // print('build => InfoPrayerTimes -> ${prayer?.dhuhr}');
+  Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
       onTap: () => context.goto(page: const PrayerTimesView()),
       child: Container(
@@ -42,41 +40,41 @@ class InfoPrayerTimes extends StatelessWidget {
         child: Column(
           children: [
             // NEXT PRAYER TIME
-            Align(
-              alignment: Alignment.topCenter,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 2),
                 decoration: const BoxDecoration(
                   color: primaryLight,
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8)),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
                 ),
                 child: SizedBox(
                   height: 20,
-                  width: context.screenWidthRatio(.6, .35),
-                  child: Consumer(
-                    builder: (context, ref, child) {
-                      final placemark = ref.watch(placemarkProvider);
-                      return ref.watch(fetchPrayerTimesProvider).when(
-                            skipLoadingOnRefresh: false,
-                            data: (data) => Marquee(
-                              text: 'Waktu sholat daerah ${placemark?.subAdministrativeArea}, ${placemark?.country}',
-                              style: tsLabelL().clr(oWhite),
-                              blankSpace: context.screenWidthRatio(.1, .1),
-                              accelerationDuration: const Duration(seconds: 3),
-                              accelerationCurve: Curves.linear,
-                              fadingEdgeStartFraction: .1,
-                              fadingEdgeEndFraction: .1,
-                              showFadingOnlyWhenScrolling: false,
-                            ),
-                            error: (error, stackTrace) => DataExceptionLayout(
-                              error: error,
-                              child: Container(),
-                              onTap: () => ref.refresh(fetchPrayerTimesProvider),
-                            ),
-                            loading: () => Skelton(),
-                          );
-                    },
-                  ),
+                  // width: context.screenWidthRatio(.6, .35),
+                  child: ref.watch(fetchPrayerLocationProvider).when(
+                        skipLoadingOnRefresh: false,
+                        data: (data) => Marquee(
+                          text: "Waktu sholat daerah ${data[0]}, ${data[1]}",
+                          style: tsLabelL().clr(oGold),
+                          blankSpace: context.screenWidthRatio(.1, .1),
+                          accelerationDuration: const Duration(seconds: 3),
+                          accelerationCurve: Curves.linear,
+                          fadingEdgeStartFraction: .1,
+                          fadingEdgeEndFraction: .1,
+                          showFadingOnlyWhenScrolling: false,
+                        ),
+                        error: (error, stackTrace) => Marquee(
+                          text: '$error',
+                          style: tsLabelL().clr(oGold),
+                          blankSpace: context.screenWidthRatio(.1, .1),
+                          accelerationDuration: const Duration(seconds: 3),
+                          accelerationCurve: Curves.linear,
+                          fadingEdgeStartFraction: .1,
+                          fadingEdgeEndFraction: .1,
+                          showFadingOnlyWhenScrolling: false,
+                        ),
+                        loading: () => Skelton(),
+                      ),
                 ),
               ),
             ),
@@ -90,30 +88,32 @@ class InfoPrayerTimes extends StatelessWidget {
                     color: primaryLight,
                     borderRadius: BorderRadius.all(Radius.circular(12)),
                   ),
-                  child: Consumer(
-                    builder: (context, ref, child) {
-                      return ref.watch(fetchPrayerTimesProvider).when(
-                            skipLoadingOnRefresh: false,
-                            data: (data) => Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                PrayerTimeItem(PrayerTimeType.fajr),
-                                PrayerTimeItem(PrayerTimeType.dhuhr),
-                                PrayerTimeItem(PrayerTimeType.asr),
-                                PrayerTimeItem(PrayerTimeType.maghrib),
-                                PrayerTimeItem(PrayerTimeType.isha),
-                              ],
-                            ),
-                            error: (error, stackTrace) => DataExceptionLayout(
-                              error: error,
-                              child: Container(),
-                              onTap: () => ref.refresh(fetchPrayerTimesProvider),
-                            ),
-                            loading: () => Skelton(),
-                          );
-                    },
-                  ),
+                  child: ref.watch(fetchPrayerTimesProvider).when(
+                        skipLoadingOnRefresh: false,
+                        data: (data) => Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            PrayerTimeItem(PrayerTimeType.fajr),
+                            PrayerTimeItem(PrayerTimeType.dhuhr),
+                            PrayerTimeItem(PrayerTimeType.asr),
+                            PrayerTimeItem(PrayerTimeType.maghrib),
+                            PrayerTimeItem(PrayerTimeType.isha),
+                          ],
+                        ),
+                        error: (error, stackTrace) => Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            PrayerTimeItem(PrayerTimeType.fajr),
+                            PrayerTimeItem(PrayerTimeType.dhuhr),
+                            PrayerTimeItem(PrayerTimeType.asr),
+                            PrayerTimeItem(PrayerTimeType.maghrib),
+                            PrayerTimeItem(PrayerTimeType.isha),
+                          ],
+                        ),
+                        loading: () => Skelton(),
+                      ),
                 ),
               ),
             ),
@@ -141,7 +141,7 @@ class PrayerTimeItem extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(prayerType.desc).size(14).bold().clr(color),
-        Text(time ?? '-:-').size(14).bold().clr(color),
+        Text(time?.hm() ?? '-:-').size(14).bold().clr(color),
       ],
     );
   }

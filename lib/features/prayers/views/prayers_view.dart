@@ -39,7 +39,7 @@ class PrayersView extends ConsumerWidget {
       },
       child: MyUI(
         showConnectivityInfo: false,
-        enabledSafeArea: false,
+        safeAreaTop: false,
         child: Scaffold(
           body: OneUINestedScrollView(
             foregroundColor: oWhite,

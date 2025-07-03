@@ -1,7 +1,10 @@
+import 'package:amoora/common/services/snackbar_service.dart';
 import 'package:amoora/features/emergency/views/emergency_view.dart';
 import 'package:amoora/utils/page_utils.dart';
+import 'package:amoora/utils/ui_helper.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
 import 'package:amoora/core/app_color.dart';
@@ -30,19 +33,48 @@ class DashboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    if (size.width < 450) {
-      return ScaffoldWithNavigationBar(
-        body: navigationShell,
-        currentIndex: navigationShell.currentIndex,
-        onDestinationSelected: _goBranch,
-      );
-    } else {
-      return ScaffoldWithNavigationRail(
-        body: navigationShell,
-        currentIndex: navigationShell.currentIndex,
-        onDestinationSelected: _goBranch,
-      );
-    }
+    int backPressed = 0;
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) async {
+        if (didPop) return;
+
+        backPressed++;
+        debugPrint('backPressed = $backPressed');
+        if (backPressed > 1) {
+          SystemNavigator.pop();
+        } else {
+          SnackBarService(message: Text('Tekan lagi untuk keluar').center()).shown(bottom: 50);
+          await Future.delayed(Duration(seconds: 2));
+          backPressed = 0;
+          debugPrint('backPressed = $backPressed');
+        }
+      },
+      child: (size.width < 450)
+          ? ScaffoldWithNavigationBar(
+              body: navigationShell,
+              currentIndex: navigationShell.currentIndex,
+              onDestinationSelected: _goBranch,
+            )
+          : ScaffoldWithNavigationRail(
+              body: navigationShell,
+              currentIndex: navigationShell.currentIndex,
+              onDestinationSelected: _goBranch,
+            ),
+    );
+    // if (size.width < 450) {
+    //   return ScaffoldWithNavigationBar(
+    //     body: navigationShell,
+    //     currentIndex: navigationShell.currentIndex,
+    //     onDestinationSelected: _goBranch,
+    //   );
+    // } else {
+    //   return ScaffoldWithNavigationRail(
+    //     body: navigationShell,
+    //     currentIndex: navigationShell.currentIndex,
+    //     onDestinationSelected: _goBranch,
+    //   );
+    // }
   }
 }
 

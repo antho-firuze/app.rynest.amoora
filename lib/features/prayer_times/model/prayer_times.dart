@@ -1,6 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:amoora/utils/datetime_utils.dart';
+import 'package:amoora/utils/json_converter_utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'prayer_times.freezed.dart';
@@ -9,17 +9,17 @@ part 'prayer_times.g.dart';
 @freezed
 abstract class PrayerTimes with _$PrayerTimes {
   factory PrayerTimes({
-    @JsonKey(name: 'Fajr') String? fajr,
-    @JsonKey(name: 'Sunrise') String? sunrise,
-    @JsonKey(name: 'Dhuhr') String? dhuhr,
-    @JsonKey(name: 'Asr') String? asr,
-    @JsonKey(name: 'Sunset') String? sunset,
-    @JsonKey(name: 'Maghrib') String? maghrib,
-    @JsonKey(name: 'Isha') String? isha,
-    @JsonKey(name: 'Imsak') String? imsak,
-    @JsonKey(name: 'Midnight') String? midnight,
-    @JsonKey(name: 'Firstthird') String? firstthird,
-    @JsonKey(name: 'Lastthird') String? lastthird,
+    @JsonKey(name: 'Fajr') @JsonTimeConverter() DateTime? fajr,
+    @JsonKey(name: 'Sunrise') @JsonTimeConverter() DateTime? sunrise,
+    @JsonKey(name: 'Dhuhr') @JsonTimeConverter() DateTime? dhuhr,
+    @JsonKey(name: 'Asr') @JsonTimeConverter() DateTime? asr,
+    @JsonKey(name: 'Sunset') @JsonTimeConverter() DateTime? sunset,
+    @JsonKey(name: 'Maghrib') @JsonTimeConverter() DateTime? maghrib,
+    @JsonKey(name: 'Isha') @JsonTimeConverter() DateTime? isha,
+    @JsonKey(name: 'Imsak') @JsonTimeConverter() DateTime? imsak,
+    @JsonKey(name: 'Midnight') @JsonTimeConverter() DateTime? midnight,
+    @JsonKey(name: 'Firstthird') @JsonTimeConverter() DateTime? firstthird,
+    @JsonKey(name: 'Lastthird') @JsonTimeConverter() DateTime? lastthird,
   }) = _PrayerTimes;
 
   factory PrayerTimes.fromJson(Map<String, dynamic> json) => _$PrayerTimesFromJson(json);
@@ -38,32 +38,34 @@ abstract class PrayerMethod with _$PrayerMethod {
 extension PrayerTimesExt on PrayerTimes {
   String? currPrayer() {
     final now = DateTime.now();
-    if (now.isBefore(fajr!.toTime())) {
+    if (now.isBefore(fajr!)) {
       return 'Isya';
-    } else if (now.isBefore(dhuhr!.toTime())) {
+    } else if (now.isBefore(sunrise!)) {
       return 'Subuh';
-    } else if (now.isBefore(asr!.toTime())) {
+    } else if (now.isBefore(dhuhr!)) {
+      return 'Dhuha';
+    } else if (now.isBefore(asr!)) {
       return 'Dzuhur';
-    } else if (now.isBefore(maghrib!.toTime())) {
+    } else if (now.isBefore(maghrib!)) {
       return 'Ashar';
-    } else if (now.isBefore(isha!.toTime())) {
+    } else if (now.isBefore(isha!)) {
       return 'Maghrib';
     } else {
       return 'Isya';
     }
   }
 
-  String? currPrayerTime() {
+  DateTime? currPrayerTime() {
     final now = DateTime.now();
-    if (now.isBefore(fajr!.toTime())) {
+    if (now.isBefore(fajr!)) {
       return isha;
-    } else if (now.isBefore(dhuhr!.toTime())) {
+    } else if (now.isBefore(dhuhr!)) {
       return fajr;
-    } else if (now.isBefore(asr!.toTime())) {
+    } else if (now.isBefore(asr!)) {
       return dhuhr;
-    } else if (now.isBefore(maghrib!.toTime())) {
+    } else if (now.isBefore(maghrib!)) {
       return asr;
-    } else if (now.isBefore(isha!.toTime())) {
+    } else if (now.isBefore(isha!)) {
       return maghrib;
     } else {
       return isha;
@@ -72,11 +74,11 @@ extension PrayerTimesExt on PrayerTimes {
 
   String? nextPrayer() {
     final now = DateTime.now();
-    if (now.isAfter(fajr!.toTime())) {
-      if (now.isAfter(dhuhr!.toTime())) {
-        if (now.isAfter(asr!.toTime())) {
-          if (now.isAfter(maghrib!.toTime())) {
-            if (now.isAfter(isha!.toTime())) {
+    if (now.isAfter(fajr!)) {
+      if (now.isAfter(dhuhr!)) {
+        if (now.isAfter(asr!)) {
+          if (now.isAfter(maghrib!)) {
+            if (now.isAfter(isha!)) {
               return 'Subuh';
             } else {
               return 'Isya';
@@ -95,13 +97,13 @@ extension PrayerTimesExt on PrayerTimes {
     }
   }
 
-  String? nextPrayerTime() {
+  DateTime? nextPrayerTime() {
     final now = DateTime.now();
-    if (now.isAfter(fajr!.toTime())) {
-      if (now.isAfter(dhuhr!.toTime())) {
-        if (now.isAfter(asr!.toTime())) {
-          if (now.isAfter(maghrib!.toTime())) {
-            if (now.isAfter(isha!.toTime())) {
+    if (now.isAfter(fajr!)) {
+      if (now.isAfter(dhuhr!)) {
+        if (now.isAfter(asr!)) {
+          if (now.isAfter(maghrib!)) {
+            if (now.isAfter(isha!)) {
               return fajr;
             } else {
               return isha;

@@ -3,8 +3,7 @@ import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/exchange_rate/views/exchange_rate_view.dart';
 import 'package:amoora/features/jelajah/views/jelajah_view.dart';
 import 'package:amoora/features/live_location/views/live_map_view.dart';
-import 'package:amoora/features/live_streaming/views/audience_view.dart';
-import 'package:amoora/features/live_streaming/views/presenter_view.dart';
+import 'package:amoora/features/live_streaming/views/streaming_view.dart';
 import 'package:amoora/features/prayer_times/views/prayer_times_view.dart';
 import 'package:amoora/features/prayers/views/prayers_view.dart';
 import 'package:amoora/features/qibla/view/qibla_view.dart';
@@ -25,7 +24,7 @@ class MenuCtrl {
 
     // NOT SIGNIN
     if (ref.read(authUserProvider) == null) {
-      final homeMenuList = ["quran", "prayers", "jelajah", "prayerTimes"];
+      final homeMenuList = ["quran", "prayers", "jelajah", "prayerTimes", "streaming"];
       appMenus.removeWhere((element) => !homeMenuList.contains(element.code));
       return appMenus;
     }
@@ -45,7 +44,7 @@ class MenuCtrl {
 
     // NOT SIGNIN
     if (ref.read(authUserProvider) == null) {
-      final homeMenuList = ["quran", "prayers", "jelajah", "prayerTimes", "exchangeRate", "qibla"];
+      final homeMenuList = ["quran", "prayers", "jelajah", "prayerTimes", "exchangeRate", "qibla", "streaming"];
       appMenus.removeWhere((element) => !homeMenuList.contains(element.code));
       return appMenus;
     }
@@ -63,12 +62,12 @@ class MenuCtrl {
     // Role 1 => Jama'ah
     if (ref.read(authUserProvider)?.roleId == 1) {
       menus.removeWhere((element) => element.code == 'liveLocation');
-      menus.removeWhere((element) => element.code == 'presenter');
-      menus.removeWhere((element) => element.code == 'agenda');
+      // menus.removeWhere((element) => element.code == 'presenter');
+      // menus.removeWhere((element) => element.code == 'agenda');
     }
     // Role 2 => Muthowwif
     if (ref.read(authUserProvider)?.roleId == 2) {
-      menus.removeWhere((element) => element.code == 'listener');
+      // menus.removeWhere((element) => element.code == 'listener');
     }
     return menus;
   }
@@ -82,8 +81,7 @@ class MenuCtrl {
       "agenda" => AppAsset.icAgenda,
       "jelajah" => AppAsset.icExplore,
       "liveLocation" => AppAsset.icLiveLocation,
-      "presenter" => AppAsset.icPresenter,
-      "listener" => AppAsset.icListener,
+      "streaming" => AppAsset.icPresenter,
       "exchangeRate" => AppAsset.icExchangeRate,
       String() => '',
     };
@@ -98,8 +96,9 @@ class MenuCtrl {
       "agenda" => await ref.read(pageUtilsProvider).goto(page: const AgendaView()),
       "jelajah" => await ref.read(pageUtilsProvider).goto(page: const JelajahView()),
       "liveLocation" => await ref.read(authCtrlProvider).signInGoto(page: const LiveMapView()),
-      "presenter" => await ref.read(authCtrlProvider).signInGoto(page: const PresenterView()),
-      "listener" => await ref.read(authCtrlProvider).signInGoto(page: const AudienceView()),
+      "streaming" => await ref.read(pageUtilsProvider).goto(page: const StreamingView()),
+      // "presenter" => await ref.read(pageUtilsProvider).goto(page: const PresenterView()),
+      // "listener" => await ref.read(pageUtilsProvider).goto(page: const AudienceView()),
       "exchangeRate" => await ref.read(pageUtilsProvider).goto(page: const ExchangeRateView()),
       String() => '',
     };

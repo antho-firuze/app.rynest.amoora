@@ -27,7 +27,7 @@ class CustomAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imageSrc = image ?? 'assets/images/avatar.png';
-    final errorWidget = CustomImage(src: 'assets/images/avatar-broken.png', onTap: onTap, fit: fit);
+    final errorWidget = CustomImage(src: 'assets/images/avatar-broken.png', fit: fit);
     return SizedBox(
       width: size,
       height: size,
@@ -37,23 +37,26 @@ class CustomAvatar extends StatelessWidget {
           borderRadius: shape == BoxShape.circle ? null : borderRadius ?? BorderRadius.circular(12),
           shape: shape,
         ),
-        child: ClipRRect(
-          borderRadius: borderRadius ?? BorderRadius.circular(12),
-          child: shape == BoxShape.circle
-              ? Center(
-                  child: OverflowBox(
-                    maxWidth: size * ratio,
-                    maxHeight: size * ratio,
-                    child: CustomImage(src: imageSrc, onTap: onTap, fit: fit, errorWidget: errorWidget),
+        child: GestureDetector(
+          onTap: onTap,
+          child: ClipRRect(
+            borderRadius: borderRadius ?? BorderRadius.circular(12),
+            child: shape == BoxShape.circle
+                ? Center(
+                    child: OverflowBox(
+                      maxWidth: size * ratio,
+                      maxHeight: size * ratio,
+                      child: CustomImage(src: imageSrc, fit: fit, errorWidget: errorWidget),
+                    ),
+                  )
+                : Center(
+                    child: OverflowBox(
+                      maxWidth: size * ratio,
+                      maxHeight: size * ratio,
+                      child: CustomImage(src: imageSrc, fit: fit, errorWidget: errorWidget),
+                    ),
                   ),
-                )
-              : Center(
-                  child: OverflowBox(
-                    maxWidth: size * ratio,
-                    maxHeight: size * ratio,
-                    child: CustomImage(src: imageSrc, onTap: onTap, fit: fit, errorWidget: errorWidget),
-                  ),
-                ),
+          ),
         ),
       ),
     );

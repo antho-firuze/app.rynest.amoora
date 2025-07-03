@@ -1,12 +1,16 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:amoora/common/services/alert_service.dart';
 import 'package:amoora/common/services/sharedpref_service.dart';
 import 'package:amoora/features/quran2/controller/quran_ctrl.dart';
 import 'package:amoora/features/quran2/model/bookmark.dart';
 import 'package:amoora/features/quran2/model/recent.dart';
+import 'package:amoora/features/quran2/model/verse.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/v4.dart';
+
+final _kLogName = 'BOOKMARK-CTRL';
 
 final bookmarksProvider = StateProvider<List<Bookmark>>((ref) => []);
 final recentsProvider = StateProvider<List<Recent>>((ref) => []);
@@ -22,34 +26,45 @@ class BookmarkCtrl {
 
   List<Bookmark> _bookmarks = [];
   List<Recent> _recents = [];
+  List<Verse>? _verses;
 
   void initialize() async {
     log('Initialize Quran Bookmark !');
+
+    _verses = await ref.read(quranCtrlProvider).fetchVerses();
 
     _loadBookmark();
     _loadRecent();
   }
 
   void _loadBookmark() {
-    var data = ref.read(sharedPrefProvider).getString(_bookmarkKey);
-    // log('_loadBookmark : $data', name: 'BOOKMARK-CTRL');
+    log('_loadBookmark', name: _kLogName);
+    final data = ref.read(sharedPrefProvider).getString(_bookmarkKey);
     if (data != null) {
-      // log('_loadBookmark : is not null', name: 'BOOKMARK-CTRL');
-      List<Map<String, dynamic>> datas = jsonDecode(data);
-      _bookmarks = datas.map(Bookmark.fromJson).toList();
+      List<dynamic> datas = jsonDecode(data);
+      _bookmarks = datas.map((e) => Bookmark.fromJson(e)).toList();
       ref.read(bookmarksProvider.notifier).state = _bookmarks;
     }
   }
 
+  void _saveBookmark(List<Bookmark> bookmarks) {
+    log('_saveBookmark', name: _kLogName);
+    if (bookmarks.isNotEmpty) {
+      final data = bookmarks.map((bookmark) => bookmark.toJson()).toList();
+      ref.read(sharedPrefProvider).setString(_bookmarkKey, jsonEncode(data));
+    }
+    ref.read(bookmarksProvider.notifier).state = [...bookmarks];
+  }
+
   void addBookmark(int verseId) {
-    final verse = ref.read(quranCtrlProvider).verses.firstWhere((verse) => verse.id == verseId);
+    final verse = _verses?.firstWhere((verse) => verse.id == verseId);
     final juzNum = ref.read(quranCtrlProvider).getJuzId(verseId);
 
     final bookmark = Bookmark(
       id: const UuidV4().generate(),
-      chapterId: verse.chapter,
+      chapterId: verse?.chapter,
       verseId: verseId,
-      verseNum: verse.number,
+      verseNum: verse?.number,
       juzNum: juzNum,
       createdAt: DateTime.now(),
     );
@@ -58,23 +73,34 @@ class BookmarkCtrl {
     _saveBookmark(_bookmarks);
   }
 
-  void _saveBookmark(List<Bookmark> bookmarks) {
-    // log('_saveBookmark : $bookmarks', name: 'BOOKMARK-CTRL');
-    if (bookmarks.isNotEmpty) {
-      final data = bookmarks.map((bookmark) => bookmark.toJson()).toList();
-      ref.read(sharedPrefProvider).setString(_bookmarkKey, jsonEncode(data));
-    }
-    ref.read(bookmarksProvider.notifier).state = bookmarks;
+  void removeBookmark(Bookmark bookmark) {
+    log("removeBookmark", name: _kLogName);
+
+    _bookmarks.remove(bookmark);
+
+    // UPDATE BOOKMARK CACHE
+    _saveBookmark(_bookmarks);
+  }
+
+  Future removeAllBookmark() async {
+    await AlertService.confirm(
+      body: "Anda yakin ingin menghapus semua bookmark ?",
+      onYes: () {
+        _bookmarks.clear();
+
+        // UPDATE BOOKMARK CACHE
+        _saveBookmark(_bookmarks);
+      },
+    );
   }
 
   void _loadRecent() async {
+    log('_loadRecent', name: _kLogName);
     var data = ref.read(sharedPrefProvider).getString(_recentKey);
     if (data != null) {
-      // log('_loadRecent : $data', name: 'BOOKMARK-CTRL');
-      List<Map<String, dynamic>> datas = jsonDecode(data);
-      _recents = datas.map(Recent.fromJson).toList();
+      List<dynamic> datas = jsonDecode(data);
+      _recents = datas.map((e) => Recent.fromJson(e)).toList();
     } else {
-      // log('_loadRecent : $data', name: 'BOOKMARK-CTRL');
       _recents.add(Recent(
         id: const UuidV4().generate(),
         chapterId: 1,
@@ -86,7 +112,6 @@ class BookmarkCtrl {
     }
     ref.read(recentsProvider.notifier).state = _recents;
     ref.read(recentProvider.notifier).state = _recents[0];
-    // log('_loadRecent : $_recents', name: 'BOOKMARK-CTRL');
   }
 
   void addRecent(int verseId) {
@@ -106,7 +131,7 @@ class BookmarkCtrl {
   }
 
   void _saveRecent(List<Recent> recents) {
-    // log('_saveRecent : $recents', name: 'BOOKMARK-CTRL');
+    log('_saveRecent', name: _kLogName);
     if (recents.isNotEmpty) {
       final data = recents.map((recent) => recent.toJson()).toList();
       ref.read(sharedPrefProvider).setString(_recentKey, jsonEncode(data));

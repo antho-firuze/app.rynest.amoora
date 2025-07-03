@@ -7,32 +7,32 @@ part of 'prayer_times.dart';
 // **************************************************************************
 
 _PrayerTimes _$PrayerTimesFromJson(Map<String, dynamic> json) => _PrayerTimes(
-      fajr: json['Fajr'] as String?,
-      sunrise: json['Sunrise'] as String?,
-      dhuhr: json['Dhuhr'] as String?,
-      asr: json['Asr'] as String?,
-      sunset: json['Sunset'] as String?,
-      maghrib: json['Maghrib'] as String?,
-      isha: json['Isha'] as String?,
-      imsak: json['Imsak'] as String?,
-      midnight: json['Midnight'] as String?,
-      firstthird: json['Firstthird'] as String?,
-      lastthird: json['Lastthird'] as String?,
+      fajr: const JsonTimeConverter().fromJson(json['Fajr']),
+      sunrise: const JsonTimeConverter().fromJson(json['Sunrise']),
+      dhuhr: const JsonTimeConverter().fromJson(json['Dhuhr']),
+      asr: const JsonTimeConverter().fromJson(json['Asr']),
+      sunset: const JsonTimeConverter().fromJson(json['Sunset']),
+      maghrib: const JsonTimeConverter().fromJson(json['Maghrib']),
+      isha: const JsonTimeConverter().fromJson(json['Isha']),
+      imsak: const JsonTimeConverter().fromJson(json['Imsak']),
+      midnight: const JsonTimeConverter().fromJson(json['Midnight']),
+      firstthird: const JsonTimeConverter().fromJson(json['Firstthird']),
+      lastthird: const JsonTimeConverter().fromJson(json['Lastthird']),
     );
 
 Map<String, dynamic> _$PrayerTimesToJson(_PrayerTimes instance) =>
     <String, dynamic>{
-      'Fajr': instance.fajr,
-      'Sunrise': instance.sunrise,
-      'Dhuhr': instance.dhuhr,
-      'Asr': instance.asr,
-      'Sunset': instance.sunset,
-      'Maghrib': instance.maghrib,
-      'Isha': instance.isha,
-      'Imsak': instance.imsak,
-      'Midnight': instance.midnight,
-      'Firstthird': instance.firstthird,
-      'Lastthird': instance.lastthird,
+      'Fajr': const JsonTimeConverter().toJson(instance.fajr),
+      'Sunrise': const JsonTimeConverter().toJson(instance.sunrise),
+      'Dhuhr': const JsonTimeConverter().toJson(instance.dhuhr),
+      'Asr': const JsonTimeConverter().toJson(instance.asr),
+      'Sunset': const JsonTimeConverter().toJson(instance.sunset),
+      'Maghrib': const JsonTimeConverter().toJson(instance.maghrib),
+      'Isha': const JsonTimeConverter().toJson(instance.isha),
+      'Imsak': const JsonTimeConverter().toJson(instance.imsak),
+      'Midnight': const JsonTimeConverter().toJson(instance.midnight),
+      'Firstthird': const JsonTimeConverter().toJson(instance.firstthird),
+      'Lastthird': const JsonTimeConverter().toJson(instance.lastthird),
     };
 
 _PrayerMethod _$PrayerMethodFromJson(Map<String, dynamic> json) =>

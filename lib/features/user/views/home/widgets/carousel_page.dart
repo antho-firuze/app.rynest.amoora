@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:amoora/common/exceptions/data_exeception_layout.dart';
 import 'package:amoora/common/exceptions/image_failed_layout.dart';
 import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/common/widgets/custom_interactive_viewer.dart';
@@ -27,19 +26,19 @@ class CarouselPage extends ConsumerWidget {
       child: ref.watch(fetchCarouselProvider).when(
             skipLoadingOnRefresh: false,
             loading: () => const Center(child: CircularProgressIndicator()),
-            error: (error, stackTrace) => Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: DataExceptionLayout(
-                    onTap: () => ref.refresh(fetchCarouselProvider),
-                    foregroundColor: oWhite,
-                  ),
-                ),
-              ],
+            error: (error, stackTrace) => Center(
+              child: ImageFailedLayout(
+                showCross: false,
+                onTap: () => ref.refresh(fetchCarouselProvider),
+                foregroundColor: oWhite,
+              ),
             ),
             data: (data) {
-              if (data.isEmpty) return ImageFailedLayout(onTap: () => ref.refresh(fetchCarouselProvider));
+              if (data.isEmpty) {
+                return ImageFailedLayout(
+                  onTap: () => ref.refresh(fetchCarouselProvider),
+                );
+              }
 
               return SizedBox(
                 height: 250,

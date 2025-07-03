@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:amoora/common/controllers/location_ctrl.dart';
@@ -8,13 +7,11 @@ import 'package:amoora/common/models/latlong.dart';
 import 'package:amoora/common/models/reqs.dart';
 import 'package:amoora/common/services/api_service.dart';
 import 'package:amoora/common/services/location_service.dart';
-import 'package:amoora/common/services/stream_service.dart';
+import 'package:amoora/common/services/sse_service2.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/live_location/controller/live_maps_ctrl.dart';
-import 'package:amoora/features/live_location/model/member.dart';
 import 'package:amoora/features/user/controller/user_setting_ctrl.dart';
 import 'package:amoora/utils/datetime_utils.dart';
-import 'package:amoora/utils/sse_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CoordinateStream {
@@ -74,29 +71,29 @@ class CoordinateStream {
 
     log('_monitoringMember => start', name: 'COORDINATE-STREAM');
 
-    final reqs = Reqs(
-      data: {"stream_type": "online_member"},
-    );
-    final fetchStream = await ref.read(streamServiceProvider).call(reqs: reqs);
+    // final reqs = Reqs(
+    //   data: {"stream_type": "online_member"},
+    // );
+    // final fetchStream = await ref.read(sseServiceProvider).stream(reqs: reqs);
 
-    _fetchStreamSubs = fetchStream?.listen((event) {
-      log("_monitoringMember => Event: ${event.id}, ${event.event}, ${event.retry}, ${event.data}",
-          name: 'COORDINATE-STREAM');
+    // _fetchStreamSubs = fetchStream.listen((event) {
+    //   log("_monitoringMember => Event: ${event.id}, ${event.event}, ${event.retry}, ${event.data}",
+    //       name: 'COORDINATE-STREAM');
 
-      if (event.data.isEmpty) {
-        return;
-      }
+    //   if (event.data.isEmpty) {
+    //     return;
+    //   }
 
-      List<dynamic> jsonList = jsonDecode(event.data);
-      if (jsonList.isEmpty) {
-        // log('empty => $jsonList');
-        ref.read(onlineMemberProvider.notifier).state = [];
-      } else {
-        List<Member> datas = jsonList.map((json) => Member.fromJson(json)).toList();
-        // log('total online: ${datas.length}');
-        ref.read(onlineMemberProvider.notifier).state = datas;
-      }
-    });
+    //   List<dynamic> jsonList = jsonDecode(event.data);
+    //   if (jsonList.isEmpty) {
+    //     // log('empty => $jsonList');
+    //     ref.read(onlineMemberProvider.notifier).state = [];
+    //   } else {
+    //     List<Member> datas = jsonList.map((json) => Member.fromJson(json)).toList();
+    //     // log('total online: ${datas.length}');
+    //     ref.read(onlineMemberProvider.notifier).state = datas;
+    //   }
+    // });
   }
 
   void _closedMonitoringMember() {

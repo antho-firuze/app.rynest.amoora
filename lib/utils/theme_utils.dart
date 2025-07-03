@@ -28,7 +28,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 //   }
 // }
 
-final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.light);
+final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.system);
 
 extension DarkModeContext on BuildContext {
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;

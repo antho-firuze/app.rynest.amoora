@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:amoora/common/widgets/custom_icon.dart';
@@ -16,7 +17,6 @@ class CustomImage extends StatelessWidget {
     this.borderRadius = 0,
     this.errorWidget,
     this.errorTitle = "Foto belum tersedia !",
-    this.onTap,
   });
 
   final dynamic src;
@@ -25,7 +25,6 @@ class CustomImage extends StatelessWidget {
   final double borderRadius;
   final String errorTitle;
   final Widget? errorWidget;
-  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -43,19 +42,21 @@ class CustomImage extends StatelessWidget {
         if (type == 'assets') {
           image = imageAsset();
         } else {
-          image = imageEncoder();
+          type = src.substring(0, 5).toLowerCase();
+          if (type == '/data') {
+            image = imageFile();
+          } else {
+            image = imageEncoder();
+          }
         }
       }
     } else {
       image = imageFile();
     }
 
-    return GestureDetector(
-      onTap: onTap,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(borderRadius),
-        child: image,
-      ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: image,
     );
   }
 
@@ -73,7 +74,17 @@ class CustomImage extends StatelessWidget {
             errorWidget != null ? errorWidget! : ImageFailed(title: errorTitle),
       );
 
-  Widget imageFile() => Image.file(src, color: color, fit: fit);
+  Widget imageFile() => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: FileImage(File(src)),
+            fit: fit,
+            onError: (exception, stackTrace) => ImageFailed(
+              title: errorTitle,
+            ),
+          ),
+        ),
+      );
 
   Widget imageAsset() => Image.asset(
         src,

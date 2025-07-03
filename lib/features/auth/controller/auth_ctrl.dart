@@ -19,6 +19,8 @@ import 'package:amoora/common/services/snackbar_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final _kLogName = 'AUTH-CTRL';
+
 final authTokenProvider = StateProvider<JwtToken?>((ref) => null);
 final authUserProvider = StateProvider<User?>((ref) => null);
 
@@ -109,7 +111,7 @@ class AuthCtrl {
 
     await AlertService.confirm(
       body: "Anda yakin ingin keluar ?",
-      onOk: () {
+      onYes: () {
         setUser(null);
         setToken(null);
       },
@@ -209,7 +211,7 @@ class AuthCtrl {
 
     if (state.hasError) return;
 
-    log("sendCode => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
+    log("sendCode => verification_code : ${state.value['verification_code']}", name: _kLogName);
     ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
     ref.read(verifyTypeProvider.notifier).state = 'forgot_password';
     ref.read(isCountdownExpiredProvider.notifier).state = false;
@@ -241,7 +243,7 @@ class AuthCtrl {
 
         if (state.hasError) return;
 
-        log("resendCode => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
+        log("resendCode => verification_code : ${state.value['verification_code']}", name: _kLogName);
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
         break;
       case 'phone':
@@ -253,7 +255,7 @@ class AuthCtrl {
 
         if (state.hasError) return;
 
-        log("resendCode => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
+        log("resendCode => verification_code : ${state.value['verification_code']}", name: _kLogName);
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
         break;
       default:
@@ -265,7 +267,7 @@ class AuthCtrl {
 
         if (state.hasError) return;
 
-        log("resendCode => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
+        log("resendCode => verification_code : ${state.value['verification_code']}", name: _kLogName);
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
     }
 
@@ -325,7 +327,7 @@ class AuthCtrl {
 
         if (state.hasError) return;
 
-        log("verifyEmail => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
+        log("verifyEmail => verification_code : ${state.value['verification_code']}", name: _kLogName);
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
         ref.read(verifyTypeProvider.notifier).state = 'email';
         ref.read(isCountdownExpiredProvider.notifier).state = false;
@@ -359,7 +361,7 @@ class AuthCtrl {
 
         if (state.hasError) return;
 
-        log("verifyPhone => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
+        log("verifyPhone => verification_code : ${state.value['verification_code']}", name: _kLogName);
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
         ref.read(verifyTypeProvider.notifier).state = 'phone';
         ref.read(isCountdownExpiredProvider.notifier).state = false;
@@ -411,7 +413,7 @@ class AuthCtrl {
 
         if (state.hasError) return;
 
-        log("unregister => verification_code : ${state.value['verification_code']}", name: 'AUTH-CTRL');
+        log("unregister => verification_code : ${state.value['verification_code']}", name: _kLogName);
         ref.read(verifyCodeProvider.notifier).state = state.value['verification_code'];
         ref.read(verifyTypeProvider.notifier).state = 'unregister';
         ref.read(isCountdownExpiredProvider.notifier).state = false;

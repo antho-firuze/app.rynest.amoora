@@ -1,6 +1,7 @@
 import 'package:amoora/common/controllers/walkthrough_ctrl.dart';
 import 'package:amoora/utils/my_ui.dart';
 import 'package:amoora/utils/system_ui_overlay.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -27,7 +28,7 @@ class _WalkthroughViewState extends ConsumerState<WalkthroughView> {
   Widget build(BuildContext context) {
     return MyUI(
       customUiOverlayStyle: SystemUIOverlay.transparentOverlay,
-      enabledSafeArea: false,
+      safeAreaTop: false,
       child: Scaffold(
         body: Stack(
           children: [
@@ -95,10 +96,7 @@ class _WalkthroughViewState extends ConsumerState<WalkthroughView> {
               if (!isLastPage)
                 TextButton(
                   onPressed: () => controller.jumpToPage(walks.length),
-                  child: Text(
-                    'SKIP',
-                    style: tsTitleM(),
-                  ),
+                  child: Text('SKIP').tsTitleM().clr(oBlack.whenDark(oWhite30)),
                 )
               else
                 50.width,
@@ -122,10 +120,7 @@ class _WalkthroughViewState extends ConsumerState<WalkthroughView> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      child: Text(
-                        'Get Started',
-                        style: tsButton().copyWith(color: oWhite),
-                      ),
+                      child: Text('Get Started').tsButton().clr(oWhite),
                     )
                   : ElevatedButton(
                       onPressed: () =>
@@ -182,19 +177,11 @@ class BuildPage extends StatelessWidget {
           ),
           10.height,
           // Title
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: tsHeadlineL(),
-          ),
+          Text(title).tsHeadlineL().center().clr(oBlack.whenDark(oWhite30)),
           // Sub Title
           Padding(
             padding: const EdgeInsets.only(left: 20),
-            child: Text(
-              subTitle,
-              textAlign: TextAlign.center,
-              style: tsTitleL(),
-            ),
+            child: Text(subTitle).tsTitleL().center().clr(oBlack.whenDark(oWhite30)),
           ),
           20.height,
         ],

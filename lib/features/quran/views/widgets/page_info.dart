@@ -35,7 +35,8 @@ class PageInfo extends ConsumerWidget {
                 padding: EdgeInsets.zero,
                 icon: SvgPicture.asset(
                   quran.isMarkPage ? QuranAsset.icSaveFilled : QuranAsset.icSave,
-                  color: quran.isMarkPage ? Colors.red : null,
+                  // color: quran.isMarkPage ? Colors.red : null,
+                  colorFilter: ColorFilter.mode(quran.isMarkPage ? Colors.red : Colors.transparent, BlendMode.srcIn),
                 ),
                 onPressed: () => ref.read(bookmarkCtrlProvider.notifier).updateMark(quran.page),
               ),

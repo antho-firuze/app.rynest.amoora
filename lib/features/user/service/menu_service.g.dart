@@ -48,17 +48,9 @@ const _$appMenusJsonLiteral = [
     'is_favorite': false
   },
   {
-    'code': 'presenter',
+    'code': 'streaming',
     'name': 'Siaran',
     'desc': 'Siaran',
-    'is_default': true,
-    'is_show': true,
-    'is_favorite': false
-  },
-  {
-    'code': 'listener',
-    'name': 'Lihat Siaran',
-    'desc': 'Lihat Siaran',
     'is_default': true,
     'is_show': true,
     'is_favorite': false

@@ -1,23 +1,19 @@
-import 'dart:async';
-
-import 'package:amoora/common/services/notification_service.dart';
-import 'package:amoora/common/views/dev_info_view.dart';
 import 'package:amoora/common/widgets/connectivity_wrapper.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/utils/page_utils.dart';
 import 'package:amoora/utils/system_ui_overlay.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-Timer? _timer;
+// Timer? _timer;
 
 class MyUI extends StatelessWidget {
   const MyUI({
     super.key,
     required this.child,
     this.isDark = false,
-    this.enabledSafeArea = true,
+    this.safeAreaTop = true,
+    this.safeAreaBottom = true,
     this.customUiOverlayStyle,
     this.showScreenInfo = false,
     this.showConnectivityInfo = true,
@@ -29,7 +25,8 @@ class MyUI extends StatelessWidget {
 
   final Widget child;
   final bool isDark;
-  final bool enabledSafeArea;
+  final bool safeAreaTop;
+  final bool safeAreaBottom;
   final SystemUiOverlayStyle? customUiOverlayStyle;
   final bool showScreenInfo;
   final bool showConnectivityInfo;
@@ -41,16 +38,30 @@ class MyUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onPanCancel: () => _timer?.cancel(),
-      onPanDown: (details) {
-        _timer = Timer(Duration(seconds: 5), () {
-          context.goto(page: DevInfoView());
-        });
-      },
-      onLongPress: () {
-        // SnackBarService.show(message: 'it is a long press');
-        NotificationService.show(title: 'Ini title', message: 'Ini hanya sebuah pesan !');
-      },
+      // onPanCancel: () {
+      //   debugPrint('My_UI: onPanCancel');
+      //   _timer?.cancel();
+      //   _timer = null;
+      // },
+      // onPanEnd: (details) {
+      //   debugPrint('My_UI: onPanEnd');
+      //   _timer?.cancel();
+      //   _timer = null;
+      // },
+      // onPanDown: (details) async {
+      //   debugPrint('My_UI: onPanDown');
+      //   _timer?.cancel();
+      //   _timer = null;
+      //   _timer = Timer(Duration(seconds: 5), () {
+      //     context.goto(page: DevInfoView());
+      //     _timer?.cancel();
+      //     _timer = null;
+      //   });
+      // },
+      // onLongPress: () {
+      //   // SnackBarService.show(message: 'it is a long press');
+      //   NotificationService.show(title: 'Ini title', message: 'Ini hanya sebuah pesan !');
+      // },
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: customUiOverlayStyle ?? (isDark ? SystemUIOverlay.darkColorOverlay : SystemUIOverlay.lightColorOverlay),
         child: MediaQuery(
@@ -82,8 +93,8 @@ class MyUI extends StatelessWidget {
                     child: customAppBarBackground!,
                   ),
                 SafeArea(
-                  top: enabledSafeArea,
-                  bottom: false,
+                  top: safeAreaTop,
+                  bottom: safeAreaBottom,
                   child: child,
                 ),
                 // Container(

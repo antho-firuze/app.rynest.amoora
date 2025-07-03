@@ -105,7 +105,7 @@ class _JelajahViewState extends ConsumerState<JelajahView> {
               }
             },
             child: MyUI(
-              enabledSafeArea: false,
+              safeAreaTop: false,
               child: Scaffold(
                 body: Stack(
                   alignment: Alignment.topCenter,

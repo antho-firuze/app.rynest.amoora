@@ -16,8 +16,11 @@ class ChapterNo extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        SvgPicture.asset('assets/icons/quran/surah-number.svg', color: oGold300),
-        Text("${num}").family('diodrum').size(18).bold().center(),
+        SvgPicture.asset(
+          'assets/icons/quran/surah-number.svg',
+          colorFilter: ColorFilter.mode(oGold300, BlendMode.srcIn),
+        ),
+        Text("$num").family('diodrum').size(18).bold().center(),
       ],
     );
   }

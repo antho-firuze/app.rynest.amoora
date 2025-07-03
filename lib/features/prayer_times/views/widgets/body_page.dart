@@ -1,16 +1,13 @@
-import 'package:amoora/common/controllers/location_ctrl.dart';
 import 'package:amoora/common/widgets/clipper/smile_clipper.dart';
 import 'package:amoora/common/widgets/skelton.dart';
 import 'package:amoora/core/app_color.dart';
-import 'package:amoora/features/hijri_calendar/controller/hijri_calendar_ctrl.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
-import 'package:amoora/features/prayer_times/model/prayer_times.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/datetime_utils.dart';
 import 'package:amoora/utils/orientation_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:marquee/marquee.dart';
 
 class BodyPage extends ConsumerWidget {
   const BodyPage({
@@ -19,9 +16,7 @@ class BodyPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var placemark = ref.watch(placemarkProvider);
     double backHeight = context.screenHeight * (context.isLandscape() ? .8 : 0.75);
-    // print("Build");
     return Stack(
       children: [
         // BACKGROUND
@@ -45,126 +40,155 @@ class BodyPage extends ConsumerWidget {
         ),
         RefreshIndicator(
           onRefresh: () async {
-            ref.refresh(fetchLocationProvider);
+            ref.refresh(fetchPrayerDateProvider);
+            ref.refresh(fetchPrayerLocationProvider);
+            ref.refresh(currentPrayerTimeProvider);
             ref.refresh(fetchPrayerTimesProvider);
+            ref.refresh(remainingNextPrayerTimeProvider);
           },
-          child: ListView(
-            // crossAxisAlignment: CrossAxisAlignment.center,
+          child: Column(
+            spacing: 10,
             children: [
-              140.whenLandscape(90)!.height,
-              // Gregorian / Hijri Date
-              Consumer(
-                builder: (context, ref, child) {
-                  var hijri = ref.watch(hijriDateProvider);
-                  var hijriStr = " / ${hijri?.day} ${hijri?.month?.en} ${hijri?.year} H";
-                  final dateStr = "${DateTime.now().yMMMd()}${hijri != null ? hijriStr : ''}";
-                  debugPrint('dateStr => $dateStr');
-                  return Text(dateStr).tsTitleL().family('glyphs').bold().clr(oGold).center();
-                },
-              ),
-              3.height,
-              // Location
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Center(
-                  child: ref.watch(fetchLocationProvider).when(
-                        skipLoadingOnRefresh: false,
-                        data: (data) => Row(
-                          // mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(Icons.near_me, color: oGold200),
-                            10.width,
-                            context.isLandscape()
-                                ? Text(ref.watch(locationProvider)).tsTitleL().ellipsis().center().clr(oWhite50)
-                                : SizedBox(
-                                    width: context.isBigScreen ? null : context.screenWidthRatio(.7, .5),
-                                    child:
-                                        Text(ref.watch(locationProvider)).tsTitleL().ellipsis().center().clr(oWhite50),
-                                  ),
-                            10.width,
-                            Text(countryCodeToEmoji(placemark?.isoCountryCode)).tsHeadlineS(),
-                          ],
-                        ),
-                        error: (error, stackTrace) => Container(),
-                        loading: () => Skelton(width: 200),
+              // 140.whenLandscape(90)!.height,
+              context.screenHeightRatio(.15, .2).height,
+              // Gregorian / Hijri Date => 27 Jun 2025 / 1 Muharram 1447 H
+              ref.watch(fetchPrayerDateProvider).when(
+                    skipLoadingOnRefresh: false,
+                    data: (data) =>
+                        Text("${data[0]} M / ${data[1]} H").tsTitleL().family('glyphs').bold().clr(oGold).center(),
+                    error: (error, stackTrace) => Text('$error').tsTitleL().family('glyphs').bold().clr(oGold).center(),
+                    loading: () => Skelton(width: 200),
+                  ),
+              // Location => Waktu sholat daerah Depok, Indonesia
+              ref.watch(fetchPrayerLocationProvider).when(
+                    skipLoadingOnRefresh: false,
+                    data: (data) => Center(
+                      child: Row(
+                        spacing: 10,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.near_me, color: oGold200),
+                          SizedBox(
+                            width: context.isBigScreen ? null : context.screenWidthRatio(.7, .5),
+                            height: 20,
+                            child: Marquee(
+                              text: "Waktu sholat daerah ${data[0]}, ${data[1]}",
+                              style: tsBodyL().clr(oGold),
+                              blankSpace: context.screenWidthRatio(.1, .1),
+                              accelerationDuration: const Duration(seconds: 3),
+                              accelerationCurve: Curves.linear,
+                              fadingEdgeStartFraction: .1,
+                              fadingEdgeEndFraction: .1,
+                              showFadingOnlyWhenScrolling: false,
+                            ),
+                          ),
+                          Text(countryCodeToEmoji(data[2])).tsHeadlineS(),
+                        ],
                       ),
-                ),
-              ),
-              15.height,
-              Consumer(
-                builder: (context, ref, child) {
-                  var prayer = ref.watch(prayerTimesProvider);
-                  return ref.watch(fetchPrayerTimesProvider).when(
-                        skipLoadingOnRefresh: false,
-                        data: (data) => Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Waktu sholat berikutnya '.hardcoded).tsTitleL().clr(oWhite50),
-                            3.width,
-                            Text(prayer?.nextPrayer() ?? '-').tsHeadlineS().bold().clr(oGold),
-                            3.width,
-                            const Text(', Jam').tsTitleL().bold().clr(oGold),
-                            3.width,
-                            Text(prayer?.nextPrayerTime() ?? '-').tsHeadlineS().bold().clr(oGold),
-                          ],
-                        ),
-                        error: (error, stackTrace) => Container(),
-                        loading: () => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Skelton(),
-                        ),
-                      );
-                },
-              ),
-              5.height,
+                    ),
+                    error: (error, stackTrace) => Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.near_me_disabled, color: oGrey),
+                          10.width,
+                          Text('$error').tsTitleL().ellipsis().center().clr(oWhite50),
+                          10.width,
+                        ],
+                      ),
+                    ),
+                    loading: () => Skelton(width: 200),
+                  ),
+              // Current Prayer => Waktu sholat sekarang Dzuhur, Jam 13:12
+              ref.watch(currentPrayerTimeProvider).when(
+                    skipLoadingOnRefresh: false,
+                    data: (data) => Row(
+                      spacing: 3,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Waktu sholat sekarang '.hardcoded).tsTitleL().clr(oWhite50),
+                        Text(data[0]).tsHeadlineS().bold().clr(oGold),
+                        // const Text(', Jam').tsTitleL().bold().clr(oGold),
+                        // Text(data[1]).tsHeadlineS().bold().clr(oGold),
+                      ],
+                    ),
+                    error: (error, stackTrace) => Row(
+                      spacing: 3,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Waktu sholat sekarang '.hardcoded).tsTitleL().clr(oWhite50),
+                        Text('-').tsHeadlineS().bold().clr(oGold),
+                        // const Text(', Jam').tsTitleL().bold().clr(oGold),
+                        // Text('-').tsHeadlineS().bold().clr(oGold),
+                      ],
+                    ),
+                    loading: () => Skelton(width: 200),
+                  ),
+              // Metode => Kementerian Agama Republik Indonesia
               ref.watch(fetchPrayerTimesProvider).when(
                     skipLoadingOnRefresh: false,
                     data: (data) => Row(
+                      spacing: 3,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('Metode:'.hardcoded).clr(oWhite50),
-                        2.width,
                         Text(ref.watch(prayerMethodProvider)?.name ?? '').bold().clr(oWhite50),
                       ],
                     ),
-                    error: (error, stackTrace) => Container(),
-                    loading: () => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 40),
-                      child: Skelton(),
+                    error: (error, stackTrace) => Row(
+                      spacing: 3,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Metode:'.hardcoded).clr(oWhite50),
+                        Text('-').bold().clr(oWhite50),
+                      ],
                     ),
+                    loading: () => Skelton(width: 200),
                   ),
               if (!context.isLandscape()) ...[
-                30.height,
-                Consumer(builder: (context, ref, child) {
-                  return ref.watch(remainingNextPrayerTimeStreamProvider).when(
-                        data: (data) => Column(
-                          children: [
-                            const Text('Remaining').tsHeadlineM().clr(oWhite50),
-                            15.height,
-                            Text(data).tsHeadlineDM().bold().clr(oGold).family('roboto'),
-                          ],
-                        ),
-                        error: (error, stackTrace) =>
-                            const Text('00:00').tsHeadlineDM().bold().clr(oGold).family('roboto'),
-                        loading: () => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 50),
-                          child: const Skelton(width: 150),
-                        ),
-                      );
-                }),
+                10.height,
+                ref.watch(remainingNextPrayerTimeProvider).when(
+                      skipLoadingOnRefresh: false,
+                      data: (data) => Column(
+                        spacing: 10,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            spacing: 10,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Text('selanjutnya').tsTitleL().clr(oWhite50),
+                              Text(data[1]).tsHeadlineS().bold().clr(oGold),
+                              const Text('jam').tsTitleL().bold().clr(oWhite50),
+                              Text(data[2]).tsHeadlineS().bold().clr(oGold),
+                            ],
+                          ),
+                          Text('sisa waktu').tsTitleL().clr(oWhite50).bold(),
+                          Text(data[0]).tsHeadlineDM().bold().clr(oGold).family('roboto'),
+                        ],
+                      ),
+                      error: (error, stackTrace) =>
+                          const Text('00:00').tsHeadlineDM().bold().clr(oGold).family('roboto'),
+                      loading: () => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 50),
+                        child: const Skelton(width: 150),
+                      ),
+                    ),
               ],
               if (context.isLandscape()) ...[
                 15.height,
                 Consumer(builder: (context, ref, child) {
-                  return ref.watch(remainingNextPrayerTimeStreamProvider).when(
+                  return ref.watch(remainingNextPrayerTimeProvider).when(
                         data: (data) => Row(
+                          spacing: 10,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text('Remaining').tsHeadlineM().clr(oWhite50),
-                            10.width,
-                            Text(data).tsHeadlineL().bold().clr(oGold).family('roboto'),
+                            const Text('Sholat berikutnya').tsHeadlineM().clr(oWhite50),
+                            Text(data[0]).tsHeadlineL().bold().clr(oGold).family('roboto'),
+                            const Text('menuju Sholat').tsHeadlineM().clr(oWhite50),
+                            Text(data[1]).tsHeadlineM().clr(oWhite50),
                           ],
                         ),
                         error: (error, stackTrace) =>
@@ -176,63 +200,6 @@ class BodyPage extends ConsumerWidget {
                       );
                 }),
               ],
-              // ResponsiveScreen(
-              //   largeScreen: Column(
-              //     children: [
-              //       30.height,
-              //       const Text('Remaining').tsHeadlineM().clr(oWhite50),
-              //       15.height,
-              //       Consumer(builder: (context, ref, child) {
-              //         print('largeScreen');
-              //         return ref.watch(remainingNextPrayerTimeProvider).when(
-              //               data: (data) => Text(data).tsHeadlineDM().bold().clr(oGold).family('roboto'),
-              //               error: (error, stackTrace) =>
-              //                   const Text('00:00').tsHeadlineDM().bold().clr(oGold).family('roboto'),
-              //               loading: () => const Skelton(width: 150),
-              //             );
-              //       }),
-              //     ],
-              //   ),
-              //   child: Column(
-              //     children: [
-              //       if (!context.isLandscape()) ...[
-              //         30.height,
-              //         Consumer(builder: (context, ref, child) {
-              //           return ref.watch(remainingNextPrayerTimeProvider).when(
-              //                 data: (data) => Column(
-              //                   children: [
-              //                     const Text('Remaining').tsHeadlineM().clr(oWhite50),
-              //                     15.height,
-              //                     Text(data).tsHeadlineDM().bold().clr(oGold).family('roboto'),
-              //                   ],
-              //                 ),
-              //                 error: (error, stackTrace) =>
-              //                     const Text('00:00').tsHeadlineDM().bold().clr(oGold).family('roboto'),
-              //                 loading: () => const Skelton(width: 150),
-              //               );
-              //         }),
-              //       ],
-              //       if (context.isLandscape()) ...[
-              //         15.height,
-              //         Consumer(builder: (context, ref, child) {
-              //           return ref.watch(remainingNextPrayerTimeProvider).when(
-              //                 data: (data) => Row(
-              //                   mainAxisAlignment: MainAxisAlignment.center,
-              //                   children: [
-              //                     const Text('Remaining').tsHeadlineM().clr(oWhite50),
-              //                     10.width,
-              //                     Text(data).tsHeadlineL().bold().clr(oGold).family('roboto'),
-              //                   ],
-              //                 ),
-              //                 error: (error, stackTrace) =>
-              //                     const Text('00:00').tsHeadlineL().bold().clr(oGold).family('roboto'),
-              //                 loading: () => const Skelton(width: 150),
-              //               );
-              //         }),
-              //       ],
-              //     ],
-              //   ),
-              // ),
             ],
           ),
         ),

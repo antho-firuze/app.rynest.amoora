@@ -136,7 +136,7 @@ class HomeQuranView extends ConsumerWidget {
                 statusBarBrightness: context.isDarkMode ? Brightness.dark : Brightness.light,
                 statusBarIconBrightness: context.isDarkMode ? Brightness.dark : Brightness.light,
               ),
-        enabledSafeArea: false,
+        safeAreaTop: false,
         child: Scaffold(
           backgroundColor: context.colorBg,
           body: GestureDetector(

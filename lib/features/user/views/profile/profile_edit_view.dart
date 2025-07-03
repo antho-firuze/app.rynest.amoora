@@ -37,8 +37,8 @@ class ProfileEditView extends ConsumerWidget {
               child: CustomCircleButton(
                 size: 110,
                 child: member!.photo.isEmpty
-                    ? Image.asset('assets/images/sample/avatar.png', fit: BoxFit.cover)
-                    : Image.network('${AppBase.prodUrl}${member.photo}?id=${uuid.v4()}', fit: BoxFit.cover),
+                    ? Image.asset('assets/images/avatar.png', fit: BoxFit.cover)
+                    : Image.network('${AppBase.apiUrl}${member.photo}?id=${uuid.v4()}', fit: BoxFit.cover),
                 onTap: () async {
                   File? file = await context.goto(page: const MediaPickerView());
                   if (file == null) return;

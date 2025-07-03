@@ -1,14 +1,19 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:amoora/common/services/sharedpref_service.dart';
+import 'package:amoora/common/services/talker_service.dart';
 import 'package:amoora/features/quran2/controller/bookmark_ctrl.dart';
 import 'package:amoora/features/quran2/model/chapter.dart';
 import 'package:amoora/features/quran2/model/juz.dart';
 import 'package:amoora/features/quran2/model/verse.dart';
-import 'package:amoora/features/quran2/service/quran_service.dart';
+import 'package:amoora/utils/talker_utils.dart';
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+
+final _kLogName = 'QURAN-CTRL';
 
 enum FontType { arabic, latin, trans }
 
@@ -56,7 +61,7 @@ class QuranCtrl {
 
     loadSettings();
 
-    _chapters = await _fetchQuran();
+    _chapters = await _fetchChapters();
     _juzs = await _fetchJuzs();
     _verses = await fetchVerses();
 
@@ -140,15 +145,51 @@ class QuranCtrl {
     return _verses.getRange(start, end).toList();
   }
 
-  Future<List<Chapter>> _fetchQuran() async {
-    List<Map<String, Object>>? data = ref.read(quranServiceProvider).fetchQuran();
-    return data!.map(Chapter.fromJson).toList();
+  Future<List<Chapter>> _fetchChapters() async {
+    try {
+      log('_fetchChapters', name: _kLogName);
+      await Future.delayed(Duration(seconds: 1));
+      final response = await rootBundle.loadString('assets/json/quran_chapters.json');
+
+      if (response.isEmpty) return [];
+
+      List<dynamic>? jsonList = json.decode(response);
+      final result = jsonList?.map((e) => Chapter.fromJson(e)).toList();
+
+      return result ?? [];
+    } catch (e, s) {
+      ref.read(talkerProvider).errx("Error : _fetchChapters", exception: e, stackTrace: s, name: _kLogName);
+      rethrow;
+    }
   }
 
   Future<List<Juz>> _fetchJuzs() async {
-    List<Map<String, Object>>? data = ref.read(quranServiceProvider).fetchJuzs();
-    return data!.map(Juz.fromJson).toList();
+    try {
+      log('_fetchJuzs', name: _kLogName);
+      await Future.delayed(Duration(seconds: 1));
+      final response = await rootBundle.loadString('assets/json/quran_juzs.json');
+
+      if (response.isEmpty) return [];
+
+      List<dynamic>? jsonList = json.decode(response);
+      final result = jsonList?.map((e) => Juz.fromJson(e)).toList();
+
+      return result ?? [];
+    } catch (e, s) {
+      ref.read(talkerProvider).errx("Error : fetchJuzsProvider", exception: e, stackTrace: s, name: _kLogName);
+      rethrow;
+    }
   }
+
+  // Future<List<Chapter>> _fetchQuran() async {
+  //   List<Map<String, Object>>? data = ref.read(quranServiceProvider).fetchQuran();
+  //   return data!.map(Chapter.fromJson).toList();
+  // }
+
+  // Future<List<Juz>> _fetchJuzs() async {
+  //   List<Map<String, Object>>? data = ref.read(quranServiceProvider).fetchJuzs();
+  //   return data!.map(Juz.fromJson).toList();
+  // }
 
   Future<List<Verse>> fetchVerses() async {
     List<Verse> verses = [];

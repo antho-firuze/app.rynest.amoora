@@ -43,7 +43,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
   @override
   Widget build(BuildContext context) {
     return MyUI(
-      enabledSafeArea: false,
+      safeAreaTop: false,
       showConnectivityInfo: false,
       child: Scaffold(
         body: Stack(
@@ -107,13 +107,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
                             ],
                           ),
                           20.height,
-                          Text(
-                            'Umroh & Travel'.hardcoded,
-                            style: tsTitleL().copyWith(
-                              color: oGold50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          Text('Umroh & Travel'.hardcoded).tsTitleL().clr(oGold50).bold(),
                           40.height,
                         ],
                       ),

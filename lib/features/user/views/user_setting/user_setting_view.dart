@@ -101,7 +101,7 @@ class UserSettingView extends ConsumerWidget {
                   title: ListTile(
                     leading: const Icon(Icons.exit_to_app),
                     title: const Text('Keluar Akun').bold(),
-                    onTap: () => ref.read(authCtrlProvider).signOut(),
+                    onTap: () async => await ref.read(authCtrlProvider).signOut(),
                   ),
                 ),
               ],

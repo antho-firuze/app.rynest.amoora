@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:amoora/features/live_location/controller/live_maps_ctrl.dart';
-import 'package:amoora/features/live_streaming/controller/signaling_ctrl.dart';
+import 'package:amoora/features/live_streaming/controller/streaming_ctrl.dart';
 import 'package:amoora/features/user/controller/menu_ctrl.dart';
 import 'package:amoora/features/user/views/home/widgets/menu_button.dart';
 import 'package:amoora/utils/my_ui.dart';
@@ -15,8 +15,6 @@ class MenuView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onlineHost = ref.watch(onlineHostProvider);
-    // final presenter = ref.watch(presenterProvider);
     final onlineMember = ref.watch(onlineMemberProvider);
     log(':: onlineMember => $onlineMember');
 
@@ -37,22 +35,14 @@ class MenuView extends ConsumerWidget {
                 appMenus.length,
                 (index) {
                   final item = appMenus[index];
-                  if (item.code == 'listener') {
+                  if (item.code == 'streaming') {
                     return MenuButton(
                       item: item,
-                      count: onlineHost.length,
+                      count: ref.watch(streamerCountProvider),
                       iconPath: ref.read(menuCtrlProvider).getIconPath(item.code),
                       onTap: () async => await ref.read(menuCtrlProvider).goto(item.code),
                     );
                   }
-                  // if (item.code == 'presenter') {
-                  //   return MenuButton(
-                  //     item: item,
-                  //     count: presenter == null ? 0 : 1,
-                  //     iconPath: ref.read(menuCtrlProvider).getIconPath(item.code),
-                  //     onTap: () async => await ref.read(menuCtrlProvider).goto(item.code),
-                  //   );
-                  // }
                   if (item.code == 'liveLocation') {
                     return MenuButton(
                       item: item,

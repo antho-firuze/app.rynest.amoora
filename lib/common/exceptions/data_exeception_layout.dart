@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:amoora/common/controllers/network_ctrl.dart';
 import 'package:amoora/core/app_color.dart';
+import 'package:amoora/utils/theme_utils.dart';
 import 'package:amoora/utils/ui_helper.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -91,15 +92,16 @@ class ExceptionLayout extends StatelessWidget {
         spacing: 10,
         children: [
           if (image.isNotEmpty) Image.asset(image, width: context.screenWidthRatio(.5, .3)),
-          Text(message).tsTitleM().center().clr(foregroundColor),
+          Text(message).tsTitleM().center().clr(foregroundColor.whenDark(null)),
           GestureDetector(
             onTap: onTap,
             child: Opacity(
-              opacity: .3,
+              opacity: .5,
               child: Column(
                 children: [
-                  Icon(SuperIcons.is_refresh_2_bold, size: 35, color: foregroundColor),
-                  Text(reload).size(10).clr(foregroundColor),
+                  Icon(SuperIcons.is_refresh_2_bold,
+                      size: 35, color: onTap == null ? oGrey : foregroundColor.whenDark(null)),
+                  Text(reload).size(10).clr(onTap == null ? oGrey : foregroundColor.whenDark(null)),
                 ],
               ),
             ),

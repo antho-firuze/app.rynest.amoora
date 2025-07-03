@@ -1,4 +1,3 @@
-import 'package:amoora/core/app_config.dart';
 import 'package:amoora/env/env.dart';
 
 class AppBase {
@@ -6,8 +5,9 @@ class AppBase {
   static const animationPath = "assets/animations";
   static const iconPath = "assets/icons";
   static const placeholderPath = "assets/placeholders";
-  static String prodUrl = Env.liveApiUrl;
-  static String testUrl = Env.localApiUrl;
-  static String url = AppConfig.devMode ? AppBase.testUrl : AppBase.prodUrl;
-  static String broadcastStreamUrl = Env.liveSseUrl;
+  static String apiUrl = Env.envConfig == "DEVELOPMENT" ? Env.devApiUrl : Env.apiUrl;
+  static String sseUrl = Env.envConfig == "DEVELOPMENT" ? Env.devSseUrl : Env.sseUrl;
+  static String pusherUrl = Env.envConfig == "DEVELOPMENT" ? Env.devPusherUrl : Env.pusherUrl;
+  static String pusherKey = Env.envConfig == "DEVELOPMENT" ? Env.devPusherKey : Env.pusherKey;
+  static String pusherAuthUrl = Env.envConfig == "DEVELOPMENT" ? Env.devPusherAuthUrl : Env.pusherAuthUrl;
 }
