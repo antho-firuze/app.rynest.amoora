@@ -9,9 +9,9 @@ import 'package:amoora/features/prayers/views/prayers_view.dart';
 import 'package:amoora/features/qibla/view/qibla_view.dart';
 import 'package:amoora/features/quran2/views/home_quran_view.dart';
 import 'package:amoora/features/user/model/app_menu.dart';
-import 'package:amoora/core/app_asset.dart';
+import 'package:amoora/cff/core/app_asset.dart';
 import 'package:amoora/features/user/service/menu_service.dart';
-import 'package:amoora/utils/page_utils.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MenuCtrl {

@@ -1,10 +1,10 @@
-import 'package:amoora/common/widgets/one_ui/one_ui_nested_scroll_view.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/widgets/one_ui/one_ui_nested_scroll_view.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/agenda/views/widgets/agenda_header.dart';
 import 'package:amoora/features/agenda/views/widgets/agenda_list.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/my_ui.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 
 class AgendaView extends StatelessWidget {

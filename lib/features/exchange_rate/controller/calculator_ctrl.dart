@@ -1,5 +1,5 @@
 import 'package:amoora/features/exchange_rate/controller/exchange_rate_ctrl.dart';
-import 'package:amoora/utils/currency_utils.dart';
+import 'package:amoora/cff/utils/currency_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:math_expressions/math_expressions.dart';
 

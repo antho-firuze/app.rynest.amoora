@@ -1,12 +1,12 @@
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/quran/controller/bookmark_controller.dart';
 import 'package:amoora/features/quran/controller/quran_notifier.dart';
 import 'package:amoora/features/quran/helper/quran_asset.dart';
 import 'package:amoora/features/quran/helper/quran_string.dart';
 import 'package:amoora/features/quran/views/widgets/info_text.dart';
-import 'package:amoora/utils/theme_utils.dart';
-import 'package:amoora/utils/page_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/theme_utils.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';

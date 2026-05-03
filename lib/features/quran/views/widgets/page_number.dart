@@ -1,5 +1,5 @@
 import 'package:amoora/features/quran/controller/quran_notifier.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

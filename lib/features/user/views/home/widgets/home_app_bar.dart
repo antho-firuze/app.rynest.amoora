@@ -1,5 +1,5 @@
-import 'package:amoora/common/widgets/app_logo.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/widgets/app_logo.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {

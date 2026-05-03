@@ -1,12 +1,12 @@
 // ignore_for_file: provider_parameters
 
-import 'package:amoora/common/widgets/button/custom_iconbutton.dart';
-import 'package:amoora/common/widgets/custom_ink_well.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/widgets/button/custom_iconbutton.dart';
+import 'package:amoora/cff/widgets/custom_ink_well.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/exchange_rate/controller/exchange_rate_ctrl.dart';
-import 'package:amoora/utils/currency_utils.dart';
-import 'package:amoora/utils/datetime_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/currency_utils.dart';
+import 'package:amoora/cff/utils/datetime_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:super_icons/super_icons.dart';

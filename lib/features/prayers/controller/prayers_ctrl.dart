@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:amoora/common/services/alert_service.dart';
-import 'package:amoora/common/services/sharedpref_service.dart';
+import 'package:amoora/cff/services/alert_service.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
 import 'package:amoora/features/prayers/model/prayer.dart';
 import 'package:amoora/features/prayers/service/prayer_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

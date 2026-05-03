@@ -3,9 +3,9 @@ import 'package:amoora/features/exchange_rate/controller/calculator_ctrl.dart';
 import 'package:amoora/features/exchange_rate/views/widgets/info_exchange.dart';
 import 'package:amoora/features/exchange_rate/views/widgets/monitor.dart';
 import 'package:amoora/features/exchange_rate/views/widgets/numpad.dart';
-import 'package:amoora/utils/my_ui.dart';
-import 'package:amoora/utils/orientation_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
+import 'package:amoora/cff/utils/orientation_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

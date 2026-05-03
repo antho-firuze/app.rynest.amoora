@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:amoora/utils/json_converter_utils.dart';
+import 'package:amoora/cff/utils/json_converter_utils.dart';
 
 part 'hijri.freezed.dart';
 part 'hijri.g.dart';

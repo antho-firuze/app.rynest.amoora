@@ -1,5 +1,5 @@
-import 'package:amoora/core/app_theme.dart';
-import 'package:amoora/utils/theme_utils.dart';
+import 'package:amoora/cff/core/app_theme.dart';
+import 'package:amoora/cff/utils/theme_utils.dart';
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {

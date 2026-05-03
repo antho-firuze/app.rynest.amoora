@@ -1,7 +1,7 @@
 import 'package:amoora/features/user/views/menu_view.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/page_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 
 class BlogList extends StatelessWidget {

@@ -1,8 +1,8 @@
 
-import 'package:amoora/common/models/reqs.dart';
-import 'package:amoora/common/services/api_service.dart';
+import 'package:amoora/cff/models/reqs.dart';
+import 'package:amoora/cff/services/api_service.dart';
 import 'package:amoora/features/user/model/carousel.dart';
-import 'package:amoora/utils/custom_carousel_controller.dart';
+import 'package:amoora/cff/utils/custom_carousel_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final homeCarouselController = CustomCarouselController();

@@ -1,11 +1,11 @@
-import 'package:amoora/common/widgets/overlay_container.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/widgets/overlay_container.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/prayers/controller/prayers_ctrl.dart';
 import 'package:amoora/features/prayers/controller/prayers_experience.dart';
 import 'package:amoora/features/prayers/model/prayer.dart';
-import 'package:amoora/utils/string_utils.dart';
-import 'package:amoora/utils/theme_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/string_utils.dart';
+import 'package:amoora/cff/utils/theme_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

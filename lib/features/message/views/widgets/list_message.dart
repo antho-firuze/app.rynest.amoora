@@ -1,6 +1,6 @@
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/message/repository/chat_data.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

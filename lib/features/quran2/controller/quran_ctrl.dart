@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amoora/common/services/sharedpref_service.dart';
-import 'package:amoora/common/services/talker_service.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
+import 'package:amoora/cff/services/talker_service.dart';
 import 'package:amoora/features/quran2/controller/bookmark_ctrl.dart';
 import 'package:amoora/features/quran2/model/chapter.dart';
 import 'package:amoora/features/quran2/model/juz.dart';
 import 'package:amoora/features/quran2/model/verse.dart';
-import 'package:amoora/utils/talker_utils.dart';
+import 'package:amoora/cff/utils/talker_utils.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -158,7 +158,7 @@ class QuranCtrl {
 
       return result ?? [];
     } catch (e, s) {
-      ref.read(talkerProvider).errx("Error : _fetchChapters", exception: e, stackTrace: s, name: _kLogName);
+      ref.read(talkerProvider).errx("Error : _fetchChapters", error: e, stackTrace: s, name: _kLogName);
       rethrow;
     }
   }
@@ -176,7 +176,7 @@ class QuranCtrl {
 
       return result ?? [];
     } catch (e, s) {
-      ref.read(talkerProvider).errx("Error : fetchJuzsProvider", exception: e, stackTrace: s, name: _kLogName);
+      ref.read(talkerProvider).errx("Error : fetchJuzsProvider", error: e, stackTrace: s, name: _kLogName);
       rethrow;
     }
   }

@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:amoora/features/quran/helper/quran_helper.dart';
 import 'package:amoora/features/quran/service/quran_service.dart';
-import 'package:amoora/utils/path_service.dart';
+import 'package:amoora/cff/utils/path_service.dart';
 import 'package:flutter_archive/flutter_archive.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

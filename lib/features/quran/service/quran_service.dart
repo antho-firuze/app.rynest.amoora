@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:amoora/env/env.dart';
-import 'package:amoora/utils/dio_service.dart';
+import 'package:amoora/cff/env/env.dart';
+import 'package:amoora/cff/utils/dio_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class QuranService {

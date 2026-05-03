@@ -1,6 +1,6 @@
 import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';

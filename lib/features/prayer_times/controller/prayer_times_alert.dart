@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:amoora/common/services/sharedpref_service.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final alertPrayerScheduleProvider = StateProvider<bool>((ref) => false);

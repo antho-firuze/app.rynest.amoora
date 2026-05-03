@@ -1,10 +1,10 @@
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/quran2/controller/quran_ctrl.dart';
 import 'package:amoora/features/quran2/views/chapter_view.dart';
 import 'package:amoora/features/quran2/views/widgets/chapter_no.dart';
-import 'package:amoora/utils/page_utils.dart';
-import 'package:amoora/utils/theme_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
+import 'package:amoora/cff/utils/theme_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

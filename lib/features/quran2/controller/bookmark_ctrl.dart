@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amoora/common/services/alert_service.dart';
-import 'package:amoora/common/services/sharedpref_service.dart';
+import 'package:amoora/cff/services/alert_service.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
 import 'package:amoora/features/quran2/controller/quran_ctrl.dart';
 import 'package:amoora/features/quran2/model/bookmark.dart';
 import 'package:amoora/features/quran2/model/recent.dart';

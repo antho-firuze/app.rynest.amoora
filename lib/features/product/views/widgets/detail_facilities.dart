@@ -1,8 +1,8 @@
-import 'package:amoora/common/widgets/custom_card.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/widgets/custom_card.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/orientation_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/orientation_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 
 class DetailFacilities extends StatelessWidget {

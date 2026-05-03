@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:amoora/common/controllers/location_ctrl.dart';
-import 'package:amoora/common/controllers/network_ctrl.dart';
-import 'package:amoora/common/services/permission_service.dart';
-import 'package:amoora/common/widgets/clipper/smile_clipper.dart';
+import 'package:amoora/cff/controllers/location_ctrl.dart';
+import 'package:amoora/cff/controllers/network_ctrl.dart';
+import 'package:amoora/cff/services/permission_service.dart';
+import 'package:amoora/cff/widgets/clipper/smile_clipper.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/notification/controller/notification_ctrl.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_ctrl.dart';
@@ -18,12 +18,12 @@ import 'package:amoora/features/user/views/home/widgets/info_clock.dart';
 import 'package:amoora/features/user/views/home/widgets/info_location.dart';
 import 'package:amoora/features/user/views/menu_view.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/my_ui.dart';
-import 'package:amoora/utils/page_utils.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:amoora/core/app_color.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/core/app_color.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});

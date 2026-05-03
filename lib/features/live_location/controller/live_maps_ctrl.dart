@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amoora/common/models/latlong.dart';
-import 'package:amoora/common/services/maps_service.dart';
-import 'package:amoora/common/services/sharedpref_service.dart';
+import 'package:amoora/cff/models/latlong.dart';
+import 'package:amoora/cff/services/maps_service.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/live_location/model/member.dart';
 import 'package:amoora/features/live_location/views/widgets/body_page.dart';
-import 'package:amoora/utils/distance_utils.dart';
-import 'package:amoora/utils/duration_utils.dart';
-import 'package:amoora/utils/maps_utils.dart';
+import 'package:amoora/cff/utils/distance_utils.dart';
+import 'package:amoora/cff/utils/duration_utils.dart';
+import 'package:amoora/cff/utils/maps_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

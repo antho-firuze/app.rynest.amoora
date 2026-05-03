@@ -1,19 +1,20 @@
 import 'dart:io';
 
-import 'package:amoora/common/views/media_picker/media_picker_view.dart';
-import 'package:amoora/common/widgets/button/custom_button.dart';
-import 'package:amoora/common/widgets/button/custom_circle_button.dart';
-import 'package:amoora/common/widgets/entry_page/entry_page.dart';
-import 'package:amoora/common/widgets/forms/group_list.dart';
-import 'package:amoora/common/widgets/forms/three_line.dart';
-import 'package:amoora/core/app_base.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/views/media_picker/media_picker_view.dart';
+import 'package:amoora/cff/widgets/button/custom_button.dart';
+import 'package:amoora/cff/widgets/button/custom_circle_button.dart';
+import 'package:amoora/cff/widgets/custom_avatar.dart';
+import 'package:amoora/cff/widgets/entry_page/entry_page.dart';
+import 'package:amoora/cff/widgets/forms/group_list.dart';
+import 'package:amoora/cff/widgets/forms/three_line.dart';
+import 'package:amoora/cff/core/app_base.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/user/controller/profile_ctrl.dart';
-import 'package:amoora/utils/my_ui.dart';
-import 'package:amoora/utils/page_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
-import 'package:amoora/utils/uuid_service.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/uuid_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:super_icons/super_icons.dart';
@@ -34,18 +35,22 @@ class ProfileEditView extends ConsumerWidget {
             5.height,
             Align(
               alignment: Alignment.topCenter,
-              child: CustomCircleButton(
+              child: CustomAvatar(
                 size: 110,
-                child: member!.photo.isEmpty
-                    ? Image.asset('assets/images/avatar.png', fit: BoxFit.cover)
-                    : Image.network('${AppBase.apiUrl}${member.photo}?id=${uuid.v4()}', fit: BoxFit.cover),
-                onTap: () async {
-                  File? file = await context.goto(page: const MediaPickerView());
-                  if (file == null) return;
-
-                  await ref.read(profileCtrlProvider).uploadPhoto(file);
-                },
+                // image: member?.photo,
               ),
+              // child: CustomCircleButton(
+              //   size: 110,
+              //   child: member!.photo.isEmpty
+              //       ? Image.asset('assets/images/avatar.png', fit: BoxFit.cover)
+              //       : Image.network('${AppBase.apiUrl}${member.photo}?id=${uuid.v4()}', fit: BoxFit.cover),
+              //   onTap: () async {
+              //     File? file = await context.goto(page: const MediaPickerView());
+              //     if (file == null) return;
+
+              //     await ref.read(profileCtrlProvider).uploadPhoto(file);
+              //   },
+              // ),
             ),
             10.height,
             Center(
@@ -69,7 +74,7 @@ class ProfileEditView extends ConsumerWidget {
                     children: [
                       ThreeLine(
                         caption: 'Nama Panggilan',
-                        value: member.name,
+                        value: "${member?.name}",
                         trailing: SuperIcons.is_arrow_circle_right_outline,
                         onTap: () {
                           context.goto(
@@ -77,7 +82,7 @@ class ProfileEditView extends ConsumerWidget {
                               title: 'Ubah Nama Panggilan',
                               hint: 'Tulis nama panggilan',
                               description: 'Gunakan nama panggilan sehari-hari agar memudahkan identifikasi',
-                              initialValue: member.name,
+                              initialValue: "${member?.name}",
                               type: Type.name,
                               onSubmit: (val) async => await ref.read(profileCtrlProvider).updateProfile({"name": val}),
                             ),
@@ -87,7 +92,7 @@ class ProfileEditView extends ConsumerWidget {
                       20.height,
                       ThreeLine(
                         caption: 'Username',
-                        value: member.identifier,
+                        value: "${member?.identifier}",
                         trailing: SuperIcons.is_arrow_circle_right_outline,
                       ),
                     ],
@@ -105,19 +110,19 @@ class ProfileEditView extends ConsumerWidget {
                     children: [
                       ThreeLine(
                         caption: 'User ID',
-                        value: member.userId.toString(),
+                        value: "${member?.userId}",
                         trailing: SuperIcons.is_copy_outline,
                       ),
                       20.height,
                       ThreeLine(
                         caption: 'Member ID',
-                        value: member.memberId.toString(),
+                        value: "${member?.memberId}",
                         trailing: SuperIcons.is_copy_outline,
                       ),
                       20.height,
                       ThreeLine(
                         caption: 'Nama Lengkap',
-                        value: member.fullName,
+                        value: "${member?.fullName}",
                         trailing: SuperIcons.is_arrow_circle_right_outline,
                         onTap: () {
                           context.goto(
@@ -126,7 +131,7 @@ class ProfileEditView extends ConsumerWidget {
                               hint: 'Tulis nama lengkap',
                               description:
                                   'Gunakan nama asli untuk memudahkan verifikasi. Nama ini akan tampil di beberapa halaman.',
-                              initialValue: member.fullName,
+                              initialValue: member?.fullName,
                               type: Type.name,
                               onSubmit: (val) async =>
                                   await ref.read(profileCtrlProvider).updateProfile({"full_name": val}),
@@ -137,7 +142,7 @@ class ProfileEditView extends ConsumerWidget {
                       20.height,
                       ThreeLine(
                         caption: 'Email',
-                        value: member.email,
+                        value: "${member?.email}",
                         trailing: SuperIcons.is_arrow_circle_right_outline,
                         onTap: () {
                           context.goto(
@@ -145,7 +150,7 @@ class ProfileEditView extends ConsumerWidget {
                               title: 'Ubah alamat email',
                               hint: 'Alamat email => Contoh: user@gmail.com',
                               description: 'Gunakan alamat email yang aktif untuk memudahkan verifikasi.',
-                              initialValue: member.email,
+                              initialValue: member?.email,
                               type: Type.email,
                               onSubmit: (val) async =>
                                   await ref.read(profileCtrlProvider).updateProfile({"email": val}),
@@ -156,7 +161,7 @@ class ProfileEditView extends ConsumerWidget {
                       20.height,
                       ThreeLine(
                         caption: 'Nomor HP',
-                        value: member.phone,
+                        value: "${member?.phone}",
                         trailing: SuperIcons.is_arrow_circle_right_outline,
                         onTap: () {
                           context.goto(
@@ -164,7 +169,7 @@ class ProfileEditView extends ConsumerWidget {
                               title: 'Ubah Nomor HP',
                               hint: 'Nomor HP => Contoh: 62812 1234 000',
                               description: 'Gunakan nomor hp yang aktif untuk memudahkan verifikasi.',
-                              initialValue: member.phone,
+                              initialValue: member?.phone,
                               type: Type.phone,
                               onSubmit: (val) async =>
                                   await ref.read(profileCtrlProvider).updateProfile({"phone": val}),
@@ -175,7 +180,7 @@ class ProfileEditView extends ConsumerWidget {
                       20.height,
                       ThreeLine(
                         caption: 'Alamat',
-                        value: member.address,
+                        value: "${member?.address}",
                         trailing: SuperIcons.is_arrow_circle_right_outline,
                         onTap: () {
                           context.goto(
@@ -183,7 +188,7 @@ class ProfileEditView extends ConsumerWidget {
                               title: 'Ubah Alamat Tinggal',
                               hint: 'Tulis alamat lengkap',
                               description: 'Masukkan alamat sesuai dengan KTP',
-                              initialValue: member.address,
+                              initialValue: member?.address,
                               type: Type.address,
                               allowEmpty: true,
                               onSubmit: (val) async =>
@@ -195,7 +200,7 @@ class ProfileEditView extends ConsumerWidget {
                       20.height,
                       ThreeLine(
                         caption: 'Nomor Pasport',
-                        value: member.passportNo ?? '-',
+                        value: member?.passportNo ?? '-',
                         trailing: SuperIcons.is_arrow_circle_right_outline,
                         onTap: () {
                           context.goto(
@@ -203,7 +208,7 @@ class ProfileEditView extends ConsumerWidget {
                               title: 'Ubah Nomor Pasport',
                               hint: 'Tulis nomor pasport',
                               // description: '',
-                              initialValue: member.passportNo ?? '',
+                              initialValue: member?.passportNo ?? '',
                               type: Type.text,
                               onSubmit: (val) async =>
                                   await ref.read(profileCtrlProvider).updateProfile({"passport_no": val}),

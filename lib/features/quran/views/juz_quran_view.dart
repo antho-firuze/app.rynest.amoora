@@ -1,6 +1,6 @@
 import 'package:amoora/features/quran/helper/quran_string.dart';
 import 'package:amoora/features/quran/views/widgets/juz_card.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 
 class JuzQuranView extends StatelessWidget {

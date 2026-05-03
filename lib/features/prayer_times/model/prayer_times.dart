@@ -1,6 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:amoora/utils/json_converter_utils.dart';
+import 'package:amoora/cff/utils/json_converter_utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'prayer_times.freezed.dart';

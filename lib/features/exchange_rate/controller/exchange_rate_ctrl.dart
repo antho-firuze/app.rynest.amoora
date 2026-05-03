@@ -1,8 +1,8 @@
 import 'dart:developer';
 
-import 'package:amoora/utils/datetime_utils.dart';
-import 'package:amoora/utils/dio_service.dart';
-import 'package:amoora/utils/string_utils.dart';
+import 'package:amoora/cff/utils/datetime_utils.dart';
+import 'package:amoora/cff/utils/dio_service.dart';
+import 'package:amoora/cff/utils/string_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:html/parser.dart' show parse;
 

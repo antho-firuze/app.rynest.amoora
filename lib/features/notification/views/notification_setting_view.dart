@@ -1,9 +1,9 @@
-import 'package:amoora/common/controllers/permission_ctrl.dart';
+import 'package:amoora/cff/controllers/permission_ctrl.dart';
 import 'package:amoora/features/notification/controller/notification_ctrl.dart';
 import 'package:amoora/features/prayer_times/controller/prayer_times_alert.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/my_ui.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -2,23 +2,23 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amoora/common/controllers/location_ctrl.dart';
-import 'package:amoora/common/controllers/network_ctrl.dart';
-import 'package:amoora/common/controllers/permission_ctrl.dart';
-import 'package:amoora/common/controllers/pusher_ctrl.dart';
-import 'package:amoora/common/models/reqs.dart';
-import 'package:amoora/common/services/alert_service.dart';
-import 'package:amoora/common/services/api_service.dart';
-import 'package:amoora/common/services/device_service.dart';
-import 'package:amoora/common/services/permission_service.dart';
-import 'package:amoora/common/services/sse_service2.dart';
-import 'package:amoora/common/services/talker_service.dart';
-import 'package:amoora/core/app_base.dart';
+import 'package:amoora/cff/controllers/location_ctrl.dart';
+import 'package:amoora/cff/controllers/network_ctrl.dart';
+import 'package:amoora/cff/controllers/permission_ctrl.dart';
+import 'package:amoora/cff/controllers/pusher_ctrl.dart';
+import 'package:amoora/cff/models/reqs.dart';
+import 'package:amoora/cff/services/alert_service.dart';
+import 'package:amoora/cff/services/api_service.dart';
+import 'package:amoora/cff/services/device_service.dart';
+import 'package:amoora/cff/services/permission_service.dart';
+import 'package:amoora/cff/services/sse_service2.dart';
+import 'package:amoora/cff/services/talker_service.dart';
+import 'package:amoora/cff/core/app_base.dart';
 import 'package:amoora/features/live_streaming/controller/audio_stream_signaling.dart';
 import 'package:amoora/features/live_streaming/model/streamer.dart';
-import 'package:amoora/utils/datetime_utils.dart';
-import 'package:amoora/utils/duration_utils.dart';
-import 'package:amoora/utils/talker_utils.dart';
+import 'package:amoora/cff/utils/datetime_utils.dart';
+import 'package:amoora/cff/utils/duration_utils.dart';
+import 'package:amoora/cff/utils/talker_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:uuid/uuid.dart';
@@ -291,7 +291,7 @@ class StreamingCtrl {
       // Closed user media
       await closedUserMedia();
 
-      ref.read(talkerProvider).errx("Error: start", exception: e, stackTrace: st, name: _kLogName);
+      ref.read(talkerProvider).errx("Error: start", error: e, stackTrace: st, name: _kLogName);
       return false;
     }
   }
@@ -313,7 +313,7 @@ class StreamingCtrl {
       // Set selfStreamerProvider
       ref.read(selfStreamerProvider.notifier).state = null;
     } catch (e, s) {
-      ref.read(talkerProvider).errx("Error: stop", exception: e, stackTrace: s, name: _kLogName);
+      ref.read(talkerProvider).errx("Error: stop", error: e, stackTrace: s, name: _kLogName);
     }
   }
 
@@ -337,7 +337,7 @@ class StreamingCtrl {
       // Set selectedStreamerProvider
       ref.read(selectedStreamerProvider.notifier).state = null;
 
-      ref.read(talkerProvider).errx("Error: join", exception: e, stackTrace: st, name: _kLogName);
+      ref.read(talkerProvider).errx("Error: join", error: e, stackTrace: st, name: _kLogName);
     }
   }
 
@@ -356,7 +356,7 @@ class StreamingCtrl {
       // Set selectedStreamerProvider
       ref.read(selectedStreamerProvider.notifier).state = null;
 
-      ref.read(talkerProvider).errx("Error: _joinAcceptedHandle", exception: e, stackTrace: st, name: _kLogName);
+      ref.read(talkerProvider).errx("Error: _joinAcceptedHandle", error: e, stackTrace: st, name: _kLogName);
     }
   }
 
@@ -372,7 +372,7 @@ class StreamingCtrl {
       // Set selectedStreamerProvider
       ref.read(selectedStreamerProvider.notifier).state = null;
     } catch (e, st) {
-      ref.read(talkerProvider).errx("Error: exit", exception: e, stackTrace: st, name: _kLogName);
+      ref.read(talkerProvider).errx("Error: exit", error: e, stackTrace: st, name: _kLogName);
     }
   }
 
@@ -383,7 +383,7 @@ class StreamingCtrl {
       // Set selectedStreamerProvider
       ref.read(selectedStreamerProvider.notifier).state = null;
     } catch (e, s) {
-      ref.read(talkerProvider).errx("Error: cancel", exception: e, stackTrace: s, name: _kLogName);
+      ref.read(talkerProvider).errx("Error: cancel", error: e, stackTrace: s, name: _kLogName);
     }
   }
 

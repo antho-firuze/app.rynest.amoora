@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:amoora/features/quran/controller/quran_notifier.dart';
-import 'package:amoora/common/services/sharedpref_service.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final bookmarkCtrlProvider = NotifierProvider<BookmarkCtrl, List<String>>(BookmarkCtrl.new);

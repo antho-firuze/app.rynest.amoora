@@ -3,12 +3,13 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:amoora/common/models/reqs.dart';
-import 'package:amoora/common/services/api_service.dart';
+import 'package:amoora/cff/models/reqs.dart';
+import 'package:amoora/cff/services/api_service.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/user/model/profile.dart';
-import 'package:amoora/utils/router.dart';
-import 'package:amoora/common/services/sharedpref_service.dart';
+import 'package:amoora/cff/utils/download_utils.dart';
+import 'package:amoora/cff/utils/router.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final _kLogName = 'PROFILE-CTRL';
@@ -57,6 +58,11 @@ class ProfileCtrl {
     final state = await AsyncValue.guard(() async => await ref.read(apiServiceProvider).call(reqs: reqs));
 
     final path = state.value['path'];
+
+    // Delete cache
+    ref.read(downloadUtilsProvider).deleteImageOndisk("fileName");
+    // Download & save to disk
+    ref.read(downloadUtilsProvider).downloadAndSaveImage(path, "fileName");
 
     ref.read(profileProvider.notifier).state = ref.read(profileProvider)?.copyWith(photo: path);
   }

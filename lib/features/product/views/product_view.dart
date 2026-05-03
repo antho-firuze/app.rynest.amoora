@@ -1,11 +1,11 @@
-import 'package:amoora/common/exceptions/data_exeception_layout.dart';
+import 'package:amoora/cff/exceptions/data_exeception_layout.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/features/product/views/product_detail_view.dart';
 import 'package:amoora/features/product/views/widgets/card_vert_view.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/my_ui.dart';
-import 'package:amoora/utils/page_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

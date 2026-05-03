@@ -1,14 +1,14 @@
-import 'package:amoora/common/controllers/permission_ctrl.dart';
-import 'package:amoora/common/exceptions/warning_layout.dart';
-import 'package:amoora/common/widgets/button/settings_button.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/controllers/permission_ctrl.dart';
+import 'package:amoora/cff/exceptions/warning_layout.dart';
+import 'package:amoora/cff/widgets/button/settings_button.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/notification/views/notification_setting_view.dart';
 import 'package:amoora/features/notification/views/widgets/empty_notification.dart';
 import 'package:amoora/features/notification/views/widgets/list_notification.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/theme_utils.dart';
-import 'package:amoora/utils/my_ui.dart';
-import 'package:amoora/utils/page_utils.dart';
+import 'package:amoora/cff/utils/theme_utils.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

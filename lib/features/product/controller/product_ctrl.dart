@@ -1,8 +1,8 @@
 
-import 'package:amoora/common/models/reqs.dart';
-import 'package:amoora/common/services/api_service.dart';
+import 'package:amoora/cff/models/reqs.dart';
+import 'package:amoora/cff/services/api_service.dart';
 import 'package:amoora/features/product/model/product.dart';
-import 'package:amoora/utils/datetime_utils.dart';
+import 'package:amoora/cff/utils/datetime_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 

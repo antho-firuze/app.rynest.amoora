@@ -1,5 +1,5 @@
-import 'package:amoora/common/widgets/forms/field_list.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/widgets/forms/field_list.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 
 class AgendaHeader extends StatelessWidget {

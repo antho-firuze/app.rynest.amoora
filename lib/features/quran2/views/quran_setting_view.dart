@@ -1,13 +1,13 @@
-import 'package:amoora/common/widgets/forms/group_list.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/widgets/forms/group_list.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/quran2/controller/quran_ctrl.dart';
 import 'package:amoora/features/quran2/views/widgets/arabic_font_dialog.dart';
 import 'package:amoora/features/quran2/views/widgets/latin_font_dialog.dart';
 import 'package:amoora/features/quran2/views/widgets/trans_font_dialog.dart';
-import 'package:amoora/common/widgets/appearance_dialog.dart';
+import 'package:amoora/cff/widgets/appearance_dialog.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/my_ui.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

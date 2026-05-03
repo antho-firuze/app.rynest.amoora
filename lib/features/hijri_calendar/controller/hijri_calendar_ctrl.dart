@@ -1,7 +1,7 @@
-import 'package:amoora/common/models/reqs.dart';
-import 'package:amoora/common/services/api_service.dart';
+import 'package:amoora/cff/models/reqs.dart';
+import 'package:amoora/cff/services/api_service.dart';
 import 'package:amoora/features/hijri_calendar/model/hijri.dart';
-import 'package:amoora/utils/datetime_utils.dart';
+import 'package:amoora/cff/utils/datetime_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final hijriDateProvider = StateProvider<Hijri?>((ref) => null);

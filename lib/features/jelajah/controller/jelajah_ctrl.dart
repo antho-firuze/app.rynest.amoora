@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amoora/common/controllers/location_ctrl.dart';
-import 'package:amoora/common/models/latlong.dart';
-import 'package:amoora/common/services/maps_service.dart';
-import 'package:amoora/common/services/sharedpref_service.dart';
-import 'package:amoora/env/env.dart';
+import 'package:amoora/cff/controllers/location_ctrl.dart';
+import 'package:amoora/cff/models/latlong.dart';
+import 'package:amoora/cff/services/maps_service.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
+import 'package:amoora/cff/env/env.dart';
 import 'package:amoora/features/jelajah/model/place.dart';
 import 'package:amoora/features/jelajah/views/widgets/body_page.dart';
-import 'package:amoora/utils/download_utils.dart';
+import 'package:amoora/cff/utils/download_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

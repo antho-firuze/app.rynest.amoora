@@ -1,6 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:amoora/utils/jwt_decoder.dart';
+import 'package:amoora/cff/utils/jwt_decoder.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'jwt_token.freezed.dart';

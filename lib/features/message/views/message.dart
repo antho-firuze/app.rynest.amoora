@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:amoora/core/app_color.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/core/app_color.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 
 class Message extends StatelessWidget {
   const Message({

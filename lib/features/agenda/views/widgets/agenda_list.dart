@@ -1,7 +1,7 @@
-import 'package:amoora/common/widgets/forms/field_list.dart';
-import 'package:amoora/core/app_color.dart';
-import 'package:amoora/utils/datetime_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/widgets/forms/field_list.dart';
+import 'package:amoora/cff/core/app_color.dart';
+import 'package:amoora/cff/utils/datetime_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 
 class AgendaList extends StatelessWidget {

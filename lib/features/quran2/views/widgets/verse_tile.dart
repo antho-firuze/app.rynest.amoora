@@ -1,13 +1,13 @@
-import 'package:amoora/common/widgets/custom_ink_well.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/widgets/custom_ink_well.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/quran2/controller/quran_ctrl.dart';
 import 'package:amoora/features/quran2/model/chapter.dart';
 import 'package:amoora/features/quran2/model/verse.dart';
 import 'package:amoora/features/quran2/views/widgets/custom_text.dart';
 import 'package:amoora/features/quran2/views/widgets/verse_bottom_sheet.dart';
 import 'package:amoora/features/quran2/views/widgets/verse_no.dart';
-import 'package:amoora/utils/theme_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/theme_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';

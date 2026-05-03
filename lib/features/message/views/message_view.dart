@@ -1,12 +1,12 @@
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/auth/views/signin_view.dart';
 import 'package:amoora/features/message/service/message_service.dart';
 import 'package:amoora/features/message/views/widgets/empty_message.dart';
 import 'package:amoora/features/message/views/widgets/list_message.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/theme_utils.dart';
-import 'package:amoora/utils/my_ui.dart';
+import 'package:amoora/cff/utils/theme_utils.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,15 +1,15 @@
 import 'dart:developer';
 
-import 'package:amoora/common/controllers/location_ctrl.dart';
-import 'package:amoora/common/controllers/permission_ctrl.dart';
-import 'package:amoora/common/models/reqs.dart';
-import 'package:amoora/common/services/api_service.dart';
-import 'package:amoora/env/env.dart';
+import 'package:amoora/cff/controllers/location_ctrl.dart';
+import 'package:amoora/cff/controllers/permission_ctrl.dart';
+import 'package:amoora/cff/models/reqs.dart';
+import 'package:amoora/cff/services/api_service.dart';
+import 'package:amoora/cff/env/env.dart';
 import 'package:amoora/features/hijri_calendar/controller/hijri_calendar_ctrl.dart';
 import 'package:amoora/features/hijri_calendar/model/hijri.dart';
 import 'package:amoora/features/prayer_times/model/prayer_times.dart';
-import 'package:amoora/utils/datetime_utils.dart';
-import 'package:amoora/utils/duration_utils.dart';
+import 'package:amoora/cff/utils/datetime_utils.dart';
+import 'package:amoora/cff/utils/duration_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 

@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:amoora/common/controllers/permission_ctrl.dart';
-import 'package:amoora/common/services/permission_service.dart';
-import 'package:amoora/common/services/sharedpref_service.dart';
-import 'package:amoora/common/services/sse_service2.dart';
-import 'package:amoora/core/app_base.dart';
+import 'package:amoora/cff/controllers/permission_ctrl.dart';
+import 'package:amoora/cff/services/permission_service.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
+import 'package:amoora/cff/services/sse_service2.dart';
+import 'package:amoora/cff/core/app_base.dart';
 import 'package:amoora/features/auth/controller/auth_ctrl.dart';
 import 'package:amoora/features/notification/model/alert.dart';
-import 'package:amoora/utils/dio_service.dart';
-import 'package:amoora/utils/string_utils.dart';
+import 'package:amoora/cff/utils/dio_service.dart';
+import 'package:amoora/cff/utils/string_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final _kLogName = "NOTIFICATION-CTRL";

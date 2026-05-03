@@ -1,5 +1,5 @@
 import 'package:amoora/features/quran/helper/quran_asset.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

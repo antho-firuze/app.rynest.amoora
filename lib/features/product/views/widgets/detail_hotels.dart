@@ -1,10 +1,10 @@
-import 'package:amoora/common/widgets/button/custom_iconbutton.dart';
-import 'package:amoora/common/widgets/custom_rating_star.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/widgets/button/custom_iconbutton.dart';
+import 'package:amoora/cff/widgets/custom_rating_star.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/datetime_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/datetime_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';

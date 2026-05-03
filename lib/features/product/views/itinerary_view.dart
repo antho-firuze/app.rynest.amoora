@@ -1,10 +1,10 @@
-import 'package:amoora/common/exceptions/data_exeception_layout.dart';
-import 'package:amoora/common/widgets/forms/left_right.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/exceptions/data_exeception_layout.dart';
+import 'package:amoora/cff/widgets/forms/left_right.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
-import 'package:amoora/utils/datetime_utils.dart';
-import 'package:amoora/utils/my_ui.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/datetime_utils.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';

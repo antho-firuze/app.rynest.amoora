@@ -1,14 +1,14 @@
-import 'package:amoora/common/controllers/location_ctrl.dart';
-import 'package:amoora/common/controllers/permission_ctrl.dart';
-import 'package:amoora/common/exceptions/warning_layout.dart';
-import 'package:amoora/common/services/permission_service.dart';
-import 'package:amoora/core/app_string.dart';
+import 'package:amoora/cff/controllers/location_ctrl.dart';
+import 'package:amoora/cff/controllers/permission_ctrl.dart';
+import 'package:amoora/cff/exceptions/warning_layout.dart';
+import 'package:amoora/cff/services/permission_service.dart';
+import 'package:amoora/cff/core/app_string.dart';
 import 'package:amoora/features/qibla/controller/qibla_ctrl.dart';
 import 'package:amoora/features/qibla/view/widgets/loading_indicator.dart';
 import 'package:amoora/features/qibla/view/widgets/qiblah_compass.dart';
 import 'package:amoora/features/qibla/view/widgets/qiblah_maps.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/utils/my_ui.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

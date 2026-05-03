@@ -2,20 +2,20 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amoora/common/models/reqs.dart';
-import 'package:amoora/common/services/api_service.dart';
-import 'package:amoora/core/app_config.dart';
+import 'package:amoora/cff/models/reqs.dart';
+import 'package:amoora/cff/services/api_service.dart';
+import 'package:amoora/cff/core/app_config.dart';
 import 'package:amoora/features/auth/model/jwt_token.dart';
 import 'package:amoora/features/auth/model/user.dart';
 import 'package:amoora/features/auth/views/code_verify_view.dart';
 import 'package:amoora/features/auth/views/signin_view.dart';
 import 'package:amoora/features/user/controller/profile_ctrl.dart';
 import 'package:amoora/localization/string_hardcoded.dart';
-import 'package:amoora/common/services/alert_service.dart';
-import 'package:amoora/utils/page_utils.dart';
-import 'package:amoora/utils/router.dart';
-import 'package:amoora/common/services/sharedpref_service.dart';
-import 'package:amoora/common/services/snackbar_service.dart';
+import 'package:amoora/cff/services/alert_service.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
+import 'package:amoora/cff/utils/router.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
+import 'package:amoora/cff/services/snackbar_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

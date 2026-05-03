@@ -4,8 +4,8 @@ import 'package:amoora/features/quran/controller/quran_experience.dart';
 import 'package:amoora/features/quran/helper/quran_helper.dart';
 import 'package:amoora/features/quran/model/quran.dart';
 import 'package:amoora/features/quran/repository/page_data.dart';
-import 'package:amoora/utils/router.dart';
-import 'package:amoora/common/services/sharedpref_service.dart';
+import 'package:amoora/cff/utils/router.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

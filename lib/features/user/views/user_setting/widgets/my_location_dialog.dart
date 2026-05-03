@@ -1,8 +1,8 @@
-import 'package:amoora/common/widgets/button/custom_button.dart';
-import 'package:amoora/common/widgets/custom_dialog.dart';
+import 'package:amoora/cff/widgets/button/custom_button.dart';
+import 'package:amoora/cff/widgets/custom_dialog.dart';
 import 'package:amoora/features/user/controller/user_setting_ctrl.dart';
-import 'package:amoora/utils/page_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

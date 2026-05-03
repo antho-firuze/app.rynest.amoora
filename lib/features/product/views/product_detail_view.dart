@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:amoora/common/exceptions/data_exeception_layout.dart';
-import 'package:amoora/common/models/reqs.dart';
-import 'package:amoora/common/widgets/button/custom_button.dart';
-import 'package:amoora/common/widgets/cross_paint.dart';
-import 'package:amoora/common/widgets/custom_interactive_viewer.dart';
-import 'package:amoora/common/widgets/one_ui/one_ui_nested_scroll_view.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/exceptions/data_exeception_layout.dart';
+import 'package:amoora/cff/models/reqs.dart';
+import 'package:amoora/cff/widgets/button/custom_button.dart';
+import 'package:amoora/cff/widgets/cross_paint.dart';
+import 'package:amoora/cff/widgets/custom_interactive_viewer.dart';
+import 'package:amoora/cff/widgets/one_ui/one_ui_nested_scroll_view.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/product/controller/product_ctrl.dart';
 import 'package:amoora/features/product/views/itinerary_view.dart';
 import 'package:amoora/features/product/views/widgets/detail_airlines.dart';
@@ -16,10 +16,10 @@ import 'package:amoora/features/product/views/widgets/detail_included.dart';
 import 'package:amoora/features/product/views/widgets/detail_not_included.dart';
 import 'package:amoora/features/product/views/widgets/detail_price.dart';
 import 'package:amoora/features/product/views/widgets/detail_terms_conditions.dart';
-import 'package:amoora/utils/download_utils.dart';
-import 'package:amoora/utils/my_ui.dart';
-import 'package:amoora/utils/page_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/download_utils.dart';
+import 'package:amoora/cff/utils/my_ui.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

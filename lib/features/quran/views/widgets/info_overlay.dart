@@ -1,7 +1,7 @@
 import 'package:amoora/features/quran/views/widgets/bottom_overlay.dart';
 import 'package:amoora/features/quran/views/widgets/landscape_overlay.dart';
 import 'package:amoora/features/quran/views/widgets/top_overlay.dart';
-import 'package:amoora/utils/orientation_utils.dart';
+import 'package:amoora/cff/utils/orientation_utils.dart';
 import 'package:flutter/material.dart';
 
 class InfoOverlay extends StatelessWidget {

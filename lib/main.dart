@@ -1,14 +1,14 @@
-import 'package:amoora/common/services/notification_service.dart';
-import 'package:amoora/common/services/talker_service.dart';
-import 'package:amoora/common/services/timezone_service.dart';
-import 'package:amoora/core/app_theme.dart';
-import 'package:amoora/common/services/sharedpref_service.dart';
-import 'package:amoora/utils/theme_utils.dart';
-import 'package:amoora/utils/maps_utils.dart';
+import 'package:amoora/cff/services/notification_service.dart';
+import 'package:amoora/cff/services/talker_service.dart';
+import 'package:amoora/cff/services/timezone_service.dart';
+import 'package:amoora/cff/core/app_theme.dart';
+import 'package:amoora/cff/services/sharedpref_service.dart';
+import 'package:amoora/localization/app_localizations.dart';
+import 'package:amoora/cff/utils/theme_utils.dart';
+import 'package:amoora/cff/utils/maps_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:amoora/utils/router.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:amoora/cff/utils/router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -18,7 +18,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureLocalTimeZone();
   await initializeFlutterLocalNotifications();
-  await initializeMapImplementation();
+  await initializeMapImplementation(); 
 
   final pref = await SharedPreferences.getInstance();
   final talker = TalkerFlutter.init();

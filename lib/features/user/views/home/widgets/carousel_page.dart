@@ -1,14 +1,14 @@
 import 'dart:io';
 
-import 'package:amoora/common/exceptions/image_failed_layout.dart';
-import 'package:amoora/common/models/reqs.dart';
-import 'package:amoora/common/widgets/custom_interactive_viewer.dart';
-import 'package:amoora/core/app_color.dart';
+import 'package:amoora/cff/exceptions/image_failed_layout.dart';
+import 'package:amoora/cff/models/reqs.dart';
+import 'package:amoora/cff/widgets/custom_interactive_viewer.dart';
+import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/features/user/controller/carousel_ctrl.dart';
-import 'package:amoora/utils/download_utils.dart';
-import 'package:amoora/utils/orientation_utils.dart';
-import 'package:amoora/utils/page_utils.dart';
-import 'package:amoora/utils/ui_helper.dart';
+import 'package:amoora/cff/utils/download_utils.dart';
+import 'package:amoora/cff/utils/orientation_utils.dart';
+import 'package:amoora/cff/utils/page_utils.dart';
+import 'package:amoora/cff/utils/ui_helper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
