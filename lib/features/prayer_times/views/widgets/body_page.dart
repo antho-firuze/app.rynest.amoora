@@ -16,7 +16,7 @@ class BodyPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    double backHeight = context.screenHeight * (context.isLandscape() ? .8 : 0.75);
+    double backHeight = context.screenHeight * (context.isLandscape ? .8 : 0.75);
     return Stack(
       children: [
         // BACKGROUND
@@ -147,7 +147,7 @@ class BodyPage extends ConsumerWidget {
                     ),
                     loading: () => Skelton(width: 200),
                   ),
-              if (!context.isLandscape()) ...[
+              if (!context.isLandscape) ...[
                 10.height,
                 ref.watch(remainingNextPrayerTimeProvider).when(
                       skipLoadingOnRefresh: false,
@@ -177,7 +177,7 @@ class BodyPage extends ConsumerWidget {
                       ),
                     ),
               ],
-              if (context.isLandscape()) ...[
+              if (context.isLandscape) ...[
                 15.height,
                 Consumer(builder: (context, ref, child) {
                   return ref.watch(remainingNextPrayerTimeProvider).when(

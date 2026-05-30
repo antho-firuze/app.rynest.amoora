@@ -45,7 +45,7 @@ class StreamerView extends ConsumerWidget {
                         20.height,
                         CustomButton(
                           busy: false,
-                          width: double.infinity,
+                          minWidth: double.infinity,
                           child: Text('Mulai Streaming'.hardcoded),
                           onPressed: () async {
                             if (formStateKey.currentState!.validate() == false) {

@@ -1,3 +1,4 @@
+import 'package:amoora/cff/utils/orientation_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:amoora/cff/utils/ui_helper.dart';
 
@@ -7,35 +8,39 @@ class OTPFields extends StatelessWidget {
   const OTPFields({
     super.key,
     this.length = 4,
-    this.onCompleted,
+    this.onCompleted, this.minWidth,
   });
 
   final int length;
+  final double? minWidth;
   final void Function(String? pin)? onCompleted;
 
   @override
   Widget build(BuildContext context) {
     List<String> finalPin = List.generate(length, (index) => '');
 
-    return Form(
-      key: formStateKey,
-      onChanged: () {
-        formStateKey.currentState!.save();
-
-        if (finalPin.join().length == length) {
-          if (onCompleted != null) {
-            onCompleted!(finalPin.join());
+    return SizedBox(
+      width: context.isLandscape || context.isWidthScreen ? minWidth : double.infinity,
+      child: Form(
+        key: formStateKey,
+        onChanged: () {
+          formStateKey.currentState!.save();
+      
+          if (finalPin.join().length == length) {
+            if (onCompleted != null) {
+              onCompleted!(finalPin.join());
+            }
           }
-        }
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(
-            length,
-            (index) => BuildInputPin(
-                  index: index,
-                  onSaved: (pin) => finalPin[index] = pin ?? '',
-                )),
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(
+              length,
+              (index) => BuildInputPin(
+                    index: index,
+                    onSaved: (pin) => finalPin[index] = pin ?? '',
+                  )),
+        ),
       ),
     );
   }

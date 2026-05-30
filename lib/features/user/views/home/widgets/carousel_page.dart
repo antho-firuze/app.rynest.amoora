@@ -80,7 +80,7 @@ class CarouselPage extends ConsumerWidget {
                                     color: Colors.transparent,
                                     child: Image.file(
                                       File(data),
-                                      fit: context.isLandscape() ? BoxFit.fitWidth : BoxFit.cover,
+                                      fit: context.isLandscape ? BoxFit.fitWidth : BoxFit.cover,
                                     ),
                                   );
                                 },

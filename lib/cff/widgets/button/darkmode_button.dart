@@ -14,20 +14,33 @@ class DarkModeButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    Icon? icon;
+    String? toolTip;
+    switch (ref.watch(themeModeProvider)) {
+      case ThemeMode.light:
+        icon = Icon(Icons.light_mode, color: color);
+        toolTip = 'Light Mode';
+        break;
+      case ThemeMode.dark:
+        icon = Icon(Icons.dark_mode, color: color);
+        toolTip = 'Dark Mode';
+        break;
+      default:
+        icon = Icon(SuperIcons.bs_lightbulb, color: color);
+        toolTip = 'System Theme';
+    }
+
     return IconButton(
-        tooltip: context.isDarkMode ? 'Light Style' : 'Dark Style',
-        style: IconButton.styleFrom(backgroundColor: primaryLight),
-        onPressed: () {
-          ref.read(themeModeProvider.notifier).state = switch (ref.watch(themeModeProvider)) {
-            ThemeMode.system => ThemeMode.light,
-            ThemeMode.light => ThemeMode.dark,
-            ThemeMode.dark => ThemeMode.system,
-          };
-        },
-        icon: switch (ref.watch(themeModeProvider)) {
-          ThemeMode.system => Icon(SuperIcons.mg_sun_fog_fill, color: color),
-          ThemeMode.light => Icon(Icons.dark_mode, color: color),
-          ThemeMode.dark => Icon(Icons.light_mode, color: color),
-        });
+      tooltip: toolTip,
+      style: IconButton.styleFrom(backgroundColor: primaryLight),
+      onPressed: () {
+        ref.read(themeModeProvider.notifier).state = switch (ref.watch(themeModeProvider)) {
+          ThemeMode.system => ThemeMode.light,
+          ThemeMode.light => ThemeMode.dark,
+          ThemeMode.dark => ThemeMode.system,
+        };
+      },
+      icon: icon,
+    );
   }
 }

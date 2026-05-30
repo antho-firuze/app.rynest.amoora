@@ -52,7 +52,7 @@ class TypeNumeric extends ConsumerWidget {
             ),
             30.height,
             CustomButton(
-              width: double.infinity,
+              minWidth: double.infinity,
               onPressed: ref.watch(isFormValidated) ? () => onSubmit!(newVal) : null,
               child: Text('Simpan'.hardcoded),
             ),

@@ -10,7 +10,7 @@ extension EmptySpace on num {
 
   SizedBox get width => SizedBox(width: toDouble());
 
-  double? whenLandscape(double? val) => rootNavigatorKey.currentContext!.isLandscape() ? val : toDouble();
+  double? whenLandscape(double? val) => rootNavigatorKey.currentContext!.isLandscape ? val : toDouble();
 }
 
 // final Image oImagePlaceholder = Image.asset(
@@ -25,16 +25,18 @@ extension ScreenSize on BuildContext {
 
   double get screenHeight => MediaQuery.of(this).size.height;
 
+  double get aspectRatio => MediaQuery.of(this).size.aspectRatio;
+
   /// Function to get screen width ratio
   ///
   /// screen_width * p => when portrait <br>
   /// screen_width * l => when landscape
   double screenWidthRatio([double portrait = 1, double landscape = 1]) {
-    return isLandscape() ? MediaQuery.of(this).size.width * landscape : MediaQuery.of(this).size.width * portrait;
+    return isLandscape ? MediaQuery.of(this).size.width * landscape : MediaQuery.of(this).size.width * portrait;
   }
 
   double screenHeightRatio([double portrait = 1, double landscape = 1]) {
-    return isLandscape() ? MediaQuery.of(this).size.height * landscape : MediaQuery.of(this).size.height * portrait;
+    return isLandscape ? MediaQuery.of(this).size.height * landscape : MediaQuery.of(this).size.height * portrait;
   }
 }
 

@@ -12,10 +12,10 @@ class InfoOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: context.isLandscape()
+      mainAxisAlignment: context.isLandscape
           ? MainAxisAlignment.end
           : MainAxisAlignment.spaceBetween,
-      children: context.isLandscape()
+      children: context.isLandscape
           ? [
               const LandscapeOverlay(),
             ]

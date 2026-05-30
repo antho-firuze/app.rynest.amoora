@@ -89,7 +89,7 @@ class DetailFacilities extends StatelessWidget {
           children: [
             Icon(
               icon ?? Icons.insert_invitation,
-              size: context.isLandscape() ? 40 : 50,
+              size: context.isLandscape ? 40 : 50,
               color: oWhite50,
             ),
             10.height,

@@ -40,15 +40,15 @@ class PwdForgotView extends ConsumerWidget {
                     Center(
                       child: CustomButton(
                         // busy: state.isLoading,
-                        width: double.infinity,
+                        minWidth: double.infinity,
                         child: Text('Kirim Kode Verifikasi!'.hardcoded),
                         onPressed: () async {
                           if (formStateKey.currentState!.validate() == false) {
                             return;
                           }
-                      
+
                           ref.read(authCtrlProvider).sendCode();
-                      
+
                           // var result = await context.push('/code_verify');
                           // if (result == true) {
                           //   // ignore: use_build_context_synchronously

@@ -142,11 +142,11 @@ class _LiveMapViewState extends ConsumerState<LiveMapView> with WidgetsBindingOb
 
     Future.delayed(
       const Duration(seconds: 2),
-      context.isLandscape() ? null : () => panelController.animatePanelToSnapPoint(),
+      context.isLandscape ? null : () => panelController.animatePanelToSnapPoint(),
     );
     double height = MediaQuery.of(context).size.height;
 
-    double panelHeightOpen = context.isLandscape() ? height * .77 : height * .87;
+    double panelHeightOpen = context.isLandscape ? height * .77 : height * .87;
 
     return PopScope(
       canPop: false,

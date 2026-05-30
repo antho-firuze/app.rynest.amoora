@@ -35,7 +35,7 @@ class DuaKhatamView extends StatelessWidget {
                   text: QuranString.douaaKhatmQuran,
                   style: TextStyle(
                     fontFamily: AppTheme.secondaryFont,
-                    fontSize: context.isLandscape() ? 27 : 25,
+                    fontSize: context.isLandscape ? 27 : 25,
                     color: Colors.black.whenDark(Colors.white70),
                   ),
                 ),

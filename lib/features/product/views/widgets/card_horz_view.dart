@@ -198,7 +198,7 @@ class LeftSideUI extends ConsumerWidget {
                   ),
                   image: DecorationImage(
                     image: FileImage(File(data)),
-                    fit: context.isLandscape() ? BoxFit.fitWidth : BoxFit.fitHeight,
+                    fit: context.isLandscape ? BoxFit.fitWidth : BoxFit.fitHeight,
                   ),
                 ),
               ),

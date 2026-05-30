@@ -1,4 +1,5 @@
 import 'package:amoora/cff/core/app_color.dart';
+import 'package:amoora/cff/utils/orientation_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:amoora/cff/utils/ui_helper.dart';
@@ -30,6 +31,7 @@ class CustomInput extends StatefulWidget {
     this.borderRadius = 8,
     this.borderSide = const BorderSide(color: oGrey70),
     this.autoLabel = true,
+    this.minWidth,
   });
 
   final String? initialValue;
@@ -56,6 +58,7 @@ class CustomInput extends StatefulWidget {
   final double borderRadius;
   final BorderSide borderSide;
   final bool autoLabel;
+  final double? minWidth;
 
   @override
   State<CustomInput> createState() => _CustomInputState();
@@ -120,81 +123,84 @@ class _CustomInputState extends State<CustomInput> with SingleTickerProviderStat
           )
         : null;
 
-    return TextFormField(
-      controller: controller,
-      autofocus: false,
-      focusNode: widget.focusNode,
-      // style: tsBodyM(),
-      maxLines: widget.maxLines,
-      maxLength: widget.maxLength,
-      enabled: widget.enabled,
-      readOnly: widget.readOnly,
-      obscureText: showPassword ? !showPassword : widget.isPassword!,
-      buildCounter: generateCounter,
-      onChanged: (value) {
-        if (widget.onChanged != null) widget.onChanged!(value);
-      },
-      onFieldSubmitted: widget.onSubmitted,
-      onEditingComplete: () {
-        FocusScope.of(context).nextFocus();
-        if (widget.enterPressed != null) widget.enterPressed!();
-      },
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: widget.validator,
-      inputFormatters: widget.formatter,
-      keyboardType: widget.keyboardType,
-      textInputAction: widget.textInputAction,
-      decoration: InputDecoration(
-        filled: widget.backgroundColor != null,
-        fillColor: widget.backgroundColor,
-        labelText: widget.autoLabel ? labelText : null,
-        // labelStyle: tsBodyM(),
-        hintText: widget.hintText,
-        // hintStyle: tsBodyM(),
-        helperText: widget.helperText,
-        counterText: widget.maxLength == null ? '' : null,
-        prefixIcon: widget.prefixIcon,
-        suffixIcon: Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: Row(
-            spacing: 8,
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              if (showClearBtn != null) showClearBtn,
-              if (showPasswordVisibility != null) showPasswordVisibility,
-              if (widget.suffixIcon != null) widget.suffixIcon!,
-            ],
+    return SizedBox(
+      width: context.isLandscape || context.isWidthScreen ? widget.minWidth : double.infinity,
+      child: TextFormField(
+        controller: controller,
+        autofocus: false,
+        focusNode: widget.focusNode,
+        // style: tsBodyM(),
+        maxLines: widget.maxLines,
+        maxLength: widget.maxLength,
+        enabled: widget.enabled,
+        readOnly: widget.readOnly,
+        obscureText: showPassword ? !showPassword : widget.isPassword!,
+        buildCounter: generateCounter,
+        onChanged: (value) {
+          if (widget.onChanged != null) widget.onChanged!(value);
+        },
+        onFieldSubmitted: widget.onSubmitted,
+        onEditingComplete: () {
+          FocusScope.of(context).nextFocus();
+          if (widget.enterPressed != null) widget.enterPressed!();
+        },
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: widget.validator,
+        inputFormatters: widget.formatter,
+        keyboardType: widget.keyboardType,
+        textInputAction: widget.textInputAction,
+        decoration: InputDecoration(
+          filled: widget.backgroundColor != null,
+          fillColor: widget.backgroundColor,
+          labelText: widget.autoLabel ? labelText : null,
+          // labelStyle: tsBodyM(),
+          hintText: widget.hintText,
+          // hintStyle: tsBodyM(),
+          helperText: widget.helperText,
+          counterText: widget.maxLength == null ? '' : null,
+          prefixIcon: widget.prefixIcon,
+          suffixIcon: Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Row(
+              spacing: 8,
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                if (showClearBtn != null) showClearBtn,
+                if (showPasswordVisibility != null) showPasswordVisibility,
+                if (widget.suffixIcon != null) widget.suffixIcon!,
+              ],
+            ),
           ),
-        ),
-        // suffixIconConstraints: const BoxConstraints(
-        //   maxHeight: 47,
-        //   minWidth: 37,
-        //   minHeight: 47,
-        // ),
-        border: OutlineInputBorder(
-          borderSide: widget.borderSide,
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderSide: widget.borderSide,
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: widget.borderSide,
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: widget.borderSide,
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: widget.borderSide,
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: widget.borderSide,
-          borderRadius: BorderRadius.circular(widget.borderRadius),
+          // suffixIconConstraints: const BoxConstraints(
+          //   maxHeight: 47,
+          //   minWidth: 37,
+          //   minHeight: 47,
+          // ),
+          border: OutlineInputBorder(
+            borderSide: widget.borderSide,
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderSide: widget.borderSide,
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: widget.borderSide,
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: widget.borderSide,
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: widget.borderSide,
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: widget.borderSide,
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+          ),
         ),
       ),
     );

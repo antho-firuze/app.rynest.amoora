@@ -58,21 +58,22 @@ class AlertService {
   static Future<bool?> confirm({
     required String body,
     String title = 'Konfirmasi',
-    String? yesCaption,
     String? noCaption,
-    VoidCallback? onYes,
+    String? yesCaption,
     VoidCallback? onNo,
+    VoidCallback? onYes,
+    bool showNo = true,
+    bool showYes = true,
   }) async {
     return await AlertService.show(
       title: title,
       body: body,
-      yesCaption: yesCaption,
       noCaption: noCaption,
-      onYes: onYes,
+      yesCaption: yesCaption,
       onNo: onNo,
-      showYes: true,
-      showNo: true,
-      showOk: false,
+      onYes: onYes,
+      showNo: showNo,
+      showYes: showYes,
     );
   }
 
@@ -82,12 +83,6 @@ class AlertService {
     String? okCaption,
     VoidCallback? onOk,
   }) async {
-    await AlertService.show(
-      title: title,
-      body: body,
-      okCaption: okCaption,
-      onOk: onOk,
-      showOk: true,
-    );
+    await AlertService.show(title: title, body: body, okCaption: okCaption, onOk: onOk, showOk: true);
   }
 }

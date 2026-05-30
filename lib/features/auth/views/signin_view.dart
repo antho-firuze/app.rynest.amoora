@@ -115,7 +115,7 @@ class SignInView extends ConsumerWidget {
                   // SUBMIT BUTTON
                   Center(
                     child: CustomButton(
-                      width: double.infinity,
+                      minWidth: double.infinity,
                       child: Text('Mari masuk'.hardcoded),
                       onPressed: () async {
                         if (formStateKey.currentState!.validate() == false) {

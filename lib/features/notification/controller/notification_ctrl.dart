@@ -42,7 +42,7 @@ final notificationCountListenerProvider = StreamProvider<int>((ref) async* {
 // Fetch notification list
 final fetchNotificationsProvider = FutureProvider<List<Alert>?>((ref) async {
   // TODO: fetchNotificationsProvider
-  return ;
+  return;
 });
 
 // Transform SseMessage to number

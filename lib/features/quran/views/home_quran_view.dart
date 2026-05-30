@@ -163,7 +163,7 @@ class HomeQuranView extends ConsumerWidget {
                       itemCount: quranPages.length,
                       itemBuilder: (context, index, realIndex) => Container(
                         constraints: const BoxConstraints(maxWidth: 500),
-                        child: context.isLandscape()
+                        child: context.isLandscape
                             ? ListView(
                                 children: [
                                   const SimplePageInfo(),

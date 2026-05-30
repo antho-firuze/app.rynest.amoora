@@ -57,7 +57,7 @@ class PanelPage extends ConsumerWidget {
                         final places = data;
 
                         return StaggeredGrid.count(
-                          crossAxisCount: context.isLandscape() ? 4 : 2,
+                          crossAxisCount: context.isLandscape ? 4 : 2,
                           mainAxisSpacing: 8,
                           crossAxisSpacing: 8,
                           children: List.generate(places.length, (index) {

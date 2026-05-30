@@ -71,7 +71,7 @@ class PwdChangeView extends ConsumerWidget {
                     Center(
                       child: CustomButton(
                         // busy: state.isLoading,
-                        width: double.infinity,
+                        minWidth: double.infinity,
                         child: Text('Simpan'.hardcoded),
                         onPressed: () async {
                           if (formStateKey.currentState!.validate() == false) {

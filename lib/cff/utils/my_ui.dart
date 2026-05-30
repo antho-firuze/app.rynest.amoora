@@ -2,6 +2,7 @@ import 'package:amoora/cff/widgets/connectivity_wrapper.dart';
 import 'package:amoora/cff/core/app_color.dart';
 import 'package:amoora/cff/utils/system_ui_overlay.dart';
 import 'package:amoora/cff/utils/ui_helper.dart';
+import 'package:amoora/cff/widgets/screen_debug_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -105,19 +106,7 @@ class MyUI extends StatelessWidget {
                 //     child: child,
                 //   ),
                 // ),
-                if (showScreenInfo)
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Row(
-                      children: [
-                        10.width,
-                        Text("width | ${context.screenWidth.round()}"),
-                        10.width,
-                        Text("height | ${context.screenHeight.round()}"),
-                        10.width,
-                      ],
-                    ),
-                  ),
+                if (showScreenInfo) ScreenDebugInfo(),
               ],
             ),
           ),

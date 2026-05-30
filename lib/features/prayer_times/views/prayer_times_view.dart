@@ -73,7 +73,7 @@ class PrayerTimesView extends ConsumerWidget {
 
     Future.delayed(
       const Duration(milliseconds: 500),
-      () => context.isLandscape()
+      () => context.isLandscape
           ? context.isBigScreen
               ? panelController.animatePanelToSnapPoint()
               : null
@@ -81,7 +81,7 @@ class PrayerTimesView extends ConsumerWidget {
     );
     double height = MediaQuery.of(context).size.height;
 
-    double panelHeightOpen = context.isLandscape() ? height * .77 : height * .87;
+    double panelHeightOpen = context.isLandscape ? height * .77 : height * .87;
 
     return PopScope(
       canPop: false,

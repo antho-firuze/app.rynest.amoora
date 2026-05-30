@@ -32,7 +32,7 @@ class _ExchangeRateViewState extends ConsumerState<ExchangeRateView> {
     return MyUI(
       child: Scaffold(
         appBar: AppBar(title: const Text('Konversi Mata Uang')),
-        body: context.isLandscape()
+        body: context.isLandscape
             ? Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

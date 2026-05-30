@@ -1,4 +1,5 @@
 import 'package:amoora/cff/core/app_color.dart';
+import 'package:amoora/cff/utils/orientation_utils.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -7,7 +8,7 @@ class CustomButton extends StatelessWidget {
     this.busy = false,
     this.enabled = true,
     this.color,
-    this.width,
+    this.minWidth,
     this.tooltip,
     this.child,
     this.flat = false,
@@ -17,7 +18,7 @@ class CustomButton extends StatelessWidget {
   final bool busy;
   final bool enabled;
   final Color? color;
-  final double? width;
+  final double? minWidth;
   final String? tooltip;
   final Widget? child;
   final bool flat;
@@ -43,20 +44,23 @@ class CustomButton extends StatelessWidget {
       iconSize: 15,
     );
 
-    return Tooltip(
-      message: tooltip ?? "",
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: flat ? buttonStyleFlat : buttonStyleNormal,
-        child: busy
-            ? const Padding(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                child: CircularProgressIndicator(
-                  strokeWidth: 5,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
-                ),
-              )
-            : child,
+    return SizedBox(
+      width: context.isLandscape || context.isWidthScreen ? minWidth : double.infinity,
+      child: Tooltip(
+        message: tooltip ?? "",
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: flat ? buttonStyleFlat : buttonStyleNormal,
+          child: busy
+              ? const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 5),
+                  child: CircularProgressIndicator(
+                    strokeWidth: 5,
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                  ),
+                )
+              : child,
+        ),
       ),
     );
   }
